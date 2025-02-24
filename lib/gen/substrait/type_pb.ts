@@ -4,252 +4,215 @@
 // @generated from file substrait/type.proto (package substrait, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenEnum,
-  GenFile,
-  GenMessage,
-} from '@bufbuild/protobuf/codegenv1';
-import { enumDesc, fileDesc, messageDesc } from '@bufbuild/protobuf/codegenv1';
-import type { Empty } from '../google/protobuf/empty_pb';
-import { file_google_protobuf_empty } from '../google/protobuf/empty_pb';
-import type { Message } from '@bufbuild/protobuf';
+import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
+import { enumDesc, fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
+import type { Empty } from "../google/protobuf/empty_pb";
+import { file_google_protobuf_empty } from "../google/protobuf/empty_pb";
+import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file substrait/type.proto.
  */
-export const file_substrait_type: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    'ChRzdWJzdHJhaXQvdHlwZS5wcm90bxIJc3Vic3RyYWl0Is4hCgRUeXBlEicKBGJvb2wYASABKAsyFy5zdWJzdHJhaXQuVHlwZS5Cb29sZWFuSAASIAoCaTgYAiABKAsyEi5zdWJzdHJhaXQuVHlwZS5JOEgAEiIKA2kxNhgDIAEoCzITLnN1YnN0cmFpdC5UeXBlLkkxNkgAEiIKA2kzMhgFIAEoCzITLnN1YnN0cmFpdC5UeXBlLkkzMkgAEiIKA2k2NBgHIAEoCzITLnN1YnN0cmFpdC5UeXBlLkk2NEgAEiQKBGZwMzIYCiABKAsyFC5zdWJzdHJhaXQuVHlwZS5GUDMySAASJAoEZnA2NBgLIAEoCzIULnN1YnN0cmFpdC5UeXBlLkZQNjRIABIoCgZzdHJpbmcYDCABKAsyFi5zdWJzdHJhaXQuVHlwZS5TdHJpbmdIABIoCgZiaW5hcnkYDSABKAsyFi5zdWJzdHJhaXQuVHlwZS5CaW5hcnlIABIyCgl0aW1lc3RhbXAYDiABKAsyGS5zdWJzdHJhaXQuVHlwZS5UaW1lc3RhbXBCAhgBSAASJAoEZGF0ZRgQIAEoCzIULnN1YnN0cmFpdC5UeXBlLkRhdGVIABIkCgR0aW1lGBEgASgLMhQuc3Vic3RyYWl0LlR5cGUuVGltZUgAEjUKDWludGVydmFsX3llYXIYEyABKAsyHC5zdWJzdHJhaXQuVHlwZS5JbnRlcnZhbFllYXJIABIzCgxpbnRlcnZhbF9kYXkYFCABKAsyGy5zdWJzdHJhaXQuVHlwZS5JbnRlcnZhbERheUgAEjcKDHRpbWVzdGFtcF90ehgdIAEoCzIbLnN1YnN0cmFpdC5UeXBlLlRpbWVzdGFtcFRaQgIYAUgAEiQKBHV1aWQYICABKAsyFC5zdWJzdHJhaXQuVHlwZS5VVUlESAASLwoKZml4ZWRfY2hhchgVIAEoCzIZLnN1YnN0cmFpdC5UeXBlLkZpeGVkQ2hhckgAEioKB3ZhcmNoYXIYFiABKAsyFy5zdWJzdHJhaXQuVHlwZS5WYXJDaGFySAASMwoMZml4ZWRfYmluYXJ5GBcgASgLMhsuc3Vic3RyYWl0LlR5cGUuRml4ZWRCaW5hcnlIABIqCgdkZWNpbWFsGBggASgLMhcuc3Vic3RyYWl0LlR5cGUuRGVjaW1hbEgAEkEKE3ByZWNpc2lvbl90aW1lc3RhbXAYISABKAsyIi5zdWJzdHJhaXQuVHlwZS5QcmVjaXNpb25UaW1lc3RhbXBIABJGChZwcmVjaXNpb25fdGltZXN0YW1wX3R6GCIgASgLMiQuc3Vic3RyYWl0LlR5cGUuUHJlY2lzaW9uVGltZXN0YW1wVFpIABIoCgZzdHJ1Y3QYGSABKAsyFi5zdWJzdHJhaXQuVHlwZS5TdHJ1Y3RIABIkCgRsaXN0GBsgASgLMhQuc3Vic3RyYWl0LlR5cGUuTGlzdEgAEiIKA21hcBgcIAEoCzITLnN1YnN0cmFpdC5UeXBlLk1hcEgAEjMKDHVzZXJfZGVmaW5lZBgeIAEoCzIbLnN1YnN0cmFpdC5UeXBlLlVzZXJEZWZpbmVkSAASKQobdXNlcl9kZWZpbmVkX3R5cGVfcmVmZXJlbmNlGB8gASgNQgIYAUgAGl0KB0Jvb2xlYW4SIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWAoCSTgSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWQoDSTE2EiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgBIAEoDRIwCgtudWxsYWJpbGl0eRgCIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GlkKA0kzMhIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpZCgNJNjQSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWgoERlAzMhIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpaCgRGUDY0EiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgBIAEoDRIwCgtudWxsYWJpbGl0eRgCIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GlwKBlN0cmluZxIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpcCgZCaW5hcnkSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaXwoJVGltZXN0YW1wEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgBIAEoDRIwCgtudWxsYWJpbGl0eRgCIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GloKBERhdGUSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWgoEVGltZRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRphCgtUaW1lc3RhbXBUWhIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpiCgxJbnRlcnZhbFllYXISIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaYQoLSW50ZXJ2YWxEYXkSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWgoEVVVJRBIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpvCglGaXhlZENoYXISDgoGbGVuZ3RoGAEgASgFEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5Gm0KB1ZhckNoYXISDgoGbGVuZ3RoGAEgASgFEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GnEKC0ZpeGVkQmluYXJ5Eg4KBmxlbmd0aBgBIAEoBRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp/CgdEZWNpbWFsEg0KBXNjYWxlGAEgASgFEhEKCXByZWNpc2lvbhgCIAEoBRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAyABKA0SMAoLbnVsbGFiaWxpdHkYBCABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp7ChJQcmVjaXNpb25UaW1lc3RhbXASEQoJcHJlY2lzaW9uGAEgASgFEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5Gn0KFFByZWNpc2lvblRpbWVzdGFtcFRaEhEKCXByZWNpc2lvbhgBIAEoBRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp8CgZTdHJ1Y3QSHgoFdHlwZXMYASADKAsyDy5zdWJzdHJhaXQuVHlwZRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp5CgRMaXN0Eh0KBHR5cGUYASABKAsyDy5zdWJzdHJhaXQuVHlwZRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRqXAQoDTWFwEhwKA2tleRgBIAEoCzIPLnN1YnN0cmFpdC5UeXBlEh4KBXZhbHVlGAIgASgLMg8uc3Vic3RyYWl0LlR5cGUSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAMgASgNEjAKC251bGxhYmlsaXR5GAQgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkarQEKC1VzZXJEZWZpbmVkEhYKDnR5cGVfcmVmZXJlbmNlGAEgASgNEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5EjIKD3R5cGVfcGFyYW1ldGVycxgEIAMoCzIZLnN1YnN0cmFpdC5UeXBlLlBhcmFtZXRlchquAQoJUGFyYW1ldGVyEiYKBG51bGwYASABKAsyFi5nb29nbGUucHJvdG9idWYuRW1wdHlIABIkCglkYXRhX3R5cGUYAiABKAsyDy5zdWJzdHJhaXQuVHlwZUgAEhEKB2Jvb2xlYW4YAyABKAhIABIRCgdpbnRlZ2VyGAQgASgDSAASDgoEZW51bRgFIAEoCUgAEhAKBnN0cmluZxgGIAEoCUgAQgsKCXBhcmFtZXRlciJeCgtOdWxsYWJpbGl0eRIbChdOVUxMQUJJTElUWV9VTlNQRUNJRklFRBAAEhgKFE5VTExBQklMSVRZX05VTExBQkxFEAESGAoUTlVMTEFCSUxJVFlfUkVRVUlSRUQQAkIGCgRraW5kIkQKC05hbWVkU3RydWN0Eg0KBW5hbWVzGAEgAygJEiYKBnN0cnVjdBgCIAEoCzIWLnN1YnN0cmFpdC5UeXBlLlN0cnVjdEJXChJpby5zdWJzdHJhaXQucHJvdG9QAVoqZ2l0aHViLmNvbS9zdWJzdHJhaXQtaW8vc3Vic3RyYWl0LWdvL3Byb3RvqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM',
-    [file_google_protobuf_empty],
-  );
+export const file_substrait_type: GenFile = /*@__PURE__*/
+  fileDesc("ChRzdWJzdHJhaXQvdHlwZS5wcm90bxIJc3Vic3RyYWl0Is4hCgRUeXBlEicKBGJvb2wYASABKAsyFy5zdWJzdHJhaXQuVHlwZS5Cb29sZWFuSAASIAoCaTgYAiABKAsyEi5zdWJzdHJhaXQuVHlwZS5JOEgAEiIKA2kxNhgDIAEoCzITLnN1YnN0cmFpdC5UeXBlLkkxNkgAEiIKA2kzMhgFIAEoCzITLnN1YnN0cmFpdC5UeXBlLkkzMkgAEiIKA2k2NBgHIAEoCzITLnN1YnN0cmFpdC5UeXBlLkk2NEgAEiQKBGZwMzIYCiABKAsyFC5zdWJzdHJhaXQuVHlwZS5GUDMySAASJAoEZnA2NBgLIAEoCzIULnN1YnN0cmFpdC5UeXBlLkZQNjRIABIoCgZzdHJpbmcYDCABKAsyFi5zdWJzdHJhaXQuVHlwZS5TdHJpbmdIABIoCgZiaW5hcnkYDSABKAsyFi5zdWJzdHJhaXQuVHlwZS5CaW5hcnlIABIyCgl0aW1lc3RhbXAYDiABKAsyGS5zdWJzdHJhaXQuVHlwZS5UaW1lc3RhbXBCAhgBSAASJAoEZGF0ZRgQIAEoCzIULnN1YnN0cmFpdC5UeXBlLkRhdGVIABIkCgR0aW1lGBEgASgLMhQuc3Vic3RyYWl0LlR5cGUuVGltZUgAEjUKDWludGVydmFsX3llYXIYEyABKAsyHC5zdWJzdHJhaXQuVHlwZS5JbnRlcnZhbFllYXJIABIzCgxpbnRlcnZhbF9kYXkYFCABKAsyGy5zdWJzdHJhaXQuVHlwZS5JbnRlcnZhbERheUgAEjcKDHRpbWVzdGFtcF90ehgdIAEoCzIbLnN1YnN0cmFpdC5UeXBlLlRpbWVzdGFtcFRaQgIYAUgAEiQKBHV1aWQYICABKAsyFC5zdWJzdHJhaXQuVHlwZS5VVUlESAASLwoKZml4ZWRfY2hhchgVIAEoCzIZLnN1YnN0cmFpdC5UeXBlLkZpeGVkQ2hhckgAEioKB3ZhcmNoYXIYFiABKAsyFy5zdWJzdHJhaXQuVHlwZS5WYXJDaGFySAASMwoMZml4ZWRfYmluYXJ5GBcgASgLMhsuc3Vic3RyYWl0LlR5cGUuRml4ZWRCaW5hcnlIABIqCgdkZWNpbWFsGBggASgLMhcuc3Vic3RyYWl0LlR5cGUuRGVjaW1hbEgAEkEKE3ByZWNpc2lvbl90aW1lc3RhbXAYISABKAsyIi5zdWJzdHJhaXQuVHlwZS5QcmVjaXNpb25UaW1lc3RhbXBIABJGChZwcmVjaXNpb25fdGltZXN0YW1wX3R6GCIgASgLMiQuc3Vic3RyYWl0LlR5cGUuUHJlY2lzaW9uVGltZXN0YW1wVFpIABIoCgZzdHJ1Y3QYGSABKAsyFi5zdWJzdHJhaXQuVHlwZS5TdHJ1Y3RIABIkCgRsaXN0GBsgASgLMhQuc3Vic3RyYWl0LlR5cGUuTGlzdEgAEiIKA21hcBgcIAEoCzITLnN1YnN0cmFpdC5UeXBlLk1hcEgAEjMKDHVzZXJfZGVmaW5lZBgeIAEoCzIbLnN1YnN0cmFpdC5UeXBlLlVzZXJEZWZpbmVkSAASKQobdXNlcl9kZWZpbmVkX3R5cGVfcmVmZXJlbmNlGB8gASgNQgIYAUgAGl0KB0Jvb2xlYW4SIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWAoCSTgSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWQoDSTE2EiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgBIAEoDRIwCgtudWxsYWJpbGl0eRgCIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GlkKA0kzMhIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpZCgNJNjQSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWgoERlAzMhIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpaCgRGUDY0EiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgBIAEoDRIwCgtudWxsYWJpbGl0eRgCIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GlwKBlN0cmluZxIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpcCgZCaW5hcnkSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaXwoJVGltZXN0YW1wEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgBIAEoDRIwCgtudWxsYWJpbGl0eRgCIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GloKBERhdGUSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWgoEVGltZRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRphCgtUaW1lc3RhbXBUWhIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpiCgxJbnRlcnZhbFllYXISIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaYQoLSW50ZXJ2YWxEYXkSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWgoEVVVJRBIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpvCglGaXhlZENoYXISDgoGbGVuZ3RoGAEgASgFEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5Gm0KB1ZhckNoYXISDgoGbGVuZ3RoGAEgASgFEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GnEKC0ZpeGVkQmluYXJ5Eg4KBmxlbmd0aBgBIAEoBRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp/CgdEZWNpbWFsEg0KBXNjYWxlGAEgASgFEhEKCXByZWNpc2lvbhgCIAEoBRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAyABKA0SMAoLbnVsbGFiaWxpdHkYBCABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp7ChJQcmVjaXNpb25UaW1lc3RhbXASEQoJcHJlY2lzaW9uGAEgASgFEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5Gn0KFFByZWNpc2lvblRpbWVzdGFtcFRaEhEKCXByZWNpc2lvbhgBIAEoBRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp8CgZTdHJ1Y3QSHgoFdHlwZXMYASADKAsyDy5zdWJzdHJhaXQuVHlwZRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp5CgRMaXN0Eh0KBHR5cGUYASABKAsyDy5zdWJzdHJhaXQuVHlwZRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRqXAQoDTWFwEhwKA2tleRgBIAEoCzIPLnN1YnN0cmFpdC5UeXBlEh4KBXZhbHVlGAIgASgLMg8uc3Vic3RyYWl0LlR5cGUSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAMgASgNEjAKC251bGxhYmlsaXR5GAQgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkarQEKC1VzZXJEZWZpbmVkEhYKDnR5cGVfcmVmZXJlbmNlGAEgASgNEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5EjIKD3R5cGVfcGFyYW1ldGVycxgEIAMoCzIZLnN1YnN0cmFpdC5UeXBlLlBhcmFtZXRlchquAQoJUGFyYW1ldGVyEiYKBG51bGwYASABKAsyFi5nb29nbGUucHJvdG9idWYuRW1wdHlIABIkCglkYXRhX3R5cGUYAiABKAsyDy5zdWJzdHJhaXQuVHlwZUgAEhEKB2Jvb2xlYW4YAyABKAhIABIRCgdpbnRlZ2VyGAQgASgDSAASDgoEZW51bRgFIAEoCUgAEhAKBnN0cmluZxgGIAEoCUgAQgsKCXBhcmFtZXRlciJeCgtOdWxsYWJpbGl0eRIbChdOVUxMQUJJTElUWV9VTlNQRUNJRklFRBAAEhgKFE5VTExBQklMSVRZX05VTExBQkxFEAESGAoUTlVMTEFCSUxJVFlfUkVRVUlSRUQQAkIGCgRraW5kIkQKC05hbWVkU3RydWN0Eg0KBW5hbWVzGAEgAygJEiYKBnN0cnVjdBgCIAEoCzIWLnN1YnN0cmFpdC5UeXBlLlN0cnVjdEJXChJpby5zdWJzdHJhaXQucHJvdG9QAVoqZ2l0aHViLmNvbS9zdWJzdHJhaXQtaW8vc3Vic3RyYWl0LWdvL3Byb3RvqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM", [file_google_protobuf_empty]);
 
 /**
  * @generated from message substrait.Type
  */
-export type Type = Message<'substrait.Type'> & {
+export type Type = Message<"substrait.Type"> & {
   /**
    * @generated from oneof substrait.Type.kind
    */
-  kind:
-    | {
-        /**
-         * @generated from field: substrait.Type.Boolean bool = 1;
-         */
-        value: Type_Boolean;
-        case: 'bool';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.I8 i8 = 2;
-         */
-        value: Type_I8;
-        case: 'i8';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.I16 i16 = 3;
-         */
-        value: Type_I16;
-        case: 'i16';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.I32 i32 = 5;
-         */
-        value: Type_I32;
-        case: 'i32';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.I64 i64 = 7;
-         */
-        value: Type_I64;
-        case: 'i64';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.FP32 fp32 = 10;
-         */
-        value: Type_FP32;
-        case: 'fp32';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.FP64 fp64 = 11;
-         */
-        value: Type_FP64;
-        case: 'fp64';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.String string = 12;
-         */
-        value: Type_String;
-        case: 'string';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.Binary binary = 13;
-         */
-        value: Type_Binary;
-        case: 'binary';
-      }
-    | {
-        /**
-         * Deprecated in favor of `PrecisionTimestamp precision_timestamp`
-         *
-         * @generated from field: substrait.Type.Timestamp timestamp = 14 [deprecated = true];
-         * @deprecated
-         */
-        value: Type_Timestamp;
-        case: 'timestamp';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.Date date = 16;
-         */
-        value: Type_Date;
-        case: 'date';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.Time time = 17;
-         */
-        value: Type_Time;
-        case: 'time';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.IntervalYear interval_year = 19;
-         */
-        value: Type_IntervalYear;
-        case: 'intervalYear';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.IntervalDay interval_day = 20;
-         */
-        value: Type_IntervalDay;
-        case: 'intervalDay';
-      }
-    | {
-        /**
-         * Deprecated in favor of `PrecisionTimestampTZ precision_timestamp_tz`
-         *
-         * @generated from field: substrait.Type.TimestampTZ timestamp_tz = 29 [deprecated = true];
-         * @deprecated
-         */
-        value: Type_TimestampTZ;
-        case: 'timestampTz';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.UUID uuid = 32;
-         */
-        value: Type_UUID;
-        case: 'uuid';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.FixedChar fixed_char = 21;
-         */
-        value: Type_FixedChar;
-        case: 'fixedChar';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.VarChar varchar = 22;
-         */
-        value: Type_VarChar;
-        case: 'varchar';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.FixedBinary fixed_binary = 23;
-         */
-        value: Type_FixedBinary;
-        case: 'fixedBinary';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.Decimal decimal = 24;
-         */
-        value: Type_Decimal;
-        case: 'decimal';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.PrecisionTimestamp precision_timestamp = 33;
-         */
-        value: Type_PrecisionTimestamp;
-        case: 'precisionTimestamp';
-      }
-    | {
-        /**
-         * value is since UNIX epoch in UTC
-         *
-         * @generated from field: substrait.Type.PrecisionTimestampTZ precision_timestamp_tz = 34;
-         */
-        value: Type_PrecisionTimestampTZ;
-        case: 'precisionTimestampTz';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.Struct struct = 25;
-         */
-        value: Type_Struct;
-        case: 'struct';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.List list = 27;
-         */
-        value: Type_List;
-        case: 'list';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.Map map = 28;
-         */
-        value: Type_Map;
-        case: 'map';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.UserDefined user_defined = 30;
-         */
-        value: Type_UserDefined;
-        case: 'userDefined';
-      }
-    | {
-        /**
-         * Deprecated in favor of user_defined, which allows nullability and
-         * variations to be specified. If user_defined_type_reference is
-         * encountered, treat it as being non-nullable and having the default
-         * variation.
-         *
-         * @generated from field: uint32 user_defined_type_reference = 31 [deprecated = true];
-         * @deprecated
-         */
-        value: number;
-        case: 'userDefinedTypeReference';
-      }
-    | { case: undefined; value?: undefined };
+  kind: {
+    /**
+     * @generated from field: substrait.Type.Boolean bool = 1;
+     */
+    value: Type_Boolean;
+    case: "bool";
+  } | {
+    /**
+     * @generated from field: substrait.Type.I8 i8 = 2;
+     */
+    value: Type_I8;
+    case: "i8";
+  } | {
+    /**
+     * @generated from field: substrait.Type.I16 i16 = 3;
+     */
+    value: Type_I16;
+    case: "i16";
+  } | {
+    /**
+     * @generated from field: substrait.Type.I32 i32 = 5;
+     */
+    value: Type_I32;
+    case: "i32";
+  } | {
+    /**
+     * @generated from field: substrait.Type.I64 i64 = 7;
+     */
+    value: Type_I64;
+    case: "i64";
+  } | {
+    /**
+     * @generated from field: substrait.Type.FP32 fp32 = 10;
+     */
+    value: Type_FP32;
+    case: "fp32";
+  } | {
+    /**
+     * @generated from field: substrait.Type.FP64 fp64 = 11;
+     */
+    value: Type_FP64;
+    case: "fp64";
+  } | {
+    /**
+     * @generated from field: substrait.Type.String string = 12;
+     */
+    value: Type_String;
+    case: "string";
+  } | {
+    /**
+     * @generated from field: substrait.Type.Binary binary = 13;
+     */
+    value: Type_Binary;
+    case: "binary";
+  } | {
+    /**
+     * Deprecated in favor of `PrecisionTimestamp precision_timestamp`
+     *
+     * @generated from field: substrait.Type.Timestamp timestamp = 14 [deprecated = true];
+     * @deprecated
+     */
+    value: Type_Timestamp;
+    case: "timestamp";
+  } | {
+    /**
+     * @generated from field: substrait.Type.Date date = 16;
+     */
+    value: Type_Date;
+    case: "date";
+  } | {
+    /**
+     * @generated from field: substrait.Type.Time time = 17;
+     */
+    value: Type_Time;
+    case: "time";
+  } | {
+    /**
+     * @generated from field: substrait.Type.IntervalYear interval_year = 19;
+     */
+    value: Type_IntervalYear;
+    case: "intervalYear";
+  } | {
+    /**
+     * @generated from field: substrait.Type.IntervalDay interval_day = 20;
+     */
+    value: Type_IntervalDay;
+    case: "intervalDay";
+  } | {
+    /**
+     * Deprecated in favor of `PrecisionTimestampTZ precision_timestamp_tz`
+     *
+     * @generated from field: substrait.Type.TimestampTZ timestamp_tz = 29 [deprecated = true];
+     * @deprecated
+     */
+    value: Type_TimestampTZ;
+    case: "timestampTz";
+  } | {
+    /**
+     * @generated from field: substrait.Type.UUID uuid = 32;
+     */
+    value: Type_UUID;
+    case: "uuid";
+  } | {
+    /**
+     * @generated from field: substrait.Type.FixedChar fixed_char = 21;
+     */
+    value: Type_FixedChar;
+    case: "fixedChar";
+  } | {
+    /**
+     * @generated from field: substrait.Type.VarChar varchar = 22;
+     */
+    value: Type_VarChar;
+    case: "varchar";
+  } | {
+    /**
+     * @generated from field: substrait.Type.FixedBinary fixed_binary = 23;
+     */
+    value: Type_FixedBinary;
+    case: "fixedBinary";
+  } | {
+    /**
+     * @generated from field: substrait.Type.Decimal decimal = 24;
+     */
+    value: Type_Decimal;
+    case: "decimal";
+  } | {
+    /**
+     * @generated from field: substrait.Type.PrecisionTimestamp precision_timestamp = 33;
+     */
+    value: Type_PrecisionTimestamp;
+    case: "precisionTimestamp";
+  } | {
+    /**
+     * value is since UNIX epoch in UTC
+     *
+     * @generated from field: substrait.Type.PrecisionTimestampTZ precision_timestamp_tz = 34;
+     */
+    value: Type_PrecisionTimestampTZ;
+    case: "precisionTimestampTz";
+  } | {
+    /**
+     * @generated from field: substrait.Type.Struct struct = 25;
+     */
+    value: Type_Struct;
+    case: "struct";
+  } | {
+    /**
+     * @generated from field: substrait.Type.List list = 27;
+     */
+    value: Type_List;
+    case: "list";
+  } | {
+    /**
+     * @generated from field: substrait.Type.Map map = 28;
+     */
+    value: Type_Map;
+    case: "map";
+  } | {
+    /**
+     * @generated from field: substrait.Type.UserDefined user_defined = 30;
+     */
+    value: Type_UserDefined;
+    case: "userDefined";
+  } | {
+    /**
+     * Deprecated in favor of user_defined, which allows nullability and
+     * variations to be specified. If user_defined_type_reference is
+     * encountered, treat it as being non-nullable and having the default
+     * variation.
+     *
+     * @generated from field: uint32 user_defined_type_reference = 31 [deprecated = true];
+     * @deprecated
+     */
+    value: number;
+    case: "userDefinedTypeReference";
+  } | { case: undefined; value?: undefined };
 };
 
 /**
  * Describes the message substrait.Type.
  * Use `create(TypeSchema)` to create a new message.
  */
-export const TypeSchema: GenMessage<Type> =
-  /*@__PURE__*/
+export const TypeSchema: GenMessage<Type> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0);
 
 /**
  * @generated from message substrait.Type.Boolean
  */
-export type Type_Boolean = Message<'substrait.Type.Boolean'> & {
+export type Type_Boolean = Message<"substrait.Type.Boolean"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -265,14 +228,13 @@ export type Type_Boolean = Message<'substrait.Type.Boolean'> & {
  * Describes the message substrait.Type.Boolean.
  * Use `create(Type_BooleanSchema)` to create a new message.
  */
-export const Type_BooleanSchema: GenMessage<Type_Boolean> =
-  /*@__PURE__*/
+export const Type_BooleanSchema: GenMessage<Type_Boolean> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 0);
 
 /**
  * @generated from message substrait.Type.I8
  */
-export type Type_I8 = Message<'substrait.Type.I8'> & {
+export type Type_I8 = Message<"substrait.Type.I8"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -288,14 +250,13 @@ export type Type_I8 = Message<'substrait.Type.I8'> & {
  * Describes the message substrait.Type.I8.
  * Use `create(Type_I8Schema)` to create a new message.
  */
-export const Type_I8Schema: GenMessage<Type_I8> =
-  /*@__PURE__*/
+export const Type_I8Schema: GenMessage<Type_I8> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 1);
 
 /**
  * @generated from message substrait.Type.I16
  */
-export type Type_I16 = Message<'substrait.Type.I16'> & {
+export type Type_I16 = Message<"substrait.Type.I16"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -311,14 +272,13 @@ export type Type_I16 = Message<'substrait.Type.I16'> & {
  * Describes the message substrait.Type.I16.
  * Use `create(Type_I16Schema)` to create a new message.
  */
-export const Type_I16Schema: GenMessage<Type_I16> =
-  /*@__PURE__*/
+export const Type_I16Schema: GenMessage<Type_I16> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 2);
 
 /**
  * @generated from message substrait.Type.I32
  */
-export type Type_I32 = Message<'substrait.Type.I32'> & {
+export type Type_I32 = Message<"substrait.Type.I32"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -334,14 +294,13 @@ export type Type_I32 = Message<'substrait.Type.I32'> & {
  * Describes the message substrait.Type.I32.
  * Use `create(Type_I32Schema)` to create a new message.
  */
-export const Type_I32Schema: GenMessage<Type_I32> =
-  /*@__PURE__*/
+export const Type_I32Schema: GenMessage<Type_I32> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 3);
 
 /**
  * @generated from message substrait.Type.I64
  */
-export type Type_I64 = Message<'substrait.Type.I64'> & {
+export type Type_I64 = Message<"substrait.Type.I64"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -357,14 +316,13 @@ export type Type_I64 = Message<'substrait.Type.I64'> & {
  * Describes the message substrait.Type.I64.
  * Use `create(Type_I64Schema)` to create a new message.
  */
-export const Type_I64Schema: GenMessage<Type_I64> =
-  /*@__PURE__*/
+export const Type_I64Schema: GenMessage<Type_I64> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 4);
 
 /**
  * @generated from message substrait.Type.FP32
  */
-export type Type_FP32 = Message<'substrait.Type.FP32'> & {
+export type Type_FP32 = Message<"substrait.Type.FP32"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -380,14 +338,13 @@ export type Type_FP32 = Message<'substrait.Type.FP32'> & {
  * Describes the message substrait.Type.FP32.
  * Use `create(Type_FP32Schema)` to create a new message.
  */
-export const Type_FP32Schema: GenMessage<Type_FP32> =
-  /*@__PURE__*/
+export const Type_FP32Schema: GenMessage<Type_FP32> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 5);
 
 /**
  * @generated from message substrait.Type.FP64
  */
-export type Type_FP64 = Message<'substrait.Type.FP64'> & {
+export type Type_FP64 = Message<"substrait.Type.FP64"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -403,14 +360,13 @@ export type Type_FP64 = Message<'substrait.Type.FP64'> & {
  * Describes the message substrait.Type.FP64.
  * Use `create(Type_FP64Schema)` to create a new message.
  */
-export const Type_FP64Schema: GenMessage<Type_FP64> =
-  /*@__PURE__*/
+export const Type_FP64Schema: GenMessage<Type_FP64> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 6);
 
 /**
  * @generated from message substrait.Type.String
  */
-export type Type_String = Message<'substrait.Type.String'> & {
+export type Type_String = Message<"substrait.Type.String"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -426,14 +382,13 @@ export type Type_String = Message<'substrait.Type.String'> & {
  * Describes the message substrait.Type.String.
  * Use `create(Type_StringSchema)` to create a new message.
  */
-export const Type_StringSchema: GenMessage<Type_String> =
-  /*@__PURE__*/
+export const Type_StringSchema: GenMessage<Type_String> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 7);
 
 /**
  * @generated from message substrait.Type.Binary
  */
-export type Type_Binary = Message<'substrait.Type.Binary'> & {
+export type Type_Binary = Message<"substrait.Type.Binary"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -449,14 +404,13 @@ export type Type_Binary = Message<'substrait.Type.Binary'> & {
  * Describes the message substrait.Type.Binary.
  * Use `create(Type_BinarySchema)` to create a new message.
  */
-export const Type_BinarySchema: GenMessage<Type_Binary> =
-  /*@__PURE__*/
+export const Type_BinarySchema: GenMessage<Type_Binary> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 8);
 
 /**
  * @generated from message substrait.Type.Timestamp
  */
-export type Type_Timestamp = Message<'substrait.Type.Timestamp'> & {
+export type Type_Timestamp = Message<"substrait.Type.Timestamp"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -472,14 +426,13 @@ export type Type_Timestamp = Message<'substrait.Type.Timestamp'> & {
  * Describes the message substrait.Type.Timestamp.
  * Use `create(Type_TimestampSchema)` to create a new message.
  */
-export const Type_TimestampSchema: GenMessage<Type_Timestamp> =
-  /*@__PURE__*/
+export const Type_TimestampSchema: GenMessage<Type_Timestamp> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 9);
 
 /**
  * @generated from message substrait.Type.Date
  */
-export type Type_Date = Message<'substrait.Type.Date'> & {
+export type Type_Date = Message<"substrait.Type.Date"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -495,14 +448,13 @@ export type Type_Date = Message<'substrait.Type.Date'> & {
  * Describes the message substrait.Type.Date.
  * Use `create(Type_DateSchema)` to create a new message.
  */
-export const Type_DateSchema: GenMessage<Type_Date> =
-  /*@__PURE__*/
+export const Type_DateSchema: GenMessage<Type_Date> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 10);
 
 /**
  * @generated from message substrait.Type.Time
  */
-export type Type_Time = Message<'substrait.Type.Time'> & {
+export type Type_Time = Message<"substrait.Type.Time"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -518,14 +470,13 @@ export type Type_Time = Message<'substrait.Type.Time'> & {
  * Describes the message substrait.Type.Time.
  * Use `create(Type_TimeSchema)` to create a new message.
  */
-export const Type_TimeSchema: GenMessage<Type_Time> =
-  /*@__PURE__*/
+export const Type_TimeSchema: GenMessage<Type_Time> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 11);
 
 /**
  * @generated from message substrait.Type.TimestampTZ
  */
-export type Type_TimestampTZ = Message<'substrait.Type.TimestampTZ'> & {
+export type Type_TimestampTZ = Message<"substrait.Type.TimestampTZ"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -541,14 +492,13 @@ export type Type_TimestampTZ = Message<'substrait.Type.TimestampTZ'> & {
  * Describes the message substrait.Type.TimestampTZ.
  * Use `create(Type_TimestampTZSchema)` to create a new message.
  */
-export const Type_TimestampTZSchema: GenMessage<Type_TimestampTZ> =
-  /*@__PURE__*/
+export const Type_TimestampTZSchema: GenMessage<Type_TimestampTZ> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 12);
 
 /**
  * @generated from message substrait.Type.IntervalYear
  */
-export type Type_IntervalYear = Message<'substrait.Type.IntervalYear'> & {
+export type Type_IntervalYear = Message<"substrait.Type.IntervalYear"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -564,14 +514,13 @@ export type Type_IntervalYear = Message<'substrait.Type.IntervalYear'> & {
  * Describes the message substrait.Type.IntervalYear.
  * Use `create(Type_IntervalYearSchema)` to create a new message.
  */
-export const Type_IntervalYearSchema: GenMessage<Type_IntervalYear> =
-  /*@__PURE__*/
+export const Type_IntervalYearSchema: GenMessage<Type_IntervalYear> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 13);
 
 /**
  * @generated from message substrait.Type.IntervalDay
  */
-export type Type_IntervalDay = Message<'substrait.Type.IntervalDay'> & {
+export type Type_IntervalDay = Message<"substrait.Type.IntervalDay"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -587,14 +536,13 @@ export type Type_IntervalDay = Message<'substrait.Type.IntervalDay'> & {
  * Describes the message substrait.Type.IntervalDay.
  * Use `create(Type_IntervalDaySchema)` to create a new message.
  */
-export const Type_IntervalDaySchema: GenMessage<Type_IntervalDay> =
-  /*@__PURE__*/
+export const Type_IntervalDaySchema: GenMessage<Type_IntervalDay> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 14);
 
 /**
  * @generated from message substrait.Type.UUID
  */
-export type Type_UUID = Message<'substrait.Type.UUID'> & {
+export type Type_UUID = Message<"substrait.Type.UUID"> & {
   /**
    * @generated from field: uint32 type_variation_reference = 1;
    */
@@ -610,8 +558,7 @@ export type Type_UUID = Message<'substrait.Type.UUID'> & {
  * Describes the message substrait.Type.UUID.
  * Use `create(Type_UUIDSchema)` to create a new message.
  */
-export const Type_UUIDSchema: GenMessage<Type_UUID> =
-  /*@__PURE__*/
+export const Type_UUIDSchema: GenMessage<Type_UUID> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 15);
 
 /**
@@ -619,7 +566,7 @@ export const Type_UUIDSchema: GenMessage<Type_UUID> =
  *
  * @generated from message substrait.Type.FixedChar
  */
-export type Type_FixedChar = Message<'substrait.Type.FixedChar'> & {
+export type Type_FixedChar = Message<"substrait.Type.FixedChar"> & {
   /**
    * @generated from field: int32 length = 1;
    */
@@ -640,14 +587,13 @@ export type Type_FixedChar = Message<'substrait.Type.FixedChar'> & {
  * Describes the message substrait.Type.FixedChar.
  * Use `create(Type_FixedCharSchema)` to create a new message.
  */
-export const Type_FixedCharSchema: GenMessage<Type_FixedChar> =
-  /*@__PURE__*/
+export const Type_FixedCharSchema: GenMessage<Type_FixedChar> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 16);
 
 /**
  * @generated from message substrait.Type.VarChar
  */
-export type Type_VarChar = Message<'substrait.Type.VarChar'> & {
+export type Type_VarChar = Message<"substrait.Type.VarChar"> & {
   /**
    * @generated from field: int32 length = 1;
    */
@@ -668,14 +614,13 @@ export type Type_VarChar = Message<'substrait.Type.VarChar'> & {
  * Describes the message substrait.Type.VarChar.
  * Use `create(Type_VarCharSchema)` to create a new message.
  */
-export const Type_VarCharSchema: GenMessage<Type_VarChar> =
-  /*@__PURE__*/
+export const Type_VarCharSchema: GenMessage<Type_VarChar> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 17);
 
 /**
  * @generated from message substrait.Type.FixedBinary
  */
-export type Type_FixedBinary = Message<'substrait.Type.FixedBinary'> & {
+export type Type_FixedBinary = Message<"substrait.Type.FixedBinary"> & {
   /**
    * @generated from field: int32 length = 1;
    */
@@ -696,14 +641,13 @@ export type Type_FixedBinary = Message<'substrait.Type.FixedBinary'> & {
  * Describes the message substrait.Type.FixedBinary.
  * Use `create(Type_FixedBinarySchema)` to create a new message.
  */
-export const Type_FixedBinarySchema: GenMessage<Type_FixedBinary> =
-  /*@__PURE__*/
+export const Type_FixedBinarySchema: GenMessage<Type_FixedBinary> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 18);
 
 /**
  * @generated from message substrait.Type.Decimal
  */
-export type Type_Decimal = Message<'substrait.Type.Decimal'> & {
+export type Type_Decimal = Message<"substrait.Type.Decimal"> & {
   /**
    * @generated from field: int32 scale = 1;
    */
@@ -729,76 +673,71 @@ export type Type_Decimal = Message<'substrait.Type.Decimal'> & {
  * Describes the message substrait.Type.Decimal.
  * Use `create(Type_DecimalSchema)` to create a new message.
  */
-export const Type_DecimalSchema: GenMessage<Type_Decimal> =
-  /*@__PURE__*/
+export const Type_DecimalSchema: GenMessage<Type_Decimal> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 19);
 
 /**
  * @generated from message substrait.Type.PrecisionTimestamp
  */
-export type Type_PrecisionTimestamp =
-  Message<'substrait.Type.PrecisionTimestamp'> & {
-    /**
-     * Sub-second precision, 0 means the value given is in seconds, 3 is milliseconds, 6 microseconds, 9 is nanoseconds
-     *
-     * @generated from field: int32 precision = 1;
-     */
-    precision: number;
+export type Type_PrecisionTimestamp = Message<"substrait.Type.PrecisionTimestamp"> & {
+  /**
+   * Sub-second precision, 0 means the value given is in seconds, 3 is milliseconds, 6 microseconds, 9 is nanoseconds
+   *
+   * @generated from field: int32 precision = 1;
+   */
+  precision: number;
 
-    /**
-     * @generated from field: uint32 type_variation_reference = 2;
-     */
-    typeVariationReference: number;
+  /**
+   * @generated from field: uint32 type_variation_reference = 2;
+   */
+  typeVariationReference: number;
 
-    /**
-     * @generated from field: substrait.Type.Nullability nullability = 3;
-     */
-    nullability: Type_Nullability;
-  };
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 3;
+   */
+  nullability: Type_Nullability;
+};
 
 /**
  * Describes the message substrait.Type.PrecisionTimestamp.
  * Use `create(Type_PrecisionTimestampSchema)` to create a new message.
  */
-export const Type_PrecisionTimestampSchema: GenMessage<Type_PrecisionTimestamp> =
-  /*@__PURE__*/
+export const Type_PrecisionTimestampSchema: GenMessage<Type_PrecisionTimestamp> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 20);
 
 /**
  * @generated from message substrait.Type.PrecisionTimestampTZ
  */
-export type Type_PrecisionTimestampTZ =
-  Message<'substrait.Type.PrecisionTimestampTZ'> & {
-    /**
-     * Sub-second precision, 0 means the value given is in seconds, 3 is milliseconds, 6 microseconds, 9 is nanoseconds
-     *
-     * @generated from field: int32 precision = 1;
-     */
-    precision: number;
+export type Type_PrecisionTimestampTZ = Message<"substrait.Type.PrecisionTimestampTZ"> & {
+  /**
+   * Sub-second precision, 0 means the value given is in seconds, 3 is milliseconds, 6 microseconds, 9 is nanoseconds
+   *
+   * @generated from field: int32 precision = 1;
+   */
+  precision: number;
 
-    /**
-     * @generated from field: uint32 type_variation_reference = 2;
-     */
-    typeVariationReference: number;
+  /**
+   * @generated from field: uint32 type_variation_reference = 2;
+   */
+  typeVariationReference: number;
 
-    /**
-     * @generated from field: substrait.Type.Nullability nullability = 3;
-     */
-    nullability: Type_Nullability;
-  };
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 3;
+   */
+  nullability: Type_Nullability;
+};
 
 /**
  * Describes the message substrait.Type.PrecisionTimestampTZ.
  * Use `create(Type_PrecisionTimestampTZSchema)` to create a new message.
  */
-export const Type_PrecisionTimestampTZSchema: GenMessage<Type_PrecisionTimestampTZ> =
-  /*@__PURE__*/
+export const Type_PrecisionTimestampTZSchema: GenMessage<Type_PrecisionTimestampTZ> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 21);
 
 /**
  * @generated from message substrait.Type.Struct
  */
-export type Type_Struct = Message<'substrait.Type.Struct'> & {
+export type Type_Struct = Message<"substrait.Type.Struct"> & {
   /**
    * @generated from field: repeated substrait.Type types = 1;
    */
@@ -819,14 +758,13 @@ export type Type_Struct = Message<'substrait.Type.Struct'> & {
  * Describes the message substrait.Type.Struct.
  * Use `create(Type_StructSchema)` to create a new message.
  */
-export const Type_StructSchema: GenMessage<Type_Struct> =
-  /*@__PURE__*/
+export const Type_StructSchema: GenMessage<Type_Struct> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 22);
 
 /**
  * @generated from message substrait.Type.List
  */
-export type Type_List = Message<'substrait.Type.List'> & {
+export type Type_List = Message<"substrait.Type.List"> & {
   /**
    * @generated from field: substrait.Type type = 1;
    */
@@ -847,14 +785,13 @@ export type Type_List = Message<'substrait.Type.List'> & {
  * Describes the message substrait.Type.List.
  * Use `create(Type_ListSchema)` to create a new message.
  */
-export const Type_ListSchema: GenMessage<Type_List> =
-  /*@__PURE__*/
+export const Type_ListSchema: GenMessage<Type_List> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 23);
 
 /**
  * @generated from message substrait.Type.Map
  */
-export type Type_Map = Message<'substrait.Type.Map'> & {
+export type Type_Map = Message<"substrait.Type.Map"> & {
   /**
    * @generated from field: substrait.Type key = 1;
    */
@@ -880,14 +817,13 @@ export type Type_Map = Message<'substrait.Type.Map'> & {
  * Describes the message substrait.Type.Map.
  * Use `create(Type_MapSchema)` to create a new message.
  */
-export const Type_MapSchema: GenMessage<Type_Map> =
-  /*@__PURE__*/
+export const Type_MapSchema: GenMessage<Type_Map> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 24);
 
 /**
  * @generated from message substrait.Type.UserDefined
  */
-export type Type_UserDefined = Message<'substrait.Type.UserDefined'> & {
+export type Type_UserDefined = Message<"substrait.Type.UserDefined"> & {
   /**
    * @generated from field: uint32 type_reference = 1;
    */
@@ -913,76 +849,67 @@ export type Type_UserDefined = Message<'substrait.Type.UserDefined'> & {
  * Describes the message substrait.Type.UserDefined.
  * Use `create(Type_UserDefinedSchema)` to create a new message.
  */
-export const Type_UserDefinedSchema: GenMessage<Type_UserDefined> =
-  /*@__PURE__*/
+export const Type_UserDefinedSchema: GenMessage<Type_UserDefined> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 25);
 
 /**
  * @generated from message substrait.Type.Parameter
  */
-export type Type_Parameter = Message<'substrait.Type.Parameter'> & {
+export type Type_Parameter = Message<"substrait.Type.Parameter"> & {
   /**
    * @generated from oneof substrait.Type.Parameter.parameter
    */
-  parameter:
-    | {
-        /**
-         * Explicitly null/unspecified parameter, to select the default value (if
-         * any).
-         *
-         * @generated from field: google.protobuf.Empty null = 1;
-         */
-        value: Empty;
-        case: 'null';
-      }
-    | {
-        /**
-         * Data type parameters, like the i32 in LIST<i32>.
-         *
-         * @generated from field: substrait.Type data_type = 2;
-         */
-        value: Type;
-        case: 'dataType';
-      }
-    | {
-        /**
-         * Value parameters, like the 10 in VARCHAR<10>.
-         *
-         * @generated from field: bool boolean = 3;
-         */
-        value: boolean;
-        case: 'boolean';
-      }
-    | {
-        /**
-         * @generated from field: int64 integer = 4;
-         */
-        value: bigint;
-        case: 'integer';
-      }
-    | {
-        /**
-         * @generated from field: string enum = 5;
-         */
-        value: string;
-        case: 'enum';
-      }
-    | {
-        /**
-         * @generated from field: string string = 6;
-         */
-        value: string;
-        case: 'string';
-      }
-    | { case: undefined; value?: undefined };
+  parameter: {
+    /**
+     * Explicitly null/unspecified parameter, to select the default value (if
+     * any).
+     *
+     * @generated from field: google.protobuf.Empty null = 1;
+     */
+    value: Empty;
+    case: "null";
+  } | {
+    /**
+     * Data type parameters, like the i32 in LIST<i32>.
+     *
+     * @generated from field: substrait.Type data_type = 2;
+     */
+    value: Type;
+    case: "dataType";
+  } | {
+    /**
+     * Value parameters, like the 10 in VARCHAR<10>.
+     *
+     * @generated from field: bool boolean = 3;
+     */
+    value: boolean;
+    case: "boolean";
+  } | {
+    /**
+     * @generated from field: int64 integer = 4;
+     */
+    value: bigint;
+    case: "integer";
+  } | {
+    /**
+     * @generated from field: string enum = 5;
+     */
+    value: string;
+    case: "enum";
+  } | {
+    /**
+     * @generated from field: string string = 6;
+     */
+    value: string;
+    case: "string";
+  } | { case: undefined; value?: undefined };
 };
 
 /**
  * Describes the message substrait.Type.Parameter.
  * Use `create(Type_ParameterSchema)` to create a new message.
  */
-export const Type_ParameterSchema: GenMessage<Type_Parameter> =
-  /*@__PURE__*/
+export const Type_ParameterSchema: GenMessage<Type_Parameter> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 26);
 
 /**
@@ -1008,8 +935,7 @@ export enum Type_Nullability {
 /**
  * Describes the enum substrait.Type.Nullability.
  */
-export const Type_NullabilitySchema: GenEnum<Type_Nullability> =
-  /*@__PURE__*/
+export const Type_NullabilitySchema: GenEnum<Type_Nullability> = /*@__PURE__*/
   enumDesc(file_substrait_type, 0, 0);
 
 /**
@@ -1035,7 +961,7 @@ export const Type_NullabilitySchema: GenEnum<Type_Nullability> =
  *
  * @generated from message substrait.NamedStruct
  */
-export type NamedStruct = Message<'substrait.NamedStruct'> & {
+export type NamedStruct = Message<"substrait.NamedStruct"> & {
   /**
    * list of names in dfs order
    *
@@ -1053,6 +979,6 @@ export type NamedStruct = Message<'substrait.NamedStruct'> & {
  * Describes the message substrait.NamedStruct.
  * Use `create(NamedStructSchema)` to create a new message.
  */
-export const NamedStructSchema: GenMessage<NamedStruct> =
-  /*@__PURE__*/
+export const NamedStructSchema: GenMessage<NamedStruct> = /*@__PURE__*/
   messageDesc(file_substrait_type, 1);
+

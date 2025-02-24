@@ -10,16 +10,16 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "npm run gen v0.52.0 && tsc -b && vite build",
+    "build": "tsc -b && vite build",
+    "build-cli": "tsc -b && vite build -c cli.vite.config.ts",
     "lint": "eslint .",
     "preview": "vite preview",
-    "gen": "./build.sh",
+    "gen": "./gen.sh",
     "test": "vitest",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@bufbuild/protobuf": "^2.2.3",
-    "@tailwindcss/vite": "^4.0.8",
     "@xyflow/react": "^12.4.3",
     "elkjs": "^0.9.3",
     "tailwindcss": "^4.0.8"
@@ -32,6 +32,7 @@
     "**/*.css"
   ],
   "devDependencies": {
+    "@tailwindcss/vite": "^4.0.8",
     "@bufbuild/buf": "^1.50.0",
     "@bufbuild/protoc-gen-es": "^2.2.3",
     "@eslint/js": "^9.19.0",
@@ -51,6 +52,7 @@
     "vite": "^6.1.0",
     "vite-plugin-dts": "^4.5.0",
     "vite-plugin-lib-inject-css": "^2.2.1",
+    "vite-plugin-singlefile": "^2.1.0",
     "vitest": "^3.0.6"
   }
 }

@@ -4,65 +4,53 @@
 // @generated from file substrait/plan.proto (package substrait, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage } from '@bufbuild/protobuf/codegenv1';
-import { fileDesc, messageDesc } from '@bufbuild/protobuf/codegenv1';
-import type { Rel, RelRoot } from './algebra_pb';
-import { file_substrait_algebra } from './algebra_pb';
-import type {
-  AdvancedExtension,
-  SimpleExtensionDeclaration,
-  SimpleExtensionURI,
-} from './extensions/extensions_pb';
-import { file_substrait_extensions_extensions } from './extensions/extensions_pb';
-import type { Message } from '@bufbuild/protobuf';
+import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
+import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
+import type { Rel, RelRoot } from "./algebra_pb";
+import { file_substrait_algebra } from "./algebra_pb";
+import type { AdvancedExtension, SimpleExtensionDeclaration, SimpleExtensionURI } from "./extensions/extensions_pb";
+import { file_substrait_extensions_extensions } from "./extensions/extensions_pb";
+import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file substrait/plan.proto.
  */
-export const file_substrait_plan: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    'ChRzdWJzdHJhaXQvcGxhbi5wcm90bxIJc3Vic3RyYWl0IlgKB1BsYW5SZWwSHQoDcmVsGAEgASgLMg4uc3Vic3RyYWl0LlJlbEgAEiIKBHJvb3QYAiABKAsyEi5zdWJzdHJhaXQuUmVsUm9vdEgAQgoKCHJlbF90eXBlIrwCCgRQbGFuEiMKB3ZlcnNpb24YBiABKAsyEi5zdWJzdHJhaXQuVmVyc2lvbhJACg5leHRlbnNpb25fdXJpcxgBIAMoCzIoLnN1YnN0cmFpdC5leHRlbnNpb25zLlNpbXBsZUV4dGVuc2lvblVSSRJECgpleHRlbnNpb25zGAIgAygLMjAuc3Vic3RyYWl0LmV4dGVuc2lvbnMuU2ltcGxlRXh0ZW5zaW9uRGVjbGFyYXRpb24SJQoJcmVsYXRpb25zGAMgAygLMhIuc3Vic3RyYWl0LlBsYW5SZWwSRAoTYWR2YW5jZWRfZXh0ZW5zaW9ucxgEIAEoCzInLnN1YnN0cmFpdC5leHRlbnNpb25zLkFkdmFuY2VkRXh0ZW5zaW9uEhoKEmV4cGVjdGVkX3R5cGVfdXJscxgFIAMoCSIyCgtQbGFuVmVyc2lvbhIjCgd2ZXJzaW9uGAYgASgLMhIuc3Vic3RyYWl0LlZlcnNpb24ibwoHVmVyc2lvbhIUCgxtYWpvcl9udW1iZXIYASABKA0SFAoMbWlub3JfbnVtYmVyGAIgASgNEhQKDHBhdGNoX251bWJlchgDIAEoDRIQCghnaXRfaGFzaBgEIAEoCRIQCghwcm9kdWNlchgFIAEoCUJXChJpby5zdWJzdHJhaXQucHJvdG9QAVoqZ2l0aHViLmNvbS9zdWJzdHJhaXQtaW8vc3Vic3RyYWl0LWdvL3Byb3RvqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM',
-    [file_substrait_algebra, file_substrait_extensions_extensions],
-  );
+export const file_substrait_plan: GenFile = /*@__PURE__*/
+  fileDesc("ChRzdWJzdHJhaXQvcGxhbi5wcm90bxIJc3Vic3RyYWl0IlgKB1BsYW5SZWwSHQoDcmVsGAEgASgLMg4uc3Vic3RyYWl0LlJlbEgAEiIKBHJvb3QYAiABKAsyEi5zdWJzdHJhaXQuUmVsUm9vdEgAQgoKCHJlbF90eXBlIrwCCgRQbGFuEiMKB3ZlcnNpb24YBiABKAsyEi5zdWJzdHJhaXQuVmVyc2lvbhJACg5leHRlbnNpb25fdXJpcxgBIAMoCzIoLnN1YnN0cmFpdC5leHRlbnNpb25zLlNpbXBsZUV4dGVuc2lvblVSSRJECgpleHRlbnNpb25zGAIgAygLMjAuc3Vic3RyYWl0LmV4dGVuc2lvbnMuU2ltcGxlRXh0ZW5zaW9uRGVjbGFyYXRpb24SJQoJcmVsYXRpb25zGAMgAygLMhIuc3Vic3RyYWl0LlBsYW5SZWwSRAoTYWR2YW5jZWRfZXh0ZW5zaW9ucxgEIAEoCzInLnN1YnN0cmFpdC5leHRlbnNpb25zLkFkdmFuY2VkRXh0ZW5zaW9uEhoKEmV4cGVjdGVkX3R5cGVfdXJscxgFIAMoCSIyCgtQbGFuVmVyc2lvbhIjCgd2ZXJzaW9uGAYgASgLMhIuc3Vic3RyYWl0LlZlcnNpb24ibwoHVmVyc2lvbhIUCgxtYWpvcl9udW1iZXIYASABKA0SFAoMbWlub3JfbnVtYmVyGAIgASgNEhQKDHBhdGNoX251bWJlchgDIAEoDRIQCghnaXRfaGFzaBgEIAEoCRIQCghwcm9kdWNlchgFIAEoCUJXChJpby5zdWJzdHJhaXQucHJvdG9QAVoqZ2l0aHViLmNvbS9zdWJzdHJhaXQtaW8vc3Vic3RyYWl0LWdvL3Byb3RvqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM", [file_substrait_algebra, file_substrait_extensions_extensions]);
 
 /**
  * Either a relation or root relation
  *
  * @generated from message substrait.PlanRel
  */
-export type PlanRel = Message<'substrait.PlanRel'> & {
+export type PlanRel = Message<"substrait.PlanRel"> & {
   /**
    * @generated from oneof substrait.PlanRel.rel_type
    */
-  relType:
-    | {
-        /**
-         * Any relation (used for references and CTEs)
-         *
-         * @generated from field: substrait.Rel rel = 1;
-         */
-        value: Rel;
-        case: 'rel';
-      }
-    | {
-        /**
-         * The root of a relation tree
-         *
-         * @generated from field: substrait.RelRoot root = 2;
-         */
-        value: RelRoot;
-        case: 'root';
-      }
-    | { case: undefined; value?: undefined };
+  relType: {
+    /**
+     * Any relation (used for references and CTEs)
+     *
+     * @generated from field: substrait.Rel rel = 1;
+     */
+    value: Rel;
+    case: "rel";
+  } | {
+    /**
+     * The root of a relation tree
+     *
+     * @generated from field: substrait.RelRoot root = 2;
+     */
+    value: RelRoot;
+    case: "root";
+  } | { case: undefined; value?: undefined };
 };
 
 /**
  * Describes the message substrait.PlanRel.
  * Use `create(PlanRelSchema)` to create a new message.
  */
-export const PlanRelSchema: GenMessage<PlanRel> =
-  /*@__PURE__*/
+export const PlanRelSchema: GenMessage<PlanRel> = /*@__PURE__*/
   messageDesc(file_substrait_plan, 0);
 
 /**
@@ -71,7 +59,7 @@ export const PlanRelSchema: GenMessage<PlanRel> =
  *
  * @generated from message substrait.Plan
  */
-export type Plan = Message<'substrait.Plan'> & {
+export type Plan = Message<"substrait.Plan"> & {
   /**
    * Substrait version of the plan. Optional up to 0.17.0, required for later
    * versions.
@@ -124,8 +112,7 @@ export type Plan = Message<'substrait.Plan'> & {
  * Describes the message substrait.Plan.
  * Use `create(PlanSchema)` to create a new message.
  */
-export const PlanSchema: GenMessage<Plan> =
-  /*@__PURE__*/
+export const PlanSchema: GenMessage<Plan> = /*@__PURE__*/
   messageDesc(file_substrait_plan, 1);
 
 /**
@@ -137,7 +124,7 @@ export const PlanSchema: GenMessage<Plan> =
  *
  * @generated from message substrait.PlanVersion
  */
-export type PlanVersion = Message<'substrait.PlanVersion'> & {
+export type PlanVersion = Message<"substrait.PlanVersion"> & {
   /**
    * @generated from field: substrait.Version version = 6;
    */
@@ -148,14 +135,13 @@ export type PlanVersion = Message<'substrait.PlanVersion'> & {
  * Describes the message substrait.PlanVersion.
  * Use `create(PlanVersionSchema)` to create a new message.
  */
-export const PlanVersionSchema: GenMessage<PlanVersion> =
-  /*@__PURE__*/
+export const PlanVersionSchema: GenMessage<PlanVersion> = /*@__PURE__*/
   messageDesc(file_substrait_plan, 2);
 
 /**
  * @generated from message substrait.Version
  */
-export type Version = Message<'substrait.Version'> & {
+export type Version = Message<"substrait.Version"> & {
   /**
    * Substrait version number.
    *
@@ -203,6 +189,6 @@ export type Version = Message<'substrait.Version'> & {
  * Describes the message substrait.Version.
  * Use `create(VersionSchema)` to create a new message.
  */
-export const VersionSchema: GenMessage<Version> =
-  /*@__PURE__*/
+export const VersionSchema: GenMessage<Version> = /*@__PURE__*/
   messageDesc(file_substrait_plan, 3);
+

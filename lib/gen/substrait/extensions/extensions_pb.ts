@@ -4,50 +4,44 @@
 // @generated from file substrait/extensions/extensions.proto (package substrait.extensions, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage } from '@bufbuild/protobuf/codegenv1';
-import { fileDesc, messageDesc } from '@bufbuild/protobuf/codegenv1';
-import type { Any } from '@bufbuild/protobuf/wkt';
-import { file_google_protobuf_any } from '@bufbuild/protobuf/wkt';
-import type { Message } from '@bufbuild/protobuf';
+import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
+import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
+import type { Any } from "@bufbuild/protobuf/wkt";
+import { file_google_protobuf_any } from "@bufbuild/protobuf/wkt";
+import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file substrait/extensions/extensions.proto.
  */
-export const file_substrait_extensions_extensions: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    'CiVzdWJzdHJhaXQvZXh0ZW5zaW9ucy9leHRlbnNpb25zLnByb3RvEhRzdWJzdHJhaXQuZXh0ZW5zaW9ucyI/ChJTaW1wbGVFeHRlbnNpb25VUkkSHAoUZXh0ZW5zaW9uX3VyaV9hbmNob3IYASABKA0SCwoDdXJpGAIgASgJIu8EChpTaW1wbGVFeHRlbnNpb25EZWNsYXJhdGlvbhJYCg5leHRlbnNpb25fdHlwZRgBIAEoCzI+LnN1YnN0cmFpdC5leHRlbnNpb25zLlNpbXBsZUV4dGVuc2lvbkRlY2xhcmF0aW9uLkV4dGVuc2lvblR5cGVIABJrChhleHRlbnNpb25fdHlwZV92YXJpYXRpb24YAiABKAsyRy5zdWJzdHJhaXQuZXh0ZW5zaW9ucy5TaW1wbGVFeHRlbnNpb25EZWNsYXJhdGlvbi5FeHRlbnNpb25UeXBlVmFyaWF0aW9uSAASYAoSZXh0ZW5zaW9uX2Z1bmN0aW9uGAMgASgLMkIuc3Vic3RyYWl0LmV4dGVuc2lvbnMuU2ltcGxlRXh0ZW5zaW9uRGVjbGFyYXRpb24uRXh0ZW5zaW9uRnVuY3Rpb25IABpTCg1FeHRlbnNpb25UeXBlEh8KF2V4dGVuc2lvbl91cmlfcmVmZXJlbmNlGAEgASgNEhMKC3R5cGVfYW5jaG9yGAIgASgNEgwKBG5hbWUYAyABKAkaZgoWRXh0ZW5zaW9uVHlwZVZhcmlhdGlvbhIfChdleHRlbnNpb25fdXJpX3JlZmVyZW5jZRgBIAEoDRIdChV0eXBlX3ZhcmlhdGlvbl9hbmNob3IYAiABKA0SDAoEbmFtZRgDIAEoCRpbChFFeHRlbnNpb25GdW5jdGlvbhIfChdleHRlbnNpb25fdXJpX3JlZmVyZW5jZRgBIAEoDRIXCg9mdW5jdGlvbl9hbmNob3IYAiABKA0SDAoEbmFtZRgDIAEoCUIOCgxtYXBwaW5nX3R5cGUiagoRQWR2YW5jZWRFeHRlbnNpb24SKgoMb3B0aW1pemF0aW9uGAEgAygLMhQuZ29vZ2xlLnByb3RvYnVmLkFueRIpCgtlbmhhbmNlbWVudBgCIAEoCzIULmdvb2dsZS5wcm90b2J1Zi5BbnlCYgoSaW8uc3Vic3RyYWl0LnByb3RvUAFaNWdpdGh1Yi5jb20vc3Vic3RyYWl0LWlvL3N1YnN0cmFpdC1nby9wcm90by9leHRlbnNpb25zqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM',
-    [file_google_protobuf_any],
-  );
+export const file_substrait_extensions_extensions: GenFile = /*@__PURE__*/
+  fileDesc("CiVzdWJzdHJhaXQvZXh0ZW5zaW9ucy9leHRlbnNpb25zLnByb3RvEhRzdWJzdHJhaXQuZXh0ZW5zaW9ucyI/ChJTaW1wbGVFeHRlbnNpb25VUkkSHAoUZXh0ZW5zaW9uX3VyaV9hbmNob3IYASABKA0SCwoDdXJpGAIgASgJIu8EChpTaW1wbGVFeHRlbnNpb25EZWNsYXJhdGlvbhJYCg5leHRlbnNpb25fdHlwZRgBIAEoCzI+LnN1YnN0cmFpdC5leHRlbnNpb25zLlNpbXBsZUV4dGVuc2lvbkRlY2xhcmF0aW9uLkV4dGVuc2lvblR5cGVIABJrChhleHRlbnNpb25fdHlwZV92YXJpYXRpb24YAiABKAsyRy5zdWJzdHJhaXQuZXh0ZW5zaW9ucy5TaW1wbGVFeHRlbnNpb25EZWNsYXJhdGlvbi5FeHRlbnNpb25UeXBlVmFyaWF0aW9uSAASYAoSZXh0ZW5zaW9uX2Z1bmN0aW9uGAMgASgLMkIuc3Vic3RyYWl0LmV4dGVuc2lvbnMuU2ltcGxlRXh0ZW5zaW9uRGVjbGFyYXRpb24uRXh0ZW5zaW9uRnVuY3Rpb25IABpTCg1FeHRlbnNpb25UeXBlEh8KF2V4dGVuc2lvbl91cmlfcmVmZXJlbmNlGAEgASgNEhMKC3R5cGVfYW5jaG9yGAIgASgNEgwKBG5hbWUYAyABKAkaZgoWRXh0ZW5zaW9uVHlwZVZhcmlhdGlvbhIfChdleHRlbnNpb25fdXJpX3JlZmVyZW5jZRgBIAEoDRIdChV0eXBlX3ZhcmlhdGlvbl9hbmNob3IYAiABKA0SDAoEbmFtZRgDIAEoCRpbChFFeHRlbnNpb25GdW5jdGlvbhIfChdleHRlbnNpb25fdXJpX3JlZmVyZW5jZRgBIAEoDRIXCg9mdW5jdGlvbl9hbmNob3IYAiABKA0SDAoEbmFtZRgDIAEoCUIOCgxtYXBwaW5nX3R5cGUiagoRQWR2YW5jZWRFeHRlbnNpb24SKgoMb3B0aW1pemF0aW9uGAEgAygLMhQuZ29vZ2xlLnByb3RvYnVmLkFueRIpCgtlbmhhbmNlbWVudBgCIAEoCzIULmdvb2dsZS5wcm90b2J1Zi5BbnlCYgoSaW8uc3Vic3RyYWl0LnByb3RvUAFaNWdpdGh1Yi5jb20vc3Vic3RyYWl0LWlvL3N1YnN0cmFpdC1nby9wcm90by9leHRlbnNpb25zqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM", [file_google_protobuf_any]);
 
 /**
  * @generated from message substrait.extensions.SimpleExtensionURI
  */
-export type SimpleExtensionURI =
-  Message<'substrait.extensions.SimpleExtensionURI'> & {
-    /**
-     * A surrogate key used in the context of a single plan used to reference the
-     * URI associated with an extension.
-     *
-     * @generated from field: uint32 extension_uri_anchor = 1;
-     */
-    extensionUriAnchor: number;
+export type SimpleExtensionURI = Message<"substrait.extensions.SimpleExtensionURI"> & {
+  /**
+   * A surrogate key used in the context of a single plan used to reference the
+   * URI associated with an extension.
+   *
+   * @generated from field: uint32 extension_uri_anchor = 1;
+   */
+  extensionUriAnchor: number;
 
-    /**
-     * The URI where this extension YAML can be retrieved. This is the "namespace"
-     * of this extension.
-     *
-     * @generated from field: string uri = 2;
-     */
-    uri: string;
-  };
+  /**
+   * The URI where this extension YAML can be retrieved. This is the "namespace"
+   * of this extension.
+   *
+   * @generated from field: string uri = 2;
+   */
+  uri: string;
+};
 
 /**
  * Describes the message substrait.extensions.SimpleExtensionURI.
  * Use `create(SimpleExtensionURISchema)` to create a new message.
  */
-export const SimpleExtensionURISchema: GenMessage<SimpleExtensionURI> =
-  /*@__PURE__*/
+export const SimpleExtensionURISchema: GenMessage<SimpleExtensionURI> = /*@__PURE__*/
   messageDesc(file_substrait_extensions_extensions, 0);
 
 /**
@@ -56,42 +50,36 @@ export const SimpleExtensionURISchema: GenMessage<SimpleExtensionURI> =
  *
  * @generated from message substrait.extensions.SimpleExtensionDeclaration
  */
-export type SimpleExtensionDeclaration =
-  Message<'substrait.extensions.SimpleExtensionDeclaration'> & {
+export type SimpleExtensionDeclaration = Message<"substrait.extensions.SimpleExtensionDeclaration"> & {
+  /**
+   * @generated from oneof substrait.extensions.SimpleExtensionDeclaration.mapping_type
+   */
+  mappingType: {
     /**
-     * @generated from oneof substrait.extensions.SimpleExtensionDeclaration.mapping_type
+     * @generated from field: substrait.extensions.SimpleExtensionDeclaration.ExtensionType extension_type = 1;
      */
-    mappingType:
-      | {
-          /**
-           * @generated from field: substrait.extensions.SimpleExtensionDeclaration.ExtensionType extension_type = 1;
-           */
-          value: SimpleExtensionDeclaration_ExtensionType;
-          case: 'extensionType';
-        }
-      | {
-          /**
-           * @generated from field: substrait.extensions.SimpleExtensionDeclaration.ExtensionTypeVariation extension_type_variation = 2;
-           */
-          value: SimpleExtensionDeclaration_ExtensionTypeVariation;
-          case: 'extensionTypeVariation';
-        }
-      | {
-          /**
-           * @generated from field: substrait.extensions.SimpleExtensionDeclaration.ExtensionFunction extension_function = 3;
-           */
-          value: SimpleExtensionDeclaration_ExtensionFunction;
-          case: 'extensionFunction';
-        }
-      | { case: undefined; value?: undefined };
-  };
+    value: SimpleExtensionDeclaration_ExtensionType;
+    case: "extensionType";
+  } | {
+    /**
+     * @generated from field: substrait.extensions.SimpleExtensionDeclaration.ExtensionTypeVariation extension_type_variation = 2;
+     */
+    value: SimpleExtensionDeclaration_ExtensionTypeVariation;
+    case: "extensionTypeVariation";
+  } | {
+    /**
+     * @generated from field: substrait.extensions.SimpleExtensionDeclaration.ExtensionFunction extension_function = 3;
+     */
+    value: SimpleExtensionDeclaration_ExtensionFunction;
+    case: "extensionFunction";
+  } | { case: undefined; value?: undefined };
+};
 
 /**
  * Describes the message substrait.extensions.SimpleExtensionDeclaration.
  * Use `create(SimpleExtensionDeclarationSchema)` to create a new message.
  */
-export const SimpleExtensionDeclarationSchema: GenMessage<SimpleExtensionDeclaration> =
-  /*@__PURE__*/
+export const SimpleExtensionDeclarationSchema: GenMessage<SimpleExtensionDeclaration> = /*@__PURE__*/
   messageDesc(file_substrait_extensions_extensions, 1);
 
 /**
@@ -99,109 +87,103 @@ export const SimpleExtensionDeclarationSchema: GenMessage<SimpleExtensionDeclara
  *
  * @generated from message substrait.extensions.SimpleExtensionDeclaration.ExtensionType
  */
-export type SimpleExtensionDeclaration_ExtensionType =
-  Message<'substrait.extensions.SimpleExtensionDeclaration.ExtensionType'> & {
-    /**
-     * references the extension_uri_anchor defined for a specific extension URI.
-     *
-     * @generated from field: uint32 extension_uri_reference = 1;
-     */
-    extensionUriReference: number;
+export type SimpleExtensionDeclaration_ExtensionType = Message<"substrait.extensions.SimpleExtensionDeclaration.ExtensionType"> & {
+  /**
+   * references the extension_uri_anchor defined for a specific extension URI.
+   *
+   * @generated from field: uint32 extension_uri_reference = 1;
+   */
+  extensionUriReference: number;
 
-    /**
-     * A surrogate key used in the context of a single plan to reference a
-     * specific extension type
-     *
-     * @generated from field: uint32 type_anchor = 2;
-     */
-    typeAnchor: number;
+  /**
+   * A surrogate key used in the context of a single plan to reference a
+   * specific extension type
+   *
+   * @generated from field: uint32 type_anchor = 2;
+   */
+  typeAnchor: number;
 
-    /**
-     * the name of the type in the defined extension YAML.
-     *
-     * @generated from field: string name = 3;
-     */
-    name: string;
-  };
+  /**
+   * the name of the type in the defined extension YAML.
+   *
+   * @generated from field: string name = 3;
+   */
+  name: string;
+};
 
 /**
  * Describes the message substrait.extensions.SimpleExtensionDeclaration.ExtensionType.
  * Use `create(SimpleExtensionDeclaration_ExtensionTypeSchema)` to create a new message.
  */
-export const SimpleExtensionDeclaration_ExtensionTypeSchema: GenMessage<SimpleExtensionDeclaration_ExtensionType> =
-  /*@__PURE__*/
+export const SimpleExtensionDeclaration_ExtensionTypeSchema: GenMessage<SimpleExtensionDeclaration_ExtensionType> = /*@__PURE__*/
   messageDesc(file_substrait_extensions_extensions, 1, 0);
 
 /**
  * @generated from message substrait.extensions.SimpleExtensionDeclaration.ExtensionTypeVariation
  */
-export type SimpleExtensionDeclaration_ExtensionTypeVariation =
-  Message<'substrait.extensions.SimpleExtensionDeclaration.ExtensionTypeVariation'> & {
-    /**
-     * references the extension_uri_anchor defined for a specific extension URI.
-     *
-     * @generated from field: uint32 extension_uri_reference = 1;
-     */
-    extensionUriReference: number;
+export type SimpleExtensionDeclaration_ExtensionTypeVariation = Message<"substrait.extensions.SimpleExtensionDeclaration.ExtensionTypeVariation"> & {
+  /**
+   * references the extension_uri_anchor defined for a specific extension URI.
+   *
+   * @generated from field: uint32 extension_uri_reference = 1;
+   */
+  extensionUriReference: number;
 
-    /**
-     * A surrogate key used in the context of a single plan to reference a
-     * specific type variation
-     *
-     * @generated from field: uint32 type_variation_anchor = 2;
-     */
-    typeVariationAnchor: number;
+  /**
+   * A surrogate key used in the context of a single plan to reference a
+   * specific type variation
+   *
+   * @generated from field: uint32 type_variation_anchor = 2;
+   */
+  typeVariationAnchor: number;
 
-    /**
-     * the name of the type in the defined extension YAML.
-     *
-     * @generated from field: string name = 3;
-     */
-    name: string;
-  };
+  /**
+   * the name of the type in the defined extension YAML.
+   *
+   * @generated from field: string name = 3;
+   */
+  name: string;
+};
 
 /**
  * Describes the message substrait.extensions.SimpleExtensionDeclaration.ExtensionTypeVariation.
  * Use `create(SimpleExtensionDeclaration_ExtensionTypeVariationSchema)` to create a new message.
  */
-export const SimpleExtensionDeclaration_ExtensionTypeVariationSchema: GenMessage<SimpleExtensionDeclaration_ExtensionTypeVariation> =
-  /*@__PURE__*/
+export const SimpleExtensionDeclaration_ExtensionTypeVariationSchema: GenMessage<SimpleExtensionDeclaration_ExtensionTypeVariation> = /*@__PURE__*/
   messageDesc(file_substrait_extensions_extensions, 1, 1);
 
 /**
  * @generated from message substrait.extensions.SimpleExtensionDeclaration.ExtensionFunction
  */
-export type SimpleExtensionDeclaration_ExtensionFunction =
-  Message<'substrait.extensions.SimpleExtensionDeclaration.ExtensionFunction'> & {
-    /**
-     * references the extension_uri_anchor defined for a specific extension URI.
-     *
-     * @generated from field: uint32 extension_uri_reference = 1;
-     */
-    extensionUriReference: number;
+export type SimpleExtensionDeclaration_ExtensionFunction = Message<"substrait.extensions.SimpleExtensionDeclaration.ExtensionFunction"> & {
+  /**
+   * references the extension_uri_anchor defined for a specific extension URI.
+   *
+   * @generated from field: uint32 extension_uri_reference = 1;
+   */
+  extensionUriReference: number;
 
-    /**
-     * A surrogate key used in the context of a single plan to reference a
-     * specific function
-     *
-     * @generated from field: uint32 function_anchor = 2;
-     */
-    functionAnchor: number;
+  /**
+   * A surrogate key used in the context of a single plan to reference a
+   * specific function
+   *
+   * @generated from field: uint32 function_anchor = 2;
+   */
+  functionAnchor: number;
 
-    /**
-     * A function signature compound name
-     *
-     * @generated from field: string name = 3;
-     */
-    name: string;
-  };
+  /**
+   * A function signature compound name
+   *
+   * @generated from field: string name = 3;
+   */
+  name: string;
+};
 
 /**
  * Describes the message substrait.extensions.SimpleExtensionDeclaration.ExtensionFunction.
  * Use `create(SimpleExtensionDeclaration_ExtensionFunctionSchema)` to create a new message.
  */
-export const SimpleExtensionDeclaration_ExtensionFunctionSchema: GenMessage<SimpleExtensionDeclaration_ExtensionFunction> =
-  /*@__PURE__*/
+export const SimpleExtensionDeclaration_ExtensionFunctionSchema: GenMessage<SimpleExtensionDeclaration_ExtensionFunction> = /*@__PURE__*/
   messageDesc(file_substrait_extensions_extensions, 1, 2);
 
 /**
@@ -210,28 +192,27 @@ export const SimpleExtensionDeclaration_ExtensionFunctionSchema: GenMessage<Simp
  *
  * @generated from message substrait.extensions.AdvancedExtension
  */
-export type AdvancedExtension =
-  Message<'substrait.extensions.AdvancedExtension'> & {
-    /**
-     * An optimization is helpful information that don't influence semantics. May
-     * be ignored by a consumer.
-     *
-     * @generated from field: repeated google.protobuf.Any optimization = 1;
-     */
-    optimization: Any[];
+export type AdvancedExtension = Message<"substrait.extensions.AdvancedExtension"> & {
+  /**
+   * An optimization is helpful information that don't influence semantics. May
+   * be ignored by a consumer.
+   *
+   * @generated from field: repeated google.protobuf.Any optimization = 1;
+   */
+  optimization: Any[];
 
-    /**
-     * An enhancement alter semantics. Cannot be ignored by a consumer.
-     *
-     * @generated from field: google.protobuf.Any enhancement = 2;
-     */
-    enhancement?: Any;
-  };
+  /**
+   * An enhancement alter semantics. Cannot be ignored by a consumer.
+   *
+   * @generated from field: google.protobuf.Any enhancement = 2;
+   */
+  enhancement?: Any;
+};
 
 /**
  * Describes the message substrait.extensions.AdvancedExtension.
  * Use `create(AdvancedExtensionSchema)` to create a new message.
  */
-export const AdvancedExtensionSchema: GenMessage<AdvancedExtension> =
-  /*@__PURE__*/
+export const AdvancedExtensionSchema: GenMessage<AdvancedExtension> = /*@__PURE__*/
   messageDesc(file_substrait_extensions_extensions, 2);
+

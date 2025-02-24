@@ -3,6 +3,7 @@
 set -e
 
 VERSION=$1
+BUILD_DIR=temp-build
 
 if [[ "$VERSION" =~ ^v[0-9]+(\.[0-9]+){2}$ ]]; then
     echo "Generating protobuf bindgins for version $VERSION"
@@ -11,9 +12,9 @@ else
     exit 1
 fi
 
-mkdir -p substrait-build
+mkdir -p $BUILD_DIR
 
-pushd substrait-build
+pushd $BUILD_DIR
 
 rm -rf substrait
 
@@ -25,6 +26,6 @@ rm -rf temp
 
 popd
 
-npx buf generate substrait-build
+npx buf generate $BUILD_DIR
 
-rm -rf substrait-build
+rm -rf $BUILD_DIR

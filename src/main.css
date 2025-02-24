@@ -1,0 +1,11 @@
+/*
+Even if the component library is already importing tailwindcss, it also
+needs to be imported here, otherwise, the bundler will not include any 
+tailwind class used in the library.
+*/
+@import "tailwindcss";
+
+.main {
+  width: 100vw;
+  height: 100vh;
+}

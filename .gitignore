@@ -1,3 +1,5 @@
 /node_modules
 /substrait-build
 /.idea
+/build
+/dist

@@ -4,687 +4,599 @@
 // @generated from file substrait/type_expressions.proto (package substrait, syntax proto3)
 /* eslint-disable */
 
-import type {
-  GenEnum,
-  GenFile,
-  GenMessage,
-} from '@bufbuild/protobuf/codegenv1';
-import { enumDesc, fileDesc, messageDesc } from '@bufbuild/protobuf/codegenv1';
-import type {
-  Type_Binary,
-  Type_Boolean,
-  Type_Date,
-  Type_FP32,
-  Type_FP64,
-  Type_I16,
-  Type_I32,
-  Type_I64,
-  Type_I8,
-  Type_IntervalDay,
-  Type_IntervalYear,
-  Type_Nullability,
-  Type_String,
-  Type_Time,
-  Type_Timestamp,
-  Type_TimestampTZ,
-  Type_UUID,
-} from './type_pb';
-import { file_substrait_type } from './type_pb';
-import type { Message } from '@bufbuild/protobuf';
+import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
+import { enumDesc, fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
+import type { Type_Binary, Type_Boolean, Type_Date, Type_FP32, Type_FP64, Type_I16, Type_I32, Type_I64, Type_I8, Type_IntervalDay, Type_IntervalYear, Type_Nullability, Type_String, Type_Time, Type_Timestamp, Type_TimestampTZ, Type_UUID } from "./type_pb";
+import { file_substrait_type } from "./type_pb";
+import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file substrait/type_expressions.proto.
  */
-export const file_substrait_type_expressions: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    'CiBzdWJzdHJhaXQvdHlwZV9leHByZXNzaW9ucy5wcm90bxIJc3Vic3RyYWl0ItIkChREZXJpdmF0aW9uRXhwcmVzc2lvbhInCgRib29sGAEgASgLMhcuc3Vic3RyYWl0LlR5cGUuQm9vbGVhbkgAEiAKAmk4GAIgASgLMhIuc3Vic3RyYWl0LlR5cGUuSThIABIiCgNpMTYYAyABKAsyEy5zdWJzdHJhaXQuVHlwZS5JMTZIABIiCgNpMzIYBSABKAsyEy5zdWJzdHJhaXQuVHlwZS5JMzJIABIiCgNpNjQYByABKAsyEy5zdWJzdHJhaXQuVHlwZS5JNjRIABIkCgRmcDMyGAogASgLMhQuc3Vic3RyYWl0LlR5cGUuRlAzMkgAEiQKBGZwNjQYCyABKAsyFC5zdWJzdHJhaXQuVHlwZS5GUDY0SAASKAoGc3RyaW5nGAwgASgLMhYuc3Vic3RyYWl0LlR5cGUuU3RyaW5nSAASKAoGYmluYXJ5GA0gASgLMhYuc3Vic3RyYWl0LlR5cGUuQmluYXJ5SAASMgoJdGltZXN0YW1wGA4gASgLMhkuc3Vic3RyYWl0LlR5cGUuVGltZXN0YW1wQgIYAUgAEiQKBGRhdGUYECABKAsyFC5zdWJzdHJhaXQuVHlwZS5EYXRlSAASJAoEdGltZRgRIAEoCzIULnN1YnN0cmFpdC5UeXBlLlRpbWVIABI1Cg1pbnRlcnZhbF95ZWFyGBMgASgLMhwuc3Vic3RyYWl0LlR5cGUuSW50ZXJ2YWxZZWFySAASMwoMaW50ZXJ2YWxfZGF5GBQgASgLMhsuc3Vic3RyYWl0LlR5cGUuSW50ZXJ2YWxEYXlIABI3Cgx0aW1lc3RhbXBfdHoYHSABKAsyGy5zdWJzdHJhaXQuVHlwZS5UaW1lc3RhbXBUWkICGAFIABIkCgR1dWlkGCAgASgLMhQuc3Vic3RyYWl0LlR5cGUuVVVJREgAEkkKCmZpeGVkX2NoYXIYFSABKAsyMy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvbkZpeGVkQ2hhckgAEkQKB3ZhcmNoYXIYFiABKAsyMS5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvblZhckNoYXJIABJNCgxmaXhlZF9iaW5hcnkYFyABKAsyNS5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvbkZpeGVkQmluYXJ5SAASRAoHZGVjaW1hbBgYIAEoCzIxLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5FeHByZXNzaW9uRGVjaW1hbEgAElsKE3ByZWNpc2lvbl90aW1lc3RhbXAYKCABKAsyPC5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvblByZWNpc2lvblRpbWVzdGFtcEgAEmAKFnByZWNpc2lvbl90aW1lc3RhbXBfdHoYKSABKAsyPi5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvblByZWNpc2lvblRpbWVzdGFtcFRaSAASQgoGc3RydWN0GBkgASgLMjAuc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25TdHJ1Y3RIABI+CgRsaXN0GBsgASgLMi4uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25MaXN0SAASPAoDbWFwGBwgASgLMi0uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25NYXBIABJNCgx1c2VyX2RlZmluZWQYHiABKAsyNS5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvblVzZXJEZWZpbmVkSAASIgoUdXNlcl9kZWZpbmVkX3BvaW50ZXIYHyABKA1CAhgBSAASHQoTdHlwZV9wYXJhbWV0ZXJfbmFtZRghIAEoCUgAEiAKFmludGVnZXJfcGFyYW1ldGVyX25hbWUYIiABKAlIABIZCg9pbnRlZ2VyX2xpdGVyYWwYIyABKAVIABI7Cgh1bmFyeV9vcBgkIAEoCzInLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5VbmFyeU9wSAASPQoJYmluYXJ5X29wGCUgASgLMiguc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkJpbmFyeU9wSAASOQoHaWZfZWxzZRgmIAEoCzImLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5JZkVsc2VIABJHCg5yZXR1cm5fcHJvZ3JhbRgnIAEoCzItLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5SZXR1cm5Qcm9ncmFtSAAakwEKE0V4cHJlc3Npb25GaXhlZENoYXISLwoGbGVuZ3RoGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkakQEKEUV4cHJlc3Npb25WYXJDaGFyEi8KBmxlbmd0aBgBIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIZChF2YXJpYXRpb25fcG9pbnRlchgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GpUBChVFeHByZXNzaW9uRml4ZWRCaW5hcnkSLwoGbGVuZ3RoGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaxAEKEUV4cHJlc3Npb25EZWNpbWFsEi4KBXNjYWxlGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEjIKCXByZWNpc2lvbhgCIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIZChF2YXJpYXRpb25fcG9pbnRlchgDIAEoDRIwCgtudWxsYWJpbGl0eRgEIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5Gp8BChxFeHByZXNzaW9uUHJlY2lzaW9uVGltZXN0YW1wEjIKCXByZWNpc2lvbhgBIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIZChF2YXJpYXRpb25fcG9pbnRlchgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GqEBCh5FeHByZXNzaW9uUHJlY2lzaW9uVGltZXN0YW1wVFoSMgoJcHJlY2lzaW9uGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkajwEKEEV4cHJlc3Npb25TdHJ1Y3QSLgoFdHlwZXMYASADKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SGQoRdmFyaWF0aW9uX3BvaW50ZXIYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpoChVFeHByZXNzaW9uTmFtZWRTdHJ1Y3QSDQoFbmFtZXMYASADKAkSQAoGc3RydWN0GAIgASgLMjAuc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25TdHJ1Y3QajAEKDkV4cHJlc3Npb25MaXN0Ei0KBHR5cGUYASABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SGQoRdmFyaWF0aW9uX3BvaW50ZXIYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRq6AQoNRXhwcmVzc2lvbk1hcBIsCgNrZXkYASABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SLgoFdmFsdWUYAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SGQoRdmFyaWF0aW9uX3BvaW50ZXIYAyABKA0SMAoLbnVsbGFiaWxpdHkYBCABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp6ChVFeHByZXNzaW9uVXNlckRlZmluZWQSFAoMdHlwZV9wb2ludGVyGAEgASgNEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaqQEKBklmRWxzZRI1CgxpZl9jb25kaXRpb24YASABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SMgoJaWZfcmV0dXJuGAIgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEjQKC2Vsc2VfcmV0dXJuGAMgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uGsoBCgdVbmFyeU9wEkQKB29wX3R5cGUYASABKA4yMy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uVW5hcnlPcC5VbmFyeU9wVHlwZRIsCgNhcmcYAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24iSwoLVW5hcnlPcFR5cGUSHQoZVU5BUllfT1BfVFlQRV9VTlNQRUNJRklFRBAAEh0KGVVOQVJZX09QX1RZUEVfQk9PTEVBTl9OT1QQARqgBAoIQmluYXJ5T3ASRgoHb3BfdHlwZRgBIAEoDjI1LnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5CaW5hcnlPcC5CaW5hcnlPcFR5cGUSLQoEYXJnMRgCIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhItCgRhcmcyGAMgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uIu0CCgxCaW5hcnlPcFR5cGUSHgoaQklOQVJZX09QX1RZUEVfVU5TUEVDSUZJRUQQABIXChNCSU5BUllfT1BfVFlQRV9QTFVTEAESGAoUQklOQVJZX09QX1RZUEVfTUlOVVMQAhIbChdCSU5BUllfT1BfVFlQRV9NVUxUSVBMWRADEhkKFUJJTkFSWV9PUF9UWVBFX0RJVklERRAEEhYKEkJJTkFSWV9PUF9UWVBFX01JThAFEhYKEkJJTkFSWV9PUF9UWVBFX01BWBAGEh8KG0JJTkFSWV9PUF9UWVBFX0dSRUFURVJfVEhBThAHEhwKGEJJTkFSWV9PUF9UWVBFX0xFU1NfVEhBThAIEhYKEkJJTkFSWV9PUF9UWVBFX0FORBAJEhUKEUJJTkFSWV9PUF9UWVBFX09SEAoSGQoVQklOQVJZX09QX1RZUEVfRVFVQUxTEAsSGQoVQklOQVJZX09QX1RZUEVfQ09WRVJTEAwa6gEKDVJldHVyblByb2dyYW0STQoLYXNzaWdubWVudHMYASADKAsyOC5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uUmV0dXJuUHJvZ3JhbS5Bc3NpZ25tZW50EjkKEGZpbmFsX2V4cHJlc3Npb24YAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24aTwoKQXNzaWdubWVudBIMCgRuYW1lGAEgASgJEjMKCmV4cHJlc3Npb24YAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb25CBgoEa2luZEJXChJpby5zdWJzdHJhaXQucHJvdG9QAVoqZ2l0aHViLmNvbS9zdWJzdHJhaXQtaW8vc3Vic3RyYWl0LWdvL3Byb3RvqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM',
-    [file_substrait_type],
-  );
+export const file_substrait_type_expressions: GenFile = /*@__PURE__*/
+  fileDesc("CiBzdWJzdHJhaXQvdHlwZV9leHByZXNzaW9ucy5wcm90bxIJc3Vic3RyYWl0ItIkChREZXJpdmF0aW9uRXhwcmVzc2lvbhInCgRib29sGAEgASgLMhcuc3Vic3RyYWl0LlR5cGUuQm9vbGVhbkgAEiAKAmk4GAIgASgLMhIuc3Vic3RyYWl0LlR5cGUuSThIABIiCgNpMTYYAyABKAsyEy5zdWJzdHJhaXQuVHlwZS5JMTZIABIiCgNpMzIYBSABKAsyEy5zdWJzdHJhaXQuVHlwZS5JMzJIABIiCgNpNjQYByABKAsyEy5zdWJzdHJhaXQuVHlwZS5JNjRIABIkCgRmcDMyGAogASgLMhQuc3Vic3RyYWl0LlR5cGUuRlAzMkgAEiQKBGZwNjQYCyABKAsyFC5zdWJzdHJhaXQuVHlwZS5GUDY0SAASKAoGc3RyaW5nGAwgASgLMhYuc3Vic3RyYWl0LlR5cGUuU3RyaW5nSAASKAoGYmluYXJ5GA0gASgLMhYuc3Vic3RyYWl0LlR5cGUuQmluYXJ5SAASMgoJdGltZXN0YW1wGA4gASgLMhkuc3Vic3RyYWl0LlR5cGUuVGltZXN0YW1wQgIYAUgAEiQKBGRhdGUYECABKAsyFC5zdWJzdHJhaXQuVHlwZS5EYXRlSAASJAoEdGltZRgRIAEoCzIULnN1YnN0cmFpdC5UeXBlLlRpbWVIABI1Cg1pbnRlcnZhbF95ZWFyGBMgASgLMhwuc3Vic3RyYWl0LlR5cGUuSW50ZXJ2YWxZZWFySAASMwoMaW50ZXJ2YWxfZGF5GBQgASgLMhsuc3Vic3RyYWl0LlR5cGUuSW50ZXJ2YWxEYXlIABI3Cgx0aW1lc3RhbXBfdHoYHSABKAsyGy5zdWJzdHJhaXQuVHlwZS5UaW1lc3RhbXBUWkICGAFIABIkCgR1dWlkGCAgASgLMhQuc3Vic3RyYWl0LlR5cGUuVVVJREgAEkkKCmZpeGVkX2NoYXIYFSABKAsyMy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvbkZpeGVkQ2hhckgAEkQKB3ZhcmNoYXIYFiABKAsyMS5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvblZhckNoYXJIABJNCgxmaXhlZF9iaW5hcnkYFyABKAsyNS5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvbkZpeGVkQmluYXJ5SAASRAoHZGVjaW1hbBgYIAEoCzIxLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5FeHByZXNzaW9uRGVjaW1hbEgAElsKE3ByZWNpc2lvbl90aW1lc3RhbXAYKCABKAsyPC5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvblByZWNpc2lvblRpbWVzdGFtcEgAEmAKFnByZWNpc2lvbl90aW1lc3RhbXBfdHoYKSABKAsyPi5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvblByZWNpc2lvblRpbWVzdGFtcFRaSAASQgoGc3RydWN0GBkgASgLMjAuc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25TdHJ1Y3RIABI+CgRsaXN0GBsgASgLMi4uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25MaXN0SAASPAoDbWFwGBwgASgLMi0uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25NYXBIABJNCgx1c2VyX2RlZmluZWQYHiABKAsyNS5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvblVzZXJEZWZpbmVkSAASIgoUdXNlcl9kZWZpbmVkX3BvaW50ZXIYHyABKA1CAhgBSAASHQoTdHlwZV9wYXJhbWV0ZXJfbmFtZRghIAEoCUgAEiAKFmludGVnZXJfcGFyYW1ldGVyX25hbWUYIiABKAlIABIZCg9pbnRlZ2VyX2xpdGVyYWwYIyABKAVIABI7Cgh1bmFyeV9vcBgkIAEoCzInLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5VbmFyeU9wSAASPQoJYmluYXJ5X29wGCUgASgLMiguc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkJpbmFyeU9wSAASOQoHaWZfZWxzZRgmIAEoCzImLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5JZkVsc2VIABJHCg5yZXR1cm5fcHJvZ3JhbRgnIAEoCzItLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5SZXR1cm5Qcm9ncmFtSAAakwEKE0V4cHJlc3Npb25GaXhlZENoYXISLwoGbGVuZ3RoGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkakQEKEUV4cHJlc3Npb25WYXJDaGFyEi8KBmxlbmd0aBgBIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIZChF2YXJpYXRpb25fcG9pbnRlchgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GpUBChVFeHByZXNzaW9uRml4ZWRCaW5hcnkSLwoGbGVuZ3RoGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaxAEKEUV4cHJlc3Npb25EZWNpbWFsEi4KBXNjYWxlGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEjIKCXByZWNpc2lvbhgCIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIZChF2YXJpYXRpb25fcG9pbnRlchgDIAEoDRIwCgtudWxsYWJpbGl0eRgEIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5Gp8BChxFeHByZXNzaW9uUHJlY2lzaW9uVGltZXN0YW1wEjIKCXByZWNpc2lvbhgBIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIZChF2YXJpYXRpb25fcG9pbnRlchgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GqEBCh5FeHByZXNzaW9uUHJlY2lzaW9uVGltZXN0YW1wVFoSMgoJcHJlY2lzaW9uGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkajwEKEEV4cHJlc3Npb25TdHJ1Y3QSLgoFdHlwZXMYASADKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SGQoRdmFyaWF0aW9uX3BvaW50ZXIYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpoChVFeHByZXNzaW9uTmFtZWRTdHJ1Y3QSDQoFbmFtZXMYASADKAkSQAoGc3RydWN0GAIgASgLMjAuc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25TdHJ1Y3QajAEKDkV4cHJlc3Npb25MaXN0Ei0KBHR5cGUYASABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SGQoRdmFyaWF0aW9uX3BvaW50ZXIYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRq6AQoNRXhwcmVzc2lvbk1hcBIsCgNrZXkYASABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SLgoFdmFsdWUYAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SGQoRdmFyaWF0aW9uX3BvaW50ZXIYAyABKA0SMAoLbnVsbGFiaWxpdHkYBCABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp6ChVFeHByZXNzaW9uVXNlckRlZmluZWQSFAoMdHlwZV9wb2ludGVyGAEgASgNEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaqQEKBklmRWxzZRI1CgxpZl9jb25kaXRpb24YASABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SMgoJaWZfcmV0dXJuGAIgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEjQKC2Vsc2VfcmV0dXJuGAMgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uGsoBCgdVbmFyeU9wEkQKB29wX3R5cGUYASABKA4yMy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uVW5hcnlPcC5VbmFyeU9wVHlwZRIsCgNhcmcYAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24iSwoLVW5hcnlPcFR5cGUSHQoZVU5BUllfT1BfVFlQRV9VTlNQRUNJRklFRBAAEh0KGVVOQVJZX09QX1RZUEVfQk9PTEVBTl9OT1QQARqgBAoIQmluYXJ5T3ASRgoHb3BfdHlwZRgBIAEoDjI1LnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5CaW5hcnlPcC5CaW5hcnlPcFR5cGUSLQoEYXJnMRgCIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhItCgRhcmcyGAMgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uIu0CCgxCaW5hcnlPcFR5cGUSHgoaQklOQVJZX09QX1RZUEVfVU5TUEVDSUZJRUQQABIXChNCSU5BUllfT1BfVFlQRV9QTFVTEAESGAoUQklOQVJZX09QX1RZUEVfTUlOVVMQAhIbChdCSU5BUllfT1BfVFlQRV9NVUxUSVBMWRADEhkKFUJJTkFSWV9PUF9UWVBFX0RJVklERRAEEhYKEkJJTkFSWV9PUF9UWVBFX01JThAFEhYKEkJJTkFSWV9PUF9UWVBFX01BWBAGEh8KG0JJTkFSWV9PUF9UWVBFX0dSRUFURVJfVEhBThAHEhwKGEJJTkFSWV9PUF9UWVBFX0xFU1NfVEhBThAIEhYKEkJJTkFSWV9PUF9UWVBFX0FORBAJEhUKEUJJTkFSWV9PUF9UWVBFX09SEAoSGQoVQklOQVJZX09QX1RZUEVfRVFVQUxTEAsSGQoVQklOQVJZX09QX1RZUEVfQ09WRVJTEAwa6gEKDVJldHVyblByb2dyYW0STQoLYXNzaWdubWVudHMYASADKAsyOC5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uUmV0dXJuUHJvZ3JhbS5Bc3NpZ25tZW50EjkKEGZpbmFsX2V4cHJlc3Npb24YAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24aTwoKQXNzaWdubWVudBIMCgRuYW1lGAEgASgJEjMKCmV4cHJlc3Npb24YAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb25CBgoEa2luZEJXChJpby5zdWJzdHJhaXQucHJvdG9QAVoqZ2l0aHViLmNvbS9zdWJzdHJhaXQtaW8vc3Vic3RyYWl0LWdvL3Byb3RvqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM", [file_substrait_type]);
 
 /**
  * @generated from message substrait.DerivationExpression
  */
-export type DerivationExpression = Message<'substrait.DerivationExpression'> & {
+export type DerivationExpression = Message<"substrait.DerivationExpression"> & {
   /**
    * @generated from oneof substrait.DerivationExpression.kind
    */
-  kind:
-    | {
-        /**
-         * @generated from field: substrait.Type.Boolean bool = 1;
-         */
-        value: Type_Boolean;
-        case: 'bool';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.I8 i8 = 2;
-         */
-        value: Type_I8;
-        case: 'i8';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.I16 i16 = 3;
-         */
-        value: Type_I16;
-        case: 'i16';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.I32 i32 = 5;
-         */
-        value: Type_I32;
-        case: 'i32';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.I64 i64 = 7;
-         */
-        value: Type_I64;
-        case: 'i64';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.FP32 fp32 = 10;
-         */
-        value: Type_FP32;
-        case: 'fp32';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.FP64 fp64 = 11;
-         */
-        value: Type_FP64;
-        case: 'fp64';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.String string = 12;
-         */
-        value: Type_String;
-        case: 'string';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.Binary binary = 13;
-         */
-        value: Type_Binary;
-        case: 'binary';
-      }
-    | {
-        /**
-         * Deprecated in favor of `ExpressionPrecisionTimestamp precision_timestamp`
-         *
-         * @generated from field: substrait.Type.Timestamp timestamp = 14 [deprecated = true];
-         * @deprecated
-         */
-        value: Type_Timestamp;
-        case: 'timestamp';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.Date date = 16;
-         */
-        value: Type_Date;
-        case: 'date';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.Time time = 17;
-         */
-        value: Type_Time;
-        case: 'time';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.IntervalYear interval_year = 19;
-         */
-        value: Type_IntervalYear;
-        case: 'intervalYear';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.IntervalDay interval_day = 20;
-         */
-        value: Type_IntervalDay;
-        case: 'intervalDay';
-      }
-    | {
-        /**
-         * Deprecated in favor of `ExpressionPrecisionTimestampTZ precision_timestamp_tz`
-         *
-         * @generated from field: substrait.Type.TimestampTZ timestamp_tz = 29 [deprecated = true];
-         * @deprecated
-         */
-        value: Type_TimestampTZ;
-        case: 'timestampTz';
-      }
-    | {
-        /**
-         * @generated from field: substrait.Type.UUID uuid = 32;
-         */
-        value: Type_UUID;
-        case: 'uuid';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.ExpressionFixedChar fixed_char = 21;
-         */
-        value: DerivationExpression_ExpressionFixedChar;
-        case: 'fixedChar';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.ExpressionVarChar varchar = 22;
-         */
-        value: DerivationExpression_ExpressionVarChar;
-        case: 'varchar';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.ExpressionFixedBinary fixed_binary = 23;
-         */
-        value: DerivationExpression_ExpressionFixedBinary;
-        case: 'fixedBinary';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.ExpressionDecimal decimal = 24;
-         */
-        value: DerivationExpression_ExpressionDecimal;
-        case: 'decimal';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.ExpressionPrecisionTimestamp precision_timestamp = 40;
-         */
-        value: DerivationExpression_ExpressionPrecisionTimestamp;
-        case: 'precisionTimestamp';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.ExpressionPrecisionTimestampTZ precision_timestamp_tz = 41;
-         */
-        value: DerivationExpression_ExpressionPrecisionTimestampTZ;
-        case: 'precisionTimestampTz';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.ExpressionStruct struct = 25;
-         */
-        value: DerivationExpression_ExpressionStruct;
-        case: 'struct';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.ExpressionList list = 27;
-         */
-        value: DerivationExpression_ExpressionList;
-        case: 'list';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.ExpressionMap map = 28;
-         */
-        value: DerivationExpression_ExpressionMap;
-        case: 'map';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.ExpressionUserDefined user_defined = 30;
-         */
-        value: DerivationExpression_ExpressionUserDefined;
-        case: 'userDefined';
-      }
-    | {
-        /**
-         * Deprecated in favor of user_defined, which allows nullability and
-         * variations to be specified. If user_defined_pointer is encountered,
-         * treat it as being non-nullable and having the default variation.
-         *
-         * @generated from field: uint32 user_defined_pointer = 31 [deprecated = true];
-         * @deprecated
-         */
-        value: number;
-        case: 'userDefinedPointer';
-      }
-    | {
-        /**
-         * @generated from field: string type_parameter_name = 33;
-         */
-        value: string;
-        case: 'typeParameterName';
-      }
-    | {
-        /**
-         * @generated from field: string integer_parameter_name = 34;
-         */
-        value: string;
-        case: 'integerParameterName';
-      }
-    | {
-        /**
-         * @generated from field: int32 integer_literal = 35;
-         */
-        value: number;
-        case: 'integerLiteral';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.UnaryOp unary_op = 36;
-         */
-        value: DerivationExpression_UnaryOp;
-        case: 'unaryOp';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.BinaryOp binary_op = 37;
-         */
-        value: DerivationExpression_BinaryOp;
-        case: 'binaryOp';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.IfElse if_else = 38;
-         */
-        value: DerivationExpression_IfElse;
-        case: 'ifElse';
-      }
-    | {
-        /**
-         * @generated from field: substrait.DerivationExpression.ReturnProgram return_program = 39;
-         */
-        value: DerivationExpression_ReturnProgram;
-        case: 'returnProgram';
-      }
-    | { case: undefined; value?: undefined };
+  kind: {
+    /**
+     * @generated from field: substrait.Type.Boolean bool = 1;
+     */
+    value: Type_Boolean;
+    case: "bool";
+  } | {
+    /**
+     * @generated from field: substrait.Type.I8 i8 = 2;
+     */
+    value: Type_I8;
+    case: "i8";
+  } | {
+    /**
+     * @generated from field: substrait.Type.I16 i16 = 3;
+     */
+    value: Type_I16;
+    case: "i16";
+  } | {
+    /**
+     * @generated from field: substrait.Type.I32 i32 = 5;
+     */
+    value: Type_I32;
+    case: "i32";
+  } | {
+    /**
+     * @generated from field: substrait.Type.I64 i64 = 7;
+     */
+    value: Type_I64;
+    case: "i64";
+  } | {
+    /**
+     * @generated from field: substrait.Type.FP32 fp32 = 10;
+     */
+    value: Type_FP32;
+    case: "fp32";
+  } | {
+    /**
+     * @generated from field: substrait.Type.FP64 fp64 = 11;
+     */
+    value: Type_FP64;
+    case: "fp64";
+  } | {
+    /**
+     * @generated from field: substrait.Type.String string = 12;
+     */
+    value: Type_String;
+    case: "string";
+  } | {
+    /**
+     * @generated from field: substrait.Type.Binary binary = 13;
+     */
+    value: Type_Binary;
+    case: "binary";
+  } | {
+    /**
+     * Deprecated in favor of `ExpressionPrecisionTimestamp precision_timestamp`
+     *
+     * @generated from field: substrait.Type.Timestamp timestamp = 14 [deprecated = true];
+     * @deprecated
+     */
+    value: Type_Timestamp;
+    case: "timestamp";
+  } | {
+    /**
+     * @generated from field: substrait.Type.Date date = 16;
+     */
+    value: Type_Date;
+    case: "date";
+  } | {
+    /**
+     * @generated from field: substrait.Type.Time time = 17;
+     */
+    value: Type_Time;
+    case: "time";
+  } | {
+    /**
+     * @generated from field: substrait.Type.IntervalYear interval_year = 19;
+     */
+    value: Type_IntervalYear;
+    case: "intervalYear";
+  } | {
+    /**
+     * @generated from field: substrait.Type.IntervalDay interval_day = 20;
+     */
+    value: Type_IntervalDay;
+    case: "intervalDay";
+  } | {
+    /**
+     * Deprecated in favor of `ExpressionPrecisionTimestampTZ precision_timestamp_tz`
+     *
+     * @generated from field: substrait.Type.TimestampTZ timestamp_tz = 29 [deprecated = true];
+     * @deprecated
+     */
+    value: Type_TimestampTZ;
+    case: "timestampTz";
+  } | {
+    /**
+     * @generated from field: substrait.Type.UUID uuid = 32;
+     */
+    value: Type_UUID;
+    case: "uuid";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.ExpressionFixedChar fixed_char = 21;
+     */
+    value: DerivationExpression_ExpressionFixedChar;
+    case: "fixedChar";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.ExpressionVarChar varchar = 22;
+     */
+    value: DerivationExpression_ExpressionVarChar;
+    case: "varchar";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.ExpressionFixedBinary fixed_binary = 23;
+     */
+    value: DerivationExpression_ExpressionFixedBinary;
+    case: "fixedBinary";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.ExpressionDecimal decimal = 24;
+     */
+    value: DerivationExpression_ExpressionDecimal;
+    case: "decimal";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.ExpressionPrecisionTimestamp precision_timestamp = 40;
+     */
+    value: DerivationExpression_ExpressionPrecisionTimestamp;
+    case: "precisionTimestamp";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.ExpressionPrecisionTimestampTZ precision_timestamp_tz = 41;
+     */
+    value: DerivationExpression_ExpressionPrecisionTimestampTZ;
+    case: "precisionTimestampTz";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.ExpressionStruct struct = 25;
+     */
+    value: DerivationExpression_ExpressionStruct;
+    case: "struct";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.ExpressionList list = 27;
+     */
+    value: DerivationExpression_ExpressionList;
+    case: "list";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.ExpressionMap map = 28;
+     */
+    value: DerivationExpression_ExpressionMap;
+    case: "map";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.ExpressionUserDefined user_defined = 30;
+     */
+    value: DerivationExpression_ExpressionUserDefined;
+    case: "userDefined";
+  } | {
+    /**
+     * Deprecated in favor of user_defined, which allows nullability and
+     * variations to be specified. If user_defined_pointer is encountered,
+     * treat it as being non-nullable and having the default variation.
+     *
+     * @generated from field: uint32 user_defined_pointer = 31 [deprecated = true];
+     * @deprecated
+     */
+    value: number;
+    case: "userDefinedPointer";
+  } | {
+    /**
+     * @generated from field: string type_parameter_name = 33;
+     */
+    value: string;
+    case: "typeParameterName";
+  } | {
+    /**
+     * @generated from field: string integer_parameter_name = 34;
+     */
+    value: string;
+    case: "integerParameterName";
+  } | {
+    /**
+     * @generated from field: int32 integer_literal = 35;
+     */
+    value: number;
+    case: "integerLiteral";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.UnaryOp unary_op = 36;
+     */
+    value: DerivationExpression_UnaryOp;
+    case: "unaryOp";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.BinaryOp binary_op = 37;
+     */
+    value: DerivationExpression_BinaryOp;
+    case: "binaryOp";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.IfElse if_else = 38;
+     */
+    value: DerivationExpression_IfElse;
+    case: "ifElse";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.ReturnProgram return_program = 39;
+     */
+    value: DerivationExpression_ReturnProgram;
+    case: "returnProgram";
+  } | { case: undefined; value?: undefined };
 };
 
 /**
  * Describes the message substrait.DerivationExpression.
  * Use `create(DerivationExpressionSchema)` to create a new message.
  */
-export const DerivationExpressionSchema: GenMessage<DerivationExpression> =
-  /*@__PURE__*/
+export const DerivationExpressionSchema: GenMessage<DerivationExpression> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionFixedChar
  */
-export type DerivationExpression_ExpressionFixedChar =
-  Message<'substrait.DerivationExpression.ExpressionFixedChar'> & {
-    /**
-     * @generated from field: substrait.DerivationExpression length = 1;
-     */
-    length?: DerivationExpression;
+export type DerivationExpression_ExpressionFixedChar = Message<"substrait.DerivationExpression.ExpressionFixedChar"> & {
+  /**
+   * @generated from field: substrait.DerivationExpression length = 1;
+   */
+  length?: DerivationExpression;
 
-    /**
-     * @generated from field: uint32 variation_pointer = 2;
-     */
-    variationPointer: number;
+  /**
+   * @generated from field: uint32 variation_pointer = 2;
+   */
+  variationPointer: number;
 
-    /**
-     * @generated from field: substrait.Type.Nullability nullability = 3;
-     */
-    nullability: Type_Nullability;
-  };
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 3;
+   */
+  nullability: Type_Nullability;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.ExpressionFixedChar.
  * Use `create(DerivationExpression_ExpressionFixedCharSchema)` to create a new message.
  */
-export const DerivationExpression_ExpressionFixedCharSchema: GenMessage<DerivationExpression_ExpressionFixedChar> =
-  /*@__PURE__*/
+export const DerivationExpression_ExpressionFixedCharSchema: GenMessage<DerivationExpression_ExpressionFixedChar> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 0);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionVarChar
  */
-export type DerivationExpression_ExpressionVarChar =
-  Message<'substrait.DerivationExpression.ExpressionVarChar'> & {
-    /**
-     * @generated from field: substrait.DerivationExpression length = 1;
-     */
-    length?: DerivationExpression;
+export type DerivationExpression_ExpressionVarChar = Message<"substrait.DerivationExpression.ExpressionVarChar"> & {
+  /**
+   * @generated from field: substrait.DerivationExpression length = 1;
+   */
+  length?: DerivationExpression;
 
-    /**
-     * @generated from field: uint32 variation_pointer = 2;
-     */
-    variationPointer: number;
+  /**
+   * @generated from field: uint32 variation_pointer = 2;
+   */
+  variationPointer: number;
 
-    /**
-     * @generated from field: substrait.Type.Nullability nullability = 3;
-     */
-    nullability: Type_Nullability;
-  };
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 3;
+   */
+  nullability: Type_Nullability;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.ExpressionVarChar.
  * Use `create(DerivationExpression_ExpressionVarCharSchema)` to create a new message.
  */
-export const DerivationExpression_ExpressionVarCharSchema: GenMessage<DerivationExpression_ExpressionVarChar> =
-  /*@__PURE__*/
+export const DerivationExpression_ExpressionVarCharSchema: GenMessage<DerivationExpression_ExpressionVarChar> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 1);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionFixedBinary
  */
-export type DerivationExpression_ExpressionFixedBinary =
-  Message<'substrait.DerivationExpression.ExpressionFixedBinary'> & {
-    /**
-     * @generated from field: substrait.DerivationExpression length = 1;
-     */
-    length?: DerivationExpression;
+export type DerivationExpression_ExpressionFixedBinary = Message<"substrait.DerivationExpression.ExpressionFixedBinary"> & {
+  /**
+   * @generated from field: substrait.DerivationExpression length = 1;
+   */
+  length?: DerivationExpression;
 
-    /**
-     * @generated from field: uint32 variation_pointer = 2;
-     */
-    variationPointer: number;
+  /**
+   * @generated from field: uint32 variation_pointer = 2;
+   */
+  variationPointer: number;
 
-    /**
-     * @generated from field: substrait.Type.Nullability nullability = 3;
-     */
-    nullability: Type_Nullability;
-  };
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 3;
+   */
+  nullability: Type_Nullability;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.ExpressionFixedBinary.
  * Use `create(DerivationExpression_ExpressionFixedBinarySchema)` to create a new message.
  */
-export const DerivationExpression_ExpressionFixedBinarySchema: GenMessage<DerivationExpression_ExpressionFixedBinary> =
-  /*@__PURE__*/
+export const DerivationExpression_ExpressionFixedBinarySchema: GenMessage<DerivationExpression_ExpressionFixedBinary> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 2);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionDecimal
  */
-export type DerivationExpression_ExpressionDecimal =
-  Message<'substrait.DerivationExpression.ExpressionDecimal'> & {
-    /**
-     * @generated from field: substrait.DerivationExpression scale = 1;
-     */
-    scale?: DerivationExpression;
+export type DerivationExpression_ExpressionDecimal = Message<"substrait.DerivationExpression.ExpressionDecimal"> & {
+  /**
+   * @generated from field: substrait.DerivationExpression scale = 1;
+   */
+  scale?: DerivationExpression;
 
-    /**
-     * @generated from field: substrait.DerivationExpression precision = 2;
-     */
-    precision?: DerivationExpression;
+  /**
+   * @generated from field: substrait.DerivationExpression precision = 2;
+   */
+  precision?: DerivationExpression;
 
-    /**
-     * @generated from field: uint32 variation_pointer = 3;
-     */
-    variationPointer: number;
+  /**
+   * @generated from field: uint32 variation_pointer = 3;
+   */
+  variationPointer: number;
 
-    /**
-     * @generated from field: substrait.Type.Nullability nullability = 4;
-     */
-    nullability: Type_Nullability;
-  };
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 4;
+   */
+  nullability: Type_Nullability;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.ExpressionDecimal.
  * Use `create(DerivationExpression_ExpressionDecimalSchema)` to create a new message.
  */
-export const DerivationExpression_ExpressionDecimalSchema: GenMessage<DerivationExpression_ExpressionDecimal> =
-  /*@__PURE__*/
+export const DerivationExpression_ExpressionDecimalSchema: GenMessage<DerivationExpression_ExpressionDecimal> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 3);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionPrecisionTimestamp
  */
-export type DerivationExpression_ExpressionPrecisionTimestamp =
-  Message<'substrait.DerivationExpression.ExpressionPrecisionTimestamp'> & {
-    /**
-     * @generated from field: substrait.DerivationExpression precision = 1;
-     */
-    precision?: DerivationExpression;
+export type DerivationExpression_ExpressionPrecisionTimestamp = Message<"substrait.DerivationExpression.ExpressionPrecisionTimestamp"> & {
+  /**
+   * @generated from field: substrait.DerivationExpression precision = 1;
+   */
+  precision?: DerivationExpression;
 
-    /**
-     * @generated from field: uint32 variation_pointer = 2;
-     */
-    variationPointer: number;
+  /**
+   * @generated from field: uint32 variation_pointer = 2;
+   */
+  variationPointer: number;
 
-    /**
-     * @generated from field: substrait.Type.Nullability nullability = 3;
-     */
-    nullability: Type_Nullability;
-  };
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 3;
+   */
+  nullability: Type_Nullability;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.ExpressionPrecisionTimestamp.
  * Use `create(DerivationExpression_ExpressionPrecisionTimestampSchema)` to create a new message.
  */
-export const DerivationExpression_ExpressionPrecisionTimestampSchema: GenMessage<DerivationExpression_ExpressionPrecisionTimestamp> =
-  /*@__PURE__*/
+export const DerivationExpression_ExpressionPrecisionTimestampSchema: GenMessage<DerivationExpression_ExpressionPrecisionTimestamp> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 4);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionPrecisionTimestampTZ
  */
-export type DerivationExpression_ExpressionPrecisionTimestampTZ =
-  Message<'substrait.DerivationExpression.ExpressionPrecisionTimestampTZ'> & {
-    /**
-     * @generated from field: substrait.DerivationExpression precision = 1;
-     */
-    precision?: DerivationExpression;
+export type DerivationExpression_ExpressionPrecisionTimestampTZ = Message<"substrait.DerivationExpression.ExpressionPrecisionTimestampTZ"> & {
+  /**
+   * @generated from field: substrait.DerivationExpression precision = 1;
+   */
+  precision?: DerivationExpression;
 
-    /**
-     * @generated from field: uint32 variation_pointer = 2;
-     */
-    variationPointer: number;
+  /**
+   * @generated from field: uint32 variation_pointer = 2;
+   */
+  variationPointer: number;
 
-    /**
-     * @generated from field: substrait.Type.Nullability nullability = 3;
-     */
-    nullability: Type_Nullability;
-  };
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 3;
+   */
+  nullability: Type_Nullability;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.ExpressionPrecisionTimestampTZ.
  * Use `create(DerivationExpression_ExpressionPrecisionTimestampTZSchema)` to create a new message.
  */
-export const DerivationExpression_ExpressionPrecisionTimestampTZSchema: GenMessage<DerivationExpression_ExpressionPrecisionTimestampTZ> =
-  /*@__PURE__*/
+export const DerivationExpression_ExpressionPrecisionTimestampTZSchema: GenMessage<DerivationExpression_ExpressionPrecisionTimestampTZ> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 5);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionStruct
  */
-export type DerivationExpression_ExpressionStruct =
-  Message<'substrait.DerivationExpression.ExpressionStruct'> & {
-    /**
-     * @generated from field: repeated substrait.DerivationExpression types = 1;
-     */
-    types: DerivationExpression[];
+export type DerivationExpression_ExpressionStruct = Message<"substrait.DerivationExpression.ExpressionStruct"> & {
+  /**
+   * @generated from field: repeated substrait.DerivationExpression types = 1;
+   */
+  types: DerivationExpression[];
 
-    /**
-     * @generated from field: uint32 variation_pointer = 2;
-     */
-    variationPointer: number;
+  /**
+   * @generated from field: uint32 variation_pointer = 2;
+   */
+  variationPointer: number;
 
-    /**
-     * @generated from field: substrait.Type.Nullability nullability = 3;
-     */
-    nullability: Type_Nullability;
-  };
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 3;
+   */
+  nullability: Type_Nullability;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.ExpressionStruct.
  * Use `create(DerivationExpression_ExpressionStructSchema)` to create a new message.
  */
-export const DerivationExpression_ExpressionStructSchema: GenMessage<DerivationExpression_ExpressionStruct> =
-  /*@__PURE__*/
+export const DerivationExpression_ExpressionStructSchema: GenMessage<DerivationExpression_ExpressionStruct> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 6);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionNamedStruct
  */
-export type DerivationExpression_ExpressionNamedStruct =
-  Message<'substrait.DerivationExpression.ExpressionNamedStruct'> & {
-    /**
-     * @generated from field: repeated string names = 1;
-     */
-    names: string[];
+export type DerivationExpression_ExpressionNamedStruct = Message<"substrait.DerivationExpression.ExpressionNamedStruct"> & {
+  /**
+   * @generated from field: repeated string names = 1;
+   */
+  names: string[];
 
-    /**
-     * @generated from field: substrait.DerivationExpression.ExpressionStruct struct = 2;
-     */
-    struct?: DerivationExpression_ExpressionStruct;
-  };
+  /**
+   * @generated from field: substrait.DerivationExpression.ExpressionStruct struct = 2;
+   */
+  struct?: DerivationExpression_ExpressionStruct;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.ExpressionNamedStruct.
  * Use `create(DerivationExpression_ExpressionNamedStructSchema)` to create a new message.
  */
-export const DerivationExpression_ExpressionNamedStructSchema: GenMessage<DerivationExpression_ExpressionNamedStruct> =
-  /*@__PURE__*/
+export const DerivationExpression_ExpressionNamedStructSchema: GenMessage<DerivationExpression_ExpressionNamedStruct> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 7);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionList
  */
-export type DerivationExpression_ExpressionList =
-  Message<'substrait.DerivationExpression.ExpressionList'> & {
-    /**
-     * @generated from field: substrait.DerivationExpression type = 1;
-     */
-    type?: DerivationExpression;
+export type DerivationExpression_ExpressionList = Message<"substrait.DerivationExpression.ExpressionList"> & {
+  /**
+   * @generated from field: substrait.DerivationExpression type = 1;
+   */
+  type?: DerivationExpression;
 
-    /**
-     * @generated from field: uint32 variation_pointer = 2;
-     */
-    variationPointer: number;
+  /**
+   * @generated from field: uint32 variation_pointer = 2;
+   */
+  variationPointer: number;
 
-    /**
-     * @generated from field: substrait.Type.Nullability nullability = 3;
-     */
-    nullability: Type_Nullability;
-  };
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 3;
+   */
+  nullability: Type_Nullability;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.ExpressionList.
  * Use `create(DerivationExpression_ExpressionListSchema)` to create a new message.
  */
-export const DerivationExpression_ExpressionListSchema: GenMessage<DerivationExpression_ExpressionList> =
-  /*@__PURE__*/
+export const DerivationExpression_ExpressionListSchema: GenMessage<DerivationExpression_ExpressionList> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 8);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionMap
  */
-export type DerivationExpression_ExpressionMap =
-  Message<'substrait.DerivationExpression.ExpressionMap'> & {
-    /**
-     * @generated from field: substrait.DerivationExpression key = 1;
-     */
-    key?: DerivationExpression;
+export type DerivationExpression_ExpressionMap = Message<"substrait.DerivationExpression.ExpressionMap"> & {
+  /**
+   * @generated from field: substrait.DerivationExpression key = 1;
+   */
+  key?: DerivationExpression;
 
-    /**
-     * @generated from field: substrait.DerivationExpression value = 2;
-     */
-    value?: DerivationExpression;
+  /**
+   * @generated from field: substrait.DerivationExpression value = 2;
+   */
+  value?: DerivationExpression;
 
-    /**
-     * @generated from field: uint32 variation_pointer = 3;
-     */
-    variationPointer: number;
+  /**
+   * @generated from field: uint32 variation_pointer = 3;
+   */
+  variationPointer: number;
 
-    /**
-     * @generated from field: substrait.Type.Nullability nullability = 4;
-     */
-    nullability: Type_Nullability;
-  };
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 4;
+   */
+  nullability: Type_Nullability;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.ExpressionMap.
  * Use `create(DerivationExpression_ExpressionMapSchema)` to create a new message.
  */
-export const DerivationExpression_ExpressionMapSchema: GenMessage<DerivationExpression_ExpressionMap> =
-  /*@__PURE__*/
+export const DerivationExpression_ExpressionMapSchema: GenMessage<DerivationExpression_ExpressionMap> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 9);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionUserDefined
  */
-export type DerivationExpression_ExpressionUserDefined =
-  Message<'substrait.DerivationExpression.ExpressionUserDefined'> & {
-    /**
-     * @generated from field: uint32 type_pointer = 1;
-     */
-    typePointer: number;
+export type DerivationExpression_ExpressionUserDefined = Message<"substrait.DerivationExpression.ExpressionUserDefined"> & {
+  /**
+   * @generated from field: uint32 type_pointer = 1;
+   */
+  typePointer: number;
 
-    /**
-     * @generated from field: uint32 variation_pointer = 2;
-     */
-    variationPointer: number;
+  /**
+   * @generated from field: uint32 variation_pointer = 2;
+   */
+  variationPointer: number;
 
-    /**
-     * @generated from field: substrait.Type.Nullability nullability = 3;
-     */
-    nullability: Type_Nullability;
-  };
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 3;
+   */
+  nullability: Type_Nullability;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.ExpressionUserDefined.
  * Use `create(DerivationExpression_ExpressionUserDefinedSchema)` to create a new message.
  */
-export const DerivationExpression_ExpressionUserDefinedSchema: GenMessage<DerivationExpression_ExpressionUserDefined> =
-  /*@__PURE__*/
+export const DerivationExpression_ExpressionUserDefinedSchema: GenMessage<DerivationExpression_ExpressionUserDefined> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 10);
 
 /**
  * @generated from message substrait.DerivationExpression.IfElse
  */
-export type DerivationExpression_IfElse =
-  Message<'substrait.DerivationExpression.IfElse'> & {
-    /**
-     * @generated from field: substrait.DerivationExpression if_condition = 1;
-     */
-    ifCondition?: DerivationExpression;
+export type DerivationExpression_IfElse = Message<"substrait.DerivationExpression.IfElse"> & {
+  /**
+   * @generated from field: substrait.DerivationExpression if_condition = 1;
+   */
+  ifCondition?: DerivationExpression;
 
-    /**
-     * @generated from field: substrait.DerivationExpression if_return = 2;
-     */
-    ifReturn?: DerivationExpression;
+  /**
+   * @generated from field: substrait.DerivationExpression if_return = 2;
+   */
+  ifReturn?: DerivationExpression;
 
-    /**
-     * @generated from field: substrait.DerivationExpression else_return = 3;
-     */
-    elseReturn?: DerivationExpression;
-  };
+  /**
+   * @generated from field: substrait.DerivationExpression else_return = 3;
+   */
+  elseReturn?: DerivationExpression;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.IfElse.
  * Use `create(DerivationExpression_IfElseSchema)` to create a new message.
  */
-export const DerivationExpression_IfElseSchema: GenMessage<DerivationExpression_IfElse> =
-  /*@__PURE__*/
+export const DerivationExpression_IfElseSchema: GenMessage<DerivationExpression_IfElse> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 11);
 
 /**
  * @generated from message substrait.DerivationExpression.UnaryOp
  */
-export type DerivationExpression_UnaryOp =
-  Message<'substrait.DerivationExpression.UnaryOp'> & {
-    /**
-     * @generated from field: substrait.DerivationExpression.UnaryOp.UnaryOpType op_type = 1;
-     */
-    opType: DerivationExpression_UnaryOp_UnaryOpType;
+export type DerivationExpression_UnaryOp = Message<"substrait.DerivationExpression.UnaryOp"> & {
+  /**
+   * @generated from field: substrait.DerivationExpression.UnaryOp.UnaryOpType op_type = 1;
+   */
+  opType: DerivationExpression_UnaryOp_UnaryOpType;
 
-    /**
-     * @generated from field: substrait.DerivationExpression arg = 2;
-     */
-    arg?: DerivationExpression;
-  };
+  /**
+   * @generated from field: substrait.DerivationExpression arg = 2;
+   */
+  arg?: DerivationExpression;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.UnaryOp.
  * Use `create(DerivationExpression_UnaryOpSchema)` to create a new message.
  */
-export const DerivationExpression_UnaryOpSchema: GenMessage<DerivationExpression_UnaryOp> =
-  /*@__PURE__*/
+export const DerivationExpression_UnaryOpSchema: GenMessage<DerivationExpression_UnaryOp> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 12);
 
 /**
@@ -705,37 +617,34 @@ export enum DerivationExpression_UnaryOp_UnaryOpType {
 /**
  * Describes the enum substrait.DerivationExpression.UnaryOp.UnaryOpType.
  */
-export const DerivationExpression_UnaryOp_UnaryOpTypeSchema: GenEnum<DerivationExpression_UnaryOp_UnaryOpType> =
-  /*@__PURE__*/
+export const DerivationExpression_UnaryOp_UnaryOpTypeSchema: GenEnum<DerivationExpression_UnaryOp_UnaryOpType> = /*@__PURE__*/
   enumDesc(file_substrait_type_expressions, 0, 12, 0);
 
 /**
  * @generated from message substrait.DerivationExpression.BinaryOp
  */
-export type DerivationExpression_BinaryOp =
-  Message<'substrait.DerivationExpression.BinaryOp'> & {
-    /**
-     * @generated from field: substrait.DerivationExpression.BinaryOp.BinaryOpType op_type = 1;
-     */
-    opType: DerivationExpression_BinaryOp_BinaryOpType;
+export type DerivationExpression_BinaryOp = Message<"substrait.DerivationExpression.BinaryOp"> & {
+  /**
+   * @generated from field: substrait.DerivationExpression.BinaryOp.BinaryOpType op_type = 1;
+   */
+  opType: DerivationExpression_BinaryOp_BinaryOpType;
 
-    /**
-     * @generated from field: substrait.DerivationExpression arg1 = 2;
-     */
-    arg1?: DerivationExpression;
+  /**
+   * @generated from field: substrait.DerivationExpression arg1 = 2;
+   */
+  arg1?: DerivationExpression;
 
-    /**
-     * @generated from field: substrait.DerivationExpression arg2 = 3;
-     */
-    arg2?: DerivationExpression;
-  };
+  /**
+   * @generated from field: substrait.DerivationExpression arg2 = 3;
+   */
+  arg2?: DerivationExpression;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.BinaryOp.
  * Use `create(DerivationExpression_BinaryOpSchema)` to create a new message.
  */
-export const DerivationExpression_BinaryOpSchema: GenMessage<DerivationExpression_BinaryOp> =
-  /*@__PURE__*/
+export const DerivationExpression_BinaryOpSchema: GenMessage<DerivationExpression_BinaryOp> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 13);
 
 /**
@@ -811,54 +720,50 @@ export enum DerivationExpression_BinaryOp_BinaryOpType {
 /**
  * Describes the enum substrait.DerivationExpression.BinaryOp.BinaryOpType.
  */
-export const DerivationExpression_BinaryOp_BinaryOpTypeSchema: GenEnum<DerivationExpression_BinaryOp_BinaryOpType> =
-  /*@__PURE__*/
+export const DerivationExpression_BinaryOp_BinaryOpTypeSchema: GenEnum<DerivationExpression_BinaryOp_BinaryOpType> = /*@__PURE__*/
   enumDesc(file_substrait_type_expressions, 0, 13, 0);
 
 /**
  * @generated from message substrait.DerivationExpression.ReturnProgram
  */
-export type DerivationExpression_ReturnProgram =
-  Message<'substrait.DerivationExpression.ReturnProgram'> & {
-    /**
-     * @generated from field: repeated substrait.DerivationExpression.ReturnProgram.Assignment assignments = 1;
-     */
-    assignments: DerivationExpression_ReturnProgram_Assignment[];
+export type DerivationExpression_ReturnProgram = Message<"substrait.DerivationExpression.ReturnProgram"> & {
+  /**
+   * @generated from field: repeated substrait.DerivationExpression.ReturnProgram.Assignment assignments = 1;
+   */
+  assignments: DerivationExpression_ReturnProgram_Assignment[];
 
-    /**
-     * @generated from field: substrait.DerivationExpression final_expression = 2;
-     */
-    finalExpression?: DerivationExpression;
-  };
+  /**
+   * @generated from field: substrait.DerivationExpression final_expression = 2;
+   */
+  finalExpression?: DerivationExpression;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.ReturnProgram.
  * Use `create(DerivationExpression_ReturnProgramSchema)` to create a new message.
  */
-export const DerivationExpression_ReturnProgramSchema: GenMessage<DerivationExpression_ReturnProgram> =
-  /*@__PURE__*/
+export const DerivationExpression_ReturnProgramSchema: GenMessage<DerivationExpression_ReturnProgram> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 14);
 
 /**
  * @generated from message substrait.DerivationExpression.ReturnProgram.Assignment
  */
-export type DerivationExpression_ReturnProgram_Assignment =
-  Message<'substrait.DerivationExpression.ReturnProgram.Assignment'> & {
-    /**
-     * @generated from field: string name = 1;
-     */
-    name: string;
+export type DerivationExpression_ReturnProgram_Assignment = Message<"substrait.DerivationExpression.ReturnProgram.Assignment"> & {
+  /**
+   * @generated from field: string name = 1;
+   */
+  name: string;
 
-    /**
-     * @generated from field: substrait.DerivationExpression expression = 2;
-     */
-    expression?: DerivationExpression;
-  };
+  /**
+   * @generated from field: substrait.DerivationExpression expression = 2;
+   */
+  expression?: DerivationExpression;
+};
 
 /**
  * Describes the message substrait.DerivationExpression.ReturnProgram.Assignment.
  * Use `create(DerivationExpression_ReturnProgram_AssignmentSchema)` to create a new message.
  */
-export const DerivationExpression_ReturnProgram_AssignmentSchema: GenMessage<DerivationExpression_ReturnProgram_Assignment> =
-  /*@__PURE__*/
+export const DerivationExpression_ReturnProgram_AssignmentSchema: GenMessage<DerivationExpression_ReturnProgram_Assignment> = /*@__PURE__*/
   messageDesc(file_substrait_type_expressions, 0, 14, 0);
+

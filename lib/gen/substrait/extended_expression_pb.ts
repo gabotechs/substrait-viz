@@ -4,60 +4,44 @@
 // @generated from file substrait/extended_expression.proto (package substrait, syntax proto3)
 /* eslint-disable */
 
-import type { GenFile, GenMessage } from '@bufbuild/protobuf/codegenv1';
-import { fileDesc, messageDesc } from '@bufbuild/protobuf/codegenv1';
-import type { AggregateFunction, Expression } from './algebra_pb';
-import { file_substrait_algebra } from './algebra_pb';
-import type {
-  AdvancedExtension,
-  SimpleExtensionDeclaration,
-  SimpleExtensionURI,
-} from './extensions/extensions_pb';
-import { file_substrait_extensions_extensions } from './extensions/extensions_pb';
-import type { Version } from './plan_pb';
-import { file_substrait_plan } from './plan_pb';
-import type { NamedStruct } from './type_pb';
-import { file_substrait_type } from './type_pb';
-import type { Message } from '@bufbuild/protobuf';
+import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
+import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
+import type { AggregateFunction, Expression } from "./algebra_pb";
+import { file_substrait_algebra } from "./algebra_pb";
+import type { AdvancedExtension, SimpleExtensionDeclaration, SimpleExtensionURI } from "./extensions/extensions_pb";
+import { file_substrait_extensions_extensions } from "./extensions/extensions_pb";
+import type { Version } from "./plan_pb";
+import { file_substrait_plan } from "./plan_pb";
+import type { NamedStruct } from "./type_pb";
+import { file_substrait_type } from "./type_pb";
+import type { Message } from "@bufbuild/protobuf";
 
 /**
  * Describes the file substrait/extended_expression.proto.
  */
-export const file_substrait_extended_expression: GenFile =
-  /*@__PURE__*/
-  fileDesc(
-    'CiNzdWJzdHJhaXQvZXh0ZW5kZWRfZXhwcmVzc2lvbi5wcm90bxIJc3Vic3RyYWl0IpYBChNFeHByZXNzaW9uUmVmZXJlbmNlEisKCmV4cHJlc3Npb24YASABKAsyFS5zdWJzdHJhaXQuRXhwcmVzc2lvbkgAEi8KB21lYXN1cmUYAiABKAsyHC5zdWJzdHJhaXQuQWdncmVnYXRlRnVuY3Rpb25IABIUCgxvdXRwdXRfbmFtZXMYAyADKAlCCwoJZXhwcl90eXBlIocDChJFeHRlbmRlZEV4cHJlc3Npb24SIwoHdmVyc2lvbhgHIAEoCzISLnN1YnN0cmFpdC5WZXJzaW9uEkAKDmV4dGVuc2lvbl91cmlzGAEgAygLMiguc3Vic3RyYWl0LmV4dGVuc2lvbnMuU2ltcGxlRXh0ZW5zaW9uVVJJEkQKCmV4dGVuc2lvbnMYAiADKAsyMC5zdWJzdHJhaXQuZXh0ZW5zaW9ucy5TaW1wbGVFeHRlbnNpb25EZWNsYXJhdGlvbhI1Cg1yZWZlcnJlZF9leHByGAMgAygLMh4uc3Vic3RyYWl0LkV4cHJlc3Npb25SZWZlcmVuY2USKwoLYmFzZV9zY2hlbWEYBCABKAsyFi5zdWJzdHJhaXQuTmFtZWRTdHJ1Y3QSRAoTYWR2YW5jZWRfZXh0ZW5zaW9ucxgFIAEoCzInLnN1YnN0cmFpdC5leHRlbnNpb25zLkFkdmFuY2VkRXh0ZW5zaW9uEhoKEmV4cGVjdGVkX3R5cGVfdXJscxgGIAMoCUJXChJpby5zdWJzdHJhaXQucHJvdG9QAVoqZ2l0aHViLmNvbS9zdWJzdHJhaXQtaW8vc3Vic3RyYWl0LWdvL3Byb3RvqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM',
-    [
-      file_substrait_algebra,
-      file_substrait_extensions_extensions,
-      file_substrait_plan,
-      file_substrait_type,
-    ],
-  );
+export const file_substrait_extended_expression: GenFile = /*@__PURE__*/
+  fileDesc("CiNzdWJzdHJhaXQvZXh0ZW5kZWRfZXhwcmVzc2lvbi5wcm90bxIJc3Vic3RyYWl0IpYBChNFeHByZXNzaW9uUmVmZXJlbmNlEisKCmV4cHJlc3Npb24YASABKAsyFS5zdWJzdHJhaXQuRXhwcmVzc2lvbkgAEi8KB21lYXN1cmUYAiABKAsyHC5zdWJzdHJhaXQuQWdncmVnYXRlRnVuY3Rpb25IABIUCgxvdXRwdXRfbmFtZXMYAyADKAlCCwoJZXhwcl90eXBlIocDChJFeHRlbmRlZEV4cHJlc3Npb24SIwoHdmVyc2lvbhgHIAEoCzISLnN1YnN0cmFpdC5WZXJzaW9uEkAKDmV4dGVuc2lvbl91cmlzGAEgAygLMiguc3Vic3RyYWl0LmV4dGVuc2lvbnMuU2ltcGxlRXh0ZW5zaW9uVVJJEkQKCmV4dGVuc2lvbnMYAiADKAsyMC5zdWJzdHJhaXQuZXh0ZW5zaW9ucy5TaW1wbGVFeHRlbnNpb25EZWNsYXJhdGlvbhI1Cg1yZWZlcnJlZF9leHByGAMgAygLMh4uc3Vic3RyYWl0LkV4cHJlc3Npb25SZWZlcmVuY2USKwoLYmFzZV9zY2hlbWEYBCABKAsyFi5zdWJzdHJhaXQuTmFtZWRTdHJ1Y3QSRAoTYWR2YW5jZWRfZXh0ZW5zaW9ucxgFIAEoCzInLnN1YnN0cmFpdC5leHRlbnNpb25zLkFkdmFuY2VkRXh0ZW5zaW9uEhoKEmV4cGVjdGVkX3R5cGVfdXJscxgGIAMoCUJXChJpby5zdWJzdHJhaXQucHJvdG9QAVoqZ2l0aHViLmNvbS9zdWJzdHJhaXQtaW8vc3Vic3RyYWl0LWdvL3Byb3RvqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM", [file_substrait_algebra, file_substrait_extensions_extensions, file_substrait_plan, file_substrait_type]);
 
 /**
  * @generated from message substrait.ExpressionReference
  */
-export type ExpressionReference = Message<'substrait.ExpressionReference'> & {
+export type ExpressionReference = Message<"substrait.ExpressionReference"> & {
   /**
    * @generated from oneof substrait.ExpressionReference.expr_type
    */
-  exprType:
-    | {
-        /**
-         * @generated from field: substrait.Expression expression = 1;
-         */
-        value: Expression;
-        case: 'expression';
-      }
-    | {
-        /**
-         * @generated from field: substrait.AggregateFunction measure = 2;
-         */
-        value: AggregateFunction;
-        case: 'measure';
-      }
-    | { case: undefined; value?: undefined };
+  exprType: {
+    /**
+     * @generated from field: substrait.Expression expression = 1;
+     */
+    value: Expression;
+    case: "expression";
+  } | {
+    /**
+     * @generated from field: substrait.AggregateFunction measure = 2;
+     */
+    value: AggregateFunction;
+    case: "measure";
+  } | { case: undefined; value?: undefined };
 
   /**
    * Field names in depth-first order
@@ -71,8 +55,7 @@ export type ExpressionReference = Message<'substrait.ExpressionReference'> & {
  * Describes the message substrait.ExpressionReference.
  * Use `create(ExpressionReferenceSchema)` to create a new message.
  */
-export const ExpressionReferenceSchema: GenMessage<ExpressionReference> =
-  /*@__PURE__*/
+export const ExpressionReferenceSchema: GenMessage<ExpressionReference> = /*@__PURE__*/
   messageDesc(file_substrait_extended_expression, 0);
 
 /**
@@ -81,7 +64,7 @@ export const ExpressionReferenceSchema: GenMessage<ExpressionReference> =
  *
  * @generated from message substrait.ExtendedExpression
  */
-export type ExtendedExpression = Message<'substrait.ExtendedExpression'> & {
+export type ExtendedExpression = Message<"substrait.ExtendedExpression"> & {
   /**
    * Substrait version of the expression. Optional up to 0.17.0, required for later
    * versions.
@@ -139,6 +122,6 @@ export type ExtendedExpression = Message<'substrait.ExtendedExpression'> & {
  * Describes the message substrait.ExtendedExpression.
  * Use `create(ExtendedExpressionSchema)` to create a new message.
  */
-export const ExtendedExpressionSchema: GenMessage<ExtendedExpression> =
-  /*@__PURE__*/
+export const ExtendedExpressionSchema: GenMessage<ExtendedExpression> = /*@__PURE__*/
   messageDesc(file_substrait_extended_expression, 1);
+
