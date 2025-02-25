@@ -1,6 +1,6 @@
-/node_modules
+node_modules/
 /substrait-build
 /.idea
-/build
-/dist
+build/
+dist/
 *plan.json
