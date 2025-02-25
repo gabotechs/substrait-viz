@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "type": "module",
   "bin": {
-    "substrait-viz": "./bin/cli.js"
+    "substrait-viz": "./bin/cli.cjs"
   },
   "scripts": {
-    "build": "tsc -b && vite build"
+    "build": "tsc -b && vite build && npx tsc src/cli.ts --outFile bin/cli.cjs && chmod +x bin/cli.cjs"
   },
   "dependencies": {
     "@substrait-viz/react": "file:../lib",
@@ -18,14 +18,14 @@
     "**/*.css"
   ],
   "devDependencies": {
-    "@tailwindcss/vite": "^4.0.8",
     "@eslint/js": "^9.19.0",
+    "@tailwindcss/vite": "^4.0.8",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "eslint": "^9.19.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.18",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
     "globals": "^15.14.0",
     "prettier": "3.5.2",
     "typescript": "~5.7.2",

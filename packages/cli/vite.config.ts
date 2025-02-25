@@ -9,7 +9,7 @@ import { viteSingleFile } from 'vite-plugin-singlefile';
 export default defineConfig({
   plugins: [react(), libInjectCss(), tailwindcss(), viteSingleFile()],
   build: {
-    outDir: 'build', // Change output directory from 'dist' to 'build'
+    outDir: 'bin', // Change output directory from 'dist' to 'build'
     emptyOutDir: true, // Ensures that the build directory is cleaned before each build
   },
 });
