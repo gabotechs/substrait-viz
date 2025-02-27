@@ -3,7 +3,7 @@
 version: v2
 plugins:
   - local: protoc-gen-es
-    out: lib/gen
+    out: src/gen
     include_imports: true
     opt: target=ts
     include_wkt: true

@@ -4,3 +4,5 @@ node_modules/
 build/
 dist/
 *plan.json
+
+*storybook.log

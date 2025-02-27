@@ -3,15 +3,15 @@ import { Handle, Node, NodeProps, Position } from '@xyflow/react';
 import React, { memo } from 'react';
 import { Box, HEIGHT_ATTRIBUTE, WIDTH_ATTRIBUTE } from './components/Box';
 import { Entry } from './components/Entry';
-import { RelCommonViz } from './components/RelCommonViz';
+import { RelCommonViz } from './RelCommonViz';
 import {
   AggregateRel_Grouping,
   Expression,
   RelCommon,
 } from './gen/substrait/algebra_pb';
 import { StringList as StringList } from './components/StringList';
-import { GroupingViz } from './components/GroupingViz';
-import { serializeExpression } from './components/serializeExpression';
+import { GroupingViz } from './GroupingViz';
+import { printExpression } from './print/printExpression.ts';
 
 type Props = { $typeName: string } & Record<string, unknown>;
 
@@ -49,7 +49,7 @@ function SmartEntry({ k, v }: { k: string; v: unknown }) {
 
   {
     const n = parseObj<Expression>(v, 'substrait.Expression');
-    if (n) return entry(serializeExpression(n));
+    if (n) return entry(printExpression(n));
   }
 
   {
@@ -65,7 +65,7 @@ function SmartEntry({ k, v }: { k: string; v: unknown }) {
 
   {
     const n = parseObjArray<Expression>(v, 'substrait.Expression');
-    if (n) return entry(<StringList names={n.map(serializeExpression)} />);
+    if (n) return entry(<StringList names={n.map(printExpression)} />);
   }
 
   return entry(JSON.stringify(trimJsonDepth(v, 2)));

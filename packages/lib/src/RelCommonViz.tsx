@@ -1,5 +1,5 @@
 import { HTMLProps } from 'react';
-import { RelCommon } from '../gen/substrait/algebra_pb';
+import { RelCommon } from './gen/substrait/algebra_pb';
 
 export interface RelCommonVizProps extends HTMLProps<HTMLSpanElement> {
   relCommon: RelCommon;

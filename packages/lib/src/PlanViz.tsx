@@ -3,7 +3,7 @@ import { NodeProps, Node, Handle, Position } from '@xyflow/react';
 import { Plan } from './gen/substrait/plan_pb';
 import { Entry } from './components/Entry';
 import { Box } from './components/Box';
-import { SimpleExtensionDeclarationViz } from './components/SimpleExtensionDeclarationViz';
+import { SimpleExtensionDeclarationViz } from './SimpleExtensionDeclarationViz';
 
 function Component({ data }: NodeProps<Node<Plan>>) {
   const {

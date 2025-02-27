@@ -1,6 +1,6 @@
-import { Type } from '../gen/substrait/type_pb';
+import { Type } from '../gen/substrait/type_pb.ts';
 
-export function serializeType(t?: Type): string {
+export function printType(t?: Type): string {
   if (t == null) return '';
 
   const type = t.kind;

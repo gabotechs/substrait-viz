@@ -11,6 +11,7 @@ import {
   BezierEdge,
   useReactFlow,
   ReactFlowProvider,
+  ReactFlowProps,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { fromJson } from '@bufbuild/protobuf';
@@ -26,6 +27,7 @@ import PlanViz from './PlanViz';
 import AnyViz from './AnyViz';
 import { getLayoutedElements } from './autoLayout';
 import { useTheme } from './theme/useTheme';
+import './styles.css';
 
 const nodeTypes: Record<NodeType, NodeTypes[string]> = {
   plan: PlanViz,
@@ -57,20 +59,21 @@ const edgeTypes = {
   bezier: BezierEdge,
 };
 
-export interface SubstraitVizProps {
+export interface SubstraitVizProps
+  extends Pick<ReactFlowProps, 'style' | 'className'> {
   plan: string;
   theme?: SubstraitVizTheme;
 }
 
-function SubstraitVizPrivate(props: SubstraitVizProps) {
+function SubstraitVizPrivate({ plan, ...props }: SubstraitVizProps) {
   const [layoutReady, setLayoutReady] = React.useState(false);
   const [initNodes, initEdges] = React.useMemo(
     () =>
       compilePlan(
-        fromJson(PlanSchema, JSON.parse(props.plan)),
+        fromJson(PlanSchema, JSON.parse(plan)),
         new CompileContext({ xDelta: 0, yDelta: 0 }),
       ),
-    [props.plan],
+    [plan],
   );
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initNodes);
@@ -102,6 +105,7 @@ function SubstraitVizPrivate(props: SubstraitVizProps) {
 
   return (
     <ReactFlow
+      {...props}
       nodes={nodes}
       edges={edges}
       nodeTypes={nodeTypes}

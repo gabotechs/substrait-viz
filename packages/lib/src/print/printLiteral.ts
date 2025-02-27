@@ -1,8 +1,6 @@
-import { Expression_Literal } from '../gen/substrait/algebra_pb';
+import { Expression_Literal } from '../gen/substrait/algebra_pb.ts';
 
-export function serializeLiteral(
-  expressionLiteral?: Expression_Literal,
-): string {
+export function printLiteral(expressionLiteral?: Expression_Literal): string {
   if (expressionLiteral == null) return '';
   const lit = expressionLiteral.literalType;
 
@@ -54,15 +52,15 @@ export function serializeLiteral(
         (Number(lit.value.value) * 1e3) / 1 ** lit.value.precision,
       ).toString();
     case 'struct':
-      return `(${lit.value.fields.map(serializeLiteral).join(', ')})`;
+      return `(${lit.value.fields.map(printLiteral).join(', ')})`;
     case 'map':
-      return `{${lit.value.keyValues.map(({ key, value }) => `"${serializeLiteral(key)}": ${serializeLiteral(value)}`).join(', ')}}`;
+      return `{${lit.value.keyValues.map(({ key, value }) => `"${printLiteral(key)}": ${printLiteral(value)}`).join(', ')}}`;
     case 'uuid':
       return lit.value.toString();
     case 'null':
       return 'null';
     case 'list':
-      return `[${lit.value.values.map(serializeLiteral).join(', ')}]`;
+      return `[${lit.value.values.map(printLiteral).join(', ')}]`;
     case 'emptyList':
       return '[]';
     case 'emptyMap':

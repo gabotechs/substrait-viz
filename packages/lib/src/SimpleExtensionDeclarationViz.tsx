@@ -1,5 +1,5 @@
 import { HTMLProps } from 'react';
-import { SimpleExtensionDeclaration } from '../gen/substrait/extensions/extensions_pb';
+import { SimpleExtensionDeclaration } from './gen/substrait/extensions/extensions_pb';
 
 export interface SimpleExtensionDeclarationVizProps
   extends HTMLProps<HTMLSpanElement> {
