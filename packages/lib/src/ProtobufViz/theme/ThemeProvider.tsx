@@ -1,9 +1,9 @@
 import React from 'react';
-import { defaultTheme, SubstraitVizTheme } from './SubstraitVizTheme';
-import { ThemeContext } from './ThemeContext';
+import { defaultTheme, ProtobufVizTheme } from './ProtobufVizTheme.ts';
+import { ThemeContext } from './ThemeContext.tsx';
 
 export const ThemeProvider = (
-  props: React.PropsWithChildren<{ theme?: Partial<SubstraitVizTheme> }>,
+  props: React.PropsWithChildren<{ theme?: Partial<ProtobufVizTheme> }>,
 ) => {
   const theme = React.useMemo(
     () => ({ ...defaultTheme, ...props.theme }),

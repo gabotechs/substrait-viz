@@ -26,13 +26,7 @@ import {
 } from './gen/substrait/algebra_pb.ts';
 import { GenMessage } from '@bufbuild/protobuf/codegenv1';
 import { Message } from '@bufbuild/protobuf';
-import { CompileConfig } from './compile.ts';
-
-function buildConfig<G extends GenMessage<Message>>(
-  cfg: CompileConfig<G>,
-): CompileConfig<G> {
-  return cfg;
-}
+import { CompileConfig } from './ProtobufViz/compile.ts';
 
 export const CONFIG = buildConfig({
   /**
@@ -65,8 +59,18 @@ export const CONFIG = buildConfig({
     ExchangeRelSchema,
     ExpandRelSchema,
   ],
+  /**
+   * Skip some nodes in the graph, passing through one of the children directly.
+   * If this function returns undefined, no pass through is done.
+   */
   passThrough: n => {
     if (n.$typeName === 'substrait.Rel') return n.relType.value;
     if (n.$typeName === 'substrait.PlanRel') return n.relType.value;
   },
 });
+
+function buildConfig<G extends GenMessage<Message>>(
+  cfg: CompileConfig<G>,
+): CompileConfig<G> {
+  return cfg;
+}

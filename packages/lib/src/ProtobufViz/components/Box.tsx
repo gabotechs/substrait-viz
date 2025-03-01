@@ -1,7 +1,8 @@
 import React from 'react';
-import { useTheme } from '../theme/useTheme';
-import { Tag } from './Tag';
-import { HEIGHT_ATTRIBUTE, WIDTH_ATTRIBUTE } from '../compile';
+
+import { useTheme } from '../theme/useTheme.ts';
+import { Tag } from './Tag.tsx';
+import { HEIGHT_ATTRIBUTE, WIDTH_ATTRIBUTE } from '../compile.ts';
 
 export function Box({
   children,
@@ -9,7 +10,7 @@ export function Box({
   tag,
 }: React.PropsWithChildren<{ tag: string; node: Record<string, unknown> }>) {
   const ref = React.useRef<HTMLDivElement>(null);
-  const { boxBorder } = useTheme();
+  const { boxBorder, boxBackground } = useTheme();
   React.useEffect(() => {
     if (ref.current) {
       // This will inject the __height and __width attributes into the React Flow
@@ -23,11 +24,11 @@ export function Box({
   return (
     <div
       ref={ref}
-      className={`px-4 py-2 shadow-md rounded-md flex-col bg-white border-2 overflow-auto`}
-      style={{ borderColor: boxBorder }}
+      className={`px-4 py-2 shadow-md rounded-md flex-col border-2 overflow-auto`}
+      style={{ borderColor: boxBorder, backgroundColor: boxBackground }}
     >
       <Tag type={tag} />
-      <div className="h-1" />
+      <div className="h-2" />
       {children}
     </div>
   );

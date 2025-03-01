@@ -2,7 +2,7 @@ import { Edge, Node } from '@xyflow/react';
 import { Message } from '@bufbuild/protobuf';
 import { GenMessage } from '@bufbuild/protobuf/codegenv1';
 
-import { cast, castArr, castOneOf, castOneOfArr } from './cast.ts';
+import { castMsg, castMsgArr, castOneOf, castOneOfArr } from './cast.ts';
 
 export interface CompileConfig<G extends GenMessage<Message>> {
   nodes: readonly G[];
@@ -19,7 +19,7 @@ export type NodeExt = {
   [HEIGHT_ATTRIBUTE]?: number;
 };
 
-type UnderlyingMessage<G extends GenMessage<Message>> =
+export type UnderlyingMessage<G extends GenMessage<Message>> =
   G extends GenMessage<infer N> ? N : never;
 
 export class Compiler<N extends Message, G extends GenMessage<N>> {
@@ -70,10 +70,10 @@ export class Compiler<N extends Message, G extends GenMessage<N>> {
   *children(obj: Record<string, unknown>): Generator<[string, N]> {
     for (const [k, v] of Object.entries(obj)) {
       for (const { typeName } of this.cfg.nodes) {
-        const node = cast<N>(typeName, v);
+        const node = castMsg<N>(typeName, v);
         if (node) yield [k, node];
 
-        for (const [i, node] of castArr<N>(typeName, v)?.entries() ?? []) {
+        for (const [i, node] of castMsgArr<N>(typeName, v)?.entries() ?? []) {
           yield [`${k} (${i})`, node];
         }
 

@@ -11,7 +11,7 @@ const layoutOptions = {
   'elk.spacing.nodeNode': '200',
 };
 
-export async function getLayoutedElements(
+export async function layout(
   nodes: Node[],
   edges: Edge[],
 ): Promise<[Node[], Edge[]]> {
