@@ -5,5 +5,10 @@
   "workspaces": [
     "packages/lib",
     "packages/cli"
-  ]
+  ],
+  "scripts": {
+    "check": "npm run check --workspaces",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces"
+  }
 }

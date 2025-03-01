@@ -14,7 +14,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "gen": "./gen.sh",
-    "test": "vitest",
+    "test": "vitest run",
     "prepublishOnly": "npm run build",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"

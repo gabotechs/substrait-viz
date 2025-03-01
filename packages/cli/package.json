@@ -6,7 +6,9 @@
     "substrait-viz": "./bin/cli.cjs"
   },
   "scripts": {
-    "build": "tsc -b && vite build && npx tsc src/cli.ts --outFile bin/cli.cjs && chmod +x bin/cli.cjs"
+    "check": "echo 'nothing to do'",
+    "test": "echo 'nothing to do'",
+    "build": "tsc -b && vite build && tsc src/cli.ts --outFile bin/cli.cjs --skipLibCheck && chmod +x bin/cli.cjs"
   },
   "dependencies": {
     "@substrait-viz/react": "file:../lib",

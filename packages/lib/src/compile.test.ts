@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest';
 import { fromJson } from '@bufbuild/protobuf';
 import { PlanSchema } from './gen/substrait/plan_pb.ts';
-import { Compiler } from './viz/compile.ts';
+import { Compiler } from './ProtobufViz/compile.ts';
 
 import { CONFIG } from './config.ts';
 import plan1 from './.test_data/plan1.json?raw';
