@@ -15,44 +15,20 @@ import {
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { fromJson } from '@bufbuild/protobuf';
+
 import { PlanSchema } from './gen/substrait/plan_pb';
 import { ThemeProvider } from './theme/ThemeProvider';
 import { SubstraitVizTheme } from './theme/SubstraitVizTheme';
-import {
-  CompileContext,
-  compilePlan as compilePlan,
-  NodeType,
-} from './compilePlan';
-import PlanViz from './PlanViz';
-import AnyViz from './AnyViz';
+import { Compiler } from './compile.ts';
 import { getLayoutedElements } from './autoLayout';
 import { useTheme } from './theme/useTheme';
+import { CONFIG } from './config.ts';
+import SmartNode from './SmartNode.tsx';
+
 import './styles.css';
 
-const nodeTypes: Record<NodeType, NodeTypes[string]> = {
-  plan: PlanViz,
-  read: AnyViz,
-  filter: AnyViz,
-  fetch: AnyViz,
-  aggregate: AnyViz,
-  sort: AnyViz,
-  join: AnyViz,
-  project: AnyViz,
-  set: AnyViz,
-  extensionSingle: AnyViz,
-  extensionMulti: AnyViz,
-  extensionLeaf: AnyViz,
-  cross: AnyViz,
-  reference: AnyViz,
-  write: AnyViz,
-  ddl: AnyViz,
-  window: AnyViz,
-  expand: AnyViz,
-  hashJoin: AnyViz,
-  exchange: AnyViz,
-  mergeJoin: AnyViz,
-  nestedLoopJoin: AnyViz,
-  root: AnyViz,
+const nodeTypes: Record<string, NodeTypes[string]> = {
+  node: SmartNode,
 };
 
 const edgeTypes = {
@@ -69,10 +45,7 @@ function SubstraitVizPrivate({ plan, ...props }: SubstraitVizProps) {
   const [layoutReady, setLayoutReady] = React.useState(false);
   const [initNodes, initEdges] = React.useMemo(
     () =>
-      compilePlan(
-        fromJson(PlanSchema, JSON.parse(plan)),
-        new CompileContext({ xDelta: 0, yDelta: 0 }),
-      ),
+      Compiler.fromCfg(CONFIG).compile(fromJson(PlanSchema, JSON.parse(plan))),
     [plan],
   );
 
@@ -88,8 +61,8 @@ function SubstraitVizPrivate({ plan, ...props }: SubstraitVizProps) {
         setEdges(edges);
       }
 
-      window.requestAnimationFrame(() => {
-        fitView();
+      window.requestAnimationFrame(async () => {
+        await fitView();
         setLayoutReady(true);
       });
     });

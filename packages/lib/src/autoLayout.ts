@@ -1,6 +1,6 @@
 import { Edge, Node } from '@xyflow/react';
 import ELK, { ElkExtendedEdge } from 'elkjs/lib/elk.bundled.js';
-import { HEIGHT_ATTRIBUTE, WIDTH_ATTRIBUTE } from './components/Box';
+import { HEIGHT_ATTRIBUTE, WIDTH_ATTRIBUTE } from './compile.ts';
 
 const elk = new ELK();
 

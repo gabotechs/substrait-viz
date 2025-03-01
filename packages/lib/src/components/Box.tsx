@@ -1,9 +1,7 @@
 import React from 'react';
 import { useTheme } from '../theme/useTheme';
 import { Tag } from './Tag';
-
-export const WIDTH_ATTRIBUTE = '__width';
-export const HEIGHT_ATTRIBUTE = '__height';
+import { HEIGHT_ATTRIBUTE, WIDTH_ATTRIBUTE } from '../compile';
 
 export function Box({
   children,

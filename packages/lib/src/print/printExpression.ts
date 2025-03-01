@@ -2,6 +2,7 @@ import { Expression } from '../gen/substrait/algebra_pb.ts';
 import { printFunctionArg } from './printFunctionArg.ts';
 import { printLiteral } from './printLiteral.ts';
 import { printType } from './printType.ts';
+import { printReferenceSegment } from './printReferenceSegment.ts';
 
 export function printExpression(expr?: Expression): string {
   if (expr == null) return '';
@@ -39,20 +40,34 @@ export function printExpression(expr?: Expression): string {
     case 'windowFunction':
       return `$f${rex.value.functionReference}(${rex.value.arguments.map(printFunctionArg).join(', ')} | TODO: other window function fields)`;
 
-    case 'selection':
-      switch (rex.value.rootType.case) {
-        case 'expression':
-          return `selection[${printExpression(rex.value.rootType.value)}]`;
-        case 'rootReference':
-          return `selection[root reference]`;
-        case 'outerReference':
-          return `selection[outer reference ${rex.value.rootType.value.stepsOut} steps]`;
-        case undefined:
-          return 'undefined';
+    case 'selection': {
+      let serial = 'selection(';
+      if (rex.value.rootType.case === 'expression') {
+        serial += printExpression(rex.value.rootType.value);
+      } else if (rex.value.rootType.case === 'rootReference') {
+        serial += 'root';
+      } else if (rex.value.rootType.case === 'outerReference') {
+        serial += 'outer';
+      } else if (rex.value.rootType.case === undefined) {
+        serial += 'undefined';
       }
 
-      // TODO
-      return `${rex.case} [TODO]`;
+      serial += ', ';
+
+      if (rex.value.referenceType.case === 'maskedReference') {
+        serial += 'masked';
+      } else if (rex.value.referenceType.case === 'directReference') {
+        serial += printReferenceSegment(rex.value.referenceType.value);
+      } else if (rex.value.rootType.case === undefined) {
+        serial += 'undefined';
+      } else {
+        //
+      }
+
+      serial += ')';
+
+      return serial;
+    }
 
     case 'singularOrList':
       // TODO
