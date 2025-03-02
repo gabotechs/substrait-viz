@@ -22,7 +22,7 @@ export default defineConfig({
       input: Object.fromEntries(
         glob
           .sync('src/**/*.{ts,tsx}', {
-            ignore: ['src/**/*.d.ts'],
+            ignore: ['src/**/*.d.ts', 'src/**/*.stories.tsx'],
           })
           .map(file => [
             // The name of the entry point
