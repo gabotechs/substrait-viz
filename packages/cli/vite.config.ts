@@ -7,7 +7,6 @@ export default defineConfig({
   base: './',
   plugins: [react()],
   build: {
-    outDir: 'bin',
     rollupOptions: {
       output: {
         entryFileNames: 'index.js', // Output main JS file as index.js
