@@ -6,13 +6,20 @@ import {
   castAnyMsgArr,
   castAnyOneOf,
   castAnyOneOfArr,
+  castNumber,
+  castNumberList,
   castString,
   castStringList,
 } from './cast.ts';
 import { StringList } from './components/StringList.tsx';
 import { Entry } from './components/Entry.tsx';
-import { useTheme } from './theme/useTheme.ts';
 import { Tag } from './components/Tag.tsx';
+import { useRenderConfig } from './render.ts';
+import { useTheme } from './theme.ts';
+import { NumberList } from './components/NumberList.tsx';
+import { NodeExt, TARGET_HANDLE } from './compile.ts';
+import { stringify } from './stringify.ts';
+import { Handle, Position } from '@xyflow/react';
 
 function Field({ data }: { data: unknown }) {
   {
@@ -22,6 +29,16 @@ function Field({ data }: { data: unknown }) {
 
   {
     const n = castString(data);
+    if (n) return n;
+  }
+
+  {
+    const n = castNumberList(data);
+    if (n) return <NumberList entries={n} />;
+  }
+
+  {
+    const n = castNumber(data);
     if (n) return n;
   }
 
@@ -59,15 +76,34 @@ function Field({ data }: { data: unknown }) {
       );
   }
 
-  return JSON.stringify(trimJsonDepth(data, 2));
+  return stringify(trimJsonDepth(data, 2));
 }
 
 function Msg({ msg }: { msg: Message }) {
-  const { boxBorder } = useTheme();
+  const { renderField } = useRenderConfig();
+  const theme = useTheme();
+
+  const msgExt = msg as Message & NodeExt;
+  if (msgExt[TARGET_HANDLE]) {
+    return (
+      <div className={'font-bold'} style={{ color: theme.highlightText }}>
+        <Handle
+          type={'source'}
+          position={Position.Right}
+          id={msgExt[TARGET_HANDLE]}
+        />
+        {'*' + msgExt[TARGET_HANDLE]}
+      </div>
+    );
+  }
+
+  const custom = renderField?.({ msg, theme });
+  if (custom) return custom;
+
   return (
     <div
       className="relative flex flex-col p-2 border-2 rounded-md gap-2"
-      style={{ borderColor: boxBorder }}
+      style={{ borderColor: theme.boxBorder }}
     >
       <Tag type={msg.$typeName} />
       <div className={'h-2'} />

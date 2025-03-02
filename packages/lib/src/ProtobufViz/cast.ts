@@ -105,6 +105,18 @@ export function castOneOfArr<M extends Message>(
   }
 }
 
+export function castNumber(obj: unknown): number | undefined {
+  if (typeof obj === 'number') return obj;
+}
+
+export function castNumberList(obj: unknown): number[] | undefined {
+  if (Array.isArray(obj)) {
+    if (obj.length === 0) return obj;
+    if (castNumber(obj[0])) return obj;
+  }
+  return undefined;
+}
+
 export function castString(obj: unknown): string | undefined {
   if (typeof obj === 'string') return obj;
 }

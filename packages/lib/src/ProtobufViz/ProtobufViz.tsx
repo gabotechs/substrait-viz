@@ -3,6 +3,7 @@ import {
   Background,
   BackgroundVariant,
   BezierEdge,
+  BezierEdgeProps,
   Controls,
   MiniMap,
   NodeTypes,
@@ -16,20 +17,29 @@ import {
 import '@xyflow/react/dist/style.css';
 import { Message } from '@bufbuild/protobuf';
 
-import { ThemeProvider } from './theme/ThemeProvider.tsx';
-import { ProtobufVizTheme } from './theme/ProtobufVizTheme.ts';
-import { useTheme } from './theme/useTheme.ts';
+import './styles.css';
 import { CompileConfig, Compiler, UnderlyingMessage } from './compile.ts';
 import { layout } from './layout.ts';
 import SmartNode from './SmartNode.tsx';
 import { GenMessage } from '@bufbuild/protobuf/codegenv1';
+import { RenderConfig, RenderConfigContext } from './render.ts';
+import {
+  defaultTheme,
+  ProtobufVizTheme,
+  ThemeContext,
+  useTheme,
+} from './theme.ts';
 
 const nodeTypes: Record<string, NodeTypes[string]> = {
   node: SmartNode,
 };
 
+function CustomBezierEdge(props: BezierEdgeProps) {
+  return <BezierEdge {...props} />;
+}
+
 const edgeTypes = {
-  bezier: BezierEdge,
+  bezier: CustomBezierEdge,
 };
 
 type Extra = Pick<ReactFlowProps, 'style' | 'className'>;
@@ -37,7 +47,8 @@ type Extra = Pick<ReactFlowProps, 'style' | 'className'>;
 export interface ProtobufVizProps<G extends GenMessage<Message>> extends Extra {
   config: CompileConfig<G>;
   rootNode: UnderlyingMessage<G>;
-  theme?: ProtobufVizTheme;
+  render?: RenderConfig;
+  theme?: Partial<ProtobufVizTheme>;
 }
 
 function Private<G extends GenMessage<Message>>({
@@ -56,23 +67,21 @@ function Private<G extends GenMessage<Message>>({
 
   const { fitView } = useReactFlow();
 
-  const onLayout = React.useCallback(() => {
-    layout(nodes, edges).then(([nodes, edges]) => {
-      if (nodes.length > 0 && edges.length > 0) {
-        setNodes(nodes);
-        setEdges(edges);
-      }
-
-      window.requestAnimationFrame(async () => {
-        await fitView();
-        setLayoutReady(true);
-      });
-    });
-  }, [nodes, edges, setNodes, setEdges, fitView]);
-
+  // In order to know the dimensions of each node, first, they need
+  // to be placed on screen, and the <Box/> component will inject
+  // at initialization the clientWidth and client Height of each node.
+  // We need to let some time for this to happen.
   useLayoutEffect(() => {
-    // Dirty trick to allow all the nodes to be placed so that they can be layed out appropriately.
-    setTimeout(() => onLayout(), 1);
+    setTimeout(async () => {
+      const [n, e] = await layout(nodes, edges);
+      setNodes(n);
+      setEdges(e);
+
+      // Let some time for the nodes to be placed.
+      await new Promise(res => setTimeout(res, 10));
+      setLayoutReady(true);
+      await fitView({ duration: 400 });
+    }, 0);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -87,7 +96,12 @@ function Private<G extends GenMessage<Message>>({
       edgeTypes={edgeTypes}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
-      fitView
+      zoomOnDoubleClick={false}
+      onPaneClick={() => fitView({ duration: 400 })}
+      onNodeDoubleClick={async (_, n) => {
+        await fitView({ nodes: [n], duration: 400 });
+      }}
+      minZoom={0.1}
     >
       {!layoutReady && (
         <div className="absolute z-10 w-full h-full" style={{ background }} />
@@ -107,11 +121,18 @@ function Private<G extends GenMessage<Message>>({
 export function ProtobufViz<G extends GenMessage<Message>>(
   props: ProtobufVizProps<G>,
 ) {
+  const theme = React.useMemo(
+    () => ({ ...defaultTheme, ...props.theme }),
+    [props.theme],
+  );
+
   return (
-    <ThemeProvider theme={props.theme}>
-      <ReactFlowProvider>
-        <Private {...props} />
-      </ReactFlowProvider>
-    </ThemeProvider>
+    <ThemeContext.Provider value={theme}>
+      <RenderConfigContext.Provider value={props.render ?? {}}>
+        <ReactFlowProvider>
+          <Private {...props} />
+        </ReactFlowProvider>
+      </RenderConfigContext.Provider>
+    </ThemeContext.Provider>
   );
 }
