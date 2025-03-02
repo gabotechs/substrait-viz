@@ -1,4 +1,4 @@
-module cli
+module substrait-viz
 
 go 1.23
 
