@@ -11,7 +11,7 @@ export function Box({
 }: React.PropsWithChildren<{ tag: string; node: Record<string, unknown> }>) {
   const ref = React.useRef<HTMLDivElement>(null);
   const { boxBorder, boxBackground } = useTheme();
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     if (ref.current) {
       // This will inject the __height and __width attributes into the React Flow
       // nodes so that the autolayout function can know about the dimensions of

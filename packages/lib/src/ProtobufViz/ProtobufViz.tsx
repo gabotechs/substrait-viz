@@ -6,6 +6,7 @@ import {
   BezierEdgeProps,
   Controls,
   MiniMap,
+  Node,
   NodeTypes,
   ReactFlow,
   ReactFlowProps,
@@ -18,7 +19,13 @@ import '@xyflow/react/dist/style.css';
 import { Message } from '@bufbuild/protobuf';
 
 import './styles.css';
-import { CompileConfig, Compiler, UnderlyingMessage } from './compile.ts';
+import {
+  CompileConfig,
+  Compiler,
+  HEIGHT_ATTRIBUTE,
+  UnderlyingMessage,
+  WIDTH_ATTRIBUTE,
+} from './compile.ts';
 import { layout } from './layout.ts';
 import SmartNode from './SmartNode.tsx';
 import { GenMessage } from '@bufbuild/protobuf/codegenv1';
@@ -72,7 +79,19 @@ function Private<G extends GenMessage<Message>>({
   // at initialization the clientWidth and client Height of each node.
   // We need to let some time for this to happen.
   useLayoutEffect(() => {
-    setTimeout(async () => {
+    function allNodesPlaced(ns: Node[]): boolean {
+      for (const n of ns) {
+        if (n.data[WIDTH_ATTRIBUTE] === undefined) return false;
+        if (n.data[HEIGHT_ATTRIBUTE] === undefined) return false;
+      }
+      return true;
+    }
+
+    (async function f() {
+      while (!allNodesPlaced(nodes)) {
+        await new Promise(res => setTimeout(res, 10));
+      }
+
       const [n, e] = await layout(nodes, edges);
       setNodes(n);
       setEdges(e);
@@ -81,7 +100,7 @@ function Private<G extends GenMessage<Message>>({
       await new Promise(res => setTimeout(res, 10));
       setLayoutReady(true);
       await fitView({ duration: 400 });
-    }, 0);
+    })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
