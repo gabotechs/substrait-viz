@@ -10,9 +10,12 @@ export function StringList({
   ...rest
 }: StringListProps) {
   return (
-    <div className={`${className} flex flex-col whitespace-nowrap`} {...rest}>
+    <div
+      className={`${className} flex flex-col gap-2 whitespace-nowrap`}
+      {...rest}
+    >
       {entries.map((name, i) => (
-        <span key={i}>- {name}</span>
+        <span key={i}>{name}</span>
       ))}
     </div>
   );
