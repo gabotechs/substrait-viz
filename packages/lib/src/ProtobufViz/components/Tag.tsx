@@ -1,5 +1,5 @@
 import React, { HTMLProps } from 'react';
-import { useTheme } from '../theme/useTheme.ts';
+import { useTheme } from '../theme.ts';
 
 export interface TagProps extends HTMLProps<HTMLDivElement> {
   type: string;

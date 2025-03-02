@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { useTheme } from '../theme/useTheme.ts';
 import { Tag } from './Tag.tsx';
 import { HEIGHT_ATTRIBUTE, WIDTH_ATTRIBUTE } from '../compile.ts';
+import { useTheme } from '../theme.ts';
 
 export function Box({
   children,
