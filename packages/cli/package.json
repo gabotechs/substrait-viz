@@ -3,12 +3,12 @@
   "version": "0.0.0",
   "type": "module",
   "bin": {
-    "substrait-viz": "./bin/cli.cjs"
+    "substrait-viz": "./bin/substrait-viz"
   },
   "scripts": {
     "check": "echo 'nothing to do'",
     "test": "echo 'nothing to do'",
-    "build": "tsc -b && vite build && tsc src/cli.ts --outFile bin/cli.cjs --skipLibCheck && chmod +x bin/cli.cjs"
+    "build": "tsc -b && vite build && go build -o bin/substrait-viz"
   },
   "dependencies": {
     "@substrait-viz/react": "file:../lib",
