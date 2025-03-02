@@ -28,7 +28,7 @@ import { GenMessage } from '@bufbuild/protobuf/codegenv1';
 import { Message } from '@bufbuild/protobuf';
 import { CompileConfig } from './ProtobufViz/compile.ts';
 
-export const CONFIG = buildConfig({
+export const CUSTOM_COMPILE = buildConfig({
   /**
    * All of these will be treated as nodes in the React flow graph.
    */
