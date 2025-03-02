@@ -1,4 +1,5 @@
 import { Expression_Literal } from '../gen/substrait/algebra_pb.ts';
+import { stringify } from '../ProtobufViz/stringify.ts';
 
 export function printLiteral(expressionLiteral?: Expression_Literal): string {
   if (expressionLiteral == null) return '';
@@ -66,7 +67,7 @@ export function printLiteral(expressionLiteral?: Expression_Literal): string {
     case 'emptyMap':
       return '{}';
     case 'userDefined':
-      return `User Defined: (${JSON.stringify(lit.value.val.value)})`;
+      return `User Defined: (${stringify(lit.value.val.value)})`;
     case undefined:
       return '';
   }
