@@ -1,12 +1,18 @@
 import { defineConfig } from 'vite';
 
 import react from '@vitejs/plugin-react-swc';
-import { viteSingleFile } from 'vite-plugin-singlefile';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), viteSingleFile()],
+  base: './',
+  plugins: [react()],
   build: {
     outDir: 'bin',
+    rollupOptions: {
+      output: {
+        entryFileNames: 'index.js', // Output main JS file as index.js
+        assetFileNames: 'index.css', // Output CSS file as index.css
+      },
+    },
   },
 });

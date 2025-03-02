@@ -6,9 +6,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"io"
+	"net/http"
 	"os"
 	"os/exec"
-	"path/filepath"
 	"runtime"
 
 	"github.com/spf13/cobra"
@@ -16,6 +16,15 @@ import (
 
 //go:embed bin/index.html
 var indexHtml []byte
+
+//go:embed bin/index.js
+var indexJs []byte
+
+//go:embed bin/index.css
+var indexCss []byte
+
+//go:embed public/logo.svg
+var logo []byte
 
 var root = &cobra.Command{
 	Use:     "substrait-viz",
@@ -53,14 +62,32 @@ Visualize Substrait plans using a flow diagram
 			return err
 		}
 
-		temp := filepath.Join(os.TempDir(), "index.html")
+		port := 8080
+		indexJs = bytes.ReplaceAll(indexJs, []byte(ToReplace), append([]byte(ReplacePrefix), marshaled...))
 
-		rendered := bytes.ReplaceAll(indexHtml, []byte(ToReplace), append([]byte(ReplacePrefix), marshaled...))
-		err = os.WriteFile(temp, rendered, 0o600)
-		if err != nil {
-			return err
-		}
-		return openInBrowser(temp)
+		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("Content-Type", "text/html")
+			_, _ = w.Write(indexHtml)
+		})
+		http.HandleFunc("/index.js", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("Content-Type", "application/javascript")
+			_, _ = w.Write(indexJs)
+		})
+		http.HandleFunc("/index.css", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("Content-Type", "text/css")
+			_, _ = w.Write(indexCss)
+		})
+		http.HandleFunc("/logo.svg", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("Content-Type", "image/svg+xml")
+			_, _ = w.Write(logo)
+		})
+
+		go func() {
+			url := fmt.Sprintf("http://localhost:%d/", port)
+			_, _ = fmt.Fprintln(os.Stderr, "Serving on", url+"...")
+			_ = openInBrowser(url)
+		}()
+		return http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
 	},
 }
 
