@@ -17,7 +17,9 @@ export function SubstraitViz({ plan, ...props }: SubstraitVizProps) {
     <ProtobufViz
       config={CUSTOM_COMPILE}
       render={RENDER_CONFIG}
-      rootNode={fromJsonString(PlanSchema, plan)}
+      rootNode={fromJsonString(PlanSchema, plan, {
+        ignoreUnknownFields: false,
+      })}
       {...props}
     />
   );

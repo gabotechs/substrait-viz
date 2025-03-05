@@ -19,11 +19,11 @@ import {
   Expression_MaskExpression_StructItem,
   Expression_ReferenceSegment,
   FunctionArgument,
+  Rel,
   RelCommon_Direct,
 } from './gen/substrait/algebra_pb.ts';
 import { CustomRootReference } from './CustomRootReference.tsx';
 import { CustomReferenceSegment } from './CustomReferenceSegment.tsx';
-import SmartField from './ProtobufViz/SmartField.tsx';
 import { NamedStruct, Type, Type_Struct } from './gen/substrait/type_pb.ts';
 import { CustomFieldReference } from './CustomFieldReference.tsx';
 import { CustomType } from './CustomType.tsx';
@@ -31,6 +31,7 @@ import { CustomNamedStruct } from './CustomNamedStruct.tsx';
 import { CustomLiteral } from './CustomLiteral.tsx';
 import { CustomStructItem } from './CustomStructItem.tsx';
 import { CustomDirect } from './CustomDirect.tsx';
+import SmartNode from './ProtobufViz/SmartNode.tsx';
 
 export const RENDER_CONFIG: RenderConfig = {
   renderField(props) {
@@ -66,17 +67,17 @@ export const RENDER_CONFIG: RenderConfig = {
     /* prettier-ignore */
     {
       const casted = castProps<Expression>('substrait.Expression', props);
-      if (casted) return <SmartField data={casted.msg.rexType} />;
+      if (casted) return <SmartNode {...props} data={casted.msg.rexType} />;
     }
     /* prettier-ignore */
     {
       const casted = castProps<AggregateRel_Grouping>('substrait.AggregateRel.Grouping', props);
-      if (casted) return <SmartField data={casted.msg.groupingExpressions} />;
+      if (casted) return <SmartNode {...props} data={casted.msg.groupingExpressions} />;
     }
     /* prettier-ignore */
     {
       const casted = castProps<AggregateRel_Measure>('substrait.AggregateRel.Measure', props);
-      if (casted && !casted.msg.filter) return <SmartField data={casted.msg.measure} />;
+      if (casted && !casted.msg.filter) return <SmartNode {...props} data={casted.msg.measure} />;
     }
     /* prettier-ignore */
     {
@@ -91,27 +92,32 @@ export const RENDER_CONFIG: RenderConfig = {
     /* prettier-ignore */
     {
       const casted = castProps<Type_Struct>('substrait.Type.Struct', props);
-      if (casted) return <SmartField data={casted.msg.types}/>
+      if (casted) return <SmartNode  {...props} data={casted.msg.types} />;
     }
     /* prettier-ignore */
     {
       const casted = castProps<NamedStruct>('substrait.NamedStruct', props);
-      if (casted) return <CustomNamedStruct {...casted}/>
+      if (casted) return <CustomNamedStruct {...casted} />;
     }
     /* prettier-ignore */
     {
       const casted = castProps<FunctionArgument>('substrait.FunctionArgument', props);
-      if (casted) return <SmartField data={casted.msg.argType}/>
+      if (casted) return <SmartNode {...props} data={casted.msg.argType} />;
     }
     /* prettier-ignore */
     {
       const casted = castProps<Expression_Literal>('substrait.Expression.Literal', props);
-      if (casted) return <CustomLiteral {...casted}/>
+      if (casted) return <CustomLiteral {...casted} />;
     }
     /* prettier-ignore */
     {
       const casted = castProps<Expression_MaskExpression_StructItem>('substrait.Expression.MaskExpression.StructItem', props);
-      if (casted) return <CustomStructItem {...casted}/>
+      if (casted) return <CustomStructItem {...casted} />;
+    }
+    /* prettier-ignore */
+    {
+      const casted = castProps<Rel>('substrait.Rel', props);
+      if (casted) return <SmartNode {...props} data={casted.msg.relType} />;
     }
   },
 };

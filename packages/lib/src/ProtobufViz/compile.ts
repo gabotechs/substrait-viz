@@ -2,21 +2,20 @@ import { Edge, Node } from '@xyflow/react';
 import { Message } from '@bufbuild/protobuf';
 import { GenMessage } from '@bufbuild/protobuf/codegenv1';
 
-import { castMsg, castMsgArr, castOneOf, castOneOfArr } from './cast.ts';
+import { castAnyMsg, castMsg } from './cast.ts';
 
 export interface CompileConfig<G extends GenMessage<Message>> {
-  nodes: readonly G[];
-  passThrough?: (n: UnderlyingMessage<G>) => UnderlyingMessage<G> | undefined;
+  nodes?: readonly G[];
 }
 
-export const SOURCE_HANDLES = '__source_handles';
-export const TARGET_HANDLE = '__target_handle';
+export const CORE_NODE = '__core_node';
+export const HANDLE = '__handle';
 export const WIDTH_ATTRIBUTE = '__width';
 export const HEIGHT_ATTRIBUTE = '__height';
 
 export type NodeExt = {
-  [SOURCE_HANDLES]: string[];
-  [TARGET_HANDLE]: string;
+  [CORE_NODE]?: boolean;
+  [HANDLE]?: { id: string; label: string };
   [WIDTH_ATTRIBUTE]?: number;
   [HEIGHT_ATTRIBUTE]?: number;
 };
@@ -37,22 +36,15 @@ export class Compiler<N extends Message, G extends GenMessage<N>> {
   }
 
   newNode(data: N): Node<N & NodeExt> {
-    const dataWithSourceHandles = data as N & NodeExt;
-    dataWithSourceHandles[SOURCE_HANDLES] = [];
     return {
       position: { x: 0, y: 0 },
       id: (++this.idx.ref).toString(),
-      data: dataWithSourceHandles,
+      data,
       type: 'node',
     };
   }
 
   compile(msg: N): [Node[], Edge[]] {
-    // If the user said that this node needs to be passed through, then
-    // do not add it as a node and keep compiling.
-    const passThrough = this.cfg.passThrough?.(msg as UnderlyingMessage<G>);
-    if (passThrough) return this.compile(passThrough);
-
     const node = this.newNode(msg);
 
     const nodes: Node[] = [node];
@@ -61,14 +53,10 @@ export class Compiler<N extends Message, G extends GenMessage<N>> {
     // It's possible that there's multiple source handles with the same name,
     // so in order to not incur into collisions, track the names ensuring
     // that any source handle name that we emit is unique.
-    const uniqueNameTracker = new UniqueNameTracker();
     for (const [sourceHandle, child] of this.children(msg)) {
       const [newNodes, newEdges] = this.compile(child);
       if (newNodes.length > 0) {
-        const handleName = uniqueNameTracker.getUnique(sourceHandle);
-        node.data[SOURCE_HANDLES].push(handleName);
-        newNodes[0].data[TARGET_HANDLE] = handleName;
-        edges.push(link(node, newNodes[0], handleName));
+        edges.push(link(node, newNodes[0], sourceHandle));
       }
       nodes.push(...newNodes);
       edges.push(...newEdges);
@@ -77,56 +65,39 @@ export class Compiler<N extends Message, G extends GenMessage<N>> {
     return [nodes, edges];
   }
 
-  *children(obj: Record<string, unknown>): Generator<[string, N]> {
-    for (const [k, v] of Object.entries(obj)) {
-      // Keep track if we emitted a child node. we need this because if we
-      // don't, we need to deeply descend in the JS object looking children.
-      let didYield = false;
-
-      // Gather children nodes present in the current value if:
-      // - the value is a protobuf message, and the message $typeName
-      //   belongs to one of the configured core nodes
-      // - the value is an array of protobuf messages, and the messages $typeName
-      //   belongs to one of the configured core nodes
-      // - the value is a oneOf protobuf entry, and the value part is a
-      //   protobuf message with its $typeName belonging to one of the
-      //   configured core nodes
-      // - the value is an array of oneOf entries, and each entry's value is a
-      //   protobuf message with its $typeName belonging to one of the
-      //   configured core nodes
-      for (const { typeName } of this.cfg.nodes) {
-        const node = castMsg<N>(typeName, v);
+  *children(
+    obj: unknown,
+    parent?: Message & NodeExt,
+    key?: string,
+    uniqueNameTracker = new UniqueNameTracker(),
+  ): Generator<[string, N]> {
+    const msg = castAnyMsg(obj);
+    if (msg && parent !== undefined && key !== undefined) {
+      for (const { typeName } of this.cfg.nodes ?? []) {
+        const node = castMsg<N & NodeExt>(typeName, msg);
         if (node) {
-          yield [k, node];
-          didYield = true;
-          break;
+          const uniqueKey = uniqueNameTracker.getUnique(key);
+          node[HANDLE] = { id: uniqueKey, label: node.$typeName };
+          return yield [uniqueKey, node];
         }
-
-        for (const [i, node] of castMsgArr<N>(typeName, v)?.entries() ?? []) {
-          yield [`${k} (${i})`, node];
-          didYield = true;
-        }
-
-        const oneOf = castOneOf<N>(typeName, v);
-        if (oneOf) {
-          yield [k, oneOf.value];
-          didYield = true;
-        }
-
-        for (const [i, node] of castOneOfArr<N>(typeName, v)?.entries() ?? []) {
-          yield [`${k} (${i})`, node.value];
-          didYield = true;
-        }
-
-        if (didYield) break;
       }
+    }
+    if (msg) {
+      parent = msg;
+    }
 
-      if (!didYield && typeof v === 'object' && v != null) {
-        // Could not find any children in the current value, but maybe,
-        // if we deeply descent into the JS object, we find some deeply
-        // nested children.
-        yield* this.children(v as Record<string, unknown>);
+    if (Array.isArray(obj)) {
+      for (const [i, el] of obj.entries()) {
+        yield* this.children(el, parent, `${key}[${i}]`, uniqueNameTracker);
       }
+      return;
+    }
+
+    if (typeof obj === 'object' && obj != null) {
+      for (const [k, v] of Object.entries(obj)) {
+        yield* this.children(v, parent, k, uniqueNameTracker);
+      }
+      return;
     }
   }
 }

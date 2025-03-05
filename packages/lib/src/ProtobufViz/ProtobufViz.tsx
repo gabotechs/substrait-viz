@@ -3,7 +3,6 @@ import {
   Background,
   BackgroundVariant,
   BezierEdge,
-  BezierEdgeProps,
   Controls,
   MiniMap,
   Node,
@@ -17,6 +16,7 @@ import {
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 import { Message } from '@bufbuild/protobuf';
+import { GenMessage } from '@bufbuild/protobuf/codegenv1';
 
 import './styles.css';
 import {
@@ -27,8 +27,6 @@ import {
   WIDTH_ATTRIBUTE,
 } from './compile.ts';
 import { layout } from './layout.ts';
-import SmartNode from './SmartNode.tsx';
-import { GenMessage } from '@bufbuild/protobuf/codegenv1';
 import { RenderConfig, RenderConfigContext } from './render.ts';
 import {
   defaultTheme,
@@ -36,17 +34,14 @@ import {
   ThemeContext,
   useTheme,
 } from './theme.ts';
+import SmartNode from './SmartNode.tsx';
 
 const nodeTypes: Record<string, NodeTypes[string]> = {
-  node: SmartNode,
+  node: props => <SmartNode {...props} isNested={false} />,
 };
 
-function CustomBezierEdge(props: BezierEdgeProps) {
-  return <BezierEdge {...props} />;
-}
-
 const edgeTypes = {
-  bezier: CustomBezierEdge,
+  bezier: BezierEdge,
 };
 
 type Extra = Pick<ReactFlowProps, 'style' | 'className'>;
@@ -75,7 +70,7 @@ function Private<G extends GenMessage<Message>>({
   const { fitView } = useReactFlow();
 
   // In order to know the dimensions of each node, first, they need
-  // to be placed on screen, and the <Box/> component will inject
+  // to be placed on screen, and the <SmartNode/> component will inject
   // at initialization the clientWidth and client Height of each node.
   // We need to let some time for this to happen.
   useLayoutEffect(() => {

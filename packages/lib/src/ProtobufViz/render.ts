@@ -5,10 +5,12 @@ import { ProtobufVizTheme } from './theme.ts';
 export interface CustomRenderProps<N extends Message = Message> {
   msg: N;
   theme: ProtobufVizTheme;
+  isNested: boolean;
 }
 
 export interface RenderConfig {
   renderField?: (props: CustomRenderProps) => React.ReactNode | undefined;
+  edgesFromFields?: boolean;
 }
 
 // Create the context with a default value
