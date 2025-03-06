@@ -1,15 +1,15 @@
-import { describe, expect, test } from 'vitest';
 import {
   createFileRegistry,
   fromBinary,
   Message,
   Registry,
 } from '@bufbuild/protobuf';
-import { FileDescriptorSetSchema } from '@bufbuild/protobuf/wkt';
-import { Compiler } from './compile.ts';
-import perfBinPb from './.test_data/perf.binpb?base64';
-import perfPayload from './.test_data/perf-payload.bin?base64';
 import { GenMessage } from '@bufbuild/protobuf/codegenv1';
+import { FileDescriptorSetSchema } from '@bufbuild/protobuf/wkt';
+import { describe, expect, test } from 'vitest';
+import perfPayload from './.test_data/perf-payload.bin?base64';
+import perfBinPb from './.test_data/perf.binpb?base64';
+import { Compiler } from './compile.ts';
 
 describe('compile', () => {
   test('perf.proto', async () => {

@@ -1,14 +1,15 @@
-import { CustomRenderProps, RenderConfig } from './ProtobufViz/render.ts';
-import { Version } from './gen/substrait/plan_pb.ts';
-import { castMsg } from './ProtobufViz/cast.ts';
-import { VersionComponent } from './CustomVersion.tsx';
 import { Message } from '@bufbuild/protobuf';
-import {
-  SimpleExtensionDeclaration,
-  SimpleExtensionURI,
-} from './gen/substrait/extensions/extensions_pb.ts';
+import { CustomDirect } from './CustomDirect.tsx';
+import { CustomFieldReference } from './CustomFieldReference.tsx';
+import { CustomLiteral } from './CustomLiteral.tsx';
+import { CustomNamedStruct } from './CustomNamedStruct.tsx';
+import { CustomReferenceSegment } from './CustomReferenceSegment.tsx';
+import { CustomRootReference } from './CustomRootReference.tsx';
 import { CustomSimpleExtensionDeclaration } from './CustomSimpleExtensionDeclaration.tsx';
 import { CustomSimpleExtensionUri } from './CustomSimpleExtensionUri.tsx';
+import { CustomStructItem } from './CustomStructItem.tsx';
+import { CustomType } from './CustomType.tsx';
+import { VersionComponent } from './CustomVersion.tsx';
 import {
   AggregateRel_Grouping,
   AggregateRel_Measure,
@@ -22,15 +23,14 @@ import {
   Rel,
   RelCommon_Direct,
 } from './gen/substrait/algebra_pb.ts';
-import { CustomRootReference } from './CustomRootReference.tsx';
-import { CustomReferenceSegment } from './CustomReferenceSegment.tsx';
+import {
+  SimpleExtensionDeclaration,
+  SimpleExtensionURI,
+} from './gen/substrait/extensions/extensions_pb.ts';
+import { Version } from './gen/substrait/plan_pb.ts';
 import { NamedStruct, Type, Type_Struct } from './gen/substrait/type_pb.ts';
-import { CustomFieldReference } from './CustomFieldReference.tsx';
-import { CustomType } from './CustomType.tsx';
-import { CustomNamedStruct } from './CustomNamedStruct.tsx';
-import { CustomLiteral } from './CustomLiteral.tsx';
-import { CustomStructItem } from './CustomStructItem.tsx';
-import { CustomDirect } from './CustomDirect.tsx';
+import { castMsg } from './ProtobufViz/cast.ts';
+import { CustomRenderProps, RenderConfig } from './ProtobufViz/render.ts';
 import SmartNode from './ProtobufViz/SmartNode.tsx';
 
 export const RENDER_CONFIG: RenderConfig = {

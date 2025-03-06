@@ -1,7 +1,7 @@
-import { PlanRelSchema, PlanSchema } from './gen/substrait/plan_pb.ts';
-import { RelSchema } from './gen/substrait/algebra_pb.ts';
-import { GenMessage } from '@bufbuild/protobuf/codegenv1';
 import { Message } from '@bufbuild/protobuf';
+import { GenMessage } from '@bufbuild/protobuf/codegenv1';
+import { RelSchema } from './gen/substrait/algebra_pb.ts';
+import { PlanRelSchema, PlanSchema } from './gen/substrait/plan_pb.ts';
 import { CompileConfig } from './ProtobufViz/compile.ts';
 
 export const CUSTOM_COMPILE = buildConfig({

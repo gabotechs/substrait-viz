@@ -1,13 +1,13 @@
-import { defineConfig, Plugin } from 'vite';
 import { glob } from 'glob';
-import { extname, relative, resolve } from 'path';
 import { fileURLToPath } from 'node:url';
+import { extname, relative, resolve } from 'path';
+import { defineConfig, Plugin } from 'vite';
 
-import react from '@vitejs/plugin-react-swc';
-import { libInjectCss } from 'vite-plugin-lib-inject-css';
-import dts from 'vite-plugin-dts';
 import tailwindcss from '@tailwindcss/vite';
+import react from '@vitejs/plugin-react-swc';
 import * as fs from 'node:fs';
+import dts from 'vite-plugin-dts';
+import { libInjectCss } from 'vite-plugin-lib-inject-css';
 
 const base64Loader: Plugin = {
   name: 'base64-loader',

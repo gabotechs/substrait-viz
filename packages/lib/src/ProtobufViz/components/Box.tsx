@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Tag } from './Tag.tsx';
 import { useTheme } from '../theme.ts';
+import { Tag } from './Tag.tsx';
 
 export function Box({
   children,

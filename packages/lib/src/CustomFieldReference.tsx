@@ -1,7 +1,7 @@
-import { CustomRenderProps } from './ProtobufViz/render.ts';
-import { Expression_FieldReference } from './gen/substrait/algebra_pb.ts';
 import { CustomReferenceSegment } from './CustomReferenceSegment.tsx';
 import SmartNode from './ProtobufViz/SmartNode.tsx';
+import { CustomRenderProps } from './ProtobufViz/render.ts';
+import { Expression_FieldReference } from './gen/substrait/algebra_pb.ts';
 
 export function CustomFieldReference({
   msg,

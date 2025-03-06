@@ -1,4 +1,5 @@
-import React, { useLayoutEffect } from 'react';
+import { Message } from '@bufbuild/protobuf';
+import { GenMessage } from '@bufbuild/protobuf/codegenv1';
 import {
   Background,
   BackgroundVariant,
@@ -15,10 +16,8 @@ import {
   useReactFlow,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import { Message } from '@bufbuild/protobuf';
-import { GenMessage } from '@bufbuild/protobuf/codegenv1';
+import React, { useLayoutEffect } from 'react';
 
-import './styles.css';
 import {
   CompileConfig,
   Compiler,
@@ -28,13 +27,14 @@ import {
 } from './compile.ts';
 import { layout } from './layout.ts';
 import { RenderConfig, RenderConfigContext } from './render.ts';
+import SmartNode from './SmartNode.tsx';
+import './styles.css';
 import {
   defaultTheme,
   ProtobufVizTheme,
   ThemeContext,
   useTheme,
 } from './theme.ts';
-import SmartNode from './SmartNode.tsx';
 
 const nodeTypes: Record<string, NodeTypes[string]> = {
   node: props => <SmartNode {...props} isNested={false} />,

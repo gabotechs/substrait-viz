@@ -1,5 +1,5 @@
-import { CustomRenderProps } from './ProtobufViz/render.ts';
 import { Expression_Literal } from './gen/substrait/algebra_pb.ts';
+import { CustomRenderProps } from './ProtobufViz/render.ts';
 import { stringify } from './ProtobufViz/stringify.ts';
 
 export function CustomLiteral({ msg }: CustomRenderProps<Expression_Literal>) {

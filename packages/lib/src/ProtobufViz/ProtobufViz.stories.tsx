@@ -1,17 +1,17 @@
-import React from 'react';
-import { ProtobufViz } from './ProtobufViz.tsx';
 import {
   createFileRegistry,
   fromBinary,
   Message,
   Registry,
 } from '@bufbuild/protobuf';
-import type { Meta, StoryObj } from '@storybook/react';
 import { GenMessage } from '@bufbuild/protobuf/codegenv1';
 import { FileDescriptorSetSchema } from '@bufbuild/protobuf/wkt';
+import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
+import { ProtobufViz } from './ProtobufViz.tsx';
 
-import perfBinPb from './.test_data/perf.binpb?base64';
 import perfPayload from './.test_data/perf-payload.bin?base64';
+import perfBinPb from './.test_data/perf.binpb?base64';
 
 function FullScreenPlan(props: { bin: string; payload: string }) {
   const [msg, msgSchema] = React.useMemo(() => {

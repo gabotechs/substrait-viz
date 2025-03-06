@@ -1,6 +1,6 @@
-import { Edge, Node } from '@xyflow/react';
 import { Message } from '@bufbuild/protobuf';
 import { GenMessage } from '@bufbuild/protobuf/codegenv1';
+import { Edge, Node } from '@xyflow/react';
 
 import { castAnyMsg, castMsg } from './cast.ts';
 

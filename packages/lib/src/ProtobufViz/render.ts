@@ -1,5 +1,5 @@
-import React, { useContext } from 'react';
 import { Message } from '@bufbuild/protobuf';
+import React, { useContext } from 'react';
 import { ProtobufVizTheme } from './theme.ts';
 
 export interface CustomRenderProps<N extends Message = Message> {

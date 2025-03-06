@@ -1,8 +1,8 @@
 import { Expression } from '../gen/substrait/algebra_pb.ts';
 import { printFunctionArg } from './printFunctionArg.ts';
 import { printLiteral } from './printLiteral.ts';
-import { printType } from './printType.ts';
 import { printReferenceSegment } from './printReferenceSegment.ts';
+import { printType } from './printType.ts';
 
 export function printExpression(expr?: Expression): string {
   if (expr == null) return '';

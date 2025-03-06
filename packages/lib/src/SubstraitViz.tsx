@@ -1,10 +1,10 @@
-import { GenMessage } from '@bufbuild/protobuf/codegenv1';
 import { fromJsonString, Message } from '@bufbuild/protobuf';
+import { GenMessage } from '@bufbuild/protobuf/codegenv1';
 
-import { PlanSchema } from './gen/substrait/plan_pb.ts';
-import { ProtobufViz, ProtobufVizProps } from './ProtobufViz/ProtobufViz.tsx';
 import { CUSTOM_COMPILE } from './customCompile.ts';
 import { RENDER_CONFIG } from './customRender.tsx';
+import { PlanSchema } from './gen/substrait/plan_pb.ts';
+import { ProtobufViz, ProtobufVizProps } from './ProtobufViz/ProtobufViz.tsx';
 import './SubstraitViz.css';
 
 export interface SubstraitVizProps

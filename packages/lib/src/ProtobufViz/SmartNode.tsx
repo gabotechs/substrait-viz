@@ -1,6 +1,7 @@
-import React from 'react';
 import { JsonValue, Message } from '@bufbuild/protobuf';
+import React from 'react';
 
+import { Handle, Position } from '@xyflow/react';
 import {
   castAnyMsg,
   castAnyMsgArr,
@@ -11,20 +12,19 @@ import {
   castString,
   castStringList,
 } from './cast.ts';
-import { StringList } from './components/StringList.tsx';
-import { Entry } from './components/Entry.tsx';
-import { useRenderConfig } from './render.ts';
-import { useTheme } from './theme.ts';
-import { NumberList } from './components/NumberList.tsx';
 import {
   HANDLE,
   HEIGHT_ATTRIBUTE,
   NodeExt,
   WIDTH_ATTRIBUTE,
 } from './compile.ts';
-import { stringify } from './stringify.ts';
-import { Handle, Position } from '@xyflow/react';
 import { Box } from './components/Box.tsx';
+import { Entry } from './components/Entry.tsx';
+import { NumberList } from './components/NumberList.tsx';
+import { StringList } from './components/StringList.tsx';
+import { useRenderConfig } from './render.ts';
+import { stringify } from './stringify.ts';
+import { useTheme } from './theme.ts';
 
 interface SmartNodeProps {
   data: unknown;

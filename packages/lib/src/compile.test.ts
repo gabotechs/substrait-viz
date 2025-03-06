@@ -1,11 +1,11 @@
-import { describe, expect, test } from 'vitest';
 import { fromJson } from '@bufbuild/protobuf';
+import { describe, expect, test } from 'vitest';
 import { PlanSchema } from './gen/substrait/plan_pb.ts';
 import { Compiler } from './ProtobufViz/compile.ts';
 
-import { CUSTOM_COMPILE } from './customCompile.ts';
 import plan1 from './.test_data/plan1.json?raw';
 import plan2 from './.test_data/plan2.json?raw';
+import { CUSTOM_COMPILE } from './customCompile.ts';
 
 describe('compile', () => {
   test('plan 1', () => {
