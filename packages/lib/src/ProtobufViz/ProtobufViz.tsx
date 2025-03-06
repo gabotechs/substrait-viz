@@ -46,9 +46,8 @@ const edgeTypes = {
 type Extra = Pick<ReactFlowProps, 'style' | 'className'>;
 
 export interface ProtobufVizProps<S extends MessageSchema> extends Extra {
-  config: CompileConfig<S>;
   rootNode: UnderlyingMessage<S>;
-  render?: RenderConfig;
+  config?: CompileConfig<S> & RenderConfig;
   theme?: Partial<ProtobufVizTheme>;
 }
 
@@ -59,7 +58,7 @@ function Private<S extends MessageSchema>({
 }: ProtobufVizProps<S>) {
   const [layoutReady, setLayoutReady] = React.useState(false);
   const [initNodes, initEdges] = React.useMemo(
-    () => Compiler.fromCfg(config).compile(rootNode),
+    () => Compiler.fromCfg(config ?? {}).compile(rootNode),
     [config, rootNode],
   );
 
@@ -141,7 +140,7 @@ export function ProtobufViz<S extends MessageSchema>(
 
   return (
     <ThemeContext.Provider value={theme}>
-      <RenderConfigContext.Provider value={props.render ?? {}}>
+      <RenderConfigContext.Provider value={props.config ?? {}}>
         <ReactFlowProvider>
           <Private {...props} />
         </ReactFlowProvider>
