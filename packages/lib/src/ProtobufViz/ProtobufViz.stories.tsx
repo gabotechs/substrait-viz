@@ -1,10 +1,4 @@
-import {
-  createFileRegistry,
-  fromBinary,
-  Message,
-  Registry,
-} from '@bufbuild/protobuf';
-import { GenMessage } from '@bufbuild/protobuf/codegenv1';
+import { createFileRegistry, fromBinary, Registry } from '@bufbuild/protobuf';
 import { FileDescriptorSetSchema } from '@bufbuild/protobuf/wkt';
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
@@ -59,7 +53,7 @@ function base64ToUint8Array(base64: string): Uint8Array {
 
 function findMessage(registry: Registry) {
   for (const msg of registry) {
-    if (msg.kind == 'message') return msg as GenMessage<Message>;
+    if (msg.kind == 'message') return msg;
   }
 }
 

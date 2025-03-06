@@ -4,8 +4,13 @@ import { Edge, Node } from '@xyflow/react';
 
 import { castAnyMsg, castMsg } from './cast.ts';
 
-export interface CompileConfig<G extends GenMessage<Message>> {
-  nodes?: readonly G[];
+export type MessageSchema<M extends Message = Message> = Omit<
+  GenMessage<M>,
+  'v' | 'a' | 'b'
+>;
+
+export interface CompileConfig<S extends MessageSchema> {
+  nodes?: readonly S[];
 }
 
 export const CORE_NODE = '__core_node';
@@ -20,18 +25,18 @@ export type NodeExt = {
   [HEIGHT_ATTRIBUTE]?: number;
 };
 
-export type UnderlyingMessage<G extends GenMessage<Message>> =
-  G extends GenMessage<infer N> ? N : never;
+export type UnderlyingMessage<S extends MessageSchema> =
+  S extends MessageSchema<infer N> ? N : never;
 
-export class Compiler<N extends Message, G extends GenMessage<N>> {
+export class Compiler<N extends Message, S extends MessageSchema<N>> {
   protected constructor(
-    readonly cfg: CompileConfig<G>,
+    readonly cfg: CompileConfig<S>,
     readonly idx = { ref: 0 },
   ) {}
 
-  static fromCfg<N extends Message, G extends GenMessage<N>>(
-    cfg: CompileConfig<G>,
-  ): Compiler<N, G> {
+  static fromCfg<N extends Message, S extends MessageSchema<N>>(
+    cfg: CompileConfig<S>,
+  ): Compiler<N, S> {
     return new Compiler(cfg);
   }
 
