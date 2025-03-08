@@ -8,7 +8,7 @@
   },
   "scripts": {
     "clean": "rm -rf bin node_modules .turbo",
-    "build": "GOOS=darwin GOARCH=amd64 go build -C .. -o darwin-amd64/bin/substrait-viz"
+    "build": "GOOS=darwin GOARCH=amd64 go build -C .. -o darwin-amd64/bin/substrait-viz-darwin-amd64"
   },
   "dependencies": {
     "@substrait-viz/cli-frontend": "workspace:*"
