@@ -81,7 +81,7 @@ describe('loadNode', () => {
     expect(node.bar?.foos[0].any?.value.length).to.gt(1);
   }
 
-  test('simple node from JSON', async () => {
+  test('simple node from JSON with registry', async () => {
     const registry = await buildRegistry(specBinPb);
     const node = await loadMessage(
       JSON.stringify(toJson(FooSchema, testDataWithAny, { registry })),
@@ -91,7 +91,7 @@ describe('loadNode', () => {
     assertWithAny(node);
   });
 
-  test('simple node from JSON (no descriptor)', async () => {
+  test('simple node from JSON (no descriptor) with registry', async () => {
     const registry = await buildRegistry(specBinPb);
     const promise = loadMessage(
       JSON.stringify(toJson(FooSchema, testDataWithAny, { registry })),
@@ -101,7 +101,7 @@ describe('loadNode', () => {
     await expect(promise).rejects.toThrow();
   });
 
-  test('simple node from binary', async () => {
+  test('simple node from binary with registry', async () => {
     const node = await loadMessage(
       toBinary(FooSchema, testDataWithAny),
       FooSchema,
@@ -109,13 +109,13 @@ describe('loadNode', () => {
     assertWithAny(node);
   });
 
-  test('simple node from base64', async () => {
+  test('simple node from base64 with registry', async () => {
     const bin = toBinary(FooSchema, testDataWithAny);
     const node = await loadMessage(uint8ArrayToBase64(bin), FooSchema);
     assertWithAny(node);
   });
 
-  test('simple node from binary Url', async () => {
+  test('simple node from binary Url with registry', async () => {
     const url = URL.createObjectURL(
       new Blob([toBinary(FooSchema, testDataWithAny)]),
     );
