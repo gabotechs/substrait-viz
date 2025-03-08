@@ -14,16 +14,16 @@ import (
 	"github.com/spf13/cobra"
 )
 
-//go:embed dist/index.html
+//go:embed frontend/dist/index.html
 var indexHtml []byte
 
-//go:embed dist/index.js
+//go:embed frontend/dist/index.js
 var indexJs []byte
 
-//go:embed dist/index.css
+//go:embed frontend/dist/index.css
 var indexCss []byte
 
-//go:embed public/logo.svg
+//go:embed frontend/public/logo.svg
 var logo []byte
 
 var descriptors []string
@@ -118,7 +118,7 @@ type PackageJson struct {
 	Version string `json:"version"`
 }
 
-//go:embed package.json
+//go:embed frontend/package.json
 var packageJson []byte
 
 func mustParsePackageJson() PackageJson {

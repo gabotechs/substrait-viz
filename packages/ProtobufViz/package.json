@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "clean": "rm -rf dist node_modules",
+    "clean": "rm -rf dist node_modules .turbo",
     "check-types": "tsc -b",
     "build": "vite build",
     "lint": "eslint .",

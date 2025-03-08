@@ -4,6 +4,7 @@ node_modules/
 /.idea
 build/
 dist/
+bin/
 *plan.json
 
 *storybook.log

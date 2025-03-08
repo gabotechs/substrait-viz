@@ -1,0 +1,17 @@
+{
+  "name": "@substrait-viz/cli-darwin-arm64",
+  "version": "0.0.0",
+  "os": ["darwin"],
+  "cpu": ["arm64"],
+  "bin": {
+    "substrait-viz": "bin/substrait-viz-darwin-arm64"
+  },
+  "scripts": {
+    "clean": "rm -rf bin node_modules .turbo",
+    "build": "GOOS=darwin GOARCH=arm64 go build -C .. -o darwin-arm64/bin/substrait-viz"
+  },
+  "dependencies": {
+    "@substrait-viz/cli-frontend": "workspace:*"
+  },
+  "files": ["bin/substrait-viz-darwin-arm64"]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@substrait-viz/cli-linux-amd64",
+  "version": "0.0.0",
+  "os": ["linux"],
+  "cpu": ["x64"],
+  "bin": {
+    "substrait-viz": "bin/substrait-viz-linux-amd64"
+  },
+  "scripts": {
+    "clean": "rm -rf bin node_modules .turbo",
+    "build": "GOOS=linux GOARCH=amd64 go build -C .. -o linux-amd64/bin/substrait-viz"
+  },
+  "dependencies": {
+    "@substrait-viz/cli-frontend": "workspace:*"
+  },
+  "files": ["bin/substrait-viz-linux-amd64"]
+}

@@ -1,20 +1,20 @@
 {
-  "name": "@substrait-viz/cli",
+  "name": "@substrait-viz/cli-frontend",
   "version": "0.0.0",
   "type": "module",
   "bin": {
-    "substrait-viz": "./bin/substrait-viz"
+    "substrait-viz": "bin/substrait-viz"
   },
   "scripts": {
-    "clean": "rm -rf dist bin",
+    "clean": "rm -rf dist bin node_modules .turbo",
     "dev": "NODE_ENV=development vite",
     "check-types": "tsc -b",
     "test": "echo 'nothing to do'",
-    "lint": "eslint .",
-    "build": "vite build && go build -o bin/substrait-viz"
+    "lint": "eslint ",
+    "build": "vite build"
   },
   "dependencies": {
-    "@substrait-viz/react": "file:../SubstraitViz",
+    "@substrait-viz/react": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
