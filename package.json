@@ -7,7 +7,7 @@
     "packages/SubstraitViz",
     "packages/SubstraitVizCli"
   ],
-  "packageManager": "npm@10.9.2",
+  "packageManager": "npm@11.2.0",
   "scripts": {
     "check-types": "turbo check-types",
     "build": "turbo build",
