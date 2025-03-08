@@ -7,20 +7,20 @@
     "packages/SubstraitViz",
     "packages/SubstraitVizCli"
   ],
+  "packageManager": "npm@10.9.2",
   "scripts": {
-    "check": "npm run check --workspaces",
-    "build": "npm run build --workspaces",
-    "test": "npm run test --workspaces",
-    "lint": "npm run lint --workspaces",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "check-types": "turbo check-types",
+    "build": "turbo build",
+    "test": "turbo test",
+    "lint": "turbo lint"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.8",
-    "vite-plugin-dts": "^4.5.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
-    "vite-plugin-lib-inject-css": "^2.2.1",
     "prettier": "3.5.2",
-    "prettier-plugin-organize-imports": "^4.1.0"
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "turbo": "^2.4.4",
+    "vite-plugin-dts": "^4.5.0",
+    "vite-plugin-lib-inject-css": "^2.2.1"
   }
 }
