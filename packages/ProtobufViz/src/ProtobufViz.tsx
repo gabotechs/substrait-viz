@@ -16,14 +16,7 @@ import {
 import '@xyflow/react/dist/style.css';
 import React, { useLayoutEffect } from 'react';
 
-import {
-  createFileRegistry,
-  FileRegistry,
-  fromBinary,
-  fromJson,
-  MessageShape,
-} from '@bufbuild/protobuf';
-import { FileDescriptorSetSchema } from '@bufbuild/protobuf/wkt';
+import { MessageShape } from '@bufbuild/protobuf';
 import {
   CompileConfig,
   Compiler,
@@ -31,8 +24,9 @@ import {
   MessageSchema,
   WIDTH_ATTRIBUTE,
 } from './compile.ts';
-import { fetchFile, Json, ProtoFile } from './file.ts';
+import { ProtoFile } from './file.ts';
 import { layout } from './layout.ts';
+import { loadMessage } from './load.ts';
 import { RenderConfig, RenderConfigContext } from './render.ts';
 import SmartNode from './SmartNode.tsx';
 import './styles.css';
@@ -69,30 +63,13 @@ export function ProtobufViz<S extends MessageSchema>(
   const [error, setError] = React.useState<Error>();
   const [rootNode, setRootNode] = React.useState<MessageShape<S>>();
 
-  const loadNodes = React.useCallback(async () => {
-    let registry;
-
-    if (protoDescriptorSets && protoDescriptorSets.length > 0) {
-      registry = createFileRegistry(
-        ...(await Promise.all(protoDescriptorSets.map(buildRegistry))),
-      );
-    }
-
-    const file = await fetchFile(protoMessage);
-    if (file instanceof Json) {
-      setRootNode(fromJson(schema, file.value, { registry }));
-    } else {
-      // TODO: how can it be that I'm not able to pass a registry here.
-      setRootNode(fromBinary(schema, file));
-    }
-  }, [protoDescriptorSets, protoMessage, schema]);
-
   React.useEffect(() => {
     setLoading(true);
-    loadNodes()
+    loadMessage(protoMessage, schema, protoDescriptorSets)
+      .then(setRootNode)
       .catch(setError)
       .finally(() => setLoading(false));
-  }, [loadNodes]);
+  }, [protoDescriptorSets, protoMessage, schema]);
 
   const theme = React.useMemo(
     () => ({ ...defaultTheme, ...props.theme }),
@@ -214,12 +191,4 @@ function Private<S extends MessageSchema>({
       />
     </ReactFlow>
   );
-}
-
-async function buildRegistry(descriptor: ProtoFile): Promise<FileRegistry> {
-  const bin = await fetchFile(descriptor);
-  if (bin instanceof Json)
-    throw new Error('JSON is not supported for a proto descriptor file');
-  const msg = fromBinary(FileDescriptorSetSchema, bin);
-  return createFileRegistry(msg);
 }
