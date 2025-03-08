@@ -1,6 +1,7 @@
 {
   "name": "@substrait-viz/cli",
   "version": "0.0.0",
+  "private": false,
   "bin": {
     "substrait-viz": "substrait-viz"
   },

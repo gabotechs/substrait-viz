@@ -6,15 +6,22 @@
   "scripts": {
     "clean": "pnpm --recursive clean",
     "check-types": "turbo check-types",
+    "b": "turbo build",
     "build": "turbo build",
+    "t": "turbo test",
     "test": "turbo test",
+    "l": "turbo lint",
     "lint": "turbo lint"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.12",
     "@vitejs/plugin-react-swc": "^3.5.0",
+    "glob": "^11.0.1",
+    "globals": "^15.14.0",
     "prettier": "3.5.2",
     "prettier-plugin-organize-imports": "^4.1.0",
     "turbo": "^2.4.4",
+    "vite": "^6.1.0",
     "vite-plugin-dts": "^4.5.0",
     "vite-plugin-lib-inject-css": "^2.2.1",
     "vite-tsconfig-paths": "^5.1.4"
