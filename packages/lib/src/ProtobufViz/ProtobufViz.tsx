@@ -17,13 +17,21 @@ import '@xyflow/react/dist/style.css';
 import React, { useLayoutEffect } from 'react';
 
 import {
+  createFileRegistry,
+  FileRegistry,
+  fromBinary,
+  fromJson,
+  MessageShape,
+} from '@bufbuild/protobuf';
+import { FileDescriptorSetSchema } from '@bufbuild/protobuf/wkt';
+import {
   CompileConfig,
   Compiler,
   HEIGHT_ATTRIBUTE,
   MessageSchema,
-  UnderlyingMessage,
   WIDTH_ATTRIBUTE,
 } from './compile.ts';
+import { fetchFile, Json, ProtoFile } from './file.ts';
 import { layout } from './layout.ts';
 import { RenderConfig, RenderConfigContext } from './render.ts';
 import SmartNode from './SmartNode.tsx';
@@ -43,23 +51,101 @@ const edgeTypes = {
   bezier: BezierEdge,
 };
 
-type Extra = Pick<ReactFlowProps, 'style' | 'className'>;
-
-export interface ProtobufVizProps<S extends MessageSchema> extends Extra {
-  rootNode: UnderlyingMessage<S>;
-  config?: CompileConfig<S> & RenderConfig;
+export interface ProtobufVizProps<S extends MessageSchema>
+  extends CompileConfig<S>,
+    RenderConfig,
+    Pick<ReactFlowProps, 'style' | 'className'> {
+  schema: S;
+  protoMessage: ProtoFile;
+  protoDescriptorSets?: ProtoFile[];
   theme?: Partial<ProtobufVizTheme>;
 }
 
+export function ProtobufViz<S extends MessageSchema>(
+  props: ProtobufVizProps<S>,
+) {
+  const { protoDescriptorSets, schema, protoMessage } = props;
+  const [loading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState<Error>();
+  const [rootNode, setRootNode] = React.useState<MessageShape<S>>();
+
+  const loadNodes = React.useCallback(async () => {
+    let registry;
+
+    if (protoDescriptorSets && protoDescriptorSets.length > 0) {
+      registry = createFileRegistry(
+        ...(await Promise.all(protoDescriptorSets.map(buildRegistry))),
+      );
+    }
+
+    const file = await fetchFile(protoMessage);
+    if (file instanceof Json) {
+      setRootNode(fromJson(schema, file.value, { registry }));
+    } else {
+      // TODO: how can it be that I'm not able to pass a registry here.
+      setRootNode(fromBinary(schema, file));
+    }
+  }, [protoDescriptorSets, protoMessage, schema]);
+
+  React.useEffect(() => {
+    setLoading(true);
+    loadNodes()
+      .catch(setError)
+      .finally(() => setLoading(false));
+  }, [loadNodes]);
+
+  const theme = React.useMemo(
+    () => ({ ...defaultTheme, ...props.theme }),
+    [props.theme],
+  );
+
+  if (!rootNode) {
+    return (
+      <ReactFlow>
+        {loading && (
+          <div className={'w-full h-full flex items-center justify-center'}>
+            Loading...
+          </div>
+        )}
+        {error && (
+          <div
+            className={
+              'w-full h-full text-center p-10 flex items-center justify-center'
+            }
+          >
+            <span className={'text-red-400'}>{error.message}</span>
+          </div>
+        )}
+        <Background
+          variant={BackgroundVariant.Dots}
+          gap={12}
+          size={1}
+          bgColor={theme.background}
+        />
+      </ReactFlow>
+    );
+  }
+
+  return (
+    <ThemeContext.Provider value={theme}>
+      <RenderConfigContext.Provider value={props}>
+        <ReactFlowProvider>
+          <Private rootNode={rootNode} {...props} />
+        </ReactFlowProvider>
+      </RenderConfigContext.Provider>
+    </ThemeContext.Provider>
+  );
+}
+
 function Private<S extends MessageSchema>({
-  config,
+  coreNodes,
   rootNode,
   ...props
-}: ProtobufVizProps<S>) {
+}: ProtobufVizProps<S> & { rootNode: MessageShape<S> }) {
   const [layoutReady, setLayoutReady] = React.useState(false);
   const [initNodes, initEdges] = React.useMemo(
-    () => Compiler.fromCfg(config ?? {}).compile(rootNode),
-    [config, rootNode],
+    () => Compiler.fromCfg({ coreNodes }).compile(rootNode),
+    [coreNodes, rootNode],
   );
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initNodes);
@@ -130,21 +216,10 @@ function Private<S extends MessageSchema>({
   );
 }
 
-export function ProtobufViz<S extends MessageSchema>(
-  props: ProtobufVizProps<S>,
-) {
-  const theme = React.useMemo(
-    () => ({ ...defaultTheme, ...props.theme }),
-    [props.theme],
-  );
-
-  return (
-    <ThemeContext.Provider value={theme}>
-      <RenderConfigContext.Provider value={props.config ?? {}}>
-        <ReactFlowProvider>
-          <Private {...props} />
-        </ReactFlowProvider>
-      </RenderConfigContext.Provider>
-    </ThemeContext.Provider>
-  );
+async function buildRegistry(descriptor: ProtoFile): Promise<FileRegistry> {
+  const bin = await fetchFile(descriptor);
+  if (bin instanceof Json)
+    throw new Error('JSON is not supported for a proto descriptor file');
+  const msg = fromBinary(FileDescriptorSetSchema, bin);
+  return createFileRegistry(msg);
 }

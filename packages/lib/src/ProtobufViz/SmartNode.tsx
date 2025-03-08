@@ -91,7 +91,7 @@ function SmartNode({ data, isNested }: SmartNodeProps) {
 
 function Msg({ msg, isNested }: { msg: Message & NodeExt; isNested: boolean }) {
   const ref = React.useRef<HTMLDivElement>(null);
-  const { renderField, edgesFromFields } = useRenderConfig();
+  const { nodeRender, edgesFromFields } = useRenderConfig();
   const theme = useTheme();
 
   React.useLayoutEffect(() => {
@@ -123,7 +123,7 @@ function Msg({ msg, isNested }: { msg: Message & NodeExt; isNested: boolean }) {
     );
   }
 
-  const custom = renderField?.({ msg, theme, isNested });
+  const custom = nodeRender?.({ msg, theme, isNested });
   if (custom) {
     return (
       <div ref={ref}>

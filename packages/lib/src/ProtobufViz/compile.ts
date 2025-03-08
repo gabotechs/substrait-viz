@@ -10,7 +10,7 @@ export type MessageSchema<M extends Message = Message> = Omit<
 >;
 
 export interface CompileConfig<S extends MessageSchema> {
-  nodes?: readonly S[];
+  coreNodes?: readonly S[];
 }
 
 export const CORE_NODE = '__core_node';
@@ -78,7 +78,7 @@ export class Compiler<N extends Message, S extends MessageSchema<N>> {
   ): Generator<[string, N]> {
     const msg = castAnyMsg(obj);
     if (msg && parent !== undefined && key !== undefined) {
-      for (const { typeName } of this.cfg.nodes ?? []) {
+      for (const { typeName } of this.cfg.coreNodes ?? []) {
         const node = castMsg<N & NodeExt>(typeName, msg);
         if (node) {
           const uniqueKey = uniqueNameTracker.getUnique(key);

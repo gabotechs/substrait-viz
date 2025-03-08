@@ -22,6 +22,20 @@ const base64Loader: Plugin = {
   },
 };
 
+const binLoader: Plugin = {
+  name: 'bin-loader',
+  transform(_: unknown, id: string) {
+    const [path, query] = id.split('?');
+    if (query !== 'bin') return null;
+
+    const data = fs.readFileSync(path); // Read file as a Buffer
+    const uint8Array = new Uint8Array(data); // Convert to Uint8Array
+
+    // Convert Uint8Array to a string representation that can be imported as a module
+    return `export default new Uint8Array([${uint8Array.join(',')}]);`;
+  },
+};
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -30,6 +44,7 @@ export default defineConfig({
     dts({ tsconfigPath: './tsconfig.app.json' }),
     tailwindcss(),
     base64Loader,
+    binLoader,
   ],
   build: {
     rollupOptions: {

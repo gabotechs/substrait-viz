@@ -1,9 +1,9 @@
 package main
 
 import (
-	"bytes"
 	_ "embed"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -25,6 +25,8 @@ var indexCss []byte
 
 //go:embed public/logo.svg
 var logo []byte
+
+var descriptors []string
 
 var root = &cobra.Command{
 	Use:     "substrait-viz",
@@ -53,21 +55,45 @@ Visualize Substrait plans using a flow diagram
 		if err != nil {
 			return err
 		}
-
-		const ToReplace = `__substrait_plan:""`
-		const ReplacePrefix = `__substrait_plan:`
-
-		marshaled, err := json.Marshal(string(plan))
-		if err != nil {
-			return err
+		if len(plan) == 0 {
+			return errors.New("The plan is empty")
 		}
 
-		port := 8080
-		indexJs = bytes.ReplaceAll(indexJs, []byte(ToReplace), append([]byte(ReplacePrefix), marshaled...))
+		descriptorMap := make(map[string][]byte)
+		for _, desc := range descriptors {
+			plan, err = os.ReadFile(desc)
+			if err != nil {
+				return err
+			}
+		}
 
 		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 			w.Header().Set("Content-Type", "text/html")
 			_, _ = w.Write(indexHtml)
+		})
+		http.HandleFunc("/plan", func(w http.ResponseWriter, r *http.Request) {
+			var jsonObject map[string]interface{}
+			if json.Unmarshal(plan, &jsonObject) == nil {
+				w.Header().Set("Content-Type", "application/json")
+				_, _ = w.Write(plan)
+			} else {
+				w.Header().Set("Content-Type", "text/html")
+				_, _ = w.Write(plan)
+			}
+		})
+		http.HandleFunc("/descriptors", func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Set("Content-Type", "application/json")
+			res, _ := json.Marshal(descriptors)
+			_, _ = w.Write(res)
+		})
+		http.HandleFunc("/descriptor/", func(w http.ResponseWriter, r *http.Request) {
+			desc := r.URL.Path[len("/descriptor/"):]
+			if descriptor, ok := descriptorMap[desc]; ok {
+				w.Header().Set("Content-Type", "text/html")
+				_, _ = w.Write(descriptor)
+				return
+			}
+			http.NotFound(w, r)
 		})
 		http.HandleFunc("/index.js", func(w http.ResponseWriter, r *http.Request) {
 			w.Header().Set("Content-Type", "application/javascript")
@@ -82,6 +108,7 @@ Visualize Substrait plans using a flow diagram
 			_, _ = w.Write(logo)
 		})
 
+		port := 8080
 		go func() {
 			url := fmt.Sprintf("http://localhost:%d/", port)
 			_, _ = fmt.Fprintln(os.Stderr, "Serving on", url+"...")
@@ -89,6 +116,10 @@ Visualize Substrait plans using a flow diagram
 		}()
 		return http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
 	},
+}
+
+func init() {
+	root.Flags().StringArrayVarP(&descriptors, "--descriptor", "d", nil, "list of protobuf descriptor sets that contain extra message definitions.")
 }
 
 type PackageJson struct {

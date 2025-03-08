@@ -17,7 +17,7 @@ describe('compile', () => {
     const mainMsg = findMessage(registry) ?? bail();
     const msg = fromBinary(mainMsg, protoPayload);
     const compiler = Compiler.fromCfg({
-      nodes: [mainMsg],
+      coreNodes: [mainMsg],
     });
     const [nodes, edges] = compiler.compile(msg);
     expect(nodes.length).to.equal(18);

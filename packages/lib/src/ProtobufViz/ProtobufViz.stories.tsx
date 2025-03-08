@@ -5,24 +5,22 @@ import React from 'react';
 import { ProtobufViz } from './ProtobufViz.tsx';
 
 import perfPayload from './.test_data/perf-payload.bin?base64';
-import perfBinPb from './.test_data/perf.binpb?base64';
+import perfBinPb from './.test_data/perf.binpb?bin';
 
-function FullScreenPlan(props: { bin: string; payload: string }) {
-  const [msg, msgSchema] = React.useMemo(() => {
-    const bin = base64ToUint8Array(props.bin);
-    const payload = base64ToUint8Array(props.payload);
-    const fileDescriptorSet = fromBinary(FileDescriptorSetSchema, bin);
-
+function FullScreenPlan(props: { bin: Uint8Array; payload: string }) {
+  const msgSchema = React.useMemo(() => {
+    const fileDescriptorSet = fromBinary(FileDescriptorSetSchema, props.bin);
     const registry = createFileRegistry(fileDescriptorSet);
-
-    const msgSchema = findMessage(registry) ?? bail();
-    const msg = fromBinary(msgSchema, payload);
-    return [msg, msgSchema];
-  }, [props.bin, props.payload]);
+    return findMessage(registry) ?? bail();
+  }, [props.bin]);
 
   return (
     <div style={{ width: '100vw', height: '100vh' }}>
-      <ProtobufViz config={{ nodes: [msgSchema] }} rootNode={msg} />
+      <ProtobufViz
+        coreNodes={[msgSchema]}
+        protoMessage={props.payload}
+        schema={msgSchema}
+      />
     </div>
   );
 }
@@ -39,17 +37,19 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Pef: Story = {
+export const Perf: Story = {
   args: {
     bin: perfBinPb,
     payload: perfPayload,
   },
 };
 
-function base64ToUint8Array(base64: string): Uint8Array {
-  const binaryString = atob(base64);
-  return new Uint8Array([...binaryString].map(c => c.charCodeAt(0)));
-}
+export const ErrorLoading: Story = {
+  args: {
+    bin: perfBinPb,
+    payload: 'asd',
+  },
+};
 
 function findMessage(registry: Registry) {
   for (const msg of registry) {

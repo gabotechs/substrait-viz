@@ -9,7 +9,7 @@ export interface CustomRenderProps<N extends Message = Message> {
 }
 
 export interface RenderConfig {
-  renderField?: (props: CustomRenderProps) => React.ReactNode | undefined;
+  nodeRender?: (props: CustomRenderProps) => React.ReactNode | undefined;
   edgesFromFields?: boolean;
 }
 
