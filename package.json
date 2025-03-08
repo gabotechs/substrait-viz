@@ -3,12 +3,24 @@
   "version": "0.0.0",
   "private": false,
   "workspaces": [
-    "packages/lib",
-    "packages/cli"
+    "packages/ProtobufViz",
+    "packages/SubstraitViz",
+    "packages/SubstraitVizCli"
   ],
   "scripts": {
     "check": "npm run check --workspaces",
     "build": "npm run build --workspaces",
-    "test": "npm run test --workspaces"
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.8",
+    "vite-plugin-dts": "^4.5.0",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "vite-plugin-lib-inject-css": "^2.2.1",
+    "prettier": "3.5.2",
+    "prettier-plugin-organize-imports": "^4.1.0"
   }
 }

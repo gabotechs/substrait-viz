@@ -1,0 +1,63 @@
+{
+  "name": "@protobuf-viz/react",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "@bufbuild/protobuf": "^2.2.3",
+    "@xyflow/react": "^12.4.3",
+    "elkjs": "^0.9.3",
+    "tailwindcss": "^4.0.8"
+  },
+  "perDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "devDependencies": {
+    "storybook": "^8.6.0",
+    "@storybook/addon-essentials": "^8.6.0",
+    "@chromatic-com/storybook": "^3.2.5",
+    "@storybook/addon-interactions": "^8.6.0",
+    "@storybook/addon-onboarding": "^8.6.0",
+    "@storybook/blocks": "^8.6.0",
+    "@storybook/builder-vite": "^8.6.0",
+    "@storybook/react": "^8.6.0",
+    "@storybook/test": "^8.6.0",
+    "@storybook/react-vite": "^8.6.0",
+    "@tailwindcss/vite": "^4.0.8",
+    "@bufbuild/buf": "^1.50.0",
+    "@bufbuild/protoc-gen-es": "^2.2.3",
+    "@eslint/js": "^9.19.0",
+    "@types/dagre": "^0.7.52",
+    "@types/node": "^22.13.5",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "@vitejs/plugin-react-swc": "^3.5.0",
+    "eslint": "^9.19.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-react-refresh": "^0.4.18",
+    "eslint-plugin-storybook": "^0.11.3",
+    "glob": "^11.0.1",
+    "globals": "^15.14.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.22.0",
+    "vite": "^6.1.0",
+    "vitest": "^3.0.6"
+  }
+}

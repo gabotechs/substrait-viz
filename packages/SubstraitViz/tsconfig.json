@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.build.json",
+  "include": ["vite.config.ts", "src"],
+  "compilerOptions": {
+    "paths": {
+      "@protobuf-viz/react": ["../ProtobufViz/src"]
+    }
+  }
+}

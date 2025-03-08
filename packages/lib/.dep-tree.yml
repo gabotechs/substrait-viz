@@ -1,6 +1,0 @@
-check:
-  entrypoints:
-    - src/main.ts
-  allow:
-    src/ProtobufViz/**:
-      - src/ProtobufViz/**

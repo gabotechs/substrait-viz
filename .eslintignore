@@ -1,0 +1,4 @@
+.test_data/
+gen/
+dist/
+node_modules/

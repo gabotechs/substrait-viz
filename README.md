@@ -9,6 +9,7 @@ Visualize substrait plans in your browser with a flow diagram
 
 Currently, the only way of installing the project is by building from source, for that
 you'll need:
+
 - Node JS and npm
 - A Golang compiler
 
@@ -37,4 +38,3 @@ npm run build
 cd packages/cli
 go install
 ```
-
