@@ -1,5 +1,6 @@
 {
   "name": "@substrait-viz/cli-linux-amd64",
+  "private": false,
   "version": "0.0.0",
   "os": ["linux"],
   "cpu": ["x64"],
