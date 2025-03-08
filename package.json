@@ -1,7 +1,7 @@
 {
   "name": "substrait-viz-monorepo",
   "version": "0.0.4",
-  "private": false,
+  "private": true,
   "type": "module",
   "scripts": {
     "clean": "pnpm --recursive clean",
