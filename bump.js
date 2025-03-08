@@ -27,7 +27,6 @@ async function bumpPatchVersion(filePath) {
       json.version = semver.inc(json.version, 'patch');
 
       if (json.version) {
-        await fs.writeFile(filePath, JSON.stringify(json, null, 2) + '\n');
         console.log(`Updated ${filePath}: ${oldVersion} -> ${json.version}`);
       } else {
         console.warn(`Invalid version found in ${filePath}: ${oldVersion}`);
@@ -47,6 +46,8 @@ async function bumpPatchVersion(filePath) {
           }
         }
       }
+
+      await fs.writeFile(filePath, JSON.stringify(json, null, 2) + '\n');
     } else {
       console.warn(`No version field found in ${filePath}`);
     }
