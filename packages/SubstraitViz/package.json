@@ -9,6 +9,7 @@
   ],
   "scripts": {
     "check-types": "tsc -b",
+    "clean": "rm -rf dist node_modules",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
@@ -41,7 +42,6 @@
     "@storybook/react": "^8.6.0",
     "@storybook/test": "^8.6.0",
     "@storybook/react-vite": "^8.6.0",
-    "@tailwindcss/vite": "^4.0.8",
     "@bufbuild/buf": "^1.50.0",
     "@bufbuild/protoc-gen-es": "^2.2.3",
     "@eslint/js": "^9.19.0",

@@ -1,13 +1,13 @@
+import tailwindcss from '@tailwindcss/postcss';
+import react from '@vitejs/plugin-react-swc';
 import { glob } from 'glob';
+import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { extname, relative, resolve } from 'path';
 import { defineConfig, Plugin } from 'vite';
-
-import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react-swc';
-import * as fs from 'node:fs';
 import dts from 'vite-plugin-dts';
 import { libInjectCss } from 'vite-plugin-lib-inject-css';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 const base64Loader: Plugin = {
   name: 'base64-loader',
@@ -52,17 +52,28 @@ export interface ConfigOptions {
   importMetaUrl: string;
 }
 
+const isDev = process.env.NODE_ENV === 'development';
+
 // https://vite.dev/config/
 export function config(opts: ConfigOptions) {
+  const devPlugins = [tsconfigPaths({ loose: true })];
+
   return defineConfig({
     plugins: [
       react(),
       libInjectCss(),
       dts({ tsconfigPath: './tsconfig.build.json' }),
-      tailwindcss(),
       base64Loader,
       binLoader,
-    ],
+    ].concat(isDev ? devPlugins : []),
+    css: {
+      postcss: {
+        // Instead of using @tailwindcss/vite, we use this
+        // plugin here, which plays well with the tsconfig
+        // path overrides used for development.
+        plugins: [tailwindcss({ base: __dirname })],
+      },
+    },
     build: {
       rollupOptions: {
         external: ['react', 'react/jsx-runtime'],

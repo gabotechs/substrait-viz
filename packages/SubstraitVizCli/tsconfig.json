@@ -3,7 +3,8 @@
   "include": ["vite.config.ts", "src"],
   "compilerOptions": {
     "paths": {
-      "@substrait-viz/react": ["../SubstraitViz/src"]
+      "@substrait-viz/react": ["../SubstraitViz/src"],
+      "@protobuf-viz/react": ["../ProtobufViz/src"]
     }
   }
 }
