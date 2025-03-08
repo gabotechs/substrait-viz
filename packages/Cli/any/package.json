@@ -6,16 +6,12 @@
     "substrait-viz": "substrait-viz"
   },
   "scripts": {
-    "clean": "rm -rf node_modules .turbo",
-    "build": "echo 'nothing to do'"
+    "clean": "rm -rf node_modules .turbo"
   },
   "optionalDependencies": {
     "@substrait-viz/substrait-viz-darwin-amd64": "workspace:*",
     "@substrait-viz/substrait-viz-darwin-arm64": "workspace:*",
     "@substrait-viz/substrait-viz-linux-amd64": "workspace:*",
     "@substrait-viz/substrait-viz-windows-amd64": "workspace:*"
-  },
-  "devDependencies": {
-    "concurrently": "^9.1.2"
   }
 }
