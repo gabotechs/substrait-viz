@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "check-types": "tsc -b tsconfig.build.json",
+    "check-types": "tsc -b",
     "test": "echo 'nothing to do'",
     "lint": "eslint .",
     "build": "vite build && go build -o bin/substrait-viz"

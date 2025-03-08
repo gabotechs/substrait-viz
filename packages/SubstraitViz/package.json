@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "check-types": "tsc -b tsconfig.build.json",
+    "check-types": "tsc -b",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
