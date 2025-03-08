@@ -1,5 +1,5 @@
 {
-  "name": "substrait-viz",
+  "name": "substrait-viz-monorepo",
   "version": "0.0.1",
   "private": false,
   "type": "module",
