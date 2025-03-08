@@ -1,7 +1,6 @@
 {
   "name": "substrait-viz-monorepo",
-  "version": "0.0.5",
-  "private": true,
+  "version": "0.0.4",
   "type": "module",
   "scripts": {
     "clean": "pnpm --recursive clean",
@@ -13,7 +12,7 @@
     "l": "turbo lint",
     "lint": "turbo lint",
     "bump": "node bump.js",
-    "publish": "pnpm -r publish --access public --force"
+    "publish": "pnpm -r publish --filter ./packages/** --access public"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.12",
