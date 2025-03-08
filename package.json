@@ -1,7 +1,7 @@
 {
   "name": "substrait-viz",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "type": "module",
   "scripts": {
     "clean": "pnpm --recursive clean",
