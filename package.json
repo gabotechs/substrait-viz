@@ -11,7 +11,8 @@
     "t": "turbo test",
     "test": "turbo test",
     "l": "turbo lint",
-    "lint": "turbo lint"
+    "lint": "turbo lint",
+    "publish": "pnpm -r publish --access public"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.12",
