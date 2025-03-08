@@ -1,6 +1,6 @@
 {
   "name": "@substrait-viz/cli",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": false,
   "bin": {
     "substrait-viz": "substrait-viz"
@@ -9,9 +9,9 @@
     "clean": "rm -rf node_modules .turbo"
   },
   "optionalDependencies": {
-    "@substrait-viz/substrait-viz-darwin-amd64": "workspace:0.0.0",
-    "@substrait-viz/substrait-viz-darwin-arm64": "workspace:0.0.0",
-    "@substrait-viz/substrait-viz-linux-amd64": "workspace:0.0.0",
-    "@substrait-viz/substrait-viz-windows-amd64": "workspace:0.0.0"
+    "@substrait-viz/substrait-viz-darwin-amd64": "workspace:0.0.1",
+    "@substrait-viz/substrait-viz-darwin-arm64": "workspace:0.0.1",
+    "@substrait-viz/substrait-viz-linux-amd64": "workspace:0.0.1",
+    "@substrait-viz/substrait-viz-windows-amd64": "workspace:0.0.1"
   }
 }
