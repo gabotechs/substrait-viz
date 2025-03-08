@@ -1,9 +1,13 @@
 {
   "name": "@substrait-viz/cli-windows-amd64",
   "private": false,
-  "version": "0.0.1",
-  "os": ["windows"],
-  "cpu": ["x64"],
+  "version": "0.0.2",
+  "os": [
+    "windows"
+  ],
+  "cpu": [
+    "x64"
+  ],
   "bin": {
     "substrait-viz": "bin/substrait-viz-windows-amd64"
   },
@@ -14,5 +18,7 @@
   "dependencies": {
     "@substrait-viz/cli-frontend": "workspace:*"
   },
-  "files": ["bin/substrait-viz-windows-amd64"]
+  "files": [
+    "bin/substrait-viz-windows-amd64"
+  ]
 }
