@@ -14,13 +14,13 @@ import (
 	"github.com/spf13/cobra"
 )
 
-//go:embed dist/index.html
+//go:embed build/index.html
 var indexHtml []byte
 
-//go:embed dist/index.js
+//go:embed build/index.js
 var indexJs []byte
 
-//go:embed dist/index.css
+//go:embed build/index.css
 var indexCss []byte
 
 //go:embed public/logo.svg

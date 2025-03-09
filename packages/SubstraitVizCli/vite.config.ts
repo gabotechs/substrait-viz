@@ -18,6 +18,7 @@ export default defineConfig({
     },
   },
   build: {
+    outDir: './build',
     rollupOptions: {
       output: {
         entryFileNames: 'index.js', // Output main JS file as index.js

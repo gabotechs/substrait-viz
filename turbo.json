@@ -9,7 +9,7 @@
     "build": {
       "outputLogs": "new-only",
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "bin/**"]
+      "outputs": ["dist/**", "bin/**", "build/**"]
     },
     "check-types": {
       "dependsOn": [],
