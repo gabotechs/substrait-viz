@@ -1,5 +1,5 @@
 import tailwindcss from '@tailwindcss/postcss';
-import react from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react';
 import { glob } from 'glob';
 import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -73,7 +73,7 @@ export function config(opts: ConfigOptions) {
     },
     build: {
       rollupOptions: {
-        external: ['react', 'react/jsx-runtime'],
+        external: ['react', 'react/jsx-runtime', 'react-dom'],
         input: Object.fromEntries(
           glob
             .sync('src/**/*.{ts,tsx}', {
@@ -92,12 +92,17 @@ export function config(opts: ConfigOptions) {
             ]),
         ),
         output: {
+          globals: {
+            react: 'React',
+            'react/jsx-runtime': 'react/jsx-runtime',
+            'react-dom': 'ReactDOM',
+          },
           assetFileNames: 'assets/[name][extname]',
           entryFileNames: '[name].js',
         },
       },
       lib: {
-        entry: resolve(opts.dirname, 'src/main.ts'),
+        entry: resolve(opts.dirname, 'src/index.ts'),
         formats: ['es'],
       },
     },

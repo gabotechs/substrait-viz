@@ -1,7 +1,13 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    "package.json",
+    "tsconfig.app.json",
+    "vite.config.ts"
+  ],
   "tasks": {
     "build": {
+      "outputLogs": "new-only",
       "dependsOn": ["^build"],
       "outputs": ["dist/**", "bin/**"]
     },
