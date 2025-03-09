@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "type": "module",
   "scripts": {
-    "clean": "pnpm --recursive clean",
+    "clean": "pnpm --recursive clean && rm -rf dist node_modules",
     "check-types": "turbo check-types",
     "b": "turbo build",
     "build": "turbo build",

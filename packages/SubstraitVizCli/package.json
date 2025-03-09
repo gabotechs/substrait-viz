@@ -10,7 +10,7 @@
     "dev": "vite",
     "check-types": "tsc -b",
     "test": "echo 'nothing to do'",
-    "lint": "eslint ",
+    "lint": "eslint .",
     "build": "TS_CONFIG=tsconfig.build.json vite build && go build -o bin/substrait-viz"
   },
   "dependencies": {
