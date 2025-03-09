@@ -1,6 +1,6 @@
 {
   "name": "substrait-viz",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "module",
   "bin": {
     "substrait-viz": "bin/substrait-viz"
