@@ -45,96 +45,6 @@ importers:
         specifier: ^5.1.4
         version: 5.1.4(typescript@5.7.3)(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2))
 
-  packages/Cli/any: {}
-
-  packages/Cli/darwin-amd64:
-    dependencies:
-      '@substrait-viz/cli-frontend':
-        specifier: workspace:*
-        version: link:../frontend
-
-  packages/Cli/darwin-arm64:
-    dependencies:
-      '@substrait-viz/cli-frontend':
-        specifier: workspace:*
-        version: link:../frontend
-
-  packages/Cli/frontend:
-    dependencies:
-      '@substrait-viz/react':
-        specifier: workspace:*
-        version: link:../../SubstraitViz
-      react:
-        specifier: ^19.0.0
-        version: 19.0.0
-      react-dom:
-        specifier: ^19.0.0
-        version: 19.0.0(react@19.0.0)
-    devDependencies:
-      '@eslint/js':
-        specifier: ^9.19.0
-        version: 9.22.0
-      '@tailwindcss/postcss':
-        specifier: ^4.0.12
-        version: 4.0.12
-      '@types/react':
-        specifier: ^19.0.8
-        version: 19.0.10
-      '@types/react-dom':
-        specifier: ^19.0.3
-        version: 19.0.4(@types/react@19.0.10)
-      '@vitejs/plugin-react-swc':
-        specifier: ^3.5.0
-        version: 3.8.0(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2))
-      eslint:
-        specifier: ^9.19.0
-        version: 9.22.0(jiti@2.4.2)
-      eslint-plugin-react-hooks:
-        specifier: ^5.0.0
-        version: 5.2.0(eslint@9.22.0(jiti@2.4.2))
-      eslint-plugin-react-refresh:
-        specifier: ^0.4.18
-        version: 0.4.19(eslint@9.22.0(jiti@2.4.2))
-      globals:
-        specifier: ^15.14.0
-        version: 15.15.0
-      prettier:
-        specifier: 3.5.2
-        version: 3.5.2
-      tailwindcss:
-        specifier: ^4.0.8
-        version: 4.0.12
-      typescript:
-        specifier: ~5.7.2
-        version: 5.7.3
-      typescript-eslint:
-        specifier: ^8.22.0
-        version: 8.26.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.7.3)
-      vite:
-        specifier: ^6.1.0
-        version: 6.2.1(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)
-      vite-plugin-singlefile:
-        specifier: ^2.1.0
-        version: 2.1.0(rollup@4.35.0)(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2))
-      vite-tsconfig-paths:
-        specifier: ^5.1.4
-        version: 5.1.4(typescript@5.7.3)(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2))
-      vitest:
-        specifier: ^3.0.6
-        version: 3.0.8(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)
-
-  packages/Cli/linux-amd64:
-    dependencies:
-      '@substrait-viz/cli-frontend':
-        specifier: workspace:*
-        version: link:../frontend
-
-  packages/Cli/windows-amd64:
-    dependencies:
-      '@substrait-viz/cli-frontend':
-        specifier: workspace:*
-        version: link:../frontend
-
   packages/ProtobufViz:
     dependencies:
       '@bufbuild/protobuf':
@@ -319,6 +229,70 @@ importers:
       vite:
         specifier: ^6.1.0
         version: 6.2.1(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)
+      vitest:
+        specifier: ^3.0.6
+        version: 3.0.8(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)
+
+  packages/SubstraitVizCli:
+    dependencies:
+      '@substrait-viz/react':
+        specifier: workspace:*
+        version: link:../SubstraitViz
+      react:
+        specifier: ^19.0.0
+        version: 19.0.0
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.0.0(react@19.0.0)
+    devDependencies:
+      '@eslint/js':
+        specifier: ^9.19.0
+        version: 9.22.0
+      '@tailwindcss/postcss':
+        specifier: ^4.0.12
+        version: 4.0.12
+      '@types/react':
+        specifier: ^19.0.8
+        version: 19.0.10
+      '@types/react-dom':
+        specifier: ^19.0.3
+        version: 19.0.4(@types/react@19.0.10)
+      '@vitejs/plugin-react-swc':
+        specifier: ^3.5.0
+        version: 3.8.0(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2))
+      eslint:
+        specifier: ^9.19.0
+        version: 9.22.0(jiti@2.4.2)
+      eslint-plugin-react-hooks:
+        specifier: ^5.0.0
+        version: 5.2.0(eslint@9.22.0(jiti@2.4.2))
+      eslint-plugin-react-refresh:
+        specifier: ^0.4.18
+        version: 0.4.19(eslint@9.22.0(jiti@2.4.2))
+      globals:
+        specifier: ^15.14.0
+        version: 15.15.0
+      prettier:
+        specifier: 3.5.2
+        version: 3.5.2
+      tailwindcss:
+        specifier: ^4.0.8
+        version: 4.0.12
+      typescript:
+        specifier: ~5.7.2
+        version: 5.7.3
+      typescript-eslint:
+        specifier: ^8.22.0
+        version: 8.26.0(eslint@9.22.0(jiti@2.4.2))(typescript@5.7.3)
+      vite:
+        specifier: ^6.1.0
+        version: 6.2.1(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)
+      vite-plugin-singlefile:
+        specifier: ^2.1.0
+        version: 2.1.0(rollup@4.35.0)(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2))
+      vite-tsconfig-paths:
+        specifier: ^5.1.4
+        version: 5.1.4(typescript@5.7.3)(vite@6.2.1(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2))
       vitest:
         specifier: ^3.0.6
         version: 3.0.8(@types/node@22.13.10)(jiti@2.4.2)(lightningcss@1.29.2)
