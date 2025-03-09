@@ -12,7 +12,7 @@
     "dev": "vite",
     "clean": "rm -rf dist node_modules .turbo",
     "check-types": "tsc -b",
-    "build": "vite build",
+    "build": "TS_CONFIG=tsconfig.build.json vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "gen": "npx buf generate src/.test_data",

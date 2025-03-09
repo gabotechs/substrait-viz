@@ -7,11 +7,11 @@
   },
   "scripts": {
     "clean": "rm -rf dist bin node_modules .turbo",
-    "dev": "NODE_ENV=development vite",
+    "dev": "vite",
     "check-types": "tsc -b",
     "test": "echo 'nothing to do'",
     "lint": "eslint ",
-    "build": "vite build && go build -o bin/substrait-viz"
+    "build": "TS_CONFIG=tsconfig.build.json vite build && go build -o bin/substrait-viz"
   },
   "dependencies": {
     "@substrait-viz/react": "workspace:*",

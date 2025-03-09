@@ -1,6 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { SubstraitViz } from '@substrait-viz/react/src';
+import { SubstraitViz } from '@substrait-viz/react';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

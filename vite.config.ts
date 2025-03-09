@@ -52,12 +52,8 @@ export interface ConfigOptions {
   importMetaUrl: string;
 }
 
-const isDev = process.env.NODE_ENV === 'development';
-
 // https://vite.dev/config/
 export function config(opts: ConfigOptions) {
-  const devPlugins = [tsconfigPaths({ loose: true })];
-
   return defineConfig({
     plugins: [
       react(),
@@ -65,7 +61,8 @@ export function config(opts: ConfigOptions) {
       dts({ tsconfigPath: './tsconfig.build.json' }),
       base64Loader,
       binLoader,
-    ].concat(isDev ? devPlugins : []),
+      tsconfigPaths({ projects: [process.env.TS_CONFIG ?? './tsconfig.json'] }),
+    ],
     css: {
       postcss: {
         // Instead of using @tailwindcss/vite, we use this
