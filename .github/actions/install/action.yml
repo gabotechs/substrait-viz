@@ -2,13 +2,8 @@ name: 'install'
 runs:
   using: composite
   steps:
-    - name: Cache turbo build setup
-      uses: actions/cache@v4
-      with:
-        path: .turbo
-        key: ${{ runner.os }}-turbo-${{ github.sha }}
-        restore-keys: |
-          ${{ runner.os }}-turbo-
+    - name: Cache for Turbo
+      uses: rharkor/caching-for-turbo@v1.6
 
     - name: Install pnpm
       uses: pnpm/action-setup@v4
