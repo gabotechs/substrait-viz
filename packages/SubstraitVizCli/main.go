@@ -1,7 +1,9 @@
 package main
 
 import (
+	"crypto/md5"
 	_ "embed"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -60,11 +62,13 @@ Visualize Substrait plans using a flow diagram
 		}
 
 		descriptorMap := make(map[string][]byte)
-		for _, desc := range descriptors {
-			plan, err = os.ReadFile(desc)
+		for _, descPath := range descriptors {
+			descriptorBin, err := os.ReadFile(descPath)
 			if err != nil {
 				return err
 			}
+			hash := md5.Sum(descriptorBin)
+			descriptorMap[hex.EncodeToString(hash[:])] = descriptorBin
 		}
 
 		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
@@ -74,20 +78,30 @@ Visualize Substrait plans using a flow diagram
 		http.HandleFunc("/plan", func(w http.ResponseWriter, r *http.Request) {
 			var jsonObject map[string]interface{}
 			if json.Unmarshal(plan, &jsonObject) == nil {
+				fmt.Println("Serving", len(plan), "bytes of plan in JSON format")
 				w.Header().Set("Content-Type", "application/json")
+			} else {
+				fmt.Println("Serving", len(plan), "bytes of plan in binary format")
 			}
 			_, _ = w.Write(plan)
 		})
 		http.HandleFunc("/descriptors", func(w http.ResponseWriter, r *http.Request) {
+			var hashes []string
+			for hash := range descriptorMap {
+				hashes = append(hashes, hash)
+			}
+			fmt.Println("Serving the available descriptor hashes:", hashes)
 			w.Header().Set("Content-Type", "application/json")
-			res, _ := json.Marshal(descriptors)
+			res, _ := json.Marshal(hashes)
 			_, _ = w.Write(res)
 		})
 		http.HandleFunc("/descriptor/", func(w http.ResponseWriter, r *http.Request) {
-			desc := r.URL.Path[len("/descriptor/"):]
-			if descriptor, ok := descriptorMap[desc]; ok {
+			name := r.URL.Path[len("/descriptor/"):]
+			if descriptor, ok := descriptorMap[name]; ok {
+				fmt.Println("Serving", len(descriptor), "bytes of descriptor with name", name)
 				_, _ = w.Write(descriptor)
 			} else {
+				fmt.Println("Requested unavailable descriptor with name", name)
 				http.NotFound(w, r)
 			}
 		})
@@ -144,7 +158,7 @@ func openInBrowser(url string) error {
 }
 
 func main() {
-	descriptors = *root.PersistentFlags().StringArrayP("descriptor", "d", nil, "list of protobuf descriptor sets that contain extra message definitions.")
+	root.PersistentFlags().StringArrayVarP(&descriptors, "descriptor", "d", nil, "list of protobuf descriptor sets that contain extra message definitions.")
 	err := root.Execute()
 	if err != nil {
 		_, _ = fmt.Fprintln(os.Stderr, err)
