@@ -5,36 +5,14 @@
 
 Visualize substrait plans in your browser with a flow diagram
 
+<p align="center">
+    <img width="819" src="https://github.com/user-attachments/assets/c8959819-7f1d-4a9e-a87f-329f7ba5ac1b" alt="Demo">
+</p>
+
 # Install
 
-Currently, the only way of installing the project is by building from source, for that
-you'll need:
-
-- Node JS and npm
-- A Golang compiler
-
-1. Clone the repository
+Using homebrew tap:
 
 ```shell
-git clone git@github.com:gabotechs/substrait-viz.git
-cd substrait-viz
-```
-
-2. Install the npm packages
-
-```shell
-npm install
-```
-
-3. Build the project
-
-```shell
-npm run build
-```
-
-4. Install the CLI
-
-```shell
-cd packages/cli
-go install
+brew install gabotechs/taps/substrait-viz
 ```
