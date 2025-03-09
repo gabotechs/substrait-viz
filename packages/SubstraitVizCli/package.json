@@ -3,15 +3,19 @@
   "version": "0.0.7",
   "type": "module",
   "bin": {
-    "substrait-viz": "bin/substrait-viz"
+    "substrait-viz": "substrait-viz"
   },
+  "files": [
+    "install.cjs"
+  ],
   "scripts": {
     "clean": "rm -rf dist bin node_modules .turbo",
     "dev": "vite",
     "check-types": "tsc -b",
     "test": "echo 'nothing to do'",
     "lint": "eslint .",
-    "build": "TS_CONFIG=tsconfig.build.json vite build"
+    "build": "TS_CONFIG=tsconfig.build.json vite build",
+    "postinstall": "node install.cjs"
   },
   "dependencies": {
     "@substrait-viz/react": "workspace:*",
