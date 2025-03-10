@@ -12,6 +12,7 @@ import {
   castNumberList,
   castString,
   castStringList,
+  castUint8Array,
 } from './cast.ts';
 import {
   HANDLE,
@@ -19,6 +20,7 @@ import {
   NodeExt,
   WIDTH_ATTRIBUTE,
 } from './compile.ts';
+import { Binary } from './components/Binary.tsx';
 import { Box } from './components/Box.tsx';
 import { Entry } from './components/Entry.tsx';
 import { NumberList } from './components/NumberList.tsx';
@@ -36,6 +38,11 @@ function SmartNode({ data, isNested }: SmartNodeProps) {
   {
     const n = castStringList(data);
     if (n) return <StringList entries={n} />;
+  }
+
+  {
+    const n = castUint8Array(data);
+    if (n) return <Binary data={n} />;
   }
 
   {

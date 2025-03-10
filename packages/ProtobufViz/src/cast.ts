@@ -105,6 +105,10 @@ export function castOneOfArr<M extends Message>(
   }
 }
 
+export function castUint8Array(obj: unknown): Uint8Array | undefined {
+  if (obj instanceof Uint8Array) return obj;
+}
+
 export function castNumber(obj: unknown): number | undefined {
   if (typeof obj === 'number') return obj;
 }
