@@ -4,10 +4,25 @@ import {
   fromBinary,
   fromJson,
   MessageShape,
+  Registry,
 } from '@bufbuild/protobuf';
 import { FileDescriptorSetSchema } from '@bufbuild/protobuf/wkt';
 import { MessageSchema } from './compile.ts';
 import { fetchFile, Json, ProtoFile } from './file.ts';
+
+/**
+ * Builds a registry out of a list of binary proto descriptor sets.
+ * @param protoDescriptorSets list of proto descriptor sets.
+ */
+export async function loadRegistry(
+  protoDescriptorSets: ProtoFile[] = [],
+): Promise<Registry | undefined> {
+  if (protoDescriptorSets.length > 0) {
+    return createFileRegistry(
+      ...(await Promise.all(protoDescriptorSets.map(buildRegistry))),
+    );
+  }
+}
 
 /**
  * Decodes a protobuf message based on the provided payload and
@@ -20,22 +35,14 @@ import { fetchFile, Json, ProtoFile } from './file.ts';
  *  - a binary payload encoded as base64
  *  - a URL pointing to any of the three above
  * @param schema schema for decoding the message.
- * @param protoDescriptorSets optional set of proto descriptors for
+ * @param registry optional registry containing info useful for
  *  decoding unknown Any messages.
  */
 export async function loadMessage<S extends MessageSchema>(
   payload: ProtoFile,
   schema: S,
-  protoDescriptorSets?: ProtoFile[],
+  registry?: Registry,
 ): Promise<MessageShape<S>> {
-  let registry;
-
-  if (protoDescriptorSets && protoDescriptorSets.length > 0) {
-    registry = createFileRegistry(
-      ...(await Promise.all(protoDescriptorSets.map(buildRegistry))),
-    );
-  }
-
   const file = await fetchFile(payload);
   if (file instanceof Json) {
     return fromJson(schema, file.value, { registry });

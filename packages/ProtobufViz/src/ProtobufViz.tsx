@@ -16,7 +16,7 @@ import {
 import '@xyflow/react/dist/style.css';
 import React, { useLayoutEffect } from 'react';
 
-import { MessageShape } from '@bufbuild/protobuf';
+import { MessageShape, Registry } from '@bufbuild/protobuf';
 import {
   CompileConfig,
   Compiler,
@@ -26,7 +26,7 @@ import {
 } from './compile.ts';
 import { ProtoFile } from './file.ts';
 import { layout } from './layout.ts';
-import { loadMessage } from './load.ts';
+import { loadMessage, loadRegistry } from './load.ts';
 import { RenderConfig, RenderConfigContext } from './render.ts';
 import SmartNode from './SmartNode.tsx';
 import './styles.css';
@@ -62,11 +62,18 @@ export function ProtobufViz<S extends MessageSchema>(
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<Error>();
   const [rootNode, setRootNode] = React.useState<MessageShape<S>>();
+  const [registry, setRegistry] = React.useState<Registry>();
 
   React.useEffect(() => {
+    async function load() {
+      const registry = await loadRegistry(protoDescriptorSets);
+      const message = await loadMessage(protoMessage, schema, registry);
+      setRootNode(message);
+      setRegistry(registry);
+    }
+
     setLoading(true);
-    loadMessage(protoMessage, schema, protoDescriptorSets)
-      .then(setRootNode)
+    load()
       .catch(setError)
       .finally(() => setLoading(false));
   }, [protoDescriptorSets, protoMessage, schema]);
@@ -105,7 +112,7 @@ export function ProtobufViz<S extends MessageSchema>(
 
   return (
     <ThemeContext.Provider value={theme}>
-      <RenderConfigContext.Provider value={props}>
+      <RenderConfigContext.Provider value={{ ...props, registry }}>
         <ReactFlowProvider>
           <Private rootNode={rootNode} {...props} />
         </ReactFlowProvider>

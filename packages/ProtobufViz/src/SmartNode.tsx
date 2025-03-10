@@ -1,6 +1,7 @@
-import { JsonValue, Message } from '@bufbuild/protobuf';
+import { fromBinary, JsonValue, Message } from '@bufbuild/protobuf';
 import React from 'react';
 
+import { Any, AnySchema } from '@bufbuild/protobuf/wkt';
 import { Handle, Position } from '@xyflow/react';
 import {
   castAnyMsg,
@@ -91,8 +92,18 @@ function SmartNode({ data, isNested }: SmartNodeProps) {
 
 function Msg({ msg, isNested }: { msg: Message & NodeExt; isNested: boolean }) {
   const ref = React.useRef<HTMLDivElement>(null);
-  const { nodeRender, edgesFromFields } = useRenderConfig();
+  const { nodeRender, edgesFromFields, registry } = useRenderConfig();
   const theme = useTheme();
+
+  msg = React.useMemo(() => {
+    if (msg.$typeName === AnySchema.typeName) {
+      const anyMsg = msg as Any;
+      const desc = registry?.getMessage(anyMsg.typeUrl);
+      if (!desc) return msg;
+      return fromBinary(desc, anyMsg.value);
+    }
+    return msg;
+  }, [msg, registry]);
 
   React.useLayoutEffect(() => {
     if (ref.current && !isNested) {

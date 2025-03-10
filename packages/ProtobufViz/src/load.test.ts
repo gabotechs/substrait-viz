@@ -3,7 +3,7 @@ import { describe, expect, test } from 'vitest';
 import { ExtraSchema } from './.test_data/gen/extra_pb.ts';
 import { Foo, FooSchema } from './.test_data/gen/spec_pb.ts';
 import specBinPb from './.test_data/spec.binpb?bin';
-import { buildRegistry, loadMessage } from './load.ts';
+import { buildRegistry, loadMessage, loadRegistry } from './load.ts';
 
 describe('loadNode', () => {
   const testData: Foo = {
@@ -86,7 +86,7 @@ describe('loadNode', () => {
     const node = await loadMessage(
       JSON.stringify(toJson(FooSchema, testDataWithAny, { registry })),
       FooSchema,
-      [specBinPb],
+      await loadRegistry([specBinPb]),
     );
     assertWithAny(node);
   });
@@ -96,7 +96,6 @@ describe('loadNode', () => {
     const promise = loadMessage(
       JSON.stringify(toJson(FooSchema, testDataWithAny, { registry })),
       FooSchema,
-      [],
     );
     await expect(promise).rejects.toThrow();
   });
