@@ -33,6 +33,8 @@ export function printType(t?: Type): string {
       return 'intervalYear';
     case 'intervalDay':
       return 'intervalDay';
+    case 'intervalCompound':
+      return 'intervalCompound';
     case 'timestampTz':
       return 'timestampTz';
     case 'uuid':

@@ -6,7 +6,7 @@
 
 import type { GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
 import { fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
-import type { Rel, RelRoot } from "./algebra_pb";
+import type { Expression_Literal, Rel, RelRoot } from "./algebra_pb";
 import { file_substrait_algebra } from "./algebra_pb";
 import type { AdvancedExtension, SimpleExtensionDeclaration, SimpleExtensionURI } from "./extensions/extensions_pb";
 import { file_substrait_extensions_extensions } from "./extensions/extensions_pb";
@@ -16,7 +16,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file substrait/plan.proto.
  */
 export const file_substrait_plan: GenFile = /*@__PURE__*/
-  fileDesc("ChRzdWJzdHJhaXQvcGxhbi5wcm90bxIJc3Vic3RyYWl0IlgKB1BsYW5SZWwSHQoDcmVsGAEgASgLMg4uc3Vic3RyYWl0LlJlbEgAEiIKBHJvb3QYAiABKAsyEi5zdWJzdHJhaXQuUmVsUm9vdEgAQgoKCHJlbF90eXBlIrwCCgRQbGFuEiMKB3ZlcnNpb24YBiABKAsyEi5zdWJzdHJhaXQuVmVyc2lvbhJACg5leHRlbnNpb25fdXJpcxgBIAMoCzIoLnN1YnN0cmFpdC5leHRlbnNpb25zLlNpbXBsZUV4dGVuc2lvblVSSRJECgpleHRlbnNpb25zGAIgAygLMjAuc3Vic3RyYWl0LmV4dGVuc2lvbnMuU2ltcGxlRXh0ZW5zaW9uRGVjbGFyYXRpb24SJQoJcmVsYXRpb25zGAMgAygLMhIuc3Vic3RyYWl0LlBsYW5SZWwSRAoTYWR2YW5jZWRfZXh0ZW5zaW9ucxgEIAEoCzInLnN1YnN0cmFpdC5leHRlbnNpb25zLkFkdmFuY2VkRXh0ZW5zaW9uEhoKEmV4cGVjdGVkX3R5cGVfdXJscxgFIAMoCSIyCgtQbGFuVmVyc2lvbhIjCgd2ZXJzaW9uGAYgASgLMhIuc3Vic3RyYWl0LlZlcnNpb24ibwoHVmVyc2lvbhIUCgxtYWpvcl9udW1iZXIYASABKA0SFAoMbWlub3JfbnVtYmVyGAIgASgNEhQKDHBhdGNoX251bWJlchgDIAEoDRIQCghnaXRfaGFzaBgEIAEoCRIQCghwcm9kdWNlchgFIAEoCUJXChJpby5zdWJzdHJhaXQucHJvdG9QAVoqZ2l0aHViLmNvbS9zdWJzdHJhaXQtaW8vc3Vic3RyYWl0LWdvL3Byb3RvqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM", [file_substrait_algebra, file_substrait_extensions_extensions]);
+  fileDesc("ChRzdWJzdHJhaXQvcGxhbi5wcm90bxIJc3Vic3RyYWl0IlgKB1BsYW5SZWwSHQoDcmVsGAEgASgLMg4uc3Vic3RyYWl0LlJlbEgAEiIKBHJvb3QYAiABKAsyEi5zdWJzdHJhaXQuUmVsUm9vdEgAQgoKCHJlbF90eXBlIvwCCgRQbGFuEiMKB3ZlcnNpb24YBiABKAsyEi5zdWJzdHJhaXQuVmVyc2lvbhJACg5leHRlbnNpb25fdXJpcxgBIAMoCzIoLnN1YnN0cmFpdC5leHRlbnNpb25zLlNpbXBsZUV4dGVuc2lvblVSSRJECgpleHRlbnNpb25zGAIgAygLMjAuc3Vic3RyYWl0LmV4dGVuc2lvbnMuU2ltcGxlRXh0ZW5zaW9uRGVjbGFyYXRpb24SJQoJcmVsYXRpb25zGAMgAygLMhIuc3Vic3RyYWl0LlBsYW5SZWwSRAoTYWR2YW5jZWRfZXh0ZW5zaW9ucxgEIAEoCzInLnN1YnN0cmFpdC5leHRlbnNpb25zLkFkdmFuY2VkRXh0ZW5zaW9uEhoKEmV4cGVjdGVkX3R5cGVfdXJscxgFIAMoCRI+ChJwYXJhbWV0ZXJfYmluZGluZ3MYByADKAsyIi5zdWJzdHJhaXQuRHluYW1pY1BhcmFtZXRlckJpbmRpbmciMgoLUGxhblZlcnNpb24SIwoHdmVyc2lvbhgGIAEoCzISLnN1YnN0cmFpdC5WZXJzaW9uIm8KB1ZlcnNpb24SFAoMbWFqb3JfbnVtYmVyGAEgASgNEhQKDG1pbm9yX251bWJlchgCIAEoDRIUCgxwYXRjaF9udW1iZXIYAyABKA0SEAoIZ2l0X2hhc2gYBCABKAkSEAoIcHJvZHVjZXIYBSABKAkiYQoXRHluYW1pY1BhcmFtZXRlckJpbmRpbmcSGAoQcGFyYW1ldGVyX2FuY2hvchgBIAEoDRIsCgV2YWx1ZRgCIAEoCzIdLnN1YnN0cmFpdC5FeHByZXNzaW9uLkxpdGVyYWxCVwoSaW8uc3Vic3RyYWl0LnByb3RvUAFaKmdpdGh1Yi5jb20vc3Vic3RyYWl0LWlvL3N1YnN0cmFpdC1nby9wcm90b6oCElN1YnN0cmFpdC5Qcm90b2J1ZmIGcHJvdG8z", [file_substrait_algebra, file_substrait_extensions_extensions]);
 
 /**
  * Either a relation or root relation
@@ -106,6 +106,14 @@ export type Plan = Message<"substrait.Plan"> & {
    * @generated from field: repeated string expected_type_urls = 5;
    */
   expectedTypeUrls: string[];
+
+  /**
+   * An optional list of bindings for dynamic parameters used in this plan.
+   * Each binding maps a parameter_anchor to its corresponding runtime value.
+   *
+   * @generated from field: repeated substrait.DynamicParameterBinding parameter_bindings = 7;
+   */
+  parameterBindings: DynamicParameterBinding[];
 };
 
 /**
@@ -191,4 +199,34 @@ export type Version = Message<"substrait.Version"> & {
  */
 export const VersionSchema: GenMessage<Version> = /*@__PURE__*/
   messageDesc(file_substrait_plan, 3);
+
+/**
+ * Represents a binding for a dynamic parameter.
+ *
+ * @generated from message substrait.DynamicParameterBinding
+ */
+export type DynamicParameterBinding = Message<"substrait.DynamicParameterBinding"> & {
+  /**
+   * The parameter anchor that identifies the dynamic parameter reference.
+   *
+   * @generated from field: uint32 parameter_anchor = 1;
+   */
+  parameterAnchor: number;
+
+  /**
+   * The literal value assigned to the parameter at runtime.
+   * The type of the literal needs to match the type of the corresponding
+   * DynamicParameter expression in the plan.
+   *
+   * @generated from field: substrait.Expression.Literal value = 2;
+   */
+  value?: Expression_Literal;
+};
+
+/**
+ * Describes the message substrait.DynamicParameterBinding.
+ * Use `create(DynamicParameterBindingSchema)` to create a new message.
+ */
+export const DynamicParameterBindingSchema: GenMessage<DynamicParameterBinding> = /*@__PURE__*/
+  messageDesc(file_substrait_plan, 4);
 

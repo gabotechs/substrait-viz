@@ -6,7 +6,7 @@
 
 import type { GenEnum, GenFile, GenMessage } from "@bufbuild/protobuf/codegenv1";
 import { enumDesc, fileDesc, messageDesc } from "@bufbuild/protobuf/codegenv1";
-import type { Type_Binary, Type_Boolean, Type_Date, Type_FP32, Type_FP64, Type_I16, Type_I32, Type_I64, Type_I8, Type_IntervalDay, Type_IntervalYear, Type_Nullability, Type_String, Type_Time, Type_Timestamp, Type_TimestampTZ, Type_UUID } from "./type_pb";
+import type { Type_Binary, Type_Boolean, Type_Date, Type_FP32, Type_FP64, Type_I16, Type_I32, Type_I64, Type_I8, Type_IntervalYear, Type_Nullability, Type_String, Type_Time, Type_Timestamp, Type_TimestampTZ, Type_UUID } from "./type_pb";
 import { file_substrait_type } from "./type_pb";
 import type { Message } from "@bufbuild/protobuf";
 
@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file substrait/type_expressions.proto.
  */
 export const file_substrait_type_expressions: GenFile = /*@__PURE__*/
-  fileDesc("CiBzdWJzdHJhaXQvdHlwZV9leHByZXNzaW9ucy5wcm90bxIJc3Vic3RyYWl0ItIkChREZXJpdmF0aW9uRXhwcmVzc2lvbhInCgRib29sGAEgASgLMhcuc3Vic3RyYWl0LlR5cGUuQm9vbGVhbkgAEiAKAmk4GAIgASgLMhIuc3Vic3RyYWl0LlR5cGUuSThIABIiCgNpMTYYAyABKAsyEy5zdWJzdHJhaXQuVHlwZS5JMTZIABIiCgNpMzIYBSABKAsyEy5zdWJzdHJhaXQuVHlwZS5JMzJIABIiCgNpNjQYByABKAsyEy5zdWJzdHJhaXQuVHlwZS5JNjRIABIkCgRmcDMyGAogASgLMhQuc3Vic3RyYWl0LlR5cGUuRlAzMkgAEiQKBGZwNjQYCyABKAsyFC5zdWJzdHJhaXQuVHlwZS5GUDY0SAASKAoGc3RyaW5nGAwgASgLMhYuc3Vic3RyYWl0LlR5cGUuU3RyaW5nSAASKAoGYmluYXJ5GA0gASgLMhYuc3Vic3RyYWl0LlR5cGUuQmluYXJ5SAASMgoJdGltZXN0YW1wGA4gASgLMhkuc3Vic3RyYWl0LlR5cGUuVGltZXN0YW1wQgIYAUgAEiQKBGRhdGUYECABKAsyFC5zdWJzdHJhaXQuVHlwZS5EYXRlSAASJAoEdGltZRgRIAEoCzIULnN1YnN0cmFpdC5UeXBlLlRpbWVIABI1Cg1pbnRlcnZhbF95ZWFyGBMgASgLMhwuc3Vic3RyYWl0LlR5cGUuSW50ZXJ2YWxZZWFySAASMwoMaW50ZXJ2YWxfZGF5GBQgASgLMhsuc3Vic3RyYWl0LlR5cGUuSW50ZXJ2YWxEYXlIABI3Cgx0aW1lc3RhbXBfdHoYHSABKAsyGy5zdWJzdHJhaXQuVHlwZS5UaW1lc3RhbXBUWkICGAFIABIkCgR1dWlkGCAgASgLMhQuc3Vic3RyYWl0LlR5cGUuVVVJREgAEkkKCmZpeGVkX2NoYXIYFSABKAsyMy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvbkZpeGVkQ2hhckgAEkQKB3ZhcmNoYXIYFiABKAsyMS5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvblZhckNoYXJIABJNCgxmaXhlZF9iaW5hcnkYFyABKAsyNS5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvbkZpeGVkQmluYXJ5SAASRAoHZGVjaW1hbBgYIAEoCzIxLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5FeHByZXNzaW9uRGVjaW1hbEgAElsKE3ByZWNpc2lvbl90aW1lc3RhbXAYKCABKAsyPC5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvblByZWNpc2lvblRpbWVzdGFtcEgAEmAKFnByZWNpc2lvbl90aW1lc3RhbXBfdHoYKSABKAsyPi5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvblByZWNpc2lvblRpbWVzdGFtcFRaSAASQgoGc3RydWN0GBkgASgLMjAuc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25TdHJ1Y3RIABI+CgRsaXN0GBsgASgLMi4uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25MaXN0SAASPAoDbWFwGBwgASgLMi0uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25NYXBIABJNCgx1c2VyX2RlZmluZWQYHiABKAsyNS5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvblVzZXJEZWZpbmVkSAASIgoUdXNlcl9kZWZpbmVkX3BvaW50ZXIYHyABKA1CAhgBSAASHQoTdHlwZV9wYXJhbWV0ZXJfbmFtZRghIAEoCUgAEiAKFmludGVnZXJfcGFyYW1ldGVyX25hbWUYIiABKAlIABIZCg9pbnRlZ2VyX2xpdGVyYWwYIyABKAVIABI7Cgh1bmFyeV9vcBgkIAEoCzInLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5VbmFyeU9wSAASPQoJYmluYXJ5X29wGCUgASgLMiguc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkJpbmFyeU9wSAASOQoHaWZfZWxzZRgmIAEoCzImLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5JZkVsc2VIABJHCg5yZXR1cm5fcHJvZ3JhbRgnIAEoCzItLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5SZXR1cm5Qcm9ncmFtSAAakwEKE0V4cHJlc3Npb25GaXhlZENoYXISLwoGbGVuZ3RoGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkakQEKEUV4cHJlc3Npb25WYXJDaGFyEi8KBmxlbmd0aBgBIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIZChF2YXJpYXRpb25fcG9pbnRlchgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GpUBChVFeHByZXNzaW9uRml4ZWRCaW5hcnkSLwoGbGVuZ3RoGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaxAEKEUV4cHJlc3Npb25EZWNpbWFsEi4KBXNjYWxlGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEjIKCXByZWNpc2lvbhgCIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIZChF2YXJpYXRpb25fcG9pbnRlchgDIAEoDRIwCgtudWxsYWJpbGl0eRgEIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5Gp8BChxFeHByZXNzaW9uUHJlY2lzaW9uVGltZXN0YW1wEjIKCXByZWNpc2lvbhgBIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIZChF2YXJpYXRpb25fcG9pbnRlchgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GqEBCh5FeHByZXNzaW9uUHJlY2lzaW9uVGltZXN0YW1wVFoSMgoJcHJlY2lzaW9uGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkajwEKEEV4cHJlc3Npb25TdHJ1Y3QSLgoFdHlwZXMYASADKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SGQoRdmFyaWF0aW9uX3BvaW50ZXIYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpoChVFeHByZXNzaW9uTmFtZWRTdHJ1Y3QSDQoFbmFtZXMYASADKAkSQAoGc3RydWN0GAIgASgLMjAuc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25TdHJ1Y3QajAEKDkV4cHJlc3Npb25MaXN0Ei0KBHR5cGUYASABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SGQoRdmFyaWF0aW9uX3BvaW50ZXIYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRq6AQoNRXhwcmVzc2lvbk1hcBIsCgNrZXkYASABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SLgoFdmFsdWUYAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SGQoRdmFyaWF0aW9uX3BvaW50ZXIYAyABKA0SMAoLbnVsbGFiaWxpdHkYBCABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp6ChVFeHByZXNzaW9uVXNlckRlZmluZWQSFAoMdHlwZV9wb2ludGVyGAEgASgNEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaqQEKBklmRWxzZRI1CgxpZl9jb25kaXRpb24YASABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SMgoJaWZfcmV0dXJuGAIgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEjQKC2Vsc2VfcmV0dXJuGAMgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uGsoBCgdVbmFyeU9wEkQKB29wX3R5cGUYASABKA4yMy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uVW5hcnlPcC5VbmFyeU9wVHlwZRIsCgNhcmcYAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24iSwoLVW5hcnlPcFR5cGUSHQoZVU5BUllfT1BfVFlQRV9VTlNQRUNJRklFRBAAEh0KGVVOQVJZX09QX1RZUEVfQk9PTEVBTl9OT1QQARqgBAoIQmluYXJ5T3ASRgoHb3BfdHlwZRgBIAEoDjI1LnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5CaW5hcnlPcC5CaW5hcnlPcFR5cGUSLQoEYXJnMRgCIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhItCgRhcmcyGAMgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uIu0CCgxCaW5hcnlPcFR5cGUSHgoaQklOQVJZX09QX1RZUEVfVU5TUEVDSUZJRUQQABIXChNCSU5BUllfT1BfVFlQRV9QTFVTEAESGAoUQklOQVJZX09QX1RZUEVfTUlOVVMQAhIbChdCSU5BUllfT1BfVFlQRV9NVUxUSVBMWRADEhkKFUJJTkFSWV9PUF9UWVBFX0RJVklERRAEEhYKEkJJTkFSWV9PUF9UWVBFX01JThAFEhYKEkJJTkFSWV9PUF9UWVBFX01BWBAGEh8KG0JJTkFSWV9PUF9UWVBFX0dSRUFURVJfVEhBThAHEhwKGEJJTkFSWV9PUF9UWVBFX0xFU1NfVEhBThAIEhYKEkJJTkFSWV9PUF9UWVBFX0FORBAJEhUKEUJJTkFSWV9PUF9UWVBFX09SEAoSGQoVQklOQVJZX09QX1RZUEVfRVFVQUxTEAsSGQoVQklOQVJZX09QX1RZUEVfQ09WRVJTEAwa6gEKDVJldHVyblByb2dyYW0STQoLYXNzaWdubWVudHMYASADKAsyOC5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uUmV0dXJuUHJvZ3JhbS5Bc3NpZ25tZW50EjkKEGZpbmFsX2V4cHJlc3Npb24YAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24aTwoKQXNzaWdubWVudBIMCgRuYW1lGAEgASgJEjMKCmV4cHJlc3Npb24YAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb25CBgoEa2luZEJXChJpby5zdWJzdHJhaXQucHJvdG9QAVoqZ2l0aHViLmNvbS9zdWJzdHJhaXQtaW8vc3Vic3RyYWl0LWdvL3Byb3RvqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM", [file_substrait_type]);
+  fileDesc("CiBzdWJzdHJhaXQvdHlwZV9leHByZXNzaW9ucy5wcm90bxIJc3Vic3RyYWl0IoAoChREZXJpdmF0aW9uRXhwcmVzc2lvbhInCgRib29sGAEgASgLMhcuc3Vic3RyYWl0LlR5cGUuQm9vbGVhbkgAEiAKAmk4GAIgASgLMhIuc3Vic3RyYWl0LlR5cGUuSThIABIiCgNpMTYYAyABKAsyEy5zdWJzdHJhaXQuVHlwZS5JMTZIABIiCgNpMzIYBSABKAsyEy5zdWJzdHJhaXQuVHlwZS5JMzJIABIiCgNpNjQYByABKAsyEy5zdWJzdHJhaXQuVHlwZS5JNjRIABIkCgRmcDMyGAogASgLMhQuc3Vic3RyYWl0LlR5cGUuRlAzMkgAEiQKBGZwNjQYCyABKAsyFC5zdWJzdHJhaXQuVHlwZS5GUDY0SAASKAoGc3RyaW5nGAwgASgLMhYuc3Vic3RyYWl0LlR5cGUuU3RyaW5nSAASKAoGYmluYXJ5GA0gASgLMhYuc3Vic3RyYWl0LlR5cGUuQmluYXJ5SAASMgoJdGltZXN0YW1wGA4gASgLMhkuc3Vic3RyYWl0LlR5cGUuVGltZXN0YW1wQgIYAUgAEiQKBGRhdGUYECABKAsyFC5zdWJzdHJhaXQuVHlwZS5EYXRlSAASJAoEdGltZRgRIAEoCzIULnN1YnN0cmFpdC5UeXBlLlRpbWVIABI1Cg1pbnRlcnZhbF95ZWFyGBMgASgLMhwuc3Vic3RyYWl0LlR5cGUuSW50ZXJ2YWxZZWFySAASNwoMdGltZXN0YW1wX3R6GB0gASgLMhsuc3Vic3RyYWl0LlR5cGUuVGltZXN0YW1wVFpCAhgBSAASJAoEdXVpZBggIAEoCzIULnN1YnN0cmFpdC5UeXBlLlVVSURIABJNCgxpbnRlcnZhbF9kYXkYFCABKAsyNS5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvbkludGVydmFsRGF5SAASVwoRaW50ZXJ2YWxfY29tcG91bmQYKiABKAsyOi5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvbkludGVydmFsQ29tcG91bmRIABJJCgpmaXhlZF9jaGFyGBUgASgLMjMuc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25GaXhlZENoYXJIABJECgd2YXJjaGFyGBYgASgLMjEuc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25WYXJDaGFySAASTQoMZml4ZWRfYmluYXJ5GBcgASgLMjUuc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25GaXhlZEJpbmFyeUgAEkQKB2RlY2ltYWwYGCABKAsyMS5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uRXhwcmVzc2lvbkRlY2ltYWxIABJbChNwcmVjaXNpb25fdGltZXN0YW1wGCggASgLMjwuc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25QcmVjaXNpb25UaW1lc3RhbXBIABJgChZwcmVjaXNpb25fdGltZXN0YW1wX3R6GCkgASgLMj4uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25QcmVjaXNpb25UaW1lc3RhbXBUWkgAEkIKBnN0cnVjdBgZIAEoCzIwLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5FeHByZXNzaW9uU3RydWN0SAASPgoEbGlzdBgbIAEoCzIuLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5FeHByZXNzaW9uTGlzdEgAEjwKA21hcBgcIAEoCzItLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5FeHByZXNzaW9uTWFwSAASTQoMdXNlcl9kZWZpbmVkGB4gASgLMjUuc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLkV4cHJlc3Npb25Vc2VyRGVmaW5lZEgAEiIKFHVzZXJfZGVmaW5lZF9wb2ludGVyGB8gASgNQgIYAUgAEh0KE3R5cGVfcGFyYW1ldGVyX25hbWUYISABKAlIABIgChZpbnRlZ2VyX3BhcmFtZXRlcl9uYW1lGCIgASgJSAASGQoPaW50ZWdlcl9saXRlcmFsGCMgASgFSAASOwoIdW5hcnlfb3AYJCABKAsyJy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uVW5hcnlPcEgAEj0KCWJpbmFyeV9vcBglIAEoCzIoLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5CaW5hcnlPcEgAEjkKB2lmX2Vsc2UYJiABKAsyJi5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uSWZFbHNlSAASRwoOcmV0dXJuX3Byb2dyYW0YJyABKAsyLS5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uUmV0dXJuUHJvZ3JhbUgAGpMBChNFeHByZXNzaW9uRml4ZWRDaGFyEi8KBmxlbmd0aBgBIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIZChF2YXJpYXRpb25fcG9pbnRlchgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GpEBChFFeHByZXNzaW9uVmFyQ2hhchIvCgZsZW5ndGgYASABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SGQoRdmFyaWF0aW9uX3BvaW50ZXIYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRqVAQoVRXhwcmVzc2lvbkZpeGVkQmluYXJ5Ei8KBmxlbmd0aBgBIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIZChF2YXJpYXRpb25fcG9pbnRlchgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GsQBChFFeHByZXNzaW9uRGVjaW1hbBIuCgVzY2FsZRgBIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIyCglwcmVjaXNpb24YAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SGQoRdmFyaWF0aW9uX3BvaW50ZXIYAyABKA0SMAoLbnVsbGFiaWxpdHkYBCABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRqfAQocRXhwcmVzc2lvblByZWNpc2lvblRpbWVzdGFtcBIyCglwcmVjaXNpb24YASABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SGQoRdmFyaWF0aW9uX3BvaW50ZXIYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRqYAQoVRXhwcmVzc2lvbkludGVydmFsRGF5EjIKCXByZWNpc2lvbhgBIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIZChF2YXJpYXRpb25fcG9pbnRlchgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5Gp0BChpFeHByZXNzaW9uSW50ZXJ2YWxDb21wb3VuZBIyCglwcmVjaXNpb24YASABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SGQoRdmFyaWF0aW9uX3BvaW50ZXIYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRqhAQoeRXhwcmVzc2lvblByZWNpc2lvblRpbWVzdGFtcFRaEjIKCXByZWNpc2lvbhgBIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhIZChF2YXJpYXRpb25fcG9pbnRlchgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5Go8BChBFeHByZXNzaW9uU3RydWN0Ei4KBXR5cGVzGAEgAygLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaaAoVRXhwcmVzc2lvbk5hbWVkU3RydWN0Eg0KBW5hbWVzGAEgAygJEkAKBnN0cnVjdBgCIAEoCzIwLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbi5FeHByZXNzaW9uU3RydWN0GowBCg5FeHByZXNzaW9uTGlzdBItCgR0eXBlGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEhkKEXZhcmlhdGlvbl9wb2ludGVyGAIgASgNEjAKC251bGxhYmlsaXR5GAMgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaugEKDUV4cHJlc3Npb25NYXASLAoDa2V5GAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEi4KBXZhbHVlGAIgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEhkKEXZhcmlhdGlvbl9wb2ludGVyGAMgASgNEjAKC251bGxhYmlsaXR5GAQgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaegoVRXhwcmVzc2lvblVzZXJEZWZpbmVkEhQKDHR5cGVfcG9pbnRlchgBIAEoDRIZChF2YXJpYXRpb25fcG9pbnRlchgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GqkBCgZJZkVsc2USNQoMaWZfY29uZGl0aW9uGAEgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uEjIKCWlmX3JldHVybhgCIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhI0CgtlbHNlX3JldHVybhgDIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbhrKAQoHVW5hcnlPcBJECgdvcF90eXBlGAEgASgOMjMuc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLlVuYXJ5T3AuVW5hcnlPcFR5cGUSLAoDYXJnGAIgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uIksKC1VuYXJ5T3BUeXBlEh0KGVVOQVJZX09QX1RZUEVfVU5TUEVDSUZJRUQQABIdChlVTkFSWV9PUF9UWVBFX0JPT0xFQU5fTk9UEAEaoAQKCEJpbmFyeU9wEkYKB29wX3R5cGUYASABKA4yNS5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24uQmluYXJ5T3AuQmluYXJ5T3BUeXBlEi0KBGFyZzEYAiABKAsyHy5zdWJzdHJhaXQuRGVyaXZhdGlvbkV4cHJlc3Npb24SLQoEYXJnMhgDIAEoCzIfLnN1YnN0cmFpdC5EZXJpdmF0aW9uRXhwcmVzc2lvbiLtAgoMQmluYXJ5T3BUeXBlEh4KGkJJTkFSWV9PUF9UWVBFX1VOU1BFQ0lGSUVEEAASFwoTQklOQVJZX09QX1RZUEVfUExVUxABEhgKFEJJTkFSWV9PUF9UWVBFX01JTlVTEAISGwoXQklOQVJZX09QX1RZUEVfTVVMVElQTFkQAxIZChVCSU5BUllfT1BfVFlQRV9ESVZJREUQBBIWChJCSU5BUllfT1BfVFlQRV9NSU4QBRIWChJCSU5BUllfT1BfVFlQRV9NQVgQBhIfChtCSU5BUllfT1BfVFlQRV9HUkVBVEVSX1RIQU4QBxIcChhCSU5BUllfT1BfVFlQRV9MRVNTX1RIQU4QCBIWChJCSU5BUllfT1BfVFlQRV9BTkQQCRIVChFCSU5BUllfT1BfVFlQRV9PUhAKEhkKFUJJTkFSWV9PUF9UWVBFX0VRVUFMUxALEhkKFUJJTkFSWV9PUF9UWVBFX0NPVkVSUxAMGuoBCg1SZXR1cm5Qcm9ncmFtEk0KC2Fzc2lnbm1lbnRzGAEgAygLMjguc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uLlJldHVyblByb2dyYW0uQXNzaWdubWVudBI5ChBmaW5hbF9leHByZXNzaW9uGAIgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uGk8KCkFzc2lnbm1lbnQSDAoEbmFtZRgBIAEoCRIzCgpleHByZXNzaW9uGAIgASgLMh8uc3Vic3RyYWl0LkRlcml2YXRpb25FeHByZXNzaW9uQgYKBGtpbmRCVwoSaW8uc3Vic3RyYWl0LnByb3RvUAFaKmdpdGh1Yi5jb20vc3Vic3RyYWl0LWlvL3N1YnN0cmFpdC1nby9wcm90b6oCElN1YnN0cmFpdC5Qcm90b2J1ZmIGcHJvdG8z", [file_substrait_type]);
 
 /**
  * @generated from message substrait.DerivationExpression
@@ -106,12 +106,6 @@ export type DerivationExpression = Message<"substrait.DerivationExpression"> & {
     case: "intervalYear";
   } | {
     /**
-     * @generated from field: substrait.Type.IntervalDay interval_day = 20;
-     */
-    value: Type_IntervalDay;
-    case: "intervalDay";
-  } | {
-    /**
      * Deprecated in favor of `ExpressionPrecisionTimestampTZ precision_timestamp_tz`
      *
      * @generated from field: substrait.Type.TimestampTZ timestamp_tz = 29 [deprecated = true];
@@ -125,6 +119,18 @@ export type DerivationExpression = Message<"substrait.DerivationExpression"> & {
      */
     value: Type_UUID;
     case: "uuid";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.ExpressionIntervalDay interval_day = 20;
+     */
+    value: DerivationExpression_ExpressionIntervalDay;
+    case: "intervalDay";
+  } | {
+    /**
+     * @generated from field: substrait.DerivationExpression.ExpressionIntervalCompound interval_compound = 42;
+     */
+    value: DerivationExpression_ExpressionIntervalCompound;
+    case: "intervalCompound";
   } | {
     /**
      * @generated from field: substrait.DerivationExpression.ExpressionFixedChar fixed_char = 21;
@@ -389,6 +395,60 @@ export const DerivationExpression_ExpressionPrecisionTimestampSchema: GenMessage
   messageDesc(file_substrait_type_expressions, 0, 4);
 
 /**
+ * @generated from message substrait.DerivationExpression.ExpressionIntervalDay
+ */
+export type DerivationExpression_ExpressionIntervalDay = Message<"substrait.DerivationExpression.ExpressionIntervalDay"> & {
+  /**
+   * @generated from field: substrait.DerivationExpression precision = 1;
+   */
+  precision?: DerivationExpression;
+
+  /**
+   * @generated from field: uint32 variation_pointer = 2;
+   */
+  variationPointer: number;
+
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 3;
+   */
+  nullability: Type_Nullability;
+};
+
+/**
+ * Describes the message substrait.DerivationExpression.ExpressionIntervalDay.
+ * Use `create(DerivationExpression_ExpressionIntervalDaySchema)` to create a new message.
+ */
+export const DerivationExpression_ExpressionIntervalDaySchema: GenMessage<DerivationExpression_ExpressionIntervalDay> = /*@__PURE__*/
+  messageDesc(file_substrait_type_expressions, 0, 5);
+
+/**
+ * @generated from message substrait.DerivationExpression.ExpressionIntervalCompound
+ */
+export type DerivationExpression_ExpressionIntervalCompound = Message<"substrait.DerivationExpression.ExpressionIntervalCompound"> & {
+  /**
+   * @generated from field: substrait.DerivationExpression precision = 1;
+   */
+  precision?: DerivationExpression;
+
+  /**
+   * @generated from field: uint32 variation_pointer = 2;
+   */
+  variationPointer: number;
+
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 3;
+   */
+  nullability: Type_Nullability;
+};
+
+/**
+ * Describes the message substrait.DerivationExpression.ExpressionIntervalCompound.
+ * Use `create(DerivationExpression_ExpressionIntervalCompoundSchema)` to create a new message.
+ */
+export const DerivationExpression_ExpressionIntervalCompoundSchema: GenMessage<DerivationExpression_ExpressionIntervalCompound> = /*@__PURE__*/
+  messageDesc(file_substrait_type_expressions, 0, 6);
+
+/**
  * @generated from message substrait.DerivationExpression.ExpressionPrecisionTimestampTZ
  */
 export type DerivationExpression_ExpressionPrecisionTimestampTZ = Message<"substrait.DerivationExpression.ExpressionPrecisionTimestampTZ"> & {
@@ -413,7 +473,7 @@ export type DerivationExpression_ExpressionPrecisionTimestampTZ = Message<"subst
  * Use `create(DerivationExpression_ExpressionPrecisionTimestampTZSchema)` to create a new message.
  */
 export const DerivationExpression_ExpressionPrecisionTimestampTZSchema: GenMessage<DerivationExpression_ExpressionPrecisionTimestampTZ> = /*@__PURE__*/
-  messageDesc(file_substrait_type_expressions, 0, 5);
+  messageDesc(file_substrait_type_expressions, 0, 7);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionStruct
@@ -440,7 +500,7 @@ export type DerivationExpression_ExpressionStruct = Message<"substrait.Derivatio
  * Use `create(DerivationExpression_ExpressionStructSchema)` to create a new message.
  */
 export const DerivationExpression_ExpressionStructSchema: GenMessage<DerivationExpression_ExpressionStruct> = /*@__PURE__*/
-  messageDesc(file_substrait_type_expressions, 0, 6);
+  messageDesc(file_substrait_type_expressions, 0, 8);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionNamedStruct
@@ -462,7 +522,7 @@ export type DerivationExpression_ExpressionNamedStruct = Message<"substrait.Deri
  * Use `create(DerivationExpression_ExpressionNamedStructSchema)` to create a new message.
  */
 export const DerivationExpression_ExpressionNamedStructSchema: GenMessage<DerivationExpression_ExpressionNamedStruct> = /*@__PURE__*/
-  messageDesc(file_substrait_type_expressions, 0, 7);
+  messageDesc(file_substrait_type_expressions, 0, 9);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionList
@@ -489,7 +549,7 @@ export type DerivationExpression_ExpressionList = Message<"substrait.DerivationE
  * Use `create(DerivationExpression_ExpressionListSchema)` to create a new message.
  */
 export const DerivationExpression_ExpressionListSchema: GenMessage<DerivationExpression_ExpressionList> = /*@__PURE__*/
-  messageDesc(file_substrait_type_expressions, 0, 8);
+  messageDesc(file_substrait_type_expressions, 0, 10);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionMap
@@ -521,7 +581,7 @@ export type DerivationExpression_ExpressionMap = Message<"substrait.DerivationEx
  * Use `create(DerivationExpression_ExpressionMapSchema)` to create a new message.
  */
 export const DerivationExpression_ExpressionMapSchema: GenMessage<DerivationExpression_ExpressionMap> = /*@__PURE__*/
-  messageDesc(file_substrait_type_expressions, 0, 9);
+  messageDesc(file_substrait_type_expressions, 0, 11);
 
 /**
  * @generated from message substrait.DerivationExpression.ExpressionUserDefined
@@ -548,7 +608,7 @@ export type DerivationExpression_ExpressionUserDefined = Message<"substrait.Deri
  * Use `create(DerivationExpression_ExpressionUserDefinedSchema)` to create a new message.
  */
 export const DerivationExpression_ExpressionUserDefinedSchema: GenMessage<DerivationExpression_ExpressionUserDefined> = /*@__PURE__*/
-  messageDesc(file_substrait_type_expressions, 0, 10);
+  messageDesc(file_substrait_type_expressions, 0, 12);
 
 /**
  * @generated from message substrait.DerivationExpression.IfElse
@@ -575,7 +635,7 @@ export type DerivationExpression_IfElse = Message<"substrait.DerivationExpressio
  * Use `create(DerivationExpression_IfElseSchema)` to create a new message.
  */
 export const DerivationExpression_IfElseSchema: GenMessage<DerivationExpression_IfElse> = /*@__PURE__*/
-  messageDesc(file_substrait_type_expressions, 0, 11);
+  messageDesc(file_substrait_type_expressions, 0, 13);
 
 /**
  * @generated from message substrait.DerivationExpression.UnaryOp
@@ -597,7 +657,7 @@ export type DerivationExpression_UnaryOp = Message<"substrait.DerivationExpressi
  * Use `create(DerivationExpression_UnaryOpSchema)` to create a new message.
  */
 export const DerivationExpression_UnaryOpSchema: GenMessage<DerivationExpression_UnaryOp> = /*@__PURE__*/
-  messageDesc(file_substrait_type_expressions, 0, 12);
+  messageDesc(file_substrait_type_expressions, 0, 14);
 
 /**
  * @generated from enum substrait.DerivationExpression.UnaryOp.UnaryOpType
@@ -618,7 +678,7 @@ export enum DerivationExpression_UnaryOp_UnaryOpType {
  * Describes the enum substrait.DerivationExpression.UnaryOp.UnaryOpType.
  */
 export const DerivationExpression_UnaryOp_UnaryOpTypeSchema: GenEnum<DerivationExpression_UnaryOp_UnaryOpType> = /*@__PURE__*/
-  enumDesc(file_substrait_type_expressions, 0, 12, 0);
+  enumDesc(file_substrait_type_expressions, 0, 14, 0);
 
 /**
  * @generated from message substrait.DerivationExpression.BinaryOp
@@ -645,7 +705,7 @@ export type DerivationExpression_BinaryOp = Message<"substrait.DerivationExpress
  * Use `create(DerivationExpression_BinaryOpSchema)` to create a new message.
  */
 export const DerivationExpression_BinaryOpSchema: GenMessage<DerivationExpression_BinaryOp> = /*@__PURE__*/
-  messageDesc(file_substrait_type_expressions, 0, 13);
+  messageDesc(file_substrait_type_expressions, 0, 15);
 
 /**
  * @generated from enum substrait.DerivationExpression.BinaryOp.BinaryOpType
@@ -721,7 +781,7 @@ export enum DerivationExpression_BinaryOp_BinaryOpType {
  * Describes the enum substrait.DerivationExpression.BinaryOp.BinaryOpType.
  */
 export const DerivationExpression_BinaryOp_BinaryOpTypeSchema: GenEnum<DerivationExpression_BinaryOp_BinaryOpType> = /*@__PURE__*/
-  enumDesc(file_substrait_type_expressions, 0, 13, 0);
+  enumDesc(file_substrait_type_expressions, 0, 15, 0);
 
 /**
  * @generated from message substrait.DerivationExpression.ReturnProgram
@@ -743,7 +803,7 @@ export type DerivationExpression_ReturnProgram = Message<"substrait.DerivationEx
  * Use `create(DerivationExpression_ReturnProgramSchema)` to create a new message.
  */
 export const DerivationExpression_ReturnProgramSchema: GenMessage<DerivationExpression_ReturnProgram> = /*@__PURE__*/
-  messageDesc(file_substrait_type_expressions, 0, 14);
+  messageDesc(file_substrait_type_expressions, 0, 16);
 
 /**
  * @generated from message substrait.DerivationExpression.ReturnProgram.Assignment
@@ -765,5 +825,5 @@ export type DerivationExpression_ReturnProgram_Assignment = Message<"substrait.D
  * Use `create(DerivationExpression_ReturnProgram_AssignmentSchema)` to create a new message.
  */
 export const DerivationExpression_ReturnProgram_AssignmentSchema: GenMessage<DerivationExpression_ReturnProgram_Assignment> = /*@__PURE__*/
-  messageDesc(file_substrait_type_expressions, 0, 14, 0);
+  messageDesc(file_substrait_type_expressions, 0, 16, 0);
 

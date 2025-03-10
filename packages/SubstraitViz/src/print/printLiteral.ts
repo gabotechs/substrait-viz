@@ -30,7 +30,9 @@ export function printLiteral(expressionLiteral?: Expression_Literal): string {
     case 'intervalYearToMonth':
       return `interval ${lit.value.years} years ${lit.value.months} months`;
     case 'intervalDayToSecond':
-      return `interval ${lit.value.days} days ${lit.value.seconds} s ${lit.value.microseconds} ms`;
+      return `interval ${lit.value.days} days ${lit.value.seconds} s`;
+    case 'intervalCompound':
+      return `interval ${lit.value.intervalYearToMonth?.years ?? '?'} years ${lit.value.intervalYearToMonth?.months ?? '?'} months ${lit.value.intervalDayToSecond?.days ?? '?'} days ${lit.value.intervalDayToSecond?.seconds ?? '?'} s`;
     case 'fixedChar':
       return lit.value.toString();
     case 'varChar':

@@ -16,8 +16,8 @@ export function CustomLiteral({ msg }: CustomRenderProps<Expression_Literal>) {
     case 'intervalYearToMonth':
       return wrap(`${n.value.years} years ${n.value.months} months`);
     case 'intervalDayToSecond': {
-      const { days, seconds, microseconds } = n.value;
-      return wrap(`${days} days ${seconds} s ${microseconds} ms`);
+      const { days, seconds } = n.value;
+      return wrap(`${days} days ${seconds} s`);
     }
     default:
       return wrap(stringify(msg.literalType.value));

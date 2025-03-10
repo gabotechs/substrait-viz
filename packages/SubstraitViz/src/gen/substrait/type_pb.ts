@@ -14,7 +14,7 @@ import type { Message } from "@bufbuild/protobuf";
  * Describes the file substrait/type.proto.
  */
 export const file_substrait_type: GenFile = /*@__PURE__*/
-  fileDesc("ChRzdWJzdHJhaXQvdHlwZS5wcm90bxIJc3Vic3RyYWl0Is4hCgRUeXBlEicKBGJvb2wYASABKAsyFy5zdWJzdHJhaXQuVHlwZS5Cb29sZWFuSAASIAoCaTgYAiABKAsyEi5zdWJzdHJhaXQuVHlwZS5JOEgAEiIKA2kxNhgDIAEoCzITLnN1YnN0cmFpdC5UeXBlLkkxNkgAEiIKA2kzMhgFIAEoCzITLnN1YnN0cmFpdC5UeXBlLkkzMkgAEiIKA2k2NBgHIAEoCzITLnN1YnN0cmFpdC5UeXBlLkk2NEgAEiQKBGZwMzIYCiABKAsyFC5zdWJzdHJhaXQuVHlwZS5GUDMySAASJAoEZnA2NBgLIAEoCzIULnN1YnN0cmFpdC5UeXBlLkZQNjRIABIoCgZzdHJpbmcYDCABKAsyFi5zdWJzdHJhaXQuVHlwZS5TdHJpbmdIABIoCgZiaW5hcnkYDSABKAsyFi5zdWJzdHJhaXQuVHlwZS5CaW5hcnlIABIyCgl0aW1lc3RhbXAYDiABKAsyGS5zdWJzdHJhaXQuVHlwZS5UaW1lc3RhbXBCAhgBSAASJAoEZGF0ZRgQIAEoCzIULnN1YnN0cmFpdC5UeXBlLkRhdGVIABIkCgR0aW1lGBEgASgLMhQuc3Vic3RyYWl0LlR5cGUuVGltZUgAEjUKDWludGVydmFsX3llYXIYEyABKAsyHC5zdWJzdHJhaXQuVHlwZS5JbnRlcnZhbFllYXJIABIzCgxpbnRlcnZhbF9kYXkYFCABKAsyGy5zdWJzdHJhaXQuVHlwZS5JbnRlcnZhbERheUgAEjcKDHRpbWVzdGFtcF90ehgdIAEoCzIbLnN1YnN0cmFpdC5UeXBlLlRpbWVzdGFtcFRaQgIYAUgAEiQKBHV1aWQYICABKAsyFC5zdWJzdHJhaXQuVHlwZS5VVUlESAASLwoKZml4ZWRfY2hhchgVIAEoCzIZLnN1YnN0cmFpdC5UeXBlLkZpeGVkQ2hhckgAEioKB3ZhcmNoYXIYFiABKAsyFy5zdWJzdHJhaXQuVHlwZS5WYXJDaGFySAASMwoMZml4ZWRfYmluYXJ5GBcgASgLMhsuc3Vic3RyYWl0LlR5cGUuRml4ZWRCaW5hcnlIABIqCgdkZWNpbWFsGBggASgLMhcuc3Vic3RyYWl0LlR5cGUuRGVjaW1hbEgAEkEKE3ByZWNpc2lvbl90aW1lc3RhbXAYISABKAsyIi5zdWJzdHJhaXQuVHlwZS5QcmVjaXNpb25UaW1lc3RhbXBIABJGChZwcmVjaXNpb25fdGltZXN0YW1wX3R6GCIgASgLMiQuc3Vic3RyYWl0LlR5cGUuUHJlY2lzaW9uVGltZXN0YW1wVFpIABIoCgZzdHJ1Y3QYGSABKAsyFi5zdWJzdHJhaXQuVHlwZS5TdHJ1Y3RIABIkCgRsaXN0GBsgASgLMhQuc3Vic3RyYWl0LlR5cGUuTGlzdEgAEiIKA21hcBgcIAEoCzITLnN1YnN0cmFpdC5UeXBlLk1hcEgAEjMKDHVzZXJfZGVmaW5lZBgeIAEoCzIbLnN1YnN0cmFpdC5UeXBlLlVzZXJEZWZpbmVkSAASKQobdXNlcl9kZWZpbmVkX3R5cGVfcmVmZXJlbmNlGB8gASgNQgIYAUgAGl0KB0Jvb2xlYW4SIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWAoCSTgSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWQoDSTE2EiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgBIAEoDRIwCgtudWxsYWJpbGl0eRgCIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GlkKA0kzMhIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpZCgNJNjQSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWgoERlAzMhIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpaCgRGUDY0EiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgBIAEoDRIwCgtudWxsYWJpbGl0eRgCIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GlwKBlN0cmluZxIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpcCgZCaW5hcnkSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaXwoJVGltZXN0YW1wEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgBIAEoDRIwCgtudWxsYWJpbGl0eRgCIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GloKBERhdGUSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWgoEVGltZRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRphCgtUaW1lc3RhbXBUWhIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpiCgxJbnRlcnZhbFllYXISIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaYQoLSW50ZXJ2YWxEYXkSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWgoEVVVJRBIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpvCglGaXhlZENoYXISDgoGbGVuZ3RoGAEgASgFEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5Gm0KB1ZhckNoYXISDgoGbGVuZ3RoGAEgASgFEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GnEKC0ZpeGVkQmluYXJ5Eg4KBmxlbmd0aBgBIAEoBRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp/CgdEZWNpbWFsEg0KBXNjYWxlGAEgASgFEhEKCXByZWNpc2lvbhgCIAEoBRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAyABKA0SMAoLbnVsbGFiaWxpdHkYBCABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp7ChJQcmVjaXNpb25UaW1lc3RhbXASEQoJcHJlY2lzaW9uGAEgASgFEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5Gn0KFFByZWNpc2lvblRpbWVzdGFtcFRaEhEKCXByZWNpc2lvbhgBIAEoBRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp8CgZTdHJ1Y3QSHgoFdHlwZXMYASADKAsyDy5zdWJzdHJhaXQuVHlwZRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp5CgRMaXN0Eh0KBHR5cGUYASABKAsyDy5zdWJzdHJhaXQuVHlwZRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRqXAQoDTWFwEhwKA2tleRgBIAEoCzIPLnN1YnN0cmFpdC5UeXBlEh4KBXZhbHVlGAIgASgLMg8uc3Vic3RyYWl0LlR5cGUSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAMgASgNEjAKC251bGxhYmlsaXR5GAQgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkarQEKC1VzZXJEZWZpbmVkEhYKDnR5cGVfcmVmZXJlbmNlGAEgASgNEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5EjIKD3R5cGVfcGFyYW1ldGVycxgEIAMoCzIZLnN1YnN0cmFpdC5UeXBlLlBhcmFtZXRlchquAQoJUGFyYW1ldGVyEiYKBG51bGwYASABKAsyFi5nb29nbGUucHJvdG9idWYuRW1wdHlIABIkCglkYXRhX3R5cGUYAiABKAsyDy5zdWJzdHJhaXQuVHlwZUgAEhEKB2Jvb2xlYW4YAyABKAhIABIRCgdpbnRlZ2VyGAQgASgDSAASDgoEZW51bRgFIAEoCUgAEhAKBnN0cmluZxgGIAEoCUgAQgsKCXBhcmFtZXRlciJeCgtOdWxsYWJpbGl0eRIbChdOVUxMQUJJTElUWV9VTlNQRUNJRklFRBAAEhgKFE5VTExBQklMSVRZX05VTExBQkxFEAESGAoUTlVMTEFCSUxJVFlfUkVRVUlSRUQQAkIGCgRraW5kIkQKC05hbWVkU3RydWN0Eg0KBW5hbWVzGAEgAygJEiYKBnN0cnVjdBgCIAEoCzIWLnN1YnN0cmFpdC5UeXBlLlN0cnVjdEJXChJpby5zdWJzdHJhaXQucHJvdG9QAVoqZ2l0aHViLmNvbS9zdWJzdHJhaXQtaW8vc3Vic3RyYWl0LWdvL3Byb3RvqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM", [file_google_protobuf_empty]);
+  fileDesc("ChRzdWJzdHJhaXQvdHlwZS5wcm90bxIJc3Vic3RyYWl0Iq8jCgRUeXBlEicKBGJvb2wYASABKAsyFy5zdWJzdHJhaXQuVHlwZS5Cb29sZWFuSAASIAoCaTgYAiABKAsyEi5zdWJzdHJhaXQuVHlwZS5JOEgAEiIKA2kxNhgDIAEoCzITLnN1YnN0cmFpdC5UeXBlLkkxNkgAEiIKA2kzMhgFIAEoCzITLnN1YnN0cmFpdC5UeXBlLkkzMkgAEiIKA2k2NBgHIAEoCzITLnN1YnN0cmFpdC5UeXBlLkk2NEgAEiQKBGZwMzIYCiABKAsyFC5zdWJzdHJhaXQuVHlwZS5GUDMySAASJAoEZnA2NBgLIAEoCzIULnN1YnN0cmFpdC5UeXBlLkZQNjRIABIoCgZzdHJpbmcYDCABKAsyFi5zdWJzdHJhaXQuVHlwZS5TdHJpbmdIABIoCgZiaW5hcnkYDSABKAsyFi5zdWJzdHJhaXQuVHlwZS5CaW5hcnlIABIyCgl0aW1lc3RhbXAYDiABKAsyGS5zdWJzdHJhaXQuVHlwZS5UaW1lc3RhbXBCAhgBSAASJAoEZGF0ZRgQIAEoCzIULnN1YnN0cmFpdC5UeXBlLkRhdGVIABIkCgR0aW1lGBEgASgLMhQuc3Vic3RyYWl0LlR5cGUuVGltZUgAEjUKDWludGVydmFsX3llYXIYEyABKAsyHC5zdWJzdHJhaXQuVHlwZS5JbnRlcnZhbFllYXJIABIzCgxpbnRlcnZhbF9kYXkYFCABKAsyGy5zdWJzdHJhaXQuVHlwZS5JbnRlcnZhbERheUgAEj0KEWludGVydmFsX2NvbXBvdW5kGCMgASgLMiAuc3Vic3RyYWl0LlR5cGUuSW50ZXJ2YWxDb21wb3VuZEgAEjcKDHRpbWVzdGFtcF90ehgdIAEoCzIbLnN1YnN0cmFpdC5UeXBlLlRpbWVzdGFtcFRaQgIYAUgAEiQKBHV1aWQYICABKAsyFC5zdWJzdHJhaXQuVHlwZS5VVUlESAASLwoKZml4ZWRfY2hhchgVIAEoCzIZLnN1YnN0cmFpdC5UeXBlLkZpeGVkQ2hhckgAEioKB3ZhcmNoYXIYFiABKAsyFy5zdWJzdHJhaXQuVHlwZS5WYXJDaGFySAASMwoMZml4ZWRfYmluYXJ5GBcgASgLMhsuc3Vic3RyYWl0LlR5cGUuRml4ZWRCaW5hcnlIABIqCgdkZWNpbWFsGBggASgLMhcuc3Vic3RyYWl0LlR5cGUuRGVjaW1hbEgAEkEKE3ByZWNpc2lvbl90aW1lc3RhbXAYISABKAsyIi5zdWJzdHJhaXQuVHlwZS5QcmVjaXNpb25UaW1lc3RhbXBIABJGChZwcmVjaXNpb25fdGltZXN0YW1wX3R6GCIgASgLMiQuc3Vic3RyYWl0LlR5cGUuUHJlY2lzaW9uVGltZXN0YW1wVFpIABIoCgZzdHJ1Y3QYGSABKAsyFi5zdWJzdHJhaXQuVHlwZS5TdHJ1Y3RIABIkCgRsaXN0GBsgASgLMhQuc3Vic3RyYWl0LlR5cGUuTGlzdEgAEiIKA21hcBgcIAEoCzITLnN1YnN0cmFpdC5UeXBlLk1hcEgAEjMKDHVzZXJfZGVmaW5lZBgeIAEoCzIbLnN1YnN0cmFpdC5UeXBlLlVzZXJEZWZpbmVkSAASKQobdXNlcl9kZWZpbmVkX3R5cGVfcmVmZXJlbmNlGB8gASgNQgIYAUgAGl0KB0Jvb2xlYW4SIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWAoCSTgSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWQoDSTE2EiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgBIAEoDRIwCgtudWxsYWJpbGl0eRgCIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GlkKA0kzMhIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpZCgNJNjQSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWgoERlAzMhIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpaCgRGUDY0EiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgBIAEoDRIwCgtudWxsYWJpbGl0eRgCIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GlwKBlN0cmluZxIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpcCgZCaW5hcnkSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaXwoJVGltZXN0YW1wEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgBIAEoDRIwCgtudWxsYWJpbGl0eRgCIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GloKBERhdGUSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkaWgoEVGltZRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRphCgtUaW1lc3RhbXBUWhIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpiCgxJbnRlcnZhbFllYXISIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAEgASgNEjAKC251bGxhYmlsaXR5GAIgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkahwEKC0ludGVydmFsRGF5EiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgBIAEoDRIwCgtudWxsYWJpbGl0eRgCIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5EhYKCXByZWNpc2lvbhgDIAEoBUgAiAEBQgwKCl9wcmVjaXNpb24aeQoQSW50ZXJ2YWxDb21wb3VuZBIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRIRCglwcmVjaXNpb24YAyABKAUaWgoEVVVJRBIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYASABKA0SMAoLbnVsbGFiaWxpdHkYAiABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRpvCglGaXhlZENoYXISDgoGbGVuZ3RoGAEgASgFEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5Gm0KB1ZhckNoYXISDgoGbGVuZ3RoGAEgASgFEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5GnEKC0ZpeGVkQmluYXJ5Eg4KBmxlbmd0aBgBIAEoBRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp/CgdEZWNpbWFsEg0KBXNjYWxlGAEgASgFEhEKCXByZWNpc2lvbhgCIAEoBRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAyABKA0SMAoLbnVsbGFiaWxpdHkYBCABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp7ChJQcmVjaXNpb25UaW1lc3RhbXASEQoJcHJlY2lzaW9uGAEgASgFEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5Gn0KFFByZWNpc2lvblRpbWVzdGFtcFRaEhEKCXByZWNpc2lvbhgBIAEoBRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp8CgZTdHJ1Y3QSHgoFdHlwZXMYASADKAsyDy5zdWJzdHJhaXQuVHlwZRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRp5CgRMaXN0Eh0KBHR5cGUYASABKAsyDy5zdWJzdHJhaXQuVHlwZRIgChh0eXBlX3ZhcmlhdGlvbl9yZWZlcmVuY2UYAiABKA0SMAoLbnVsbGFiaWxpdHkYAyABKA4yGy5zdWJzdHJhaXQuVHlwZS5OdWxsYWJpbGl0eRqXAQoDTWFwEhwKA2tleRgBIAEoCzIPLnN1YnN0cmFpdC5UeXBlEh4KBXZhbHVlGAIgASgLMg8uc3Vic3RyYWl0LlR5cGUSIAoYdHlwZV92YXJpYXRpb25fcmVmZXJlbmNlGAMgASgNEjAKC251bGxhYmlsaXR5GAQgASgOMhsuc3Vic3RyYWl0LlR5cGUuTnVsbGFiaWxpdHkarQEKC1VzZXJEZWZpbmVkEhYKDnR5cGVfcmVmZXJlbmNlGAEgASgNEiAKGHR5cGVfdmFyaWF0aW9uX3JlZmVyZW5jZRgCIAEoDRIwCgtudWxsYWJpbGl0eRgDIAEoDjIbLnN1YnN0cmFpdC5UeXBlLk51bGxhYmlsaXR5EjIKD3R5cGVfcGFyYW1ldGVycxgEIAMoCzIZLnN1YnN0cmFpdC5UeXBlLlBhcmFtZXRlchquAQoJUGFyYW1ldGVyEiYKBG51bGwYASABKAsyFi5nb29nbGUucHJvdG9idWYuRW1wdHlIABIkCglkYXRhX3R5cGUYAiABKAsyDy5zdWJzdHJhaXQuVHlwZUgAEhEKB2Jvb2xlYW4YAyABKAhIABIRCgdpbnRlZ2VyGAQgASgDSAASDgoEZW51bRgFIAEoCUgAEhAKBnN0cmluZxgGIAEoCUgAQgsKCXBhcmFtZXRlciJeCgtOdWxsYWJpbGl0eRIbChdOVUxMQUJJTElUWV9VTlNQRUNJRklFRBAAEhgKFE5VTExBQklMSVRZX05VTExBQkxFEAESGAoUTlVMTEFCSUxJVFlfUkVRVUlSRUQQAkIGCgRraW5kIkQKC05hbWVkU3RydWN0Eg0KBW5hbWVzGAEgAygJEiYKBnN0cnVjdBgCIAEoCzIWLnN1YnN0cmFpdC5UeXBlLlN0cnVjdEJXChJpby5zdWJzdHJhaXQucHJvdG9QAVoqZ2l0aHViLmNvbS9zdWJzdHJhaXQtaW8vc3Vic3RyYWl0LWdvL3Byb3RvqgISU3Vic3RyYWl0LlByb3RvYnVmYgZwcm90bzM", [file_google_protobuf_empty]);
 
 /**
  * @generated from message substrait.Type
@@ -110,6 +110,12 @@ export type Type = Message<"substrait.Type"> & {
      */
     value: Type_IntervalDay;
     case: "intervalDay";
+  } | {
+    /**
+     * @generated from field: substrait.Type.IntervalCompound interval_compound = 35;
+     */
+    value: Type_IntervalCompound;
+    case: "intervalCompound";
   } | {
     /**
      * Deprecated in favor of `PrecisionTimestampTZ precision_timestamp_tz`
@@ -496,6 +502,8 @@ export const Type_TimestampTZSchema: GenMessage<Type_TimestampTZ> = /*@__PURE__*
   messageDesc(file_substrait_type, 0, 12);
 
 /**
+ * An interval consisting of years and months
+ *
  * @generated from message substrait.Type.IntervalYear
  */
 export type Type_IntervalYear = Message<"substrait.Type.IntervalYear"> & {
@@ -518,6 +526,8 @@ export const Type_IntervalYearSchema: GenMessage<Type_IntervalYear> = /*@__PURE_
   messageDesc(file_substrait_type, 0, 13);
 
 /**
+ * An interval consisting of days, seconds, and microseconds
+ *
  * @generated from message substrait.Type.IntervalDay
  */
 export type Type_IntervalDay = Message<"substrait.Type.IntervalDay"> & {
@@ -530,6 +540,14 @@ export type Type_IntervalDay = Message<"substrait.Type.IntervalDay"> & {
    * @generated from field: substrait.Type.Nullability nullability = 2;
    */
   nullability: Type_Nullability;
+
+  /**
+   * Sub-second precision, 0 means the value given is in seconds, 3 is milliseconds, 6 microseconds, 9 is nanoseconds, etc.
+   * if unset, treat as 6.
+   *
+   * @generated from field: optional int32 precision = 3;
+   */
+  precision?: number;
 };
 
 /**
@@ -538,6 +556,37 @@ export type Type_IntervalDay = Message<"substrait.Type.IntervalDay"> & {
  */
 export const Type_IntervalDaySchema: GenMessage<Type_IntervalDay> = /*@__PURE__*/
   messageDesc(file_substrait_type, 0, 14);
+
+/**
+ * An interval consisting of the components of both IntervalMonth and IntervalDay
+ *
+ * @generated from message substrait.Type.IntervalCompound
+ */
+export type Type_IntervalCompound = Message<"substrait.Type.IntervalCompound"> & {
+  /**
+   * @generated from field: uint32 type_variation_reference = 1;
+   */
+  typeVariationReference: number;
+
+  /**
+   * @generated from field: substrait.Type.Nullability nullability = 2;
+   */
+  nullability: Type_Nullability;
+
+  /**
+   * Sub-second precision, 0 means the value given is in seconds, 3 is milliseconds, 6 microseconds, 9 is nanoseconds, etc.
+   *
+   * @generated from field: int32 precision = 3;
+   */
+  precision: number;
+};
+
+/**
+ * Describes the message substrait.Type.IntervalCompound.
+ * Use `create(Type_IntervalCompoundSchema)` to create a new message.
+ */
+export const Type_IntervalCompoundSchema: GenMessage<Type_IntervalCompound> = /*@__PURE__*/
+  messageDesc(file_substrait_type, 0, 15);
 
 /**
  * @generated from message substrait.Type.UUID
@@ -559,7 +608,7 @@ export type Type_UUID = Message<"substrait.Type.UUID"> & {
  * Use `create(Type_UUIDSchema)` to create a new message.
  */
 export const Type_UUIDSchema: GenMessage<Type_UUID> = /*@__PURE__*/
-  messageDesc(file_substrait_type, 0, 15);
+  messageDesc(file_substrait_type, 0, 16);
 
 /**
  * Start compound types.
@@ -588,7 +637,7 @@ export type Type_FixedChar = Message<"substrait.Type.FixedChar"> & {
  * Use `create(Type_FixedCharSchema)` to create a new message.
  */
 export const Type_FixedCharSchema: GenMessage<Type_FixedChar> = /*@__PURE__*/
-  messageDesc(file_substrait_type, 0, 16);
+  messageDesc(file_substrait_type, 0, 17);
 
 /**
  * @generated from message substrait.Type.VarChar
@@ -615,7 +664,7 @@ export type Type_VarChar = Message<"substrait.Type.VarChar"> & {
  * Use `create(Type_VarCharSchema)` to create a new message.
  */
 export const Type_VarCharSchema: GenMessage<Type_VarChar> = /*@__PURE__*/
-  messageDesc(file_substrait_type, 0, 17);
+  messageDesc(file_substrait_type, 0, 18);
 
 /**
  * @generated from message substrait.Type.FixedBinary
@@ -642,7 +691,7 @@ export type Type_FixedBinary = Message<"substrait.Type.FixedBinary"> & {
  * Use `create(Type_FixedBinarySchema)` to create a new message.
  */
 export const Type_FixedBinarySchema: GenMessage<Type_FixedBinary> = /*@__PURE__*/
-  messageDesc(file_substrait_type, 0, 18);
+  messageDesc(file_substrait_type, 0, 19);
 
 /**
  * @generated from message substrait.Type.Decimal
@@ -674,14 +723,14 @@ export type Type_Decimal = Message<"substrait.Type.Decimal"> & {
  * Use `create(Type_DecimalSchema)` to create a new message.
  */
 export const Type_DecimalSchema: GenMessage<Type_Decimal> = /*@__PURE__*/
-  messageDesc(file_substrait_type, 0, 19);
+  messageDesc(file_substrait_type, 0, 20);
 
 /**
  * @generated from message substrait.Type.PrecisionTimestamp
  */
 export type Type_PrecisionTimestamp = Message<"substrait.Type.PrecisionTimestamp"> & {
   /**
-   * Sub-second precision, 0 means the value given is in seconds, 3 is milliseconds, 6 microseconds, 9 is nanoseconds
+   * Sub-second precision, 0 means the value given is in seconds, 3 is milliseconds, 6 microseconds, 9 is nanoseconds, 12 is picoseconds
    *
    * @generated from field: int32 precision = 1;
    */
@@ -703,14 +752,14 @@ export type Type_PrecisionTimestamp = Message<"substrait.Type.PrecisionTimestamp
  * Use `create(Type_PrecisionTimestampSchema)` to create a new message.
  */
 export const Type_PrecisionTimestampSchema: GenMessage<Type_PrecisionTimestamp> = /*@__PURE__*/
-  messageDesc(file_substrait_type, 0, 20);
+  messageDesc(file_substrait_type, 0, 21);
 
 /**
  * @generated from message substrait.Type.PrecisionTimestampTZ
  */
 export type Type_PrecisionTimestampTZ = Message<"substrait.Type.PrecisionTimestampTZ"> & {
   /**
-   * Sub-second precision, 0 means the value given is in seconds, 3 is milliseconds, 6 microseconds, 9 is nanoseconds
+   * Sub-second precision, 0 means the value given is in seconds, 3 is milliseconds, 6 microseconds, 9 is nanoseconds, 12 is picoseconds
    *
    * @generated from field: int32 precision = 1;
    */
@@ -732,7 +781,7 @@ export type Type_PrecisionTimestampTZ = Message<"substrait.Type.PrecisionTimesta
  * Use `create(Type_PrecisionTimestampTZSchema)` to create a new message.
  */
 export const Type_PrecisionTimestampTZSchema: GenMessage<Type_PrecisionTimestampTZ> = /*@__PURE__*/
-  messageDesc(file_substrait_type, 0, 21);
+  messageDesc(file_substrait_type, 0, 22);
 
 /**
  * @generated from message substrait.Type.Struct
@@ -759,7 +808,7 @@ export type Type_Struct = Message<"substrait.Type.Struct"> & {
  * Use `create(Type_StructSchema)` to create a new message.
  */
 export const Type_StructSchema: GenMessage<Type_Struct> = /*@__PURE__*/
-  messageDesc(file_substrait_type, 0, 22);
+  messageDesc(file_substrait_type, 0, 23);
 
 /**
  * @generated from message substrait.Type.List
@@ -786,7 +835,7 @@ export type Type_List = Message<"substrait.Type.List"> & {
  * Use `create(Type_ListSchema)` to create a new message.
  */
 export const Type_ListSchema: GenMessage<Type_List> = /*@__PURE__*/
-  messageDesc(file_substrait_type, 0, 23);
+  messageDesc(file_substrait_type, 0, 24);
 
 /**
  * @generated from message substrait.Type.Map
@@ -818,7 +867,7 @@ export type Type_Map = Message<"substrait.Type.Map"> & {
  * Use `create(Type_MapSchema)` to create a new message.
  */
 export const Type_MapSchema: GenMessage<Type_Map> = /*@__PURE__*/
-  messageDesc(file_substrait_type, 0, 24);
+  messageDesc(file_substrait_type, 0, 25);
 
 /**
  * @generated from message substrait.Type.UserDefined
@@ -850,7 +899,7 @@ export type Type_UserDefined = Message<"substrait.Type.UserDefined"> & {
  * Use `create(Type_UserDefinedSchema)` to create a new message.
  */
 export const Type_UserDefinedSchema: GenMessage<Type_UserDefined> = /*@__PURE__*/
-  messageDesc(file_substrait_type, 0, 25);
+  messageDesc(file_substrait_type, 0, 26);
 
 /**
  * @generated from message substrait.Type.Parameter
@@ -910,7 +959,7 @@ export type Type_Parameter = Message<"substrait.Type.Parameter"> & {
  * Use `create(Type_ParameterSchema)` to create a new message.
  */
 export const Type_ParameterSchema: GenMessage<Type_Parameter> = /*@__PURE__*/
-  messageDesc(file_substrait_type, 0, 26);
+  messageDesc(file_substrait_type, 0, 27);
 
 /**
  * @generated from enum substrait.Type.Nullability

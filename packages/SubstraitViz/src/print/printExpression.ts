@@ -84,6 +84,9 @@ export function printExpression(expr?: Expression): string {
     case 'multiOrList':
       // TODO
       return `${rex.case} [TODO]`;
+    case 'dynamicParameter':
+      // TODO
+      return `${rex.case} [TODO]`;
     case undefined:
       return 'undefined';
   }
