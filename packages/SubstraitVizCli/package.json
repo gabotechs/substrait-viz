@@ -15,7 +15,7 @@
     "test": "echo 'nothing to do'",
     "lint": "eslint .",
     "build": "TS_CONFIG=tsconfig.build.json vite build",
-    "postinstall": "node install.cjs"
+    "postinstall": "node install.cjs || true"
   },
   "dependencies": {
     "@substrait-viz/react": "workspace:*",
