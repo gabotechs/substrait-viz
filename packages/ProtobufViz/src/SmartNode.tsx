@@ -105,7 +105,9 @@ function Msg({ msg, isNested }: { msg: Message & NodeExt; isNested: boolean }) {
   msg = React.useMemo(() => {
     if (msg.$typeName === AnySchema.typeName) {
       const anyMsg = msg as Any;
-      const desc = registry?.getMessage(anyMsg.typeUrl);
+      const desc = registry?.getMessage(
+        anyMsg.typeUrl.replace(/^type.googleapis.com\//, ''),
+      );
       if (!desc) return msg;
       return fromBinary(desc, anyMsg.value);
     }
