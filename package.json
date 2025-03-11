@@ -12,7 +12,7 @@
     "l": "turbo lint",
     "lint": "turbo lint",
     "bump": "node bump.js",
-    "ci:publish": "pnpm -r publish --access public"
+    "ci:publish": "pnpm -r publish --access public --no-git-checks"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.12",
