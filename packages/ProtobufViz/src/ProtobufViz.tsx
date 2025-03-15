@@ -5,14 +5,13 @@ import {
   Node,
   NodeTypes,
   ReactFlow,
-  ReactFlowProps,
   ReactFlowProvider,
   useEdgesState,
   useNodesState,
   useReactFlow,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import React, { useLayoutEffect } from 'react';
+import React, { CSSProperties, useLayoutEffect } from 'react';
 
 import { MessageShape, Registry } from '@bufbuild/protobuf';
 import {
@@ -28,7 +27,7 @@ import { LoadingError } from './components/LoadingError.tsx';
 import { ProtoFile } from './file.ts';
 import { layout } from './layout.ts';
 import { loadMessage, loadRegistry } from './load.ts';
-import { RenderConfig, RenderConfigContext } from './render.ts';
+import { NodeRenderer, RenderConfig, RenderConfigContext } from './render.ts';
 import SmartNode from './SmartNode.tsx';
 import './styles.css';
 import {
@@ -46,20 +45,35 @@ const edgeTypes = {
   bezier: BezierEdge,
 };
 
-export interface ProtobufVizProps<S extends MessageSchema>
-  extends CompileConfig<S>,
-    RenderConfig,
-    Pick<ReactFlowProps, 'style' | 'className'> {
+export interface ProtobufVizProps<
+  S extends MessageSchema = MessageSchema,
+  T extends ProtobufVizTheme = ProtobufVizTheme,
+> extends CompileConfig<S>,
+    RenderConfig<T> {
+  className?: string;
+  style?: CSSProperties;
   schema: S;
   protoMessage: ProtoFile;
   protoDescriptorSets?: ProtoFile[];
-  theme?: Partial<ProtobufVizTheme>;
+  theme?: Partial<T>;
 }
 
-export function ProtobufViz<S extends MessageSchema>(
-  props: ProtobufVizProps<S>,
-) {
-  const { protoDescriptorSets, schema, protoMessage } = props;
+export function ProtobufViz<
+  S extends MessageSchema,
+  T extends ProtobufVizTheme,
+>({
+  className,
+  style,
+  schema,
+  protoMessage,
+  protoDescriptorSets,
+  theme: userTheme,
+  // CompileConfig
+  coreNodes,
+  // RenderConfig
+  nodeRender,
+  edgesFromFields,
+}: ProtobufVizProps<S, T>) {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<Error>();
   const [rootMsg, setRootMsg] = React.useState<MessageShape<S>>();
@@ -80,8 +94,8 @@ export function ProtobufViz<S extends MessageSchema>(
   }, [protoDescriptorSets, protoMessage, schema]);
 
   const theme = React.useMemo(
-    () => ({ ...defaultTheme, ...props.theme }),
-    [props.theme],
+    () => ({ ...defaultTheme, ...userTheme }),
+    [userTheme],
   );
 
   if (loading) return <Loading theme={theme} />;
@@ -90,9 +104,21 @@ export function ProtobufViz<S extends MessageSchema>(
 
   return (
     <ThemeContext.Provider value={theme}>
-      <RenderConfigContext.Provider value={{ ...props, rootMsg, registry }}>
+      <RenderConfigContext.Provider
+        value={{
+          nodeRender: nodeRender as NodeRenderer,
+          rootMsg,
+          registry,
+          edgesFromFields,
+        }}
+      >
         <ReactFlowProvider>
-          <Private rootMsg={rootMsg} {...props} />
+          <Private
+            rootMsg={rootMsg}
+            style={style}
+            className={className}
+            coreNodes={coreNodes}
+          />
         </ReactFlowProvider>
       </RenderConfigContext.Provider>
     </ThemeContext.Provider>
@@ -102,8 +128,13 @@ export function ProtobufViz<S extends MessageSchema>(
 function Private<S extends MessageSchema>({
   coreNodes,
   rootMsg,
-  ...props
-}: ProtobufVizProps<S> & { rootMsg: MessageShape<S> }) {
+  style,
+  className,
+}: CompileConfig<S> & {
+  className?: string;
+  style?: CSSProperties;
+  rootMsg: MessageShape<S>;
+}) {
   const [layoutReady, setLayoutReady] = React.useState(false);
   const [initNodes, initEdges] = React.useMemo(
     () => Compiler.fromCfg({ coreNodes }).compile(rootMsg),
@@ -151,7 +182,8 @@ function Private<S extends MessageSchema>({
 
   return (
     <ReactFlow
-      {...props}
+      style={style}
+      className={className}
       nodes={nodes}
       edges={edges}
       nodeTypes={nodeTypes}

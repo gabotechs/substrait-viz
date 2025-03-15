@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 import type { Meta, StoryObj } from '@storybook/react';
 import plan1 from './.test_data/plan1.json?raw';
 import plan2 from './.test_data/plan2.json?raw';

@@ -1,12 +1,20 @@
 import { castMsg, CustomRenderProps, SmartNode } from '@protobuf-viz/react';
-import { Expression_ScalarFunction } from './gen/substrait/algebra_pb.ts';
+import {
+  AggregateFunction,
+  Expression_ScalarFunction,
+} from './gen/substrait/algebra_pb.ts';
 import { Plan } from './gen/substrait/plan_pb.ts';
+import { SubstraitVizTheme } from './theme.ts';
 
-export function CustomScalarFunction({
+export function CustomFunction({
   msg,
   rootMsg,
+  theme,
   ...props
-}: CustomRenderProps<Expression_ScalarFunction>) {
+}: CustomRenderProps<
+  Expression_ScalarFunction | AggregateFunction,
+  SubstraitVizTheme
+>) {
   let name;
   const plan = castMsg<Plan>('substrait.Plan', rootMsg);
   if (plan) {
@@ -15,7 +23,7 @@ export function CustomScalarFunction({
   name ??= `$f${msg.functionReference}`;
   return (
     <span className={'whitespace-nowrap flex flex-row'}>
-      {name}(
+      <span style={{ color: theme.function }}>{name}</span>(
       {msg.arguments.map((arg, i, arr) => (
         <>
           <SmartNode data={arg} key={i} {...props} />

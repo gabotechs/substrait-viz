@@ -1,26 +1,26 @@
 import { Message } from '@bufbuild/protobuf';
-import { GenMessage } from '@bufbuild/protobuf/codegenv1';
-
 import {
   castMsg,
   CustomRenderProps,
   ProtobufViz,
   ProtobufVizProps,
 } from '@protobuf-viz/react';
+import React from 'react';
 import { CustomCast } from './CustomCast.tsx';
 import { CustomDirect } from './CustomDirect.tsx';
 import { CustomFieldReference } from './CustomFieldReference.tsx';
+import { CustomFunction } from './CustomFunction.tsx';
 import { CustomLiteral } from './CustomLiteral.tsx';
 import { CustomNamedStruct } from './CustomNamedStruct.tsx';
 import { CustomReferenceSegment } from './CustomReferenceSegment.tsx';
 import { CustomRootReference } from './CustomRootReference.tsx';
-import { CustomScalarFunction } from './CustomScalarFunction.tsx';
 import { CustomSimpleExtensionDeclaration } from './CustomSimpleExtensionDeclaration.tsx';
 import { CustomSimpleExtensionUri } from './CustomSimpleExtensionUri.tsx';
 import { CustomStructItem } from './CustomStructItem.tsx';
 import { CustomType } from './CustomType.tsx';
 import { VersionComponent } from './CustomVersion.tsx';
 import {
+  AggregateFunction,
   Expression_Cast,
   Expression_FieldReference,
   Expression_FieldReference_RootReference,
@@ -38,21 +38,24 @@ import {
 import { PlanRelSchema, PlanSchema, Version } from './gen/substrait/plan_pb.ts';
 import { NamedStruct, Type } from './gen/substrait/type_pb.ts';
 import './SubstraitViz.css';
+import { defaultTheme, SubstraitVizTheme } from './theme.ts';
 
 export interface SubstraitVizProps
   extends Omit<
-    ProtobufVizProps<GenMessage<Message>>,
-    'coreNodes' | 'schema' | 'nodeRender' | 'protoMessage'
+    ProtobufVizProps,
+    'coreNodes' | 'schema' | 'nodeRender' | 'protoMessage' | 'theme'
   > {
   plan: string;
+  theme?: Partial<SubstraitVizTheme>;
 }
 
-export function SubstraitViz({ plan, ...props }: SubstraitVizProps) {
+export function SubstraitViz({ plan, theme, ...props }: SubstraitVizProps) {
   return (
     <ProtobufViz
       coreNodes={[PlanSchema, PlanRelSchema, RelSchema]}
       schema={PlanSchema}
       protoMessage={plan}
+      theme={React.useMemo(() => ({ ...defaultTheme, ...theme }), [theme])}
       /* prettier-ignore */
       nodeRender={(props) => {
         {
@@ -105,7 +108,11 @@ export function SubstraitViz({ plan, ...props }: SubstraitVizProps) {
         }
         {
           const casted = castProps<Expression_ScalarFunction>('substrait.Expression.ScalarFunction', props);
-          if (casted) return <CustomScalarFunction {...casted} />;
+          if (casted) return <CustomFunction {...casted} />;
+        }
+        {
+          const casted = castProps<AggregateFunction>('substrait.AggregateFunction', props);
+          if (casted) return <CustomFunction {...casted} />;
         }
       }}
       {...props}
@@ -116,8 +123,8 @@ export function SubstraitViz({ plan, ...props }: SubstraitVizProps) {
 function castProps<T extends Message>(
   typeName: T['$typeName'],
   props: CustomRenderProps,
-): CustomRenderProps<T> | undefined {
+): CustomRenderProps<T, SubstraitVizTheme> | undefined {
   if (castMsg<T>(typeName, props.msg)) {
-    return props as CustomRenderProps<T>;
+    return props as CustomRenderProps<T, SubstraitVizTheme>;
   }
 }
