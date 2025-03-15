@@ -7,9 +7,9 @@ export function CustomCast({
   ...props
 }: CustomRenderProps<Expression_Cast>) {
   return (
-    <span className={'whitespace-nowrap flex flex-row gap-1'}>
-      CAST({<SmartNode data={msg.input} {...props} />} AS {printType(msg.type)}{' '}
-      )
+    <span className={'whitespace-nowrap flex flex-row'}>
+      CAST({<SmartNode data={msg.input} {...props} />}
+      {<span className="mr-1" />} AS {printType(msg.type)} )
     </span>
   );
 }

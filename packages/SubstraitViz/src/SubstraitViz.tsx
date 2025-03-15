@@ -14,6 +14,7 @@ import { CustomLiteral } from './CustomLiteral.tsx';
 import { CustomNamedStruct } from './CustomNamedStruct.tsx';
 import { CustomReferenceSegment } from './CustomReferenceSegment.tsx';
 import { CustomRootReference } from './CustomRootReference.tsx';
+import { CustomScalarFunction } from './CustomScalarFunction.tsx';
 import { CustomSimpleExtensionDeclaration } from './CustomSimpleExtensionDeclaration.tsx';
 import { CustomSimpleExtensionUri } from './CustomSimpleExtensionUri.tsx';
 import { CustomStructItem } from './CustomStructItem.tsx';
@@ -26,6 +27,7 @@ import {
   Expression_Literal,
   Expression_MaskExpression_StructItem,
   Expression_ReferenceSegment,
+  Expression_ScalarFunction,
   RelCommon_Direct,
   RelSchema,
 } from './gen/substrait/algebra_pb.ts';
@@ -100,6 +102,10 @@ export function SubstraitViz({ plan, ...props }: SubstraitVizProps) {
         {
           const casted = castProps<Expression_Cast>('substrait.Expression.Cast', props);
           if (casted) return <CustomCast {...casted} />;
+        }
+        {
+          const casted = castProps<Expression_ScalarFunction>('substrait.Expression.ScalarFunction', props);
+          if (casted) return <CustomScalarFunction {...casted} />;
         }
       }}
       {...props}
