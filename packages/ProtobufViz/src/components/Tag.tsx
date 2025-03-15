@@ -1,22 +1,20 @@
-import React, { HTMLProps } from 'react';
+import { HTMLProps } from 'react';
 import { useTheme } from '../theme.ts';
 
 export interface TagProps extends HTMLProps<HTMLDivElement> {
-  type: string;
+  tag: string;
 }
 
-export function Tag({ type, className = '', style, ...rest }: TagProps) {
+export function Tag({ tag, className = '', style, ...rest }: TagProps) {
   const { boxBackground } = useTheme();
-
-  const cleanType = React.useMemo(() => type.split('.').slice(-1)[0], [type]);
 
   return (
     <div
-      className={`${className} absolute -top-2.5 px-2 w-fit`}
+      className={`${className} relative -top-2.5 px-2 w-fit whitespace-nowrap`}
       style={{ background: boxBackground, ...style }}
       {...rest}
     >
-      {cleanType}
+      {tag}
     </div>
   );
 }

@@ -6,7 +6,6 @@ import {
   CustomRenderProps,
   ProtobufViz,
   ProtobufVizProps,
-  SmartNode,
 } from '@protobuf-viz/react';
 import { CustomDirect } from './CustomDirect.tsx';
 import { CustomFieldReference } from './CustomFieldReference.tsx';
@@ -20,16 +19,11 @@ import { CustomStructItem } from './CustomStructItem.tsx';
 import { CustomType } from './CustomType.tsx';
 import { VersionComponent } from './CustomVersion.tsx';
 import {
-  AggregateRel_Grouping,
-  AggregateRel_Measure,
-  Expression,
   Expression_FieldReference,
   Expression_FieldReference_RootReference,
   Expression_Literal,
   Expression_MaskExpression_StructItem,
   Expression_ReferenceSegment,
-  FunctionArgument,
-  Rel,
   RelCommon_Direct,
   RelSchema,
 } from './gen/substrait/algebra_pb.ts';
@@ -38,7 +32,7 @@ import {
   SimpleExtensionURI,
 } from './gen/substrait/extensions/extensions_pb.ts';
 import { PlanRelSchema, PlanSchema, Version } from './gen/substrait/plan_pb.ts';
-import { NamedStruct, Type, Type_Struct } from './gen/substrait/type_pb.ts';
+import { NamedStruct, Type } from './gen/substrait/type_pb.ts';
 import './SubstraitViz.css';
 
 export interface SubstraitVizProps
@@ -82,18 +76,6 @@ export function SubstraitViz({ plan, ...props }: SubstraitVizProps) {
           if (casted) return <CustomReferenceSegment {...casted} />;
         }
         {
-          const casted = castProps<Expression>('substrait.Expression', props);
-          if (casted) return <SmartNode {...props} data={casted.msg.rexType} />;
-        }
-        {
-          const casted = castProps<AggregateRel_Grouping>('substrait.AggregateRel.Grouping', props);
-          if (casted) return <SmartNode {...props} data={casted.msg.groupingExpressions} />;
-        }
-        {
-          const casted = castProps<AggregateRel_Measure>('substrait.AggregateRel.Measure', props);
-          if (casted && !casted.msg.filter) return <SmartNode {...props} data={casted.msg.measure} />;
-        }
-        {
           const casted = castProps<Expression_FieldReference>('substrait.Expression.FieldReference', props);
           if (casted) return <CustomFieldReference {...casted} />;
         }
@@ -102,16 +84,8 @@ export function SubstraitViz({ plan, ...props }: SubstraitVizProps) {
           if (casted) return <CustomType{...casted} />;
         }
         {
-          const casted = castProps<Type_Struct>('substrait.Type.Struct', props);
-          if (casted) return <SmartNode  {...props} data={casted.msg.types} />;
-        }
-        {
           const casted = castProps<NamedStruct>('substrait.NamedStruct', props);
           if (casted) return <CustomNamedStruct {...casted} />;
-        }
-        {
-          const casted = castProps<FunctionArgument>('substrait.FunctionArgument', props);
-          if (casted) return <SmartNode {...props} data={casted.msg.argType} />;
         }
         {
           const casted = castProps<Expression_Literal>('substrait.Expression.Literal', props);
@@ -120,10 +94,6 @@ export function SubstraitViz({ plan, ...props }: SubstraitVizProps) {
         {
           const casted = castProps<Expression_MaskExpression_StructItem>('substrait.Expression.MaskExpression.StructItem', props);
           if (casted) return <CustomStructItem {...casted} />;
-        }
-        {
-          const casted = castProps<Rel>('substrait.Rel', props);
-          if (casted) return <SmartNode {...props} data={casted.msg.relType} />;
         }
       }}
       {...props}

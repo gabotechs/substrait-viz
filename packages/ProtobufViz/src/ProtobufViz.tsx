@@ -1,6 +1,4 @@
 import {
-  Background,
-  BackgroundVariant,
   BezierEdge,
   Controls,
   MiniMap,
@@ -24,6 +22,9 @@ import {
   MessageSchema,
   WIDTH_ATTRIBUTE,
 } from './compile.ts';
+import { Background } from './components/Background.tsx';
+import { Loading } from './components/Loading.tsx';
+import { LoadingError } from './components/LoadingError.tsx';
 import { ProtoFile } from './file.ts';
 import { layout } from './layout.ts';
 import { loadMessage, loadRegistry } from './load.ts';
@@ -38,7 +39,7 @@ import {
 } from './theme.ts';
 
 const nodeTypes: Record<string, NodeTypes[string]> = {
-  node: props => <SmartNode {...props} isNested={false} />,
+  node: SmartNode,
 };
 
 const edgeTypes = {
@@ -83,32 +84,9 @@ export function ProtobufViz<S extends MessageSchema>(
     [props.theme],
   );
 
-  if (!rootNode) {
-    return (
-      <ReactFlow>
-        {loading && (
-          <div className={'w-full h-full flex items-center justify-center'}>
-            Loading...
-          </div>
-        )}
-        {error && (
-          <div
-            className={
-              'w-full h-full text-center p-10 flex items-center justify-center'
-            }
-          >
-            <span className={'text-red-400'}>{error.message}</span>
-          </div>
-        )}
-        <Background
-          variant={BackgroundVariant.Dots}
-          gap={12}
-          size={1}
-          bgColor={theme.background}
-        />
-      </ReactFlow>
-    );
-  }
+  if (loading) return <Loading theme={theme} />;
+  if (error) return <LoadingError theme={theme} error={error} />;
+  if (!rootNode) return null;
 
   return (
     <ThemeContext.Provider value={theme}>
@@ -150,7 +128,7 @@ function Private<S extends MessageSchema>({
       return true;
     }
 
-    (async function f() {
+    async function waitForAllNodesPlaced() {
       while (!allNodesPlaced(nodes)) {
         await new Promise(res => setTimeout(res, 10));
       }
@@ -163,11 +141,13 @@ function Private<S extends MessageSchema>({
       await new Promise(res => setTimeout(res, 10));
       setLayoutReady(true);
       await fitView({ duration: 400 });
-    })();
+    }
+
+    void waitForAllNodesPlaced();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const { background } = useTheme();
+  const theme = useTheme();
 
   return (
     <ReactFlow
@@ -186,16 +166,14 @@ function Private<S extends MessageSchema>({
       minZoom={0.1}
     >
       {!layoutReady && (
-        <div className="absolute z-10 w-full h-full" style={{ background }} />
+        <div
+          className="absolute z-10 w-full h-full"
+          style={{ background: theme.background }}
+        />
       )}
       <Controls />
       <MiniMap />
-      <Background
-        variant={BackgroundVariant.Dots}
-        gap={12}
-        size={1}
-        bgColor={background}
-      />
+      <Background theme={theme} />
     </ReactFlow>
   );
 }
