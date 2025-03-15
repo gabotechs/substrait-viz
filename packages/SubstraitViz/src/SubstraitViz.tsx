@@ -7,6 +7,7 @@ import {
   ProtobufViz,
   ProtobufVizProps,
 } from '@protobuf-viz/react';
+import { CustomCast } from './CustomCast.tsx';
 import { CustomDirect } from './CustomDirect.tsx';
 import { CustomFieldReference } from './CustomFieldReference.tsx';
 import { CustomLiteral } from './CustomLiteral.tsx';
@@ -19,6 +20,7 @@ import { CustomStructItem } from './CustomStructItem.tsx';
 import { CustomType } from './CustomType.tsx';
 import { VersionComponent } from './CustomVersion.tsx';
 import {
+  Expression_Cast,
   Expression_FieldReference,
   Expression_FieldReference_RootReference,
   Expression_Literal,
@@ -94,6 +96,10 @@ export function SubstraitViz({ plan, ...props }: SubstraitVizProps) {
         {
           const casted = castProps<Expression_MaskExpression_StructItem>('substrait.Expression.MaskExpression.StructItem', props);
           if (casted) return <CustomStructItem {...casted} />;
+        }
+        {
+          const casted = castProps<Expression_Cast>('substrait.Expression.Cast', props);
+          if (casted) return <CustomCast {...casted} />;
         }
       }}
       {...props}

@@ -1,4 +1,5 @@
 import React, { HTMLProps } from 'react';
+import { useTheme } from '../theme.ts';
 
 export interface ExpandableProps
   extends Omit<HTMLProps<HTMLDivElement>, 'onClick' | 'type'> {
@@ -19,6 +20,7 @@ export function Expandable({
   const [hoverDiv, setHoverDiv] = React.useState(false);
   const [hoverButton, setHoverButton] = React.useState(false);
   const hover = hoverDiv || hoverButton;
+  const { background } = useTheme();
 
   return (
     <div
@@ -28,13 +30,13 @@ export function Expandable({
       {...props}
     >
       <button
+        className={`absolute top-0 -right-4 cursor-pointer z-20 px-1`}
+        style={{ opacity: !hover ? 0 : undefined, background }}
+        type={'button'}
         onMouseEnter={() => setHoverButton(true)}
         onMouseLeave={() => setHoverButton(false)}
         hidden={!isExpandable}
-        style={{ opacity: !hover ? 0 : undefined }}
-        className={`absolute top-0 -right-4 cursor-pointer z-20`}
         onClick={() => setExpanded(p => !p)}
-        type={'button'}
       >
         {expanded ? (
           <span className={'i-mdi-arrow-collapse'} />
