@@ -31,7 +31,7 @@ import { useRenderConfig } from './render.ts';
 import { stringify } from './stringify.ts';
 import { useTheme } from './theme.ts';
 
-interface SmartNodeProps {
+export interface SmartNodeProps {
   data: unknown;
   isNested?: boolean;
 }
@@ -112,7 +112,7 @@ function MsgStack({
 }) {
   const [expanded, setExpanded] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
-  const { nodeRender, edgesFromFields, registry } = useRenderConfig();
+  const { nodeRender, edgesFromFields, registry, rootMsg } = useRenderConfig();
   const theme = useTheme();
 
   msgStack = React.useMemo(() => {
@@ -156,7 +156,7 @@ function MsgStack({
 
   let custom: React.ReactNode = null;
   for (const msg of msgStack) {
-    custom = nodeRender?.({ msg, theme, isNested });
+    custom = nodeRender?.({ msg, theme, isNested, rootMsg });
     if (custom) break;
   }
 

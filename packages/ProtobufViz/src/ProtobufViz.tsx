@@ -62,14 +62,14 @@ export function ProtobufViz<S extends MessageSchema>(
   const { protoDescriptorSets, schema, protoMessage } = props;
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<Error>();
-  const [rootNode, setRootNode] = React.useState<MessageShape<S>>();
+  const [rootMsg, setRootMsg] = React.useState<MessageShape<S>>();
   const [registry, setRegistry] = React.useState<Registry>();
 
   React.useEffect(() => {
     async function load() {
       const registry = await loadRegistry(protoDescriptorSets);
       const message = await loadMessage(protoMessage, schema, registry);
-      setRootNode(message);
+      setRootMsg(message);
       setRegistry(registry);
     }
 
@@ -86,13 +86,13 @@ export function ProtobufViz<S extends MessageSchema>(
 
   if (loading) return <Loading theme={theme} />;
   if (error) return <LoadingError theme={theme} error={error} />;
-  if (!rootNode) return null;
+  if (!rootMsg) return null;
 
   return (
     <ThemeContext.Provider value={theme}>
-      <RenderConfigContext.Provider value={{ ...props, registry }}>
+      <RenderConfigContext.Provider value={{ ...props, rootMsg, registry }}>
         <ReactFlowProvider>
-          <Private rootNode={rootNode} {...props} />
+          <Private rootMsg={rootMsg} {...props} />
         </ReactFlowProvider>
       </RenderConfigContext.Provider>
     </ThemeContext.Provider>
@@ -101,13 +101,13 @@ export function ProtobufViz<S extends MessageSchema>(
 
 function Private<S extends MessageSchema>({
   coreNodes,
-  rootNode,
+  rootMsg,
   ...props
-}: ProtobufVizProps<S> & { rootNode: MessageShape<S> }) {
+}: ProtobufVizProps<S> & { rootMsg: MessageShape<S> }) {
   const [layoutReady, setLayoutReady] = React.useState(false);
   const [initNodes, initEdges] = React.useMemo(
-    () => Compiler.fromCfg({ coreNodes }).compile(rootNode),
-    [coreNodes, rootNode],
+    () => Compiler.fromCfg({ coreNodes }).compile(rootMsg),
+    [coreNodes, rootMsg],
   );
 
   const [nodes, setNodes, onNodesChange] = useNodesState(initNodes);
