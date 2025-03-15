@@ -11,9 +11,9 @@ export function CustomReferenceSegment(
     case 'mapKey':
       return wrap(printLiteral(n.value.mapKey));
     case 'listElement':
-      return wrap(`offset ${n.value.offset}`);
+      return wrap(`offset<${n.value.offset}>`);
     case 'structField':
-      return wrap(`field ${n.value.field}`);
+      return wrap(`<${n.value.field}>`);
     case undefined:
       return null;
   }

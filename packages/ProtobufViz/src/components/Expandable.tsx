@@ -29,21 +29,22 @@ export function Expandable({
       onMouseLeave={() => setHoverDiv(false)}
       {...props}
     >
-      <button
-        className={`absolute top-0 -right-4 cursor-pointer z-20 px-1`}
-        style={{ opacity: !hover ? 0 : undefined, background }}
-        type={'button'}
+      <div
+        className={`absolute top-0 cursor-pointer z-20 bg-transparent flex justify-end`}
+        style={{ opacity: !hover ? 0 : undefined, width: 'calc(100% + 16px)' }}
         onMouseEnter={() => setHoverButton(true)}
         onMouseLeave={() => setHoverButton(false)}
         hidden={!isExpandable}
         onClick={() => setExpanded(p => !p)}
       >
-        {expanded ? (
-          <span className={'i-mdi-arrow-collapse'} />
-        ) : (
-          <span className={'i-mdi-arrow-expand'} />
-        )}
-      </button>
+        <div className={'px-1'} style={{ background }}>
+          {expanded ? (
+            <span className={'i-mdi-arrow-collapse'} />
+          ) : (
+            <span className={'i-mdi-arrow-expand'} />
+          )}
+        </div>
+      </div>
       {children}
     </div>
   );

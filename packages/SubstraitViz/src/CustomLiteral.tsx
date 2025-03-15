@@ -5,7 +5,7 @@ export function CustomLiteral({ msg }: CustomRenderProps<Expression_Literal>) {
   const n = msg.literalType;
   const wrap = (s: string) => (
     <div className={'text-nowrap'}>
-      {s} ({n.case})
+      {s}[{n.case}]
     </div>
   );
   switch (n.case) {
