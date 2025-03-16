@@ -4,8 +4,10 @@ import {
 } from '@protobuf-viz/react';
 
 export const defaultTheme = {
+  type: '#ee52a5',
+  literal: '#75bf6c',
   fieldRef: '#4996e7',
-  function: '#ffa600',
+  function: '#eca91f',
   ...protobufVizDefaultTheme,
 };
 

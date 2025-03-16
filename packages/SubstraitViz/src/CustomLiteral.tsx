@@ -1,27 +1,42 @@
 import { CustomRenderProps } from '@protobuf-viz/react';
 import { Expression_Literal } from './gen/substrait/algebra_pb.ts';
+import { SubstraitVizTheme } from './theme.ts';
 
-export function CustomLiteral({ msg }: CustomRenderProps<Expression_Literal>) {
+export function CustomLiteral({
+  msg,
+  theme,
+}: CustomRenderProps<Expression_Literal, SubstraitVizTheme>) {
+  let literal;
+
   const n = msg.literalType;
-  const wrap = (s: string) => (
-    <div className={'text-nowrap'}>
-      {s}[{n.case}]
-    </div>
-  );
   switch (n.case) {
     case 'decimal': {
       const { value, scale, precision } = n.value;
-      return wrap(convertDecimal(value, scale, precision));
+      literal = convertDecimal(value, scale, precision);
+      break;
     }
-    case 'intervalYearToMonth':
-      return wrap(`${n.value.years} years ${n.value.months} months`);
+    case 'intervalYearToMonth': {
+      const { years, months } = n.value;
+      literal = `${years} years ${months} months`;
+      break;
+    }
     case 'intervalDayToSecond': {
       const { days, seconds } = n.value;
-      return wrap(`${days} days ${seconds} s`);
+      literal = `${days} days ${seconds} s`;
+      break;
     }
     default:
-      return wrap(stringify(msg.literalType.value));
+      literal = stringify(msg.literalType.value);
   }
+
+  return (
+    <span className={'text-nowrap'}>
+      <span style={{ color: theme.literal }}>{literal}</span>
+      <span>[</span>
+      <span style={{ color: theme.type }}>{n.case}</span>
+      <span>]</span>
+    </span>
+  );
 }
 
 function stringify(v: unknown): string {
