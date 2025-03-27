@@ -4,6 +4,7 @@ import {
   CustomRenderProps,
   ProtobufViz,
   ProtobufVizProps,
+  ProtoFile,
 } from '@protobuf-viz/react';
 import React from 'react';
 import { CustomCast } from './CustomCast.tsx';
@@ -45,7 +46,7 @@ export interface SubstraitVizProps
     ProtobufVizProps,
     'coreNodes' | 'schema' | 'nodeRender' | 'protoMessage' | 'theme'
   > {
-  plan: string;
+  plan: ProtoFile;
   theme?: Partial<SubstraitVizTheme>;
 }
 
