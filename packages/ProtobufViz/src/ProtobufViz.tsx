@@ -177,7 +177,7 @@ function Private<S extends MessageSchema>({
       // Let some time for the nodes to be placed.
       await new Promise(res => setTimeout(res, 10));
       setLayoutReady(true);
-      await fitView({ duration: 400 });
+      await fitView();
     }
 
     void waitForAllNodesPlaced();
