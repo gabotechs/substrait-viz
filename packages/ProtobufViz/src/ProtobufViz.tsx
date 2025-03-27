@@ -1,10 +1,10 @@
 import {
-  BezierEdge,
   Controls,
   MiniMap,
   Node,
   NodeTypes,
   ReactFlow,
+  ReactFlowProps,
   ReactFlowProvider,
   useEdgesState,
   useNodesState,
@@ -24,6 +24,7 @@ import {
 import { Background } from './components/Background.tsx';
 import { Loading } from './components/Loading.tsx';
 import { LoadingError } from './components/LoadingError.tsx';
+import { CustomEdge } from './CustomEdge.tsx';
 import { ProtoFile } from './file.ts';
 import { layout } from './layout.ts';
 import { loadMessage, loadRegistry } from './load.ts';
@@ -42,7 +43,7 @@ const nodeTypes: Record<string, NodeTypes[string]> = {
 };
 
 const edgeTypes = {
-  bezier: BezierEdge,
+  edge: CustomEdge,
 };
 
 export interface ProtobufVizProps<
@@ -52,6 +53,7 @@ export interface ProtobufVizProps<
     RenderConfig<T> {
   className?: string;
   style?: CSSProperties;
+  colorMode?: ReactFlowProps['colorMode'];
   schema: S;
   protoMessage: ProtoFile;
   protoDescriptorSets?: ProtoFile[];
@@ -64,6 +66,7 @@ export function ProtobufViz<
 >({
   className,
   style,
+  colorMode,
   schema,
   protoMessage,
   protoDescriptorSets,
@@ -118,6 +121,7 @@ export function ProtobufViz<
             style={style}
             className={className}
             coreNodes={coreNodes}
+            colorMode={colorMode}
           />
         </ReactFlowProvider>
       </RenderConfigContext.Provider>
@@ -130,9 +134,11 @@ function Private<S extends MessageSchema>({
   rootMsg,
   style,
   className,
+  colorMode,
 }: CompileConfig<S> & {
   className?: string;
   style?: CSSProperties;
+  colorMode?: ReactFlowProps['colorMode'];
   rootMsg: MessageShape<S>;
 }) {
   const [layoutReady, setLayoutReady] = React.useState(false);
@@ -171,7 +177,7 @@ function Private<S extends MessageSchema>({
       // Let some time for the nodes to be placed.
       await new Promise(res => setTimeout(res, 10));
       setLayoutReady(true);
-      await fitView({ duration: 400 });
+      // await fitView({ duration: 400 });
     }
 
     void waitForAllNodesPlaced();
@@ -182,7 +188,8 @@ function Private<S extends MessageSchema>({
 
   return (
     <ReactFlow
-      style={style}
+      colorMode={colorMode}
+      style={{ color: theme.textColor, ...style }}
       className={className}
       nodes={nodes}
       edges={edges}
@@ -204,7 +211,7 @@ function Private<S extends MessageSchema>({
         />
       )}
       <Controls />
-      <MiniMap />
+      <MiniMap bgColor={theme.background} maskColor={theme.boxBackground} />
       <Background theme={theme} />
     </ReactFlow>
   );

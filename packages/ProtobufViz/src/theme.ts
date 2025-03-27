@@ -5,6 +5,8 @@ export const defaultTheme = {
   boxBorder: '#e92063',
   boxBackground: '#fff',
   highlightText: '#aaa',
+  textColor: '#000',
+  lineColor: '#444',
 };
 
 export type ProtobufVizTheme = typeof defaultTheme;

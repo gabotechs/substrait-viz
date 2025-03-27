@@ -112,7 +112,7 @@ function link(from: Node, to: Node, sourceHandle: string): Edge {
     id: `${from.id}-${to.id}`,
     source: from.id,
     target: to.id,
-    type: 'bezier',
+    type: 'edge',
     label: sourceHandle,
     // We want edges to always be rendered on top
     zIndex: 99999,

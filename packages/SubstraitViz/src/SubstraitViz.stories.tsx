@@ -46,8 +46,21 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+const darkTheme: SubstraitVizProps['theme'] = {
+  textColor: '#fff',
+  background: '#222',
+  boxBackground: '#2a2a2a',
+  lineColor: '#888',
+};
+
 export const Plan1: Story = { args: { plan: plan1 } };
+export const Plan1Dark: Story = {
+  args: { plan: plan1, theme: darkTheme, colorMode: 'dark' },
+};
 export const Plan2: Story = { args: { plan: plan2 } };
+export const Plan2Dark: Story = {
+  args: { plan: plan2, theme: darkTheme, colorMode: 'dark' },
+};
 export const SetComparisionAny: Story = { args: { plan: setComparisionAny } };
 export const TpchPlan01: Story = { args: { plan: tpchPlan01 } };
 export const TpchPlan02: Story = { args: { plan: tpchPlan02 } };
