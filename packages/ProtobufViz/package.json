@@ -23,8 +23,7 @@
   "dependencies": {
     "@bufbuild/protobuf": "^2.2.3",
     "@xyflow/react": "^12.4.3",
-    "elkjs": "^0.9.3",
-    "tailwindcss": "^4.0.8"
+    "elkjs": "^0.9.3"
   },
   "peerDependencies": {
     "react": "^18.0.0",
@@ -34,6 +33,7 @@
     "**/*.css"
   ],
   "devDependencies": {
+    "tailwindcss": "^4.0.8",
     "@bufbuild/buf": "^1.50.0",
     "@bufbuild/protoc-gen-es": "^2.2.3",
     "@chromatic-com/storybook": "^3.2.5",
