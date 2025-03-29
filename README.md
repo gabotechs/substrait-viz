@@ -50,3 +50,12 @@ and pass it as an argument.
 ```shell
 substrait-viz my-substrait-file.json --descriptor my-custom-messages.binpb
 ```
+
+# Examples
+
+This repo contains several plans that can be used for trying out the tool, for example all
+tcph plans in `packages/SubstraitViz/src/.test_data/`:
+
+```shell
+substrait-viz packages/SubstraitViz/src/.test_data/tpch-plan01.json
+```
