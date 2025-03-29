@@ -1,8 +1,9 @@
 {
   "name": "substrait-viz",
   "version": "0.1.9",
+  "main": "run.cjs",
   "bin": {
-    "substrait-viz": "substrait-viz"
+    "substrait-viz": "./run.cjs"
   },
   "files": [
     "install.cjs"
