@@ -6,7 +6,8 @@
     "substrait-viz": "substrait-viz"
   },
   "files": [
-    "install.cjs"
+    "install.cjs",
+    "substrait-viz"
   ],
   "scripts": {
     "clean": "rm -rf dist bin node_modules .turbo",
