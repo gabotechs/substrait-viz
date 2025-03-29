@@ -23,6 +23,12 @@ Using homebrew tap:
 brew install gabotechs/taps/substrait-viz
 ```
 
+Or with npm:
+
+```shell
+npm install -g substrait-viz
+```
+
 # Usage
 
 If the Substrait plan does not contain any reference to protobuf messages declared
