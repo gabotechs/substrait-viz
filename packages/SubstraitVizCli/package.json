@@ -2,7 +2,7 @@
   "name": "substrait-viz",
   "version": "0.1.6",
   "bin": {
-    "substrait-viz": "substrait-viz"
+    "substrait-viz": "bin/substrait-viz"
   },
   "files": [
     "install.cjs",
