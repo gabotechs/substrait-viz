@@ -1,13 +1,12 @@
 {
   "name": "substrait-viz",
   "version": "0.1.5",
-  "type": "module",
   "bin": {
     "substrait-viz": "substrait-viz"
   },
   "files": [
     "install.cjs",
-    "substrait-viz"
+    "bin"
   ],
   "scripts": {
     "clean": "rm -rf dist bin node_modules .turbo",

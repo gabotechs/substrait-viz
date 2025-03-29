@@ -12,7 +12,7 @@ const version = packageJson.version;
 const suffix = process.platform === 'win32' ? '.exe' : '';
 
 const BIN = 'substrait-viz';
-const BIN_PATH = path.join(__dirname, BIN + suffix);
+const BIN_PATH = path.join(__dirname, 'bin', BIN + suffix);
 
 const archOs2Url = {
   darwin: {
@@ -92,6 +92,7 @@ async function install() {
   let binBuffer = await fetch(releasedTarUrl);
   console.log(`Extracting ${binBuffer.length} bytes into`, BIN + suffix);
   binBuffer = extractFileFromTarGzip(binBuffer, BIN + suffix);
+  await fs.mkdir(path.dirname(BIN_PATH))
   await fs.writeFile(BIN_PATH, binBuffer);
   await fs.chmod(BIN_PATH, 0o755);
   process.exit(0);
