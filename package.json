@@ -1,6 +1,6 @@
 {
   "name": "substrait-viz-monorepo",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "type": "module",
   "scripts": {
     "clean": "pnpm --recursive clean && rm -rf dist node_modules",
