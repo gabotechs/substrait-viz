@@ -9,7 +9,7 @@
     "install.cjs"
   ],
   "scripts": {
-    "clean": "rm -rf dist bin node_modules .turbo",
+    "clean": "rm -rf dist bin build node_modules .turbo",
     "dev": "vite",
     "check-types": "tsc -b",
     "test": "echo 'nothing to do'",
