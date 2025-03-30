@@ -17,13 +17,4 @@ export default defineConfig({
       plugins: [tailwindcss({ base: '../..' })],
     },
   },
-  build: {
-    outDir: './build',
-    rollupOptions: {
-      output: {
-        entryFileNames: 'index.js', // Output main JS file as index.js
-        assetFileNames: 'index.css', // Output CSS file as index.css
-      },
-    },
-  },
 });
