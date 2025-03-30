@@ -15,6 +15,10 @@
     <img width="676" src="https://github.com/user-attachments/assets/c8959819-7f1d-4a9e-a87f-329f7ba5ac1b" alt="Demo">
 </p>
 
+<p align="center">
+    https://gabotechs.github.io/substrait-viz/
+</p>
+
 # Install
 
 Using homebrew tap:
