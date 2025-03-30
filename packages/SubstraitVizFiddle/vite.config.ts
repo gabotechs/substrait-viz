@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/postcss';
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/substrait-viz/',
   plugins: [
     react(),
     tsconfigPaths({ projects: [process.env.TS_CONFIG ?? './tsconfig.json'] }),
