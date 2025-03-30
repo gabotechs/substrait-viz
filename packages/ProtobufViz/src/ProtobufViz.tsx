@@ -11,7 +11,7 @@ import {
   useReactFlow,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import React, { CSSProperties, useLayoutEffect } from 'react';
+import React, { CSSProperties, type HTMLAttributes } from 'react';
 
 import { MessageShape, Registry } from '@bufbuild/protobuf';
 import {
@@ -26,6 +26,7 @@ import { Loading } from './components/Loading.tsx';
 import { LoadingError } from './components/LoadingError.tsx';
 import { CustomEdge } from './CustomEdge.tsx';
 import { ProtoFile } from './file.ts';
+import { useSameArray } from './hooks/useSameArray.ts';
 import { layout } from './layout.ts';
 import { loadMessage, loadRegistry } from './load.ts';
 import { NodeRenderer, RenderConfig, RenderConfigContext } from './render.ts';
@@ -50,7 +51,8 @@ export interface ProtobufVizProps<
   S extends MessageSchema = MessageSchema,
   T extends ProtobufVizTheme = ProtobufVizTheme,
 > extends CompileConfig<S>,
-    RenderConfig<T> {
+    RenderConfig<T>,
+    Omit<HTMLAttributes<HTMLDivElement>, 'onError'> {
   className?: string;
   style?: CSSProperties;
   colorMode?: ReactFlowProps['colorMode'];
@@ -76,6 +78,7 @@ export function ProtobufViz<
   // RenderConfig
   nodeRender,
   edgesFromFields,
+  ...divProps
 }: ProtobufVizProps<S, T>) {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<Error>();
@@ -122,6 +125,7 @@ export function ProtobufViz<
             className={className}
             coreNodes={coreNodes}
             colorMode={colorMode}
+            {...divProps}
           />
         </ReactFlowProvider>
       </RenderConfigContext.Provider>
@@ -130,18 +134,17 @@ export function ProtobufViz<
 }
 
 function Private<S extends MessageSchema>({
-  coreNodes,
+  coreNodes: _coreNodes,
   rootMsg,
   style,
-  className,
   colorMode,
-}: CompileConfig<S> & {
-  className?: string;
-  style?: CSSProperties;
-  colorMode?: ReactFlowProps['colorMode'];
-  rootMsg: MessageShape<S>;
-}) {
-  const [layoutReady, setLayoutReady] = React.useState(false);
+  ...divProps
+}: CompileConfig<S> &
+  Omit<HTMLAttributes<HTMLDivElement>, 'onError'> & {
+    colorMode?: ReactFlowProps['colorMode'];
+    rootMsg: MessageShape<S>;
+  }) {
+  const coreNodes = useSameArray(_coreNodes);
   const [initNodes, initEdges] = React.useMemo(
     () => Compiler.fromCfg({ coreNodes }).compile(rootMsg),
     [coreNodes, rootMsg],
@@ -151,12 +154,20 @@ function Private<S extends MessageSchema>({
   const [edges, setEdges, onEdgesChange] = useEdgesState(initEdges);
 
   const { fitView } = useReactFlow();
+  const ref = React.useRef({ setNodes, setEdges, fitView });
+  ref.current = { setNodes, setEdges, fitView };
 
   // In order to know the dimensions of each node, first, they need
   // to be placed on screen, and the <SmartNode/> component will inject
   // at initialization the clientWidth and client Height of each node.
   // We need to let some time for this to happen.
-  useLayoutEffect(() => {
+  const [layoutReady, setLayoutReady] = React.useState(false);
+  React.useEffect(() => {
+    setLayoutReady(false);
+    // Set the nodes so that their height gets calculated behind the scenes.
+    ref.current.setNodes(initNodes);
+    ref.current.setEdges(initEdges);
+
     function allNodesPlaced(ns: Node[]): boolean {
       for (const n of ns) {
         if (n.data[WIDTH_ATTRIBUTE] === undefined) return false;
@@ -166,23 +177,22 @@ function Private<S extends MessageSchema>({
     }
 
     async function waitForAllNodesPlaced() {
-      while (!allNodesPlaced(nodes)) {
+      while (!allNodesPlaced(initNodes)) {
         await new Promise(res => setTimeout(res, 10));
       }
 
-      const [n, e] = await layout(nodes, edges);
-      setNodes(n);
-      setEdges(e);
+      const [n, e] = await layout(initNodes, initEdges);
+      ref.current.setNodes(n);
+      ref.current.setEdges(e);
 
       // Let some time for the nodes to be placed.
-      await new Promise(res => setTimeout(res, 10));
+      await new Promise(res => setTimeout(res, 20));
       setLayoutReady(true);
-      await fitView();
+      await ref.current.fitView();
     }
 
     void waitForAllNodesPlaced();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [initEdges, initNodes]);
 
   const theme = useTheme();
 
@@ -190,7 +200,6 @@ function Private<S extends MessageSchema>({
     <ReactFlow
       colorMode={colorMode}
       style={{ color: theme.textColor, ...style }}
-      className={className}
       nodes={nodes}
       edges={edges}
       nodeTypes={nodeTypes}
@@ -203,6 +212,7 @@ function Private<S extends MessageSchema>({
         await fitView({ nodes: [n], duration: 400 });
       }}
       minZoom={0.1}
+      {...divProps}
     >
       {!layoutReady && (
         <div
