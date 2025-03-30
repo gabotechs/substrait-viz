@@ -1,6 +1,6 @@
 // noinspection JSUnusedGlobalSymbols
-
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import plan1 from './.test_data/plan1.json?raw';
 import plan2 from './.test_data/plan2.json?raw';
 import setComparisionAny from './.test_data/set-comparision-any.json?raw';
@@ -26,22 +26,31 @@ import tpchPlan21 from './.test_data/tpch-plan21.json?raw';
 import tpchPlan22 from './.test_data/tpch-plan22.json?raw';
 import { SubstraitViz, SubstraitVizProps } from './SubstraitViz.tsx';
 
-function FullScreenPlan(props: SubstraitVizProps) {
+function FileDropPlan(props: SubstraitVizProps) {
+  const [plan, setPlan] = React.useState(props.plan);
+
+  const { handleDragOver, handleDragLeave, handleDrop } = useFileDrop(setPlan);
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <SubstraitViz {...props} />
+    <div className={'h-screen w-screen'}>
+      <SubstraitViz
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+        {...props}
+        plan={plan}
+      />
     </div>
   );
 }
 
 const meta = {
   title: 'SubstraitViz',
-  component: FullScreenPlan,
+  component: FileDropPlan,
   parameters: {
     layout: 'fullscreen',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof FullScreenPlan>;
+} satisfies Meta<typeof FileDropPlan>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -81,3 +90,55 @@ export const TpchPlan19: Story = { args: { plan: tpchPlan19 } };
 export const TpchPlan20: Story = { args: { plan: tpchPlan20 } };
 export const TpchPlan21: Story = { args: { plan: tpchPlan21 } };
 export const TpchPlan22: Story = { args: { plan: tpchPlan22 } };
+
+function useFileDrop(setPlan: (value: string) => void) {
+  const [isDragging, setIsDragging] = React.useState(false);
+  const [error, setError] = React.useState<Error | null>(null);
+
+  const handleDragOver = (event: React.DragEvent) => {
+    event.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDrop = (event: React.DragEvent) => {
+    event.preventDefault();
+    setIsDragging(false);
+
+    const file = event.dataTransfer.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = reader.result as string;
+        const match = result.match(/^data:(.*?);base64,(.*)$/);
+
+        if (!match) {
+          setError(new Error('Invalid file format'));
+          return;
+        }
+        const mimeType = match[1];
+        const base64 = match[2];
+
+        if (mimeType === 'application/json') {
+          try {
+            const decoded = atob(base64);
+            JSON.parse(decoded); // Validate it's JSON
+            setPlan(decoded);
+            return;
+          } catch {
+            // this is fine, we'll fall back to base64.
+          }
+        }
+
+        setPlan(base64);
+      };
+      reader.onerror = () => setError(new Error('Error loading file'));
+      reader.readAsDataURL(file);
+    }
+  };
+
+  return { isDragging, error, handleDragOver, handleDragLeave, handleDrop };
+}
