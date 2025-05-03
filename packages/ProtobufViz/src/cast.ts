@@ -116,7 +116,7 @@ export function castNumber(obj: unknown): number | undefined {
 export function castNumberList(obj: unknown): number[] | undefined {
   if (Array.isArray(obj)) {
     if (obj.length === 0) return obj;
-    if (castNumber(obj[0])) return obj;
+    if (castNumber(obj[0]) !== undefined) return obj;
   }
   return undefined;
 }
@@ -128,7 +128,7 @@ export function castString(obj: unknown): string | undefined {
 export function castStringList(obj: unknown): string[] | undefined {
   if (Array.isArray(obj)) {
     if (obj.length === 0) return obj;
-    if (castString(obj[0])) return obj;
+    if (castString(obj[0]) !== undefined) return obj;
   }
   return undefined;
 }

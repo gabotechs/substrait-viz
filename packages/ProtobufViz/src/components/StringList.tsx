@@ -1,11 +1,15 @@
 import { HTMLProps } from 'react';
+import { String } from './String.tsx';
 
-export interface StringListProps extends HTMLProps<HTMLDivElement> {
+export interface StringListProps
+  extends Omit<HTMLProps<HTMLDivElement>, 'onChange'> {
   entries: string[];
+  onChange?: (value: string[]) => void;
 }
 
 export function StringList({
   entries,
+  onChange,
   className = '',
   ...rest
 }: StringListProps) {
@@ -15,7 +19,15 @@ export function StringList({
       {...rest}
     >
       {entries.map((name, i) => (
-        <span key={i}>{name}</span>
+        <String
+          key={i}
+          value={name}
+          onChange={v => {
+            const newEntries = [...entries];
+            newEntries[i] = v;
+            onChange?.(newEntries);
+          }}
+        />
       ))}
     </div>
   );

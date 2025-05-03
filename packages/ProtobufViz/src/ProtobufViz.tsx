@@ -157,7 +157,7 @@ function Private<S extends MessageSchema>({
   const ref = React.useRef({ setNodes, setEdges, fitView });
   ref.current = { setNodes, setEdges, fitView };
 
-  // In order to know the dimensions of each node, first, they need
+  // To know the dimensions of each node, first, they need
   // to be placed on screen, and the <SmartNode/> component will inject
   // at initialization the clientWidth and client Height of each node.
   // We need to let some time for this to happen.

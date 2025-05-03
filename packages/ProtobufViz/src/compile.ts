@@ -25,9 +25,6 @@ export type NodeExt = {
   [HEIGHT_ATTRIBUTE]?: number;
 };
 
-export type UnderlyingMessage<S extends MessageSchema> =
-  S extends MessageSchema<infer N> ? N : never;
-
 export class Compiler<N extends Message, S extends MessageSchema<N>> {
   protected constructor(
     readonly cfg: CompileConfig<S>,
@@ -55,8 +52,8 @@ export class Compiler<N extends Message, S extends MessageSchema<N>> {
     const nodes: Node[] = [node];
     const edges: Edge[] = [];
 
-    // It's possible that there's multiple source handles with the same name,
-    // so in order to not incur into collisions, track the names ensuring
+    // It's possible that there are multiple source handles with the same name,
+    // so to not incur into collisions, track the names ensuring
     // that any source handle name that we emit is unique.
     for (const [sourceHandle, child] of this.children(msg)) {
       const [newNodes, newEdges] = this.compile(child);

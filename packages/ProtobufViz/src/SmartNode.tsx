@@ -25,8 +25,11 @@ import { Binary } from './components/Binary.tsx';
 import { Box } from './components/Box.tsx';
 import { Entry } from './components/Entry.tsx';
 import { Expandable } from './components/Expandable.tsx';
+import { Number } from './components/Number.tsx';
 import { NumberList } from './components/NumberList.tsx';
+import { String } from './components/String.tsx';
 import { StringList } from './components/StringList.tsx';
+import { useForceRender } from './hooks/useForceRender.ts';
 import { useRenderConfig } from './render.ts';
 import { stringify } from './stringify.ts';
 import { useTheme } from './theme.ts';
@@ -34,32 +37,33 @@ import { useTheme } from './theme.ts';
 export interface SmartNodeProps {
   data: unknown;
   isNested?: boolean;
+  onChange?: (data: unknown) => void;
 }
 
-function SmartNode({ data, ...props }: SmartNodeProps) {
+function SmartNode({ data, onChange, ...props }: SmartNodeProps) {
   {
     const n = castStringList(data);
-    if (n) return <StringList entries={n} />;
+    if (n != null) return <StringList entries={n} onChange={onChange} />;
   }
   {
     const n = castUint8Array(data);
-    if (n) return <Binary data={n} />;
+    if (n != null) return <Binary data={n} />;
   }
   {
     const n = castString(data);
-    if (n) return n;
+    if (n != null) return <String value={n} onChange={onChange} />;
   }
   {
     const n = castNumberList(data);
-    if (n) return <NumberList entries={n} />;
+    if (n != null) return <NumberList entries={n} onChange={onChange} />;
   }
   {
     const n = castNumber(data);
-    if (n) return n;
+    if (n != null) return <Number value={n} onChange={onChange} />;
   }
   {
     let n = castAnyMsg(data);
-    if (n) {
+    if (n != null) {
       const msgStack = [];
       while (n) {
         msgStack.push(n);
@@ -75,11 +79,11 @@ function SmartNode({ data, ...props }: SmartNodeProps) {
   }
   {
     const n = castAnyOneOf(data);
-    if (n) return <MsgStack msgStack={[n.value]} {...props} />;
+    if (n != null) return <MsgStack msgStack={[n.value]} {...props} />;
   }
   {
     const n = castAnyMsgArr(data);
-    if (n)
+    if (n != null)
       return (
         <div className="flex flex-col gap-2">
           {n.map((v, i) => (
@@ -90,7 +94,7 @@ function SmartNode({ data, ...props }: SmartNodeProps) {
   }
   {
     const n = castAnyOneOfArr(data);
-    if (n)
+    if (n != null)
       return (
         <div className="flex flex-col gap-2">
           {n.map((v, i) => (
@@ -110,6 +114,7 @@ function MsgStack({
   msgStack: (Message & NodeExt)[];
   isNested?: boolean;
 }) {
+  const render = useForceRender();
   const [expanded, setExpanded] = React.useState(false);
   const ref = React.useRef<HTMLDivElement>(null);
   const { nodeRender, edgesFromFields, registry, rootMsg } = useRenderConfig();
@@ -182,7 +187,14 @@ function MsgStack({
         <Box tag={tag(msgStack)}>
           {msgEntries(msg).map(([k, v]) => (
             <Entry key={k} name={k}>
-              <SmartNode data={v} isNested={true} />
+              <SmartNode
+                data={v}
+                isNested={true}
+                onChange={nv => {
+                  (msg as Record<string, unknown>)[k] = nv;
+                  render();
+                }}
+              />
             </Entry>
           ))}
         </Box>
