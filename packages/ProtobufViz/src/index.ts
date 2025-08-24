@@ -1,7 +1,7 @@
 export type { Registry } from '@bufbuild/protobuf';
 export * from './cast.ts';
 export type { ProtoFile } from './file.ts';
-export { loadRegistry, protoFileToBin } from './load.ts';
+export { loadRegistry, protoFileToBin, protoFileToJson } from './load.ts';
 export * from './ProtobufViz';
 export type { CustomRenderProps, RenderConfig } from './render.ts';
 export * from './SmartNode';
