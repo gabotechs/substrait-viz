@@ -32,7 +32,7 @@ export function PlanDrop({
     handleDragOver,
     handleDragLeave,
     handleDrop,
-  } = useFileDrop(setPlan);
+  } = useFileDrop(setPlan, true);
 
   const getDragMessage = () => {
     switch (dragState) {
@@ -119,7 +119,12 @@ export function PlanDrop({
           </div>
         )}
         {dragState === 'idle' && (
-          <div className="mt-2 text-sm opacity-60">or click to browse</div>
+          <>
+            <div className="mt-2 text-sm opacity-60">
+              or paste from clipboard
+            </div>
+            <div className="mt-2 text-sm opacity-60">or click to browse</div>
+          </>
         )}
       </div>
       <input
