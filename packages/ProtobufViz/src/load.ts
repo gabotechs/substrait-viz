@@ -5,6 +5,7 @@ import {
   fromJson,
   MessageShape,
   Registry,
+  toBinary,
 } from '@bufbuild/protobuf';
 import { FileDescriptorSetSchema } from '@bufbuild/protobuf/wkt';
 import { MessageSchema } from './compile.ts';
@@ -60,4 +61,13 @@ export async function buildRegistry(
     throw new Error('JSON is not supported for a proto descriptor file');
   const msg = fromBinary(FileDescriptorSetSchema, bin);
   return createFileRegistry(msg);
+}
+
+export async function protoFileToBin<S extends MessageSchema>(
+  payload: ProtoFile,
+  schema: S,
+  registry?: Registry,
+): Promise<Uint8Array> {
+  const msg = await loadMessage(payload, schema, registry);
+  return toBinary(schema, msg);
 }

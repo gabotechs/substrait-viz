@@ -4,12 +4,15 @@ import { useDarkMode } from './useDarkMode.ts';
 import { THEME } from './theme.ts';
 import { PlanDrop } from './PlanDrop.tsx';
 import { PlanViz } from './PlanViz.tsx';
+import { usePlanInUrl } from './usePlanInUrl.ts';
 
 export function Fiddle() {
   const [plan, setPlan] = useLocalStorageState<DroppedFile>('plan-v2');
   const isDarkMode = useDarkMode();
   const [descriptors, setDescriptors] =
     useLocalStorageState<DroppedFile[]>('descriptors');
+
+  usePlanInUrl(plan, setPlan, descriptors);
 
   const theme = THEME[isDarkMode ? 'dark' : 'light'];
 
