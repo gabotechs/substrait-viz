@@ -1,30 +1,25 @@
 import { HTMLProps } from 'react';
+import { LuX } from 'react-icons/lu';
+import { useThemeMode } from './ThemeModeContext.tsx';
 
 export function CancelButton({
   className = '',
   ...props
-}: HTMLProps<HTMLButtonElement>) {
+}: Omit<HTMLProps<HTMLButtonElement>, 'type'>) {
+  const { isDarkMode } = useThemeMode();
   return (
     <button
-      className={`${className}  text-2xl font-bold cursor-pointer`}
+      className={`p-1.5 rounded-md transition-all duration-200 ${className} ${
+        isDarkMode
+          ? 'hover:bg-gray-700 text-gray-300 hover:text-white'
+          : 'hover:bg-gray-100 text-gray-600 hover:text-gray-900'
+      }`}
       aria-label="Close"
       {...props}
       type={'button'}
+      title="Close"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        className="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={2}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M6 18L18 6M6 6l12 12"
-        />
-      </svg>
+      <LuX size={16} />
     </button>
   );
 }

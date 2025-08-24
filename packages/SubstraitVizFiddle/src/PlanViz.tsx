@@ -4,19 +4,16 @@ import React from 'react';
 import { DroppedFile, useFileDrop } from './useFileDrop.ts';
 import { THEME } from './theme.ts';
 import { ShareButton } from './ShareButton.tsx';
+import { ThemeToggleButton } from './ThemeToggleButton.tsx';
+import { useThemeMode } from './ThemeModeContext.tsx';
 
 export interface PlanVizProps {
   plan: DroppedFile;
   setPlan: React.Dispatch<React.SetStateAction<DroppedFile | undefined>>;
   descriptors: DroppedFile[] | undefined;
-  isDarkMode: boolean;
 }
-export function PlanViz({
-  plan,
-  setPlan,
-  descriptors,
-  isDarkMode,
-}: PlanVizProps) {
+export function PlanViz({ plan, setPlan, descriptors }: PlanVizProps) {
+  const { isDarkMode } = useThemeMode();
   const theme = THEME[isDarkMode ? 'dark' : 'light'];
 
   const protoDescriptorSets = React.useMemo(
@@ -36,11 +33,12 @@ export function PlanViz({
     <>
       <div
         className={
-          'absolute top-4 right-4 flex gap-1 flex-row items-center z-10 '
+          'absolute top-2 right-4 flex gap-1 flex-row items-center z-10 '
         }
       >
-        <ShareButton plan={plan} isDarkMode={isDarkMode} />
-        <span className="mr-2">{plan.name}</span>
+        <ThemeToggleButton />
+        <ShareButton />
+        <span className="ml-2 relative bottom-[1px]">{plan.name}</span>
         <CancelButton onClick={() => setPlan(undefined)} />
       </div>
 

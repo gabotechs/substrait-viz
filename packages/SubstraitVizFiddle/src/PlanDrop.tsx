@@ -3,6 +3,8 @@ import { FileCardAdd } from './FileCardAdd.tsx';
 import React from 'react';
 import { DroppedFile, useFileDrop } from './useFileDrop.ts';
 import { THEME } from './theme.ts';
+import { ThemeToggleButton } from './ThemeToggleButton.tsx';
+import { useThemeMode } from './ThemeModeContext.tsx';
 
 export interface PlanDropProps {
   setPlan: React.Dispatch<React.SetStateAction<DroppedFile | undefined>>;
@@ -10,15 +12,14 @@ export interface PlanDropProps {
   setDescriptors: React.Dispatch<
     React.SetStateAction<DroppedFile[] | undefined>
   >;
-  isDarkMode: boolean;
 }
 
 export function PlanDrop({
   setPlan,
   descriptors,
   setDescriptors,
-  isDarkMode,
 }: PlanDropProps) {
+  const { isDarkMode } = useThemeMode();
   const theme = THEME[isDarkMode ? 'dark' : 'light'];
 
   const {
@@ -69,6 +70,9 @@ export function PlanDrop({
 
   return (
     <div className="w-screen h-screen relative flex justify-center items-center">
+      <div className="absolute top-4 right-4 z-20">
+        <ThemeToggleButton />
+      </div>
       <div
         className={
           'absolute top-[8%] right-4 left-4 flex gap-2 flex-row justify-center z-10'
