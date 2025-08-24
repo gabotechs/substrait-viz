@@ -58,7 +58,7 @@ export interface ProtobufVizProps<
   colorMode?: ReactFlowProps['colorMode'];
   schema: S;
   protoMessage: ProtoFile;
-  protoDescriptorSets?: ProtoFile[];
+  protoDescriptorSets?: ProtoFile[] | Registry;
   theme?: Partial<T>;
 }
 
@@ -87,7 +87,16 @@ export function ProtobufViz<
 
   React.useEffect(() => {
     async function load() {
-      const registry = await loadRegistry(protoDescriptorSets);
+      let registry;
+      if (protoDescriptorSets == null) {
+        registry = await loadRegistry([]);
+      } else if (Array.isArray(protoDescriptorSets)) {
+        registry = await loadRegistry(protoDescriptorSets);
+      } else if (protoDescriptorSets.kind === 'registry') {
+        registry = protoDescriptorSets;
+      } else {
+        throw new Error('invalid protoDescriptorSets passed');
+      }
       const message = await loadMessage(protoMessage, schema, registry);
       setRootMsg(message);
       setRegistry(registry);

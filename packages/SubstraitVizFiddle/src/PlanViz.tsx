@@ -3,6 +3,7 @@ import { SubstraitViz } from '@substrait-viz/react';
 import React from 'react';
 import { DroppedFile, useFileDrop } from './useFileDrop.ts';
 import { THEME } from './theme.ts';
+import { ShareButton } from './ShareButton.tsx';
 
 export interface PlanVizProps {
   plan: DroppedFile;
@@ -33,8 +34,13 @@ export function PlanViz({
 
   return (
     <>
-      <div className={'absolute top-4 right-4 flex gap-1 flex-row z-10 '}>
-        <span>{plan.name}</span>
+      <div
+        className={
+          'absolute top-4 right-4 flex gap-1 flex-row items-center z-10 '
+        }
+      >
+        <ShareButton plan={plan} isDarkMode={isDarkMode} />
+        <span className="mr-2">{plan.name}</span>
         <CancelButton onClick={() => setPlan(undefined)} />
       </div>
 
