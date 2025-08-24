@@ -29,7 +29,7 @@ export function PlanViz({ plan, setPlan, descriptors }: PlanVizProps) {
     handleDrop,
     fileInputRef,
     handleFileSelect,
-  } = useFileDrop(setPlan);
+  } = useFileDrop(setPlan, true);
 
   return (
     <>

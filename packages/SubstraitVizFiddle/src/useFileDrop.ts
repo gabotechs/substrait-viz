@@ -1,9 +1,9 @@
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 export interface DroppedFile {
   name: string;
   value: string;
-  help?: string
+  help?: string;
 }
 
 export type DragState =
@@ -13,7 +13,10 @@ export type DragState =
   | 'success'
   | 'error';
 
-export function useFileDrop(onDrop: (value: DroppedFile) => void) {
+export function useFileDrop(
+  onDrop: (value: DroppedFile) => void,
+  listenOnPaste: boolean = false,
+) {
   const [dragState, setDragState] = useState<DragState>('idle');
   const [error, setError] = useState<Error | null>(null);
   const [fileName, setFileName] = useState<string | null>(null);
@@ -105,6 +108,48 @@ export function useFileDrop(onDrop: (value: DroppedFile) => void) {
     [handleFile],
   );
 
+  const handlePaste = useCallback(
+    (event: ClipboardEvent | React.ClipboardEvent) => {
+      event.preventDefault();
+      setDragState('processing');
+      setError(null);
+
+      try {
+        const clipboardText = event.clipboardData?.getData('text');
+        if (clipboardText) {
+          const droppedFile: DroppedFile = {
+            name: 'clipboard',
+            value: clipboardText,
+          };
+          onDrop(droppedFile);
+          setDragState('success');
+          setTimeout(() => setDragState('idle'), 2000);
+        } else {
+          setDragState('error');
+          setError(new Error('No text content in clipboard'));
+        }
+      } catch {
+        setDragState('error');
+        setError(new Error('Failed to read clipboard content'));
+      }
+    },
+    [onDrop],
+  );
+
+  useEffect(() => {
+    if (!listenOnPaste) return;
+
+    const globalPasteHandler = (event: ClipboardEvent) => {
+      handlePaste(event);
+    };
+
+    document.addEventListener('paste', globalPasteHandler);
+
+    return () => {
+      document.removeEventListener('paste', globalPasteHandler);
+    };
+  }, [listenOnPaste, handlePaste]);
+
   const triggerFileInput = useCallback(() => {
     fileInputRef.current?.click();
   }, []);
@@ -116,6 +161,7 @@ export function useFileDrop(onDrop: (value: DroppedFile) => void) {
     handleDragOver,
     handleDragLeave,
     handleDrop,
+    handlePaste,
     triggerFileInput,
     fileInputRef,
     handleFileSelect,
