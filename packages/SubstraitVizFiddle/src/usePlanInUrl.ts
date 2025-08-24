@@ -24,6 +24,21 @@ async function parsePlanFromUrl(): Promise<DroppedFile | null> {
   }
 }
 
+function parseDescriptorsFromUrl(): Omit<DroppedFile, 'value'>[] {
+  const urlParams = new URLSearchParams(window.location.search);
+  const names = urlParams.getAll('descriptor');
+  const helps = urlParams.getAll('descriptor-help');
+  const results: Omit<DroppedFile, 'value'>[] = [];
+  for (let i = 0; i < names.length; i++) {
+    results.push({
+      name: decodeURIComponent(names[i]),
+      help:
+        (helps[i] ?? '').length > 0 ? decodeURIComponent(helps[i]) : undefined,
+    });
+  }
+  return results;
+}
+
 async function setPlanInUrl(
   plan: undefined | DroppedFile,
   descriptors: undefined | DroppedFile[],
@@ -32,6 +47,8 @@ async function setPlanInUrl(
     const url = new URL(window.location.toString());
     url.searchParams.delete('plan');
     url.searchParams.delete('name');
+    url.searchParams.delete('descriptor');
+    url.searchParams.delete('descriptor-help');
     window.history.pushState(null, '', url);
     return;
   }
@@ -40,8 +57,14 @@ async function setPlanInUrl(
   const url = new URL(window.location.toString());
   url.searchParams.delete('plan');
   url.searchParams.delete('name');
+  url.searchParams.delete('descriptor');
+  url.searchParams.delete('descriptor-help');
   url.searchParams.set('plan', btoa(String.fromCharCode(...bin)));
   url.searchParams.set('name', encodeURIComponent(plan.name));
+  for (const descriptor of descriptors ?? []) {
+    url.searchParams.append('descriptor', descriptor.name);
+    url.searchParams.append('descriptor-help', descriptor.help ?? '');
+  }
   window.history.pushState(null, '', url);
 }
 
@@ -49,6 +72,9 @@ export function usePlanInUrl(
   plan: undefined | DroppedFile,
   setPlan: React.Dispatch<React.SetStateAction<DroppedFile | undefined>>,
   descriptors: undefined | DroppedFile[],
+  setMissingDescriptor: React.Dispatch<
+    React.SetStateAction<Omit<DroppedFile, 'value'> | undefined>
+  >,
 ) {
   const hasLoadedFromUrlRef = React.useRef(false);
   const isNavigatingRef = React.useRef(false);
@@ -57,6 +83,19 @@ export function usePlanInUrl(
   React.useEffect(() => {
     const loadPlanFromUrl = async () => {
       if (!plan && !hasLoadedFromUrlRef.current) {
+        // Ensure that all descriptors are there.
+        const currDescriptors = descriptors?.map(_ => _.name) ?? [];
+        const expectedDescriptors = parseDescriptorsFromUrl();
+        for (const expectedDescriptor of expectedDescriptors) {
+          if (!currDescriptors.includes(expectedDescriptor.name)) {
+            // if missing one descriptor, request it.
+            setMissingDescriptor(expectedDescriptor);
+            isNavigatingRef.current = true;
+            return;
+          }
+        }
+        setMissingDescriptor(undefined);
+        isNavigatingRef.current = false;
         hasLoadedFromUrlRef.current = true;
         const urlPlan = await parsePlanFromUrl();
         if (urlPlan) {
@@ -66,7 +105,7 @@ export function usePlanInUrl(
     };
 
     loadPlanFromUrl().catch(console.error);
-  }, [plan, setPlan]); // Now we can safely include both
+  }, [plan, setPlan, descriptors, setMissingDescriptor]);
 
   // Update URL when plan changes (but not during navigation)
   React.useEffect(() => {
