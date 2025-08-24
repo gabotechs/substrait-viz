@@ -6,6 +6,7 @@ import {
   MessageShape,
   Registry,
   toBinary,
+  toJsonString,
 } from '@bufbuild/protobuf';
 import { FileDescriptorSetSchema } from '@bufbuild/protobuf/wkt';
 import { MessageSchema } from './compile.ts';
@@ -70,4 +71,13 @@ export async function protoFileToBin<S extends MessageSchema>(
 ): Promise<Uint8Array> {
   const msg = await loadMessage(payload, schema, registry);
   return toBinary(schema, msg);
+}
+
+export async function protoFileToJson<S extends MessageSchema>(
+  payload: ProtoFile,
+  schema: S,
+  registry?: Registry,
+): Promise<string> {
+  const msg = await loadMessage(payload, schema, registry);
+  return toJsonString(schema, msg, { registry });
 }
