@@ -3,6 +3,7 @@ import React, { useCallback, useRef, useState } from 'react';
 export interface DroppedFile {
   name: string;
   value: string;
+  help?: string
 }
 
 export type DragState =

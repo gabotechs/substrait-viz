@@ -3,7 +3,7 @@ import { LuFileSpreadsheet } from 'react-icons/lu';
 import { Tooltip } from 'react-tooltip';
 import { useThemeMode } from './ThemeModeContext.tsx';
 import { DroppedFile } from './useFileDrop.ts';
-import { loadRegistry } from '@protobuf-viz/react';
+import { loadRegistry } from '@substrait-viz/react';
 import { substraitFileToBin } from '@substrait-viz/react';
 import { downloadBlob, enforceExtension } from './utils.ts';
 

@@ -75,15 +75,23 @@ export function PlanDrop({
       </div>
       <div
         className={
-          'absolute top-[8%] right-4 left-4 flex gap-2 flex-row justify-center z-10'
+          'absolute top-8 right-4 left-4 flex gap-2 flex-row justify-center z-10'
         }
       >
         {descriptors?.map((_, i) => (
           <FileCard
-            className={'h-32 w-64'}
+            className={'h-32 w-80'}
             key={i}
-            fileName={_.name}
+            name={_.name}
+            help={_.help || ''}
             theme={theme}
+            setHelp={newHelp =>
+              setDescriptors(prev =>
+                prev?.map((desc, index) =>
+                  index === i ? { ...desc, help: newHelp } : desc,
+                ),
+              )
+            }
             onDelete={() =>
               setDescriptors(prev => prev?.filter((_, ind) => ind !== i))
             }
@@ -97,7 +105,7 @@ export function PlanDrop({
         />
       </div>
       <div
-        className={`absolute h-[50%] w-screen flex flex-col justify-center items-center text-lg font-bold cursor-pointer transition-colors duration-200 ${getMessageColor()}`}
+        className={`absolute h-[40%] w-screen flex flex-col justify-center items-center text-lg font-bold cursor-pointer transition-colors duration-200 ${getMessageColor()}`}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
