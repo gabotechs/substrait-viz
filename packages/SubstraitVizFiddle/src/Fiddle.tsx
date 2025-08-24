@@ -1,16 +1,17 @@
 import useLocalStorageState from 'use-local-storage-state';
 import { DroppedFile } from './useFileDrop.ts';
-import { useDarkMode } from './useDarkMode.ts';
 import { THEME } from './theme.ts';
 import { PlanDrop } from './PlanDrop.tsx';
 import { PlanViz } from './PlanViz.tsx';
 import { usePlanInUrl } from './usePlanInUrl.ts';
+import { useThemeMode } from './ThemeModeContext.tsx';
 
 export function Fiddle() {
   const [plan, setPlan] = useLocalStorageState<DroppedFile>('plan-v2');
-  const isDarkMode = useDarkMode();
   const [descriptors, setDescriptors] =
     useLocalStorageState<DroppedFile[]>('descriptors');
+
+  const { isDarkMode } = useThemeMode();
 
   usePlanInUrl(plan, setPlan, descriptors);
 
@@ -22,17 +23,11 @@ export function Fiddle() {
       style={{ background: theme.background, color: theme.textColor }}
     >
       {plan ? (
-        <PlanViz
-          plan={plan}
-          setPlan={setPlan}
-          isDarkMode={isDarkMode}
-          descriptors={descriptors}
-        />
+        <PlanViz plan={plan} setPlan={setPlan} descriptors={descriptors} />
       ) : (
         <PlanDrop
           setPlan={setPlan}
           descriptors={descriptors}
-          isDarkMode={isDarkMode}
           setDescriptors={setDescriptors}
         />
       )}
