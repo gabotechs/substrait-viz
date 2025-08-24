@@ -2,22 +2,33 @@ import React, { useCallback, useRef, useState } from 'react';
 
 export interface DroppedFile {
   name: string;
-  path: string;
   value: string;
 }
 
+export type DragState =
+  | 'idle'
+  | 'dragging'
+  | 'processing'
+  | 'success'
+  | 'error';
+
 export function useFileDrop(onDrop: (value: DroppedFile) => void) {
-  const [isDragging, setIsDragging] = useState(false);
+  const [dragState, setDragState] = useState<DragState>('idle');
   const [error, setError] = useState<Error | null>(null);
+  const [fileName, setFileName] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const handleDragOver = useCallback((event: React.DragEvent) => {
     event.preventDefault();
-    setIsDragging(true);
+    const file = event.dataTransfer.files[0];
+    setFileName(file?.name || null);
+    setDragState('dragging');
+    setError(null);
   }, []);
 
   const handleDragLeave = useCallback(() => {
-    setIsDragging(false);
+    setDragState('idle');
+    setFileName(null);
   }, []);
 
   const handleFile = useCallback(
@@ -28,6 +39,7 @@ export function useFileDrop(onDrop: (value: DroppedFile) => void) {
         const match = result.match(/^data:(.*?);base64,(.*)$/);
 
         if (!match) {
+          setDragState('error');
           setError(new Error('Invalid file format'));
           return;
         }
@@ -40,9 +52,10 @@ export function useFileDrop(onDrop: (value: DroppedFile) => void) {
             JSON.parse(decoded); // Validate it's JSON
             onDrop({
               name: file.name,
-              path: file.webkitRelativePath,
               value: decoded,
             });
+            setDragState('success');
+            setTimeout(() => setDragState('idle'), 2000);
             return;
           } catch {
             // this is fine, we'll fall back to base64.
@@ -51,11 +64,15 @@ export function useFileDrop(onDrop: (value: DroppedFile) => void) {
 
         onDrop({
           name: file.name,
-          path: file.webkitRelativePath,
           value: base64,
         });
+        setDragState('success');
+        setTimeout(() => setDragState('idle'), 2000);
       };
-      reader.onerror = () => setError(new Error('Error loading file'));
+      reader.onerror = () => {
+        setDragState('error');
+        setError(new Error('Error loading file'));
+      };
       reader.readAsDataURL(file);
     },
     [onDrop],
@@ -65,7 +82,7 @@ export function useFileDrop(onDrop: (value: DroppedFile) => void) {
     (event: React.DragEvent) => {
       event.preventDefault();
       event.stopPropagation();
-      setIsDragging(false);
+      setDragState('processing');
 
       const file = event.dataTransfer.files[0];
       if (file) {
@@ -79,6 +96,8 @@ export function useFileDrop(onDrop: (value: DroppedFile) => void) {
     (event: React.ChangeEvent<HTMLInputElement>) => {
       const file = event.target.files?.[0];
       if (file) {
+        setFileName(file.name);
+        setDragState('processing');
         handleFile(file);
       }
     },
@@ -90,8 +109,9 @@ export function useFileDrop(onDrop: (value: DroppedFile) => void) {
   }, []);
 
   return {
-    isDragging,
+    dragState,
     error,
+    fileName,
     handleDragOver,
     handleDragLeave,
     handleDrop,
