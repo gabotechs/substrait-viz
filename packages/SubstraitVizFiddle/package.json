@@ -1,6 +1,6 @@
 {
   "name": "@substrait-viz/fiddle",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "scripts": {
     "clean": "rm -rf dist bin build node_modules .turbo",
     "dev": "vite",
