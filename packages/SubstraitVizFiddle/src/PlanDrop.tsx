@@ -22,7 +22,9 @@ export function PlanDrop({
   const theme = THEME[isDarkMode ? 'dark' : 'light'];
 
   const {
-    isDragging,
+    dragState,
+    error,
+    fileName,
     fileInputRef,
     handleFileSelect,
     triggerFileInput,
@@ -31,14 +33,42 @@ export function PlanDrop({
     handleDrop,
   } = useFileDrop(setPlan);
 
+  const getDragMessage = () => {
+    switch (dragState) {
+      case 'dragging':
+        return fileName
+          ? `Drop "${fileName}" to visualize`
+          : 'Drop to visualize plan';
+      case 'processing':
+        return fileName ? `Processing "${fileName}"...` : 'Processing file...';
+      case 'success':
+        return fileName
+          ? `"${fileName}" loaded successfully!`
+          : 'File loaded successfully!';
+      case 'error':
+        return error?.message || 'Error loading file';
+      default:
+        return 'Drop your Substrait plan here';
+    }
+  };
+
+  const getMessageColor = () => {
+    switch (dragState) {
+      case 'dragging':
+        return isDarkMode ? 'text-blue-300' : 'text-blue-600';
+      case 'processing':
+        return isDarkMode ? 'text-yellow-300' : 'text-yellow-600';
+      case 'success':
+        return isDarkMode ? 'text-green-300' : 'text-green-600';
+      case 'error':
+        return isDarkMode ? 'text-red-300' : 'text-red-600';
+      default:
+        return isDarkMode ? 'text-gray-300' : 'text-gray-700';
+    }
+  };
+
   return (
-    <div
-      className="w-screen h-screen relative flex justify-center items-center"
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      onDrop={handleDrop}
-    >
-      {' '}
+    <div className="w-screen h-screen relative flex justify-center items-center">
       <div
         className={
           'absolute top-[8%] right-4 left-4 flex gap-2 flex-row justify-center z-10'
@@ -63,12 +93,22 @@ export function PlanDrop({
         />
       </div>
       <div
-        className="absolute h-32 w-96 flex justify-center items-center text-lg font-bold cursor-pointer"
+        className={`absolute h-[50%] w-screen flex flex-col justify-center items-center text-lg font-bold cursor-pointer transition-colors duration-200 ${getMessageColor()}`}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
         onClick={triggerFileInput}
       >
-        {isDragging
-          ? 'Drop to visualize plan'
-          : 'Drop your Substrait plan here'}
+        <div className="text-center px-4">{getDragMessage()}</div>
+        {dragState === 'processing' && (
+          <div className="mt-2 text-sm opacity-75">
+            <div className="animate-spin inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full mr-2"></div>
+            Please wait...
+          </div>
+        )}
+        {dragState === 'idle' && (
+          <div className="mt-2 text-sm opacity-60">or click to browse</div>
+        )}
       </div>
       <input
         className={'hidden'}

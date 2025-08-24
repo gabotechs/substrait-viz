@@ -1,16 +1,11 @@
 import { HTMLProps } from 'react';
-import { useFileDrop } from './useFileDrop.ts';
+import { DroppedFile, useFileDrop } from './useFileDrop.ts';
 import { SubstraitVizTheme } from '@substrait-viz/react';
-
-interface DescriptorFile {
-  name: string;
-  value: string;
-}
 
 export interface FileCardAddProps extends HTMLProps<HTMLDivElement> {
   label: string;
   theme: SubstraitVizTheme;
-  onAdd: (file: DescriptorFile) => void;
+  onAdd: (file: DroppedFile) => void;
 }
 
 export function FileCardAdd({
@@ -21,7 +16,7 @@ export function FileCardAdd({
   ...props
 }: FileCardAddProps) {
   const {
-    isDragging,
+    dragState,
     handleDragOver,
     handleDragLeave,
     handleDrop,
@@ -46,7 +41,7 @@ export function FileCardAdd({
         ref={fileInputRef}
         onChange={handleFileSelect}
       />
-      {isDragging ? (
+      {dragState === 'dragging' ? (
         'Drop to add'
       ) : (
         <span>
