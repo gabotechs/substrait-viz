@@ -30,7 +30,7 @@ export function DescriptorRequest({
       <div className="flex flex-col items-center gap-6 max-w-2xl px-8">
         {/* Title */}
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-2">Missing Descriptor File</h1>
+          <h1 className="text-2xl font-bold mb-2">Missing {missing.name}</h1>
           <p className="text-lg opacity-80">
             To visualize this plan, we need the following descriptor file:
           </p>
@@ -57,7 +57,7 @@ export function DescriptorRequest({
         {/* File upload component */}
         <FileCardAdd
           className="h-40 w-80 border-2"
-          label={`Upload ${missing.name}`}
+          label={'Upload missing file'}
           theme={theme}
           onAdd={({ value }) => onFileProvided({ ...missing, value })}
         />
