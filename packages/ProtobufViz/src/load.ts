@@ -79,5 +79,5 @@ export async function protoFileToJson<S extends MessageSchema>(
   registry?: Registry,
 ): Promise<string> {
   const msg = await loadMessage(payload, schema, registry);
-  return toJsonString(schema, msg, { registry });
+  return toJsonString(schema, msg, { registry, prettySpaces: 2 });
 }

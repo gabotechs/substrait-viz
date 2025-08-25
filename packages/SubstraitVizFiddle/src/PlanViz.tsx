@@ -5,7 +5,7 @@ import { DroppedFile, useFileDrop } from './useFileDrop.ts';
 import { THEME } from './theme.ts';
 import { ShareButton } from './ShareButton.tsx';
 import { ThemeToggleButton } from './ThemeToggleButton.tsx';
-import { DownloadJSONButton } from './DownloadJSONButton.tsx';
+import { CopyAsJSONButton } from './CopyAsJSONButton.tsx';
 import { useThemeMode } from './ThemeModeContext.tsx';
 import { DownloadBinButton } from './DownloadBinButton.tsx';
 
@@ -39,7 +39,7 @@ export function PlanViz({ plan, setPlan, descriptors }: PlanVizProps) {
         }
       >
         <ThemeToggleButton />
-        <DownloadJSONButton plan={plan} descriptors={descriptors} />
+        <CopyAsJSONButton plan={plan} descriptors={descriptors} />
         <DownloadBinButton plan={plan} descriptors={descriptors} />
         <ShareButton />
         <span className="ml-2 relative bottom-[1px]">{plan.name}</span>
