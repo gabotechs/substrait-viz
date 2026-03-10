@@ -1,2 +1,3 @@
-@import 'tailwindcss';
+@import 'tailwindcss/theme';
+@import 'tailwindcss/utilities';
 @plugin '@egoist/tailwindcss-icons'
